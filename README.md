@@ -21,14 +21,13 @@ Review files:
 
 ## Mockup comment workflow
 
-Use the **Comments** button in the bottom-right corner of the mockup:
+This site uses [Agentation](https://agentation.com) for visual feedback.
 
-1. Toggle **Comment mode: On**.
-2. Click anywhere on the mockup and add feedback in the prompt.
-3. Keep clicking anywhere you have feedback; each note is pinned on-page.
-4. Click numbered pins to open note details and remove notes.
-5. Click **Copy JSON** to share the feedback payload, or **Copy share link** to share a URL that loads comments directly.
-6. Click **Import JSON** to load comments from clipboard.
+1. Open the live mockup URL.
+2. Click the **Agentation icon** in the bottom-right corner to activate annotation mode.
+3. Hover over any element to highlight it, then click to add a note.
+4. When done, click **Copy** in the toolbar to copy structured markdown with element selectors.
+5. Paste the output and send it back for review.
 
 ## GitHub Pages
 

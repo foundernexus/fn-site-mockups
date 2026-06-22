@@ -457,17 +457,16 @@
       </div>
       <div class="wrap copyright">© 2026 FounderNexus. All rights reserved.</div>
     </footer>
-    <aside class="review-tools" aria-label="Mockup review tools">
-      <button class="review-tools__toggle" type="button" data-review-mode aria-pressed="false">
-        Comment mode: Off
-      </button>
-      <button type="button" data-review-export>Copy JSON</button>
-      <button type="button" data-review-share>Copy share link</button>
-      <button type="button" data-review-import>Import JSON</button>
-      <button type="button" data-review-clear>Clear all</button>
-      <p class="review-status" data-review-status aria-live="polite"></p>
-    </aside>
+    <script src="script.js?v=4"></script>
+    <script type="module">
+      import React from "https://esm.sh/react@18";
+      import { createRoot } from "https://esm.sh/react-dom@18/client";
+      import { Agentation } from "https://esm.sh/agentation@3.0.2?deps=react@18,react-dom@18";
 
-    <script src="script.js?v=3"></script>
+      const root = document.createElement("div");
+      root.id = "agentation-root";
+      document.body.appendChild(root);
+      createRoot(root).render(React.createElement(Agentation));
+    </script>
   </body>
 </html>
