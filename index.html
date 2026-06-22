@@ -465,7 +465,7 @@
 
       const ISSUES_URL = "https://github.com/foundernexus/fn-site-mockups/issues/new";
 
-      function handleSubmit(markdown) {
+      function handleCopy(markdown) {
         const title = encodeURIComponent("Mockup feedback — " + new Date().toLocaleDateString());
         const body = encodeURIComponent(markdown);
         window.open(`${ISSUES_URL}?title=${title}&body=${body}`, "_blank");
@@ -475,7 +475,7 @@
       root.id = "agentation-root";
       document.body.appendChild(root);
       createRoot(root).render(
-        React.createElement(Agentation, { onSubmit: handleSubmit })
+        React.createElement(Agentation, { onCopy: handleCopy, copyToClipboard: false })
       );
     </script>
   </body>

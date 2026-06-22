@@ -26,7 +26,7 @@ This site uses [Agentation](https://agentation.com) for visual feedback.
 1. Open the live mockup URL.
 2. Click the **Agentation icon** in the bottom-right corner to activate annotation mode.
 3. Hover over any element to highlight it, then click to add a note.
-4. When done, click **Send Annotations** — a pre-filled GitHub issue opens in a new tab.
+4. When done, click the **Copy** button in the Agentation toolbar — a pre-filled GitHub issue opens in a new tab.
 5. Review the issue content and click **Submit new issue** to send feedback.
 
 ## GitHub Pages
