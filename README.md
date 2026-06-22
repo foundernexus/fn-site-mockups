@@ -19,6 +19,15 @@ Review files:
 - `styles.css` and `script.js` are the static page assets.
 - `LIVE-DIFF.md` documents intentional differences from the June 14 live clone.
 
+## Mockup comment workflow
+
+Use the **Comments** button in the bottom-right corner of the mockup:
+
+1. Enter your name and comment text.
+2. Click **Place comment on page**, then click anywhere on the mockup to pin it.
+3. Click **Copy JSON** to share the full feedback payload, or **Copy share link** to share a URL that loads those comments directly.
+4. Use **Import comments** to paste JSON from teammates and load their feedback.
+
 ## GitHub Pages
 
 The `.github/workflows/deploy-pages.yml` workflow publishes the repository root to GitHub Pages on every push to `main`.

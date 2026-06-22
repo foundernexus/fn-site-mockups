@@ -9,7 +9,7 @@
       content="Editable local clone of the FounderNexus public homepage captured June 14, 2026."
     />
     <link rel="icon" href="assets/live/foundernexus.com/favicon-crop.ico" />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body>
     <header class="site-header">
@@ -457,6 +457,44 @@
       </div>
       <div class="wrap copyright">© 2026 FounderNexus. All rights reserved.</div>
     </footer>
-    <script src="script.js"></script>
+    <aside class="review-tools" aria-label="Mockup review tools">
+      <button class="review-tools__toggle" type="button" data-review-toggle aria-expanded="false">
+        Comments
+      </button>
+      <section class="review-panel" data-review-panel hidden>
+        <h2>Mockup Comments</h2>
+        <p>Use this panel to place pinned comments and share them back.</p>
+
+        <label>
+          Your name
+          <input type="text" data-review-author placeholder="Reviewer name" />
+        </label>
+        <label>
+          New comment
+          <textarea data-review-text rows="3" placeholder="Write feedback, then place it on the page"></textarea>
+        </label>
+        <button type="button" data-review-place>Place comment on page</button>
+
+        <div class="review-actions">
+          <button type="button" data-review-export>Copy JSON</button>
+          <button type="button" data-review-share>Copy share link</button>
+        </div>
+
+        <label>
+          Import comments (JSON)
+          <textarea data-review-import rows="4" placeholder='Paste JSON export and click "Import comments"'></textarea>
+        </label>
+        <div class="review-actions">
+          <button type="button" data-review-import-button>Import comments</button>
+          <button type="button" data-review-clear>Clear all</button>
+        </div>
+
+        <p class="review-status" data-review-status aria-live="polite"></p>
+
+        <ol class="review-list" data-review-list></ol>
+      </section>
+    </aside>
+
+    <script src="script.js?v=2"></script>
   </body>
 </html>

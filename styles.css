@@ -873,6 +873,139 @@ cite span {
   font-size: 13px;
 }
 
+.review-tools {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+}
+
+.review-tools__toggle {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: var(--navy-950);
+  color: var(--white);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.review-panel {
+  width: min(360px, calc(100vw - 32px));
+  max-height: min(70vh, 680px);
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.review-panel h2 {
+  margin-bottom: 6px;
+  font-size: 20px;
+}
+
+.review-panel p {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.review-panel label {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.review-panel input,
+.review-panel textarea,
+.review-panel button {
+  font: inherit;
+}
+
+.review-panel input,
+.review-panel textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.review-panel button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: var(--white);
+  color: var(--navy-950);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 10px;
+}
+
+.review-status {
+  min-height: 18px;
+  margin: 0 0 10px;
+  color: var(--blue-700);
+  font-size: 13px;
+}
+
+.review-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.review-list li {
+  font-size: 13px;
+  color: var(--navy-950);
+}
+
+.review-list button {
+  margin-top: 4px;
+}
+
+.review-marker-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+}
+
+.review-marker {
+  position: absolute;
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  margin-top: -24px;
+  border: 1px solid rgba(1, 5, 42, 0.22);
+  border-radius: 50%;
+  background: #f6c90e;
+  color: var(--navy-950);
+  font-size: 12px;
+  font-weight: 800;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.review-mode-active {
+  cursor: crosshair;
+}
+
 @media (max-width: 1060px) {
   .hero-grid,
   .equation-grid,
@@ -905,6 +1038,11 @@ cite span {
 
   .site-header {
     grid-template-columns: auto auto;
+  }
+
+  .review-tools {
+    right: 12px;
+    bottom: 12px;
   }
 
   .logo img {
