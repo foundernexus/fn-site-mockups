@@ -1,0 +1,7 @@
+name = "fn-mockup-feedback"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+GITHUB_REPO = "foundernexus/fn-site-mockups"
+ALLOWED_ORIGIN = "https://foundernexus.github.io"
