@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FounderNexus Clone</title>
+    <meta
+      name="description"
+      content="Editable local clone of the FounderNexus public homepage captured June 14, 2026."
+    />
+    <link rel="icon" href="assets/live/foundernexus.com/favicon-crop.ico" />
+    <link rel="stylesheet" href="styles.css?v=3" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="#top" aria-label="FounderNexus home">
+        <img
+          src="assets/live/foundernexus.com/_next/static/media/nexus-logo-white.5b5ee166.svg"
+          alt="FounderNexus logo"
+        />
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Primary">
+        <span class="location">Seattle, WA</span>
+        <a href="#advocate">Nexus Partner</a>
+        <a href="#events">All events</a>
+        <a href="#login">Log in</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">A community exclusively for venture-scale founders</p>
+            <h1>Founders need better decisions. We're built for that.</h1>
+            <p>
+              Venture-backed companies fail not from bad ideas, but from avoidable decisions made
+              without the right experience in the room. Every element of FounderNexus is structured
+              to change that.
+            </p>
+            <div class="button-row">
+              <a class="btn primary" href="#apply">Apply now<span aria-hidden="true">↗</span></a>
+              <a class="btn secondary" href="#events">See upcoming events<span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="video-callout">
+            <button class="video-frame" type="button" aria-label="Play founder testimonial video">
+              <img
+                src="assets/live/foundernexus.com/_next/static/media/impactful-hour.5e4f71ef.jpg"
+                alt="FounderNexus founder testimonial video"
+              />
+              <span class="play" aria-hidden="true"></span>
+            </button>
+            <p>Where elite founders spend the most impactful hour of their week</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="proposition">
+        <div class="wrap">
+          <p class="section-kicker">The success equation</p>
+          <h2>Why small improvements in decision quality produce outsized outcomes.</h2>
+          <p class="section-intro">
+            Every founder decision can be graded 0 to 1. Success is the product of all those
+            decisions multiplied together — even modest, consistent improvement compounds
+            dramatically.
+          </p>
+          <div class="equation-grid">
+            <article class="panel formula-panel">
+              <div class="blue-box">
+                <p class="mini-label">The Formula</p>
+                <h3>Probability of Success = d<sub>1</sub>×d<sub>2</sub>×d<sub>3</sub>×···×d<sub>n</sub></h3>
+                <p>
+                  Because decisions multiply rather than add, a consistent improvement in quality
+                  produces a dramatically larger improvement in overall outcome probability.
+                </p>
+              </div>
+              <div>
+                <h3>Expanding your circle of trust always produces a better decision.</h3>
+                <p>
+                  More qualified, relevant experience applied to any decision improves its outcome
+                  — without exception. The constraint isn't willingness to seek input. It's access
+                  to the right people at the moment the decision needs to be made. FounderNexus
+                  removes that constraint permanently.
+                </p>
+              </div>
+            </article>
+            <article class="panel calculator">
+              <p class="mini-label">Adjust the inputs — see the compounding effect</p>
+              <label>
+                <span>Key decisions per year <strong id="decisionValue">10</strong></span>
+                <input id="decisions" type="range" min="1" max="50" value="10" />
+              </label>
+              <label>
+                <span>Avg. quality without FN (%) <strong id="withoutValue">70%</strong></span>
+                <input id="without" type="range" min="1" max="100" value="70" />
+              </label>
+              <label>
+                <span>Avg. quality with FN (%) <strong id="withValue">80%</strong></span>
+                <input id="with" type="range" min="1" max="100" value="80" />
+              </label>
+              <div class="results">
+                <div>
+                  <span>Without FN</span>
+                  <strong id="withoutResult">2.82%</strong>
+                  <small>compound success probability</small>
+                </div>
+                <div>
+                  <span>With FN</span>
+                  <strong id="withResult">10.74%</strong>
+                  <small>compound success probability</small>
+                </div>
+                <div>
+                  <span>Improvement</span>
+                  <strong id="improvementResult">4x</strong>
+                  <small>times more likely to succeed</small>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section pale" id="fit">
+        <div class="wrap two-col">
+          <div>
+            <p class="section-kicker">Membership Fit</p>
+            <h2>We look for battle scars. Then we make you earn your seat.</h2>
+            <p class="section-intro">
+              Every voice must add as much value as it extracts. We recruit for hard-won experience
+              — including failure — then let the group decide if you belong.
+            </p>
+            <div class="fit-list">
+              <h3>Who belongs in the room</h3>
+              <p><strong>You've been wrong before</strong> Failed raises, bad hires, missed markets. Your failures are often more instructive than your successes.</p>
+              <p><strong>You've built real pattern recognition</strong> 3+ years of venture-scale decisions — enough repetitions to recognize what a situation actually is.</p>
+              <p><strong>You give as much as you take</strong> Membership is reciprocal. You're simultaneously a student and a resource for everyone else in the room.</p>
+              <p><strong>You're building at venture scale</strong> Pursuing an outcome where the right founder judgment changes the trajectory. Shared ambition makes the advice directly relevant.</p>
+            </div>
+          </div>
+          <div class="image-panel">
+            <img
+              src="assets/live/foundernexus.com/_next/static/media/hands.9b0315ab.webp"
+              alt="FounderNexus members talking at an in-person event"
+            />
+            <div class="criteria">
+              <h3>Pre-approval criteria</h3>
+              <ol>
+                <li>3+ years as a venture-scale founder, or meaningful VC round already raised</li>
+                <li>Experience navigating a VC or angel raise — successful or not</li>
+                <li>Building — or seeking to build — a venture-scale company</li>
+              </ol>
+              <p>Evaluated holistically — we're looking for battle-tested judgment, not a checklist.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="wrap">
+          <p class="section-kicker">Why FounderNexus</p>
+          <h2>The right founders in the room when decisions matter most.</h2>
+          <div class="card-grid six">
+            <article><h3>Stage-based support</h3><p>Direct 1:1 engagement with a Nexus Partner focused on the decision you're carrying and the stage context around it.</p></article>
+            <article><h3>Peer-earned invitation</h3><p>Membership is offered, not purchased. Application, pre-approval, attendance, peer evaluation — in that order.</p></article>
+            <article><h3>Founders facilitating founders</h3><p>Every session is led by a seasoned founder. Pattern recognition is everything, not facilitation technique.</p></article>
+            <article><h3>Always on, anywhere</h3><p>Multiple events per week, all online. Async forum for immediate decision support. No geographic penalty.</p></article>
+            <article><h3>You don't age out</h3><p>Pre-seed through Exit. FN is present for you at every inflection point as you grow your business.</p></article>
+            <article><h3>Beyond your circle of trust</h3><p>Your network reflects your past. FN expands your present with founders ready to engage on your current problem.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section navy" id="stages">
+        <div class="wrap">
+          <p class="section-kicker">Stage-matched peer groups</p>
+          <h2>The stage system.</h2>
+          <p class="section-intro">
+            Members are organized into stage-pure rooms — four to eight founders facing the same
+            kind of decision at the same time. Stage is how we make the room relevant; geography is
+            just where it meets.
+          </p>
+          <div class="stage-grid">
+            <article>
+              <span>Stage 1</span>
+              <h3>Finding the model</h3>
+              <p>Cofounder and equity calls, first capital, first key hires, the search for product-market fit.</p>
+            </article>
+            <article>
+              <span>Stage 2</span>
+              <h3>Building the machine</h3>
+              <p>GTM model, the first repeatable sales motion, the early leadership team.</p>
+            </article>
+            <article>
+              <span>Stage 3</span>
+              <h3>Scaling the organization</h3>
+              <p>Senior and executive hires, the leadership layer, board dynamics, the first hard scaling decisions.</p>
+            </article>
+            <article>
+              <span>Stage 4</span>
+              <h3>Operating at scale</h3>
+              <p>Executive redesign, board pressure, market expansion — the decisions of a large, mature venture-scale company.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section advocate-module" id="advocate">
+        <div class="wrap">
+          <p class="section-kicker">The Nexus Partner</p>
+          <h2>Your advocate inside FounderNexus.</h2>
+          <p class="section-intro">
+            Once admitted, members have a trusted point of contact focused on stage-based decision
+            support. They clarify the decision, understand the stage context, and connect you to
+            the right same-stage room, peer, expert, resource, or follow-up. They do not replace
+            the room. They help the right room happen faster.
+          </p>
+          <div class="card-grid three">
+            <article>
+              <h3>Clarify the decision</h3>
+              <p>A focused 1:1 surfaces the decision, constraint, or inflection point you're carrying.</p>
+            </article>
+            <article>
+              <h3>Match the stage</h3>
+              <p>Sessions are shaped around live decisions, stage context, and founders who can pressure-test the tradeoffs.</p>
+            </article>
+            <article>
+              <h3>Connect the next step</h3>
+              <p>When a peer, expert, resource, or follow-up is useful, the connection starts from the decision itself.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="admission">
+        <div class="wrap two-col process-layout">
+          <div>
+            <p class="section-kicker">Membership process</p>
+            <h2>Membership is offered. It isn't sold.</h2>
+            <p class="section-intro">
+              The quality of FounderNexus depends entirely on the quality of its members. Every
+              step of this process protects that — for everyone already inside.
+            </p>
+          </div>
+          <div class="process">
+            <article><span>01</span><h3>Apply</h3><p>Submit an application. We review against our criteria and respond with a pre-approval decision.</p></article>
+            <article><span>02</span><h3>Attend as a guest</h3><p>Pre-approved applicants attend one or two events at no cost. Participate fully — this is your opportunity to demonstrate value.</p></article>
+            <article><span>03</span><h3>Peer evaluation</h3><p>The group assesses whether your experience and perspective genuinely strengthen the community.</p></article>
+            <article><span>04</span><h3>Invitation extended</h3><p>If the group believes you belong, you're offered membership in the stage room that matches your current context.</p></article>
+          </div>
+        </div>
+        <div class="wrap">
+          <aside class="vc-note">
+            <h3>Referred by a VC fund?</h3>
+            <p>
+              FounderNexus partners with select VC funds who refer portfolio founders directly.
+              Fund-referred founders receive expedited pre-approval — ask your investor if they're
+              a partner.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section pale" id="value">
+        <div class="wrap">
+          <p class="section-kicker">Recurring member value</p>
+          <h2>The most impactful hour of your week should sharpen the next decision.</h2>
+          <p class="section-intro">
+            FounderNexus is not in the outcomes business. It gives experienced founders a better
+            decision environment: stage-matched rooms, Nexus Partner support, practical founder
+            judgment, and follow-up while the decision is still live.
+          </p>
+          <div class="value-grid">
+            <div class="compare-list">
+              <h3>What members return to</h3>
+              <p>Stage-matched rooms around live founder decisions <span>recurring</span></p>
+              <p>Nexus Partner support to clarify the decision and next step <span>ongoing</span></p>
+              <p>Founder-led pressure-testing from peers who have seen similar tradeoffs <span>recurring</span></p>
+              <p>Broader peer, expert, or resource access when context calls for it <span>as relevant</span></p>
+              <p>Follow-up while the decision is still live <span>ongoing</span></p>
+            </div>
+            <div class="insight-box">
+              <h3>Where the value shows up</h3>
+              <p><strong>Hiring</strong> Clarify the profile, timing, and risk before the offer.</p>
+              <p><strong>Fundraising</strong> Pressure-test the story, process, and investor tradeoffs.</p>
+              <p><strong>Market moves</strong> Compare patterns before a pivot or expansion hardens.</p>
+              <p><strong>Leadership calls</strong> Leave with the next question, conversation, or action.</p>
+            </div>
+          </div>
+          <p class="tax-note">
+            Many founders review membership as a business expense. Confirm the specific treatment
+            with your tax professional.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="comparison">
+        <div class="wrap">
+          <p class="section-kicker">How we compare</p>
+          <h2>FounderNexus vs. other leadership groups.</h2>
+          <p class="section-intro">
+            Most founder communities are built for broad appeal. We're built for one thing:
+            venture-scale founders who want to make better decisions.
+          </p>
+          <div class="comparison-grid">
+            <article>
+              <h3>Other leadership groups</h3>
+              <p>Generic, broad, cohort-bound.</p>
+              <ul>
+                <li>Revenue or wealth thresholds for entry</li>
+                <li>Mixed company types and risk profiles</li>
+                <li>Professional facilitators, not founders</li>
+                <li>Cohort-based — you age out</li>
+                <li>Local group quality varies by geography</li>
+                <li>Monthly events, general agenda</li>
+              </ul>
+            </article>
+            <article class="fn-card">
+              <h3>FounderNexus</h3>
+              <p>Curated, calibrated, compounding.</p>
+              <ul>
+                <li>Application, peer evaluation — invitation earned</li>
+                <li>Venture-scale founders only</li>
+                <li>Seasoned founders lead every session</li>
+                <li>Scales with you from pre-seed through Exit</li>
+                <li>Responsive sessions shaped by stage, topic, and live decisions</li>
+                <li>Nexus Partner support connects members to the right room, peer, expert, or resource</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section testimonials">
+        <div class="wrap">
+          <div class="quote-track">
+            <blockquote><p>I can say with confidence that I get far more value from FounderNexus than the cost of the membership, and I'm not even taking full advantage!</p><cite>Steve Tout <span>founder, Identient</span></cite></blockquote>
+            <blockquote><p>I really loved how welcoming the vibe felt from the moment I arrived.</p><cite>Katrina Romatowski <span>founder, reSpace</span></cite></blockquote>
+            <blockquote><p>The event was great! Highlight: Encouragement of diverse viewpoints and good founder mix.</p><cite>Darian Parrish <span>founder, PwrOn</span></cite></blockquote>
+            <blockquote><p>FounderNexus fills a gap for entrepreneurs by complementing traditional incubator and early investment programs with a high-quality peer founder network.</p><cite>Bob Lach <span>founder, Lightbridge Solutions</span></cite></blockquote>
+            <blockquote><p>This was a fast track to relevant experience/advice in a room where you hold nothing back.</p><cite>Nicole Resch <span>Co-founder, Imperative</span></cite></blockquote>
+            <blockquote><p>I have attended events nationwide and joined so-called “MasterMind” groups, but nothing comes close to the network and support I have experienced at FounderNexus.</p><cite>Arthur Baranovskiy <span>co-founder, ARY Engineering</span></cite></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="section pale" id="events">
+        <div class="wrap">
+          <p class="section-kicker">Upcoming events</p>
+          <div class="event-grid">
+            <article class="event-card">
+              <span class="tag">expert event</span>
+              <h2>BYOT (Bring Your Own Topic)</h2>
+              <div class="date-block"><strong>11</strong><span>June</span></div>
+              <p class="meta">6:00 PM - 7:00 PM · Zoom · Court Lorenzini</p>
+              <p>
+                B.Y.O.T. - Bring Your Own Topic: This event will be online only, and allow members
+                and prospects to raise timely issues you're facing and get input from the other
+                founders present.
+              </p>
+              <a href="assets/live/foundernexus.com/event/20260611-byot-bring-your-own-topic">Event Page</a>
+            </article>
+            <article class="event-card featured">
+              <span class="tag">Innovator's Edge</span>
+              <h2>The Right Story for the Right Sale: A founder's guide to win customers, investors, and talent</h2>
+              <div class="date-block"><strong>25</strong><span>June</span></div>
+              <p class="meta">11:00 PM - 2:00 AM · San Francisco · Tre Balchowsky</p>
+              <p>
+                Selling your vision and product to potential investors, customers, and talent is
+                mission-critical to your company's survival. Whether you're pitching a round,
+                landing a design partner, or convincing a great engineer to take a risk on you,
+                your storytelling abilities determine whether those conversations connect and
+                convert.
+              </p>
+              <a href="assets/live/foundernexus.com/event/20260625-the-right-story-for-the-right-sale-a-founders-guide-to-win-customers-investors-and-talent">Event Page</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section" id="apply">
+        <div class="wrap cta-grid">
+          <div>
+            <p class="section-kicker">Improve your odds</p>
+            <h2>Ready to see if you belong here?</h2>
+            <p>
+              Submit an application. If you meet our criteria, we'll be in touch about attending
+              your first event — free, as our guest.
+            </p>
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="#apply-form">Apply now<span aria-hidden="true">↗</span></a>
+            <a class="btn secondary on-dark" href="#events">See upcoming events<span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="apply-form-section">
+        <div class="wrap application-grid">
+          <div>
+            <p class="section-kicker">Find your room</p>
+            <h2>Start with fit. Then the right room.</h2>
+            <p class="section-intro">
+              FounderNexus is organized by stage and decision context. Apply with the founder
+              decision you're carrying now. If there is a fit, we'll connect you to the next
+              relevant room experience and continue the conversation from there.
+            </p>
+            <ul class="check-list">
+              <li>You're building, or seeking to build, a venture-scale company</li>
+              <li>You're carrying a decision that would benefit from relevant founder judgment</li>
+              <li>You can contribute hard-won experience to founders at a similar stage</li>
+              <li>You want a room that is curated for fit, not broad access</li>
+            </ul>
+          </div>
+          <form class="application-form" id="apply-form">
+            <h3>Apply for membership</h3>
+            <label>Full Name<input type="text" name="name" /></label>
+            <label>Email<input type="email" name="email" /></label>
+            <label>Company<input type="text" name="company" /></label>
+            <label>Current stage<select name="stage"><option>Select stage</option><option>Stage 1</option><option>Stage 2</option><option>Stage 3</option><option>Stage 4</option></select></label>
+            <button class="btn primary" type="submit">Apply now<span aria-hidden="true">↗</span></button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="login">
+      <div class="wrap footer-grid">
+        <div>
+          <img
+            src="assets/live/foundernexus.com/_next/static/media/nexus-logo-white.5b5ee166.svg"
+            alt="FounderNexus logo"
+          />
+          <p>A community exclusively for venture-scale founders. Where elite founders spend the most impactful hour of their week.</p>
+        </div>
+        <nav aria-label="Company">
+          <h3>Company</h3>
+          <a href="#proposition">Value proposition</a>
+          <a href="#admission">Club admission</a>
+          <a href="#events">Upcoming events</a>
+          <a href="#stages">Stage system</a>
+        </nav>
+        <div>
+          <h3>Contact</h3>
+          <p>+1 (360) 329-2121</p>
+          <p>seattle1@foundernexus.com</p>
+          <p>Seattle, WA</p>
+        </div>
+        <nav aria-label="Legal">
+          <h3>Legal</h3>
+          <a href="assets/live/foundernexus.com/terms-and-conditions">Terms of use</a>
+          <a href="assets/live/foundernexus.com/privacy-policy">Privacy policy</a>
+        </nav>
+      </div>
+      <div class="wrap copyright">© 2026 FounderNexus. All rights reserved.</div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
