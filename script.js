@@ -50,22 +50,16 @@ document.querySelector(".application-form")?.addEventListener("submit", (event) 
   }, 1800);
 });
 
-const reviewToggle = document.querySelector("[data-review-toggle]");
-const reviewPanel = document.querySelector("[data-review-panel]");
-const reviewAuthorInput = document.querySelector("[data-review-author]");
-const reviewTextInput = document.querySelector("[data-review-text]");
-const reviewPlaceButton = document.querySelector("[data-review-place]");
+const reviewModeButton = document.querySelector("[data-review-mode]");
 const reviewExportButton = document.querySelector("[data-review-export]");
 const reviewShareButton = document.querySelector("[data-review-share]");
-const reviewImportInput = document.querySelector("[data-review-import]");
-const reviewImportButton = document.querySelector("[data-review-import-button]");
+const reviewImportButton = document.querySelector("[data-review-import]");
 const reviewClearButton = document.querySelector("[data-review-clear]");
 const reviewStatus = document.querySelector("[data-review-status]");
-const reviewList = document.querySelector("[data-review-list]");
 
 const COMMENT_STORAGE_KEY = "fn-mockup-comments-v1";
 const REVIEWER_STORAGE_KEY = "fn-mockup-reviewer-name-v1";
-let placingComment = false;
+let commentModeActive = false;
 let comments = [];
 
 function setReviewStatus(message) {
@@ -98,17 +92,11 @@ function saveCommentsToStorage() {
 }
 
 function loadReviewerName() {
-  if (!reviewAuthorInput) {
-    return;
-  }
-  reviewAuthorInput.value = window.localStorage.getItem(REVIEWER_STORAGE_KEY) || "";
+  return window.localStorage.getItem(REVIEWER_STORAGE_KEY) || "";
 }
 
-function saveReviewerName() {
-  if (!reviewAuthorInput) {
-    return;
-  }
-  window.localStorage.setItem(REVIEWER_STORAGE_KEY, reviewAuthorInput.value.trim());
+function saveReviewerName(name) {
+  window.localStorage.setItem(REVIEWER_STORAGE_KEY, name.trim());
 }
 
 function ensureMarkerLayer() {
@@ -128,32 +116,6 @@ function syncMarkerLayerSize() {
   markerLayer.style.height = `${Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)}px`;
 }
 
-function renderCommentList() {
-  if (!reviewList) {
-    return;
-  }
-  reviewList.innerHTML = "";
-  comments.forEach((comment, index) => {
-    const item = document.createElement("li");
-    const name = comment.author ? `${comment.author}: ` : "";
-    const when = new Date(comment.createdAt).toLocaleString();
-    item.innerHTML = `<strong>#${index + 1}</strong> ${name}${comment.text}<br /><small>${when}</small>`;
-
-    const removeButton = document.createElement("button");
-    removeButton.type = "button";
-    removeButton.textContent = "Remove";
-    removeButton.addEventListener("click", () => {
-      comments = comments.filter((entry) => entry.id !== comment.id);
-      saveCommentsToStorage();
-      renderComments();
-      setReviewStatus("Comment removed.");
-    });
-    item.append(removeButton);
-
-    reviewList.append(item);
-  });
-}
-
 function renderComments() {
   const markerLayer = ensureMarkerLayer();
   markerLayer.innerHTML = "";
@@ -167,13 +129,35 @@ function renderComments() {
     marker.style.top = `${comment.y}px`;
     marker.textContent = String(index + 1);
     marker.title = `${comment.author ? `${comment.author}: ` : ""}${comment.text}`;
-    marker.addEventListener("click", () => {
-      setReviewStatus(`#${index + 1} — ${marker.title}`);
+    marker.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      markerLayer.querySelector(".review-note")?.remove();
+
+      const note = document.createElement("article");
+      note.className = "review-note";
+      note.style.left = `${comment.x}px`;
+      note.style.top = `${comment.y}px`;
+
+      const when = new Date(comment.createdAt).toLocaleString();
+      note.innerHTML = `<p><strong>#${index + 1}</strong> ${comment.author}: ${comment.text}</p><small>${when}</small>`;
+
+      const removeButton = document.createElement("button");
+      removeButton.type = "button";
+      removeButton.textContent = "Remove";
+      removeButton.addEventListener("click", () => {
+        comments = comments.filter((entry) => entry.id !== comment.id);
+        saveCommentsToStorage();
+        renderComments();
+        setReviewStatus("Comment removed.");
+      });
+      note.append(removeButton);
+
+      markerLayer.append(note);
+      setReviewStatus(`#${index + 1} selected.`);
     });
     markerLayer.append(marker);
   });
-
-  renderCommentList();
 }
 
 function importCommentPayload(payload) {
@@ -193,70 +177,87 @@ function importCommentPayload(payload) {
   renderComments();
 }
 
-if (reviewToggle && reviewPanel) {
-  reviewToggle.addEventListener("click", () => {
-    const isHidden = reviewPanel.hasAttribute("hidden");
-    if (isHidden) {
-      reviewPanel.removeAttribute("hidden");
-      reviewToggle.setAttribute("aria-expanded", "true");
+function setCommentMode(active) {
+  commentModeActive = active;
+  document.body.classList.toggle("review-mode-active", active);
+  if (!reviewModeButton) {
+    return;
+  }
+  reviewModeButton.textContent = `Comment mode: ${active ? "On" : "Off"}`;
+  reviewModeButton.setAttribute("aria-pressed", String(active));
+  reviewModeButton.dataset.active = String(active);
+}
+
+function readClipboardText() {
+  if (!navigator.clipboard || typeof navigator.clipboard.readText !== "function") {
+    return Promise.reject(new Error("Clipboard read not supported."));
+  }
+  return navigator.clipboard.readText();
+}
+
+function requestCommentDraft() {
+  const savedName = loadReviewerName();
+  const authorInput = window.prompt("Your name for this comment:", savedName || "Reviewer");
+  if (authorInput === null) {
+    return null;
+  }
+  const author = authorInput.trim() || "Reviewer";
+  saveReviewerName(author);
+
+  const textInput = window.prompt("Add feedback for this spot:");
+  if (textInput === null) {
+    return null;
+  }
+  const text = textInput.trim();
+  if (!text) {
+    setReviewStatus("Skipped empty comment.");
+    return null;
+  }
+
+  return { author, text };
+}
+
+if (reviewModeButton) {
+  reviewModeButton.addEventListener("click", () => {
+    setCommentMode(!commentModeActive);
+    if (commentModeActive) {
+      setReviewStatus("Comment mode is on. Click anywhere on the page to add feedback.");
       return;
     }
-    reviewPanel.setAttribute("hidden", "");
-    reviewToggle.setAttribute("aria-expanded", "false");
-  });
-
-  reviewAuthorInput?.addEventListener("change", saveReviewerName);
-  reviewAuthorInput?.addEventListener("blur", saveReviewerName);
-
-  reviewPlaceButton?.addEventListener("click", () => {
-    const text = reviewTextInput?.value.trim();
-    if (!text) {
-      setReviewStatus("Write a comment first.");
-      return;
-    }
-    placingComment = true;
-    document.body.classList.add("review-mode-active");
-    setReviewStatus("Click anywhere on the page to place this comment.");
+    setReviewStatus("Comment mode is off.");
   });
 
   document.addEventListener("click", (event) => {
-    if (!placingComment) {
+    if (!commentModeActive) {
       return;
     }
     const target = event.target;
     if (!(target instanceof Element)) {
       return;
     }
-    if (target.closest(".review-tools")) {
-      return;
-    }
-    const text = reviewTextInput?.value.trim();
-    if (!text) {
-      placingComment = false;
-      document.body.classList.remove("review-mode-active");
-      setReviewStatus("Comment text was empty.");
+    if (target.closest(".review-tools, .review-note, .review-marker")) {
       return;
     }
 
-    const author = reviewAuthorInput?.value.trim() || "Reviewer";
+    event.preventDefault();
+    event.stopPropagation();
+
+    const draft = requestCommentDraft();
+    if (!draft) {
+      return;
+    }
+
     comments.push({
       id: crypto.randomUUID(),
-      text,
-      author,
+      text: draft.text,
+      author: draft.author,
       x: event.pageX,
       y: event.pageY,
       createdAt: new Date().toISOString(),
     });
 
-    saveReviewerName();
     saveCommentsToStorage();
     renderComments();
-
-    if (reviewTextInput) {
-      reviewTextInput.value = "";
-    }
-    placingComment = false;
-    document.body.classList.remove("review-mode-active");
     setReviewStatus("Comment added.");
   });
 
@@ -283,14 +284,19 @@ if (reviewToggle && reviewPanel) {
   });
 
   reviewImportButton?.addEventListener("click", () => {
-    const raw = reviewImportInput?.value.trim() || "";
-    if (!raw) {
-      setReviewStatus("Paste JSON first.");
-      return;
-    }
-    const payload = JSON.parse(raw);
-    importCommentPayload(payload);
-    setReviewStatus("Comments imported.");
+    readClipboardText()
+      .then((raw) => {
+        if (!raw.trim()) {
+          setReviewStatus("Clipboard is empty.");
+          return;
+        }
+        const payload = JSON.parse(raw);
+        importCommentPayload(payload);
+        setReviewStatus("Comments imported from clipboard.");
+      })
+      .catch(() => {
+        setReviewStatus("Clipboard read blocked. Paste JSON in devtools with window.importMockupComments(<json>).");
+      });
   });
 
   reviewClearButton?.addEventListener("click", () => {
@@ -301,7 +307,7 @@ if (reviewToggle && reviewPanel) {
   });
 
   loadCommentsFromStorage();
-  loadReviewerName();
+  setCommentMode(false);
 
   const hash = window.location.hash;
   if (hash.startsWith("#comments=")) {
@@ -320,3 +326,8 @@ if (reviewToggle && reviewPanel) {
   window.addEventListener("resize", syncMarkerLayerSize);
   window.addEventListener("load", syncMarkerLayerSize);
 }
+
+window.importMockupComments = (payload) => {
+  importCommentPayload(payload);
+  setReviewStatus("Comments imported.");
+};

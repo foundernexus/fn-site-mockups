@@ -23,10 +23,12 @@ Review files:
 
 Use the **Comments** button in the bottom-right corner of the mockup:
 
-1. Enter your name and comment text.
-2. Click **Place comment on page**, then click anywhere on the mockup to pin it.
-3. Click **Copy JSON** to share the full feedback payload, or **Copy share link** to share a URL that loads those comments directly.
-4. Use **Import comments** to paste JSON from teammates and load their feedback.
+1. Toggle **Comment mode: On**.
+2. Click anywhere on the mockup and add feedback in the prompt.
+3. Keep clicking anywhere you have feedback; each note is pinned on-page.
+4. Click numbered pins to open note details and remove notes.
+5. Click **Copy JSON** to share the feedback payload, or **Copy share link** to share a URL that loads comments directly.
+6. Click **Import JSON** to load comments from clipboard.
 
 ## GitHub Pages
 
