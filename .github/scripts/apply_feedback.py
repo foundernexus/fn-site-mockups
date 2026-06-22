@@ -1,6 +1,6 @@
 """
 Reads the current index.html and a GitHub issue body (from env),
-calls GitHub Models (GPT-4o) to apply the feedback, and writes
+calls Gemini 2.5 Pro to apply the feedback, and writes
 the updated HTML back to index.html.
 """
 
@@ -8,9 +8,9 @@ import os
 import sys
 
 try:
-    from openai import OpenAI
+    import google.generativeai as genai
 except ImportError:
-    print("openai package not found — install it first", file=sys.stderr)
+    print("google-generativeai not found — install it first", file=sys.stderr)
     sys.exit(1)
 
 SYSTEM_PROMPT = """You are a frontend developer updating a mockup website based on reviewer annotations.
@@ -25,10 +25,20 @@ Rules:
 """
 
 
+def strip_fences(text: str) -> str:
+    """Remove markdown code fences if the model wrapped its response."""
+    text = text.strip()
+    if text.startswith("```"):
+        lines = text.split("\n")
+        end = len(lines) - 1 if lines[-1].startswith("```") else len(lines)
+        text = "\n".join(lines[1:end]).strip()
+    return text
+
+
 def main():
-    token = os.environ.get("GITHUB_TOKEN")
-    if not token:
-        print("GITHUB_TOKEN not set", file=sys.stderr)
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        print("GEMINI_API_KEY not set", file=sys.stderr)
         sys.exit(1)
 
     issue_title = os.environ.get("ISSUE_TITLE", "Mockup feedback")
@@ -41,12 +51,13 @@ def main():
     with open("index.html", "r", encoding="utf-8") as f:
         current_html = f.read()
 
-    client = OpenAI(
-        base_url="https://models.inference.ai.azure.com",
-        api_key=token,
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel(
+        model_name="gemini-2.5-pro",
+        system_instruction=SYSTEM_PROMPT,
     )
 
-    user_prompt = f"""Here is the current mockup HTML:
+    prompt = f"""Here is the current mockup HTML:
 
 ---HTML START---
 {current_html}
@@ -58,25 +69,14 @@ Here is the reviewer feedback (from GitHub issue: "{issue_title}"):
 
 Please update the HTML to address this feedback. Return only the complete updated HTML."""
 
-    print(f"Sending {len(current_html)} chars of HTML + feedback to GPT-4o...")
+    print(f"Sending {len(current_html)} chars of HTML + feedback to Gemini 2.5 Pro...")
 
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ],
-        temperature=0.2,
-        max_tokens=16384,
+    response = model.generate_content(
+        prompt,
+        generation_config=genai.GenerationConfig(temperature=0.2),
     )
 
-    updated_html = response.choices[0].message.content.strip()
-
-    # Strip markdown code fences if the model added them
-    if updated_html.startswith("```"):
-        lines = updated_html.split("\n")
-        # Remove first and last lines (``` fences)
-        updated_html = "\n".join(lines[1:-1] if lines[-1].startswith("```") else lines[1:])
+    updated_html = strip_fences(response.text)
 
     if not updated_html.lower().startswith("<!doctype") and not updated_html.lower().startswith("<html"):
         print("ERROR: Response does not look like HTML — aborting to avoid data loss", file=sys.stderr)
