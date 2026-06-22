@@ -465,6 +465,18 @@
 
       const WEBHOOK_URL = "https://fn-mockup-feedback.foundernexus.workers.dev";
 
+      // Seed settings so the manual Send button is visible (webhooksEnabled:false = manual mode)
+      // and the webhook URL is pre-filled. Only set if not already configured.
+      const SETTINGS_KEY = "feedback-toolbar-settings";
+      try {
+        const existing = JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}");
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify({
+          ...existing,
+          webhookUrl: WEBHOOK_URL,
+          webhooksEnabled: false,
+        }));
+      } catch {}
+
       const root = document.createElement("div");
       root.id = "agentation-root";
       document.body.appendChild(root);
