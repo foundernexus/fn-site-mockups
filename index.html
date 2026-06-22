@@ -463,10 +463,20 @@
       import { createRoot } from "https://esm.sh/react-dom@18/client";
       import { Agentation } from "https://esm.sh/agentation@3.0.2?deps=react@18,react-dom@18";
 
+      const ISSUES_URL = "https://github.com/foundernexus/fn-site-mockups/issues/new";
+
+      function handleSubmit(markdown) {
+        const title = encodeURIComponent("Mockup feedback — " + new Date().toLocaleDateString());
+        const body = encodeURIComponent(markdown);
+        window.open(`${ISSUES_URL}?title=${title}&body=${body}`, "_blank");
+      }
+
       const root = document.createElement("div");
       root.id = "agentation-root";
       document.body.appendChild(root);
-      createRoot(root).render(React.createElement(Agentation));
+      createRoot(root).render(
+        React.createElement(Agentation, { onSubmit: handleSubmit })
+      );
     </script>
   </body>
 </html>
