@@ -16,8 +16,14 @@ Scope of this pass:
 Review files:
 
 - `index.html` is the reviewable homepage.
+- `FounderNexus-v2-copy-review.docx` is the Word copy review file for comments and markup.
 - `styles.css` and `script.js` are the static page assets.
 - `LIVE-DIFF.md` documents intentional differences from the June 14 live clone.
+
+Hosted downloads:
+
+- Homepage: https://foundernexus.github.io/fn-site-mockups/
+- Copy review DOCX: https://foundernexus.github.io/fn-site-mockups/FounderNexus-v2-copy-review.docx
 
 ## Mockup comment workflow
 
