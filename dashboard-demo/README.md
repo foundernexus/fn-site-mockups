@@ -9,6 +9,14 @@ wired to an API; all content is static sample data.
 
 Internal review only. The page is `noindex, nofollow`.
 
+## What's new in this build
+
+Rebuilt from the latest design handoff (`CHANGES.md`). The new piece is on **Advisors**:
+
+- Segmented **Cards | Roster** control next to the results count
+- **Roster** is a dense table (Advisor, Organization, Expertise, Location, Rating, Profile); rows open the advisor profile
+- Nexus Partner stays in the pale-blue card under the sidebar nav (Message Sarah)
+
 ## What to click through
 
 | Screen | What to look at |
