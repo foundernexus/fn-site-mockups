@@ -14,8 +14,8 @@ Internal review only. The page is `noindex, nofollow`.
 | Screen | What to look at |
 | --- | --- |
 | Dashboard | Calendar-first. "Coming up" is the only card with a shadow; one status pill per row, plus "We registered you" when FounderNexus did the registering. "What we're working on" is the right column. |
-| Advisors | Search + one category Select — no filter-chip walls. Whole card is clickable. Ratings appear only where one exists. |
-| Advisor profile | Reached by clicking any advisor card. Investor-affiliated advisors carry a quiet "advice, not investment access" note. |
+| Advisors | Search + one category Select — no filter-chip walls. **Cards \| Roster** toggle next to the count. Cards: whole card clickable. Roster: dense table (Advisor, Organization, Expertise, Location, Rating, Profile); rows click through to the profile. Ratings appear only where one exists. |
+| Advisor profile | Reached by clicking any advisor card or roster row. Investor-affiliated advisors carry a quiet "advice, not investment access" note. |
 | Content library | Search + category. Typing 3+ characters (try `discount`) surfaces the exploratory transcript-moments panel. |
 | Recording detail | Reached from any recording card or transcript moment. Key moments list with timestamps. |
 | Benefits | "Offer a benefit to the community" opens the submission dialog — no moderation gate, submissions list directly. |
@@ -37,6 +37,7 @@ decisions and do not ship.
 
 ## Open decisions flagged in the demo
 
+- Advisor browse layout — Cards suit today's ~10-person roster. At hundreds of advisors the roster table becomes the browse layer (search-first, paginate past ~25 — not yet in the mockup) and the card treatment moves to the profile page.
 - Tag taxonomy — the tags shown are placeholder examples; the final model aligns with the layered content model, pending validation.
 - Transcript "moments" and timestamp navigation — exploratory, feasibility not yet validated. The Library works fully without it.
 - Working-on stage labels (Finding expert / Scheduling / Waiting for confirmation) — ship only if Ops will reliably maintain them.

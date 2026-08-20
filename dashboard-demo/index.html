@@ -913,13 +913,49 @@ button { font-family: inherit; }
           </x-import>
         </div>
 
-        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
           <span style="font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--gray-600);">{{ advCount }}</span>
+          <span style="display:inline-flex; border:1px solid var(--border-default); border-radius:6px; overflow:hidden;">
+            <button sc-camel-on-click="{{ onViewCards }}" style="height:28px; padding:0 12px; border:none; cursor:pointer; font:var(--fw-medium) 12px/1 var(--font-sans); background:{{ cardsBg }}; color:{{ cardsFg }};">Cards</button>
+            <button sc-camel-on-click="{{ onViewRoster }}" style="height:28px; padding:0 12px; border:none; border-left:1px solid var(--border-default); cursor:pointer; font:var(--fw-medium) 12px/1 var(--font-sans); background:{{ rosterBg }}; color:{{ rosterFg }};">Roster</button>
+          </span>
           <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
-            <span style="display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.3 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><strong style="color:var(--blue-600);">For review</strong> — tags are placeholder examples; the real taxonomy aligns with the layered content model, still to be validated. Cards will use production headshots, not initials.</span>
+            <span style="display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.3 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><strong style="color:var(--blue-600);">For review</strong> — two layouts to compare: cards suit today's ~10-person roster; at 100s of advisors the roster table becomes the browse layer (15–20 rows per screen, search-first) and the card treatment moves to the profile page. Tags remain placeholders; production uses real headshots.</span>
           </sc-if>
         </div>
 
+        <sc-if value="{{ viewRoster }}" hint-placeholder-val="{{ false }}">
+          <sc-if value="{{ hasAdvisors }}" hint-placeholder-val="{{ true }}">
+            <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); overflow-x:auto;">
+              <div style="min-width:760px; display:grid; grid-template-columns:minmax(150px,1.3fr) minmax(0,1fr) minmax(0,1.6fr) minmax(90px,auto) 60px 70px; gap:12px; align-items:center; padding:10px 20px; border-bottom:1px solid var(--border-subtle); background:var(--gray-50);">
+                <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Advisor</span>
+                <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Organization</span>
+                <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Expertise</span>
+                <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Location</span>
+                <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Rating</span>
+                <span></span>
+              </div>
+              <sc-for list="{{ advisors }}" as="a" hint-placeholder-count="8">
+                <div sc-camel-on-click="{{ a.onOpen }}" style="min-width:760px; display:grid; grid-template-columns:minmax(150px,1.3fr) minmax(0,1fr) minmax(0,1.6fr) minmax(90px,auto) 60px 70px; gap:12px; align-items:center; padding:11px 20px; border-bottom:1px solid var(--gray-100); cursor:pointer;" style-hover="background:var(--blue-50);">
+                  <span style="display:inline-flex; align-items:center; gap:10px; min-width:0;">
+                    <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Avatar" name="{{ a.name }}" size="sm" hint-size="28px,28px"></x-import>
+                    <span style="font:var(--fw-semibold) 14px/1.2 var(--font-sans); color:var(--navy-900); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ a.name }}</span>
+                  </span>
+                  <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ a.org }}</span>
+                  <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ a.tagLine }}</span>
+                  <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); white-space:nowrap;">{{ a.loc }}</span>
+                  <sc-if value="{{ a.hasRating }}" hint-placeholder-val="{{ true }}">
+                    <span style="display:inline-flex; align-items:center; gap:4px; font:var(--fw-semibold) 13px/1 var(--font-sans); color:var(--navy-900);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M12 2.5 14.9 8.4l6.5.95-4.7 4.58 1.1 6.47L12 17.9l-5.8 3.05 1.1-6.47L2.6 9.35l6.5-.95Z"></path></svg>{{ a.rating }}</span>
+                  </sc-if>
+                  <sc-if value="{{ a.noRatingRow }}" hint-placeholder-val="{{ false }}"><span></span></sc-if>
+                  <a href="#" sc-camel-on-click="{{ a.onOpen }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans); text-align:right;">Profile →</a>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ viewCards }}" hint-placeholder-val="{{ true }}">
         <sc-if value="{{ hasAdvisors }}" hint-placeholder-val="{{ true }}">
           <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:16px;">
             <sc-for list="{{ advisors }}" as="a" hint-placeholder-count="6">
@@ -946,6 +982,7 @@ button { font-family: inherit; }
               </div>
             </sc-for>
           </div>
+        </sc-if>
         </sc-if>
         <sc-if value="{{ noAdvisors }}" hint-placeholder-val="{{ false }}">
           <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; padding:32px; max-width:560px;">
@@ -1377,7 +1414,7 @@ button { font-family: inherit; }
 class Component extends DCLogic {
   state = {
     screen: "dashboard", detailId: null, advisorId: null,
-    advisorQuery: "", advisorCat: "All",
+    advisorQuery: "", advisorCat: "All", advisorView: "cards",
     libQuery: "", libCat: "All",
     benefitTab: "all", showSubmit: false, submitted: false,
     pastOpen: false, registered: {},
@@ -1452,7 +1489,7 @@ class Component extends DCLogic {
       const okQ = !aq || hay.includes(aq);
       const okC = S.advisorCat === "All" || a.cats.includes(S.advisorCat);
       return okQ && okC;
-    }).map((a) => ({ ...a, hasRating: !!a.rating, onOpen: prevent(() => this.go("advisor", { advisorId: a.id })) }));
+    }).map((a) => ({ ...a, hasRating: !!a.rating, tagLine: a.tags.slice(0, 3).join(" · "), noRatingRow: !a.rating, onOpen: prevent(() => this.go("advisor", { advisorId: a.id })) }));
 
     const advisorRaw = ADVISORS.find((a) => a.id === S.advisorId) || ADVISORS[0];
     const advisor = {
@@ -1554,6 +1591,14 @@ class Component extends DCLogic {
       advisorCat: S.advisorCat,
       onAdvisorCat: (e) => this.setState({ advisorCat: e.target.value }),
       advisors,
+      viewCards: S.advisorView === "cards",
+      viewRoster: S.advisorView === "roster",
+      onViewCards: () => this.setState({ advisorView: "cards" }),
+      onViewRoster: () => this.setState({ advisorView: "roster" }),
+      cardsBg: S.advisorView === "cards" ? "var(--blue-100)" : "#fff",
+      cardsFg: S.advisorView === "cards" ? "var(--navy-900)" : "var(--gray-600)",
+      rosterBg: S.advisorView === "roster" ? "var(--blue-100)" : "#fff",
+      rosterFg: S.advisorView === "roster" ? "var(--navy-900)" : "var(--gray-600)",
       hasAdvisors: advisors.length > 0,
       noAdvisors: advisors.length === 0,
       advCount: advisors.length + (advisors.length === 1 ? " advisor" : " advisors") + " for your stage",
