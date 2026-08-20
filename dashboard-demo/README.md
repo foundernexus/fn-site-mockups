@@ -11,22 +11,24 @@ Internal review only. The page is `noindex, nofollow`.
 
 ## What's new in this build
 
-Rebuilt from the latest design handoff (`CHANGES.md`). The new piece is on **Advisors**:
+Rebuilt from the 20 Aug 15:02 `member-portal-demo.html` handoff (`CHANGES.md`):
 
-- Segmented **Cards | Roster** control next to the results count
-- **Roster** is a dense table (Advisor, Organization, Expertise, Location, Rating, Profile); rows open the advisor profile
-- Nexus Partner stays in the pale-blue card under the sidebar nav (Message Sarah)
+- **Directory** in the sidebar (founders at your stage). Rows open a member profile.
+- **Advisors** is roster-only — the card treatment is the profile page.
+- **Benefits** uses search + category Select instead of pill tabs.
 
 ## What to click through
 
 | Screen | What to look at |
 | --- | --- |
 | Dashboard | Calendar-first. "Coming up" is the only card with a shadow; one status pill per row, plus "We registered you" when FounderNexus did the registering. "What we're working on" is the right column. |
-| Advisors | Search + one category Select — no filter-chip walls. **Cards \| Roster** toggle next to the count. Cards: whole card clickable. Roster: dense table (Advisor, Organization, Expertise, Location, Rating, Profile); rows click through to the profile. Ratings appear only where one exists. |
-| Advisor profile | Reached by clicking any advisor card or roster row. Investor-affiliated advisors carry a quiet "advice, not investment access" note. |
+| Advisors | Search + one topic Select. Dense roster table (Advisor, Organization, Expertise, Location, Rating, Profile); rows open the advisor profile. Ratings appear only where one exists. |
+| Advisor profile | Reached by clicking any roster row. Investor-affiliated advisors carry a quiet "advice, not investment access" note. |
+| Directory | Industry Select + name/company search. Roster of founders at your stage (Name, Company, Industry, Location). Rows open a member profile. No member-to-member messaging. |
+| Member profile | Reached from a Directory row. Role, company, industry, Stage 1, short bio. |
 | Content library | Search + category. Typing 3+ characters (try `discount`) surfaces the exploratory transcript-moments panel. |
 | Recording detail | Reached from any recording card or transcript moment. Key moments list with timestamps. |
-| Benefits | "Offer a benefit to the community" opens the submission dialog — no moderation gate, submissions list directly. |
+| Benefits | Search + category Select. "Offer a benefit to the community" opens the submission dialog — no moderation gate, submissions list directly. |
 | Profile | Account email vs. work email, calendar connection, membership and billing. |
 | Dashboard — mobile | Linked from the top-right of the Dashboard. Pinned bottom bar carries the Nexus Partner contact, since the sidebar disappears on mobile. |
 
@@ -34,24 +36,26 @@ Rebuilt from the latest design handoff (`CHANGES.md`). The new piece is on **Adv
 
 | URL | Effect |
 | --- | --- |
-| `/dashboard-demo/` | Default. Dashed blue **For review** chips visible. |
+| `/dashboard-demo/` | Default. Dashed blue **Notes** chips visible. |
 | `/dashboard-demo/?annotations=0` | Hides the review chips — the clean product view. |
 | `/dashboard-demo/?partner=header` | Moves the Nexus Partner control to a topbar button. |
 | `/dashboard-demo/?partner=sidebar` | Moves it to a sidebar footer. |
 | `/dashboard-demo/?partner=nav` | Default: pale-blue card under the nav items. |
 
-The **For review** chips are review annotations, not product UI. They mark open
+The **Notes** chips are review annotations, not product UI. They mark open
 decisions and do not ship.
 
 ## Open decisions flagged in the demo
 
-- Advisor browse layout — Cards suit today's ~10-person roster. At hundreds of advisors the roster table becomes the browse layer (search-first, paginate past ~25 — not yet in the mockup) and the card treatment moves to the profile page.
-- Tag taxonomy — the tags shown are placeholder examples; the final model aligns with the layered content model, pending validation.
+- Directory membership — list includes members and selected active prospects, unlabeled on purpose.
+- Directory filter label and taxonomy — pending the tagging review with Bogdan.
+- No member-to-member messaging in this iteration.
+- Advisor roster as the browse layer; card treatment is the profile. Topic values are representative; tagging model pending review with Bogdan.
 - Transcript "moments" and timestamp navigation — exploratory, feasibility not yet validated. The Library works fully without it.
 - Working-on stage labels (Finding expert / Scheduling / Waiting for confirmation) — ship only if Ops will reliably maintain them.
 - "New since last visit" time logic on Benefits.
 - Rating source and threshold — implementation logic, never page copy.
-- Advisor headshots — the demo shows initials as a stand-in. Production uses real headshots, never stock, never initials.
+- Headshots — the demo shows initials as a stand-in. Production uses real headshots, never stock, never initials.
 
 ## How this is built
 
