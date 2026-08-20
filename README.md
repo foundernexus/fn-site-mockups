@@ -2,7 +2,24 @@
 
 This repo hosts static FounderNexus website mockups for internal review through GitHub Pages.
 
-## Current Mockup
+## Mockups in this repo
+
+| Mockup | Path | Live |
+| --- | --- | --- |
+| Public homepage (June 2026 v2) | `index.html` | https://foundernexus.github.io/fn-site-mockups/ |
+| Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
+
+## Member portal demo
+
+`dashboard-demo/` is a clickable prototype of the redesigned member portal: Dashboard,
+Advisors, Content library, Benefits, Profile, plus a mobile Dashboard proposal. Search,
+filters, dialogs, and Register buttons all respond; content is static sample data.
+
+Dashed blue "For review" chips mark open decisions and are visible by default. Add
+`?annotations=0` for the clean product view. See `dashboard-demo/README.md` for the
+full list of review flags and open decisions.
+
+## Current homepage mockup
 
 The current homepage mockup is the June 2026 v2 pass built from the local June 14 live clone.
 
@@ -27,9 +44,10 @@ Hosted downloads:
 
 ## Mockup comment workflow
 
-This site uses [Agentation](https://agentation.com) for visual feedback.
+The homepage mockup uses [Agentation](https://agentation.com) for visual feedback.
+(The member portal demo does not carry the toolbar — send that feedback directly.)
 
-1. Open the live mockup URL.
+1. Open the live homepage mockup URL.
 2. Click the **Agentation icon** in the bottom-right corner to activate annotation mode.
 3. Hover over any element to highlight it, then click to add a note.
 4. When done, click the **Copy** button in the Agentation toolbar — a pre-filled GitHub issue opens in a new tab.
