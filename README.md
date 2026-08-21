@@ -13,8 +13,9 @@ This repo hosts static FounderNexus website mockups for internal review through 
 
 `dashboard-demo/` is a clickable prototype of the redesigned member portal: Dashboard,
 Advisors, Directory, Content library, Benefits, Profile, plus a mobile Dashboard
-proposal. Search, filters, dialogs, and Register buttons all respond; content is static
-sample data. The partner contact sits in a pale-blue card under the sidebar nav.
+proposal. Search, filters, dialogs, the event pop-out, and Register buttons all respond;
+content is static sample data. The partner contact sits in a pale-blue card under the
+sidebar nav.
 
 Dashed blue **Notes** chips mark open decisions and are visible by default. Add
 `?annotations=0` for the clean product view. See `dashboard-demo/README.md` for the

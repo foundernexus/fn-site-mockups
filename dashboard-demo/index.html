@@ -713,6 +713,8 @@ button { font-family: inherit; }
     body { margin:0; background:var(--gray-50); }
     a { color:var(--blue-600); text-decoration:none; }
     a:hover { color:var(--blue-700); text-decoration:underline; }
+    @keyframes fnFade { from { opacity:0 } to { opacity:1 } }
+    @keyframes fnPop { from { opacity:0; transform:translateY(10px) scale(.985) } to { opacity:1; transform:none } }
   </style>
 </helmet>
 
@@ -813,13 +815,13 @@ button { font-family: inherit; }
               <h2 style="font:var(--fw-semibold) 16px/1.2 var(--font-sans); color:var(--gray-700); margin:0 0 10px;">More for you</h2>
               <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; overflow:hidden;">
                 <sc-for list="{{ moreForYou }}" as="m" hint-placeholder-count="3">
-                  <div style="display:flex; align-items:center; gap:16px; padding:13px 18px; border-bottom:1px solid var(--gray-100);">
+                  <div sc-camel-on-click="{{ m.onOpen }}" style="display:flex; align-items:center; gap:16px; padding:13px 18px; border-bottom:1px solid var(--gray-100); cursor:pointer;" style-hover="background:var(--blue-50);">
                     <div style="flex:1; min-width:0;">
                       <div style="font:var(--fw-medium) 14px/1.35 var(--font-sans); color:var(--navy-900);">{{ m.title }}</div>
                       <div style="font:var(--fw-regular) 12px/1.4 var(--font-sans); color:var(--gray-600); margin-top:3px;">{{ m.when }} · {{ m.person }} · {{ m.where }}</div>
                     </div>
                     <sc-if value="{{ m.unregistered }}" hint-placeholder-val="{{ true }}">
-                      <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ m.onReg }}" hint-size="90px,36px">Register</x-import>
+                      <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ m.onOpen }}" hint-size="120px,36px">View &amp; register</x-import>
                     </sc-if>
                     <sc-if value="{{ m.registered }}" hint-placeholder-val="{{ false }}">
                       <span style="display:inline-flex; align-items:center; gap:6px; color:var(--status-success); font:var(--fw-semibold) 13px/1 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>Registered</span>
@@ -1481,6 +1483,90 @@ button { font-family: inherit; }
     </main>
   </div>
 </div>
+
+<!-- ============ EVENT POP-OUT CARD ============ -->
+<sc-if value="{{ cardOpen }}" hint-placeholder-val="{{ false }}">
+  <div sc-camel-on-click="{{ closeCard }}" style="position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(1,5,42,0.45); backdrop-filter:blur(2px); animation:fnFade var(--dur-base) var(--ease-out);">
+    <div sc-camel-on-click="{{ stop }}" style="width:100%; max-width:560px; max-height:92vh; overflow-y:auto; background:#fff; border-radius:var(--radius-xl); box-shadow:var(--shadow-xl); animation:fnPop var(--dur-base) var(--ease-out);">
+
+      <!-- Card header -->
+      <div style="position:relative; padding:24px 28px 20px; border-bottom:1px solid var(--border-subtle);">
+        <button sc-camel-on-click="{{ closeCard }}" aria-label="Close" style="position:absolute; top:18px; right:18px; width:32px; height:32px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--gray-600); display:flex; align-items:center; justify-content:center; cursor:pointer;" style-hover="background:var(--gray-50);"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+        <div style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--blue-600); padding-right:44px;">{{ eventCard.kind }}</div>
+        <h2 style="font:var(--fw-bold) 24px/1.18 var(--font-display); letter-spacing:-0.02em; color:var(--navy-900); margin:10px 0 0; padding-right:44px;">{{ eventCard.title }}</h2>
+        <p style="font:var(--fw-regular) 14px/1.55 var(--font-sans); color:var(--gray-600); margin:9px 0 0;">{{ eventCard.sub }}</p>
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:14px;">
+          <sc-for list="{{ eventCard.stages }}" as="s" hint-placeholder-count="2">
+            <span style="display:inline-flex; align-items:center; height:24px; padding:0 9px; border-radius:6px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 12px/1 var(--font-sans); white-space:nowrap;">{{ s }}</span>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- Ticket strip -->
+      <div style="display:flex; align-items:center; gap:20px; padding:18px 28px; background:var(--blue-50); border-bottom:1px solid var(--border-subtle);">
+        <div style="flex:none; width:58px; text-align:center; background:var(--navy-700); color:#fff; border-radius:10px; padding:9px 0;">
+          <div style="font:var(--fw-bold) 22px/1 var(--font-display);">{{ eventCard.dateNum }}</div>
+          <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.12em; text-transform:uppercase; margin-top:4px; color:var(--blue-300);">{{ eventCard.dateMon }}</div>
+        </div>
+        <div style="flex:1; min-width:0;">
+          <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">When</div>
+          <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900); margin-top:5px;">{{ eventCard.dayLine }}</div>
+          <div style="font:var(--fw-regular) 12px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">{{ eventCard.timeLine }}</div>
+        </div>
+        <div style="flex:1; min-width:0;">
+          <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">Where</div>
+          <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900); margin-top:5px;">{{ eventCard.whereLine }}</div>
+          <div style="font:var(--fw-regular) 12px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">{{ eventCard.whereSub }}</div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div style="padding:22px 28px 24px;">
+        <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">What you'll walk away with</div>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:12px;">
+          <sc-for list="{{ eventCard.takeaways }}" as="t" hint-placeholder-count="3">
+            <div style="display:flex; gap:11px; align-items:flex-start;">
+              <span style="flex:none; width:22px; height:22px; border-radius:7px; background:#E7F6EE; color:var(--status-success); display:inline-flex; align-items:center; justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+              <span style="font:var(--fw-medium) 14px/1.45 var(--font-sans); color:var(--navy-900);">{{ t }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:12px; margin-top:20px; padding-top:18px; border-top:1px solid var(--gray-100);">
+          <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Avatar" name="{{ eventCard.speaker }}" size="sm" hint-size="32px,32px"></x-import>
+          <div style="flex:1; min-width:0;">
+            <div style="font:var(--fw-semibold) 14px/1.25 var(--font-sans); color:var(--navy-900);">{{ eventCard.speaker }}</div>
+            <div style="font:var(--fw-regular) 12px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">{{ eventCard.speakerRole }}</div>
+          </div>
+          <div style="text-align:right; flex:none;">
+            <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">Access</div>
+            <div style="font:var(--fw-semibold) 13px/1.3 var(--font-sans); color:var(--navy-900); margin-top:5px;">{{ eventCard.access }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action bar -->
+      <div style="padding:16px 28px 20px; background:var(--gray-50); border-top:1px solid var(--border-subtle);">
+        <sc-if value="{{ eventCard.unregistered }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" size="md" sc-camel-on-click="{{ eventCard.onRegister }}" hint-size="170px,44px">Register to attend</x-import>
+            <a href="https://foundernexus.github.io/event-page/index.html" target="_blank" rel="noopener" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Full event page →</a>
+          </div>
+        </sc-if>
+        <sc-if value="{{ eventCard.registered }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <span style="display:inline-flex; align-items:center; gap:7px; color:var(--status-success); font:var(--fw-semibold) 14px/1 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>You're registered — it's on your calendar</span>
+            <a href="#" sc-camel-on-click="{{ closeCard }}" style="margin-left:auto; font:var(--fw-semibold) 13px/1 var(--font-sans);">Done</a>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:flex-start; gap:6px; margin-top:14px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: first pass at a shared pop-out card — navy band, ticket strip, takeaways, host, one action. Intended as the reusable format for sessions, dinners, and introductions across the portal. Open: whether registering here should stay in the card (shown) or route to the full event page.</span></div>
+        </sc-if>
+      </div>
+
+    </div>
+  </div>
+</sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{
   &quot;showAnnotations&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Review&quot; },
@@ -1494,7 +1580,7 @@ class Component extends DCLogic {
     libQuery: "", libCat: "All",
     benQuery: "", benCat: "All",
     showSubmit: false, submitted: false, benefitSubmitted: false,
-    recentOpen: false, registered: {},
+    recentOpen: false, registered: {}, cardId: null,
   };
 
   go(screen, extra) {
@@ -1649,6 +1735,56 @@ class Component extends DCLogic {
       { id: "m3", when: "Fri, Sep 18 · 12:00 PM PDT", title: "Term sheets without the pain", person: "Becki DeGraw", where: "Zoom" },
     ];
 
+    // Shared pop-out card content — same shape for every kind of item (session, dinner, introduction).
+    const EVENT_CARDS = {
+      m1: {
+        kind: "Customer Discovery · Playbook", title: "Customer discovery that changes the roadmap",
+        sub: "Aaron Goldfeder runs the discovery process he uses before committing to a segment, then opens the floor.",
+        dateNum: "09", dateMon: "Sep", dayLine: "Wed, September 9", timeLine: "4:00–5:00 PM PDT",
+        whereLine: "Live on Zoom", whereSub: "Link sent on registration",
+        access: "Members only", stages: ["Stage 1 · Pre-seed / Seed", "Stage 2 · Series A"],
+        speaker: "Aaron Goldfeder", speakerRole: "Founder, AZX.io",
+        takeaways: [
+          "How to structure discovery calls so customers correct you",
+          "The difference between real pull and polite interest",
+          "Open Q&A — bring a live discovery question",
+        ],
+      },
+      m2: {
+        kind: "Members-only · Dinner", title: "Members-only dinner · Seattle",
+        sub: "A table of eight founders, no agenda and no speakers. Each person brings one decision they're carrying.",
+        dateNum: "15", dateMon: "Sep", dayLine: "Tue, September 15", timeLine: "7:15 PM PDT",
+        whereLine: "Capitol Hill, Seattle", whereSub: "Address sent on registration",
+        access: "12 seats", stages: ["Stage 1 · Pre-seed / Seed", "Stage 2 · Series A"],
+        speaker: "Court Lorenzini", speakerRole: "Founder, FounderNexus",
+        takeaways: [
+          "Eight founders at one table, hosted not programmed",
+          "One decision each, discussed in the round",
+          "Dinner covered by FounderNexus",
+        ],
+      },
+      m3: {
+        kind: "Legal · Teardown", title: "Term sheets without the pain",
+        sub: "Becki DeGraw walks a real seed term sheet line by line and says which terms she would actually fight for.",
+        dateNum: "18", dateMon: "Sep", dayLine: "Fri, September 18", timeLine: "12:00–1:00 PM PDT",
+        whereLine: "Live on Zoom", whereSub: "Link sent on registration",
+        access: "Members only", stages: ["Stage 1 · Pre-seed / Seed"],
+        speaker: "Becki DeGraw", speakerRole: "Partner, Wilson Sonsini",
+        takeaways: [
+          "The four terms that actually decide the outcome",
+          "What to push on and what to concede in a first raise",
+          "Open Q&A — bring the term sheet you're reading",
+        ],
+      },
+    };
+    const cardRaw = S.cardId ? EVENT_CARDS[S.cardId] : null;
+    const eventCard = cardRaw ? {
+      ...cardRaw,
+      registered: !!S.registered[S.cardId],
+      unregistered: !S.registered[S.cardId],
+      onRegister: () => this.setState((s) => ({ registered: { ...s.registered, [S.cardId]: true } })),
+    } : {};
+
     const workingOn = [
       { stage: "Scheduling", title: "Pricing expert session for your enterprise-deal question", detail: "Coordinating availability with two pricing experts.", updated: "Updated yesterday" },
       { stage: "Need more information", title: "Introductions to enterprise CHROs", detail: "Sarah needs a little more detail on the type of company and role you're targeting.", updated: "Waiting on you" },
@@ -1712,8 +1848,12 @@ class Component extends DCLogic {
         ...m,
         registered: !!S.registered[m.id],
         unregistered: !S.registered[m.id],
-        onReg: () => this.setState((s) => ({ registered: { ...s.registered, [m.id]: true } })),
+        onOpen: prevent(() => this.setState({ cardId: m.id })),
       })),
+      cardOpen: !!cardRaw,
+      eventCard,
+      closeCard: prevent(() => this.setState({ cardId: null })),
+      stop: (e) => e.stopPropagation(),
       recent,
       mobileRecent: RECENT_ALL.slice(0, 3).map((r) => ({ ...r, text: r.title + (r.person ? " · " + r.person : "") })),
       seeAllLabel: S.recentOpen ? "Show less" : "See all",
@@ -1763,7 +1903,6 @@ class Component extends DCLogic {
   }
 }
 </script>
-
 
 
 <script>

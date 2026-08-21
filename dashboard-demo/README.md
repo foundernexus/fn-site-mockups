@@ -11,17 +11,17 @@ Internal review only. The page is `noindex, nofollow`.
 
 ## What's new in this build
 
-Rebuilt from the 20 Aug 15:02 `member-portal-demo.html` handoff (`CHANGES.md`):
+Rebuilt from the 21 Aug 11:47 `member-portal-demo.html` handoff (`CHANGES.md`):
 
-- **Directory** in the sidebar (founders at your stage). Rows open a member profile.
-- **Advisors** is roster-only — the card treatment is the profile page.
-- **Benefits** uses search + category Select instead of pill tabs.
+- **Event pop-out card** — click a **More for you** row to open a shared card (kind, ticket strip, takeaways, host, register). **View & register** replaced the old inline Register button.
+- Directory, Advisors roster, and Benefits search/select from the previous pass are unchanged.
 
 ## What to click through
 
 | Screen | What to look at |
 | --- | --- |
-| Dashboard | Calendar-first. "Coming up" is the only card with a shadow; one status pill per row, plus "We registered you" when FounderNexus did the registering. "What we're working on" is the right column. |
+| Dashboard | Calendar-first. "Coming up" is the only card with a shadow; one status pill per row. Click a **More for you** row to open the event pop-out. "What we're working on" is the right column. |
+| Event pop-out | Reached from **More for you**. Navy kind label, date ticket, when/where, takeaways, host, **Register to attend**. After register: "You're registered — it's on your calendar." **Full event page →** opens the live event page. |
 | Advisors | Search + one topic Select. Dense roster table (Advisor, Organization, Expertise, Location, Rating, Profile); rows open the advisor profile. Ratings appear only where one exists. |
 | Advisor profile | Reached by clicking any roster row. Investor-affiliated advisors carry a quiet "advice, not investment access" note. |
 | Directory | Industry Select + name/company search. Roster of founders at your stage (Name, Company, Industry, Location). Rows open a member profile. No member-to-member messaging. |
@@ -56,6 +56,7 @@ decisions and do not ship.
 - "New since last visit" time logic on Benefits.
 - Rating source and threshold — implementation logic, never page copy.
 - Headshots — the demo shows initials as a stand-in. Production uses real headshots, never stock, never initials.
+- Event pop-out — first pass at a reusable card for sessions, dinners, and introductions. Open whether registering should stay in the card or route to the full event page.
 
 ## How this is built
 
