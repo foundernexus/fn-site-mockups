@@ -11,10 +11,11 @@ Internal review only. The page is `noindex, nofollow`.
 
 ## What's new in this build
 
-Rebuilt from the 22 Aug 21:41 `member-portal-demo-new.html` handoff (`CHANGES.md`):
+Rebuilt from the 22 Aug 22:01 `Clickable prototype navigation review-cards.zip` handoff (`CHANGES.md`):
 
-- **Benefit pop-out card** — Benefits tiles now show the lead offer term on the card. Click a tile or **View offer** to open a shared pop-out (partner, headline, perk list, how to claim, partner-site CTA).
-- Event pop-out, Directory, Advisors roster, and Benefits search/select from the previous pass are unchanged.
+- **Advisor pop-out** — roster rows open a shared card (how they help, investor note, Email / LinkedIn / Website). The separate advisor profile page is gone.
+- **Directory pop-out** — rows open a shared card (what they're building, LinkedIn, member email). Direct outreach; the profile page is gone.
+- Event and benefit pop-outs from the previous pass are unchanged. Content library is still in the demo.
 
 ## What to click through
 
@@ -23,10 +24,10 @@ Rebuilt from the 22 Aug 21:41 `member-portal-demo-new.html` handoff (`CHANGES.md
 | Dashboard | Calendar-first. "Coming up" is the only card with a shadow; one status pill per row. Click a **More for you** row to open the event pop-out. "What we're working on" is the right column. |
 | Event pop-out | Reached from **More for you**. Navy kind label, date ticket, when/where, takeaways, host, **Register to attend**. After register: "You're registered — it's on your calendar." **Full event page →** opens the live event page. |
 | Benefit pop-out | Reached from a Benefits card or **View offer**. Partner identity, headline, **Your member offer** perk list, how to claim, **Go to partner's site**. Overlay or X closes. |
-| Advisors | Search + one topic Select. Dense roster table (Advisor, Organization, Expertise, Location, Rating, Profile); rows open the advisor profile. Ratings appear only where one exists. |
-| Advisor profile | Reached by clicking any roster row. Investor-affiliated advisors carry a quiet "advice, not investment access" note. |
-| Directory | Industry Select + name/company search. Roster of founders at your stage (Name, Company, Industry, Location). Rows open a member profile. No member-to-member messaging. |
-| Member profile | Reached from a Directory row. Role, company, industry, Stage 1, short bio. |
+| Advisors | Search + one topic Select. Dense roster table; click a row or **Profile →** to open the pop-out. Ratings appear only where one exists. |
+| Advisor pop-out | Reached from a roster row, Recent Activity, or a recording's advisor name. How they help, investor disclaimer when it applies, **Their sessions in the library →**, Email / LinkedIn / Website. Overlay or X closes. |
+| Directory | Industry Select + name/company search. Roster of founders at your stage. Click a row or **Profile →** to open the pop-out. Direct LinkedIn / email — no messaging product. |
+| Member pop-out | Reached from a Directory row. Role, company, industry, Stage 1, what they're building, LinkedIn and email. Overlay or X closes. |
 | Content library | Search + category. Typing 3+ characters (try `discount`) surfaces the exploratory transcript-moments panel. |
 | Recording detail | Reached from any recording card or transcript moment. Key moments list with timestamps. |
 | Benefits | Search + category Select. Cards show the lead offer term; click a card or **View offer** to open the pop-out (perks, how to claim, partner-site CTA). "Offer a benefit to the community" opens the submission dialog. |
@@ -50,8 +51,8 @@ decisions and do not ship.
 
 - Directory membership — list includes members and selected active prospects, unlabeled on purpose.
 - Directory filter label and taxonomy — pending the tagging review with Bogdan.
-- No member-to-member messaging in this iteration.
-- Advisor roster as the browse layer; card treatment is the profile. Topic values are representative; tagging model pending review with Bogdan.
+- No member-to-member messaging in this iteration. Members contact each other by LinkedIn or email.
+- Advisor roster as the browse layer; the richer treatment is the pop-out card. Topic values are representative; tagging model pending review with Bogdan.
 - Transcript "moments" and timestamp navigation — exploratory, feasibility not yet validated. The Library works fully without it.
 - Working-on stage labels (Finding expert / Scheduling / Waiting for confirmation) — ship only if Ops will reliably maintain them.
 - "New since last visit" time logic on Benefits.
@@ -59,6 +60,7 @@ decisions and do not ship.
 - Headshots — the demo shows initials as a stand-in. Production uses real headshots, never stock, never initials.
 - Event pop-out — first pass at a reusable card for sessions, dinners, and introductions. Open whether registering should stay in the card or route to the full event page.
 - Benefit pop-out — same card pattern as events, used for partner offers. Open whether claiming should stay a partner-site jump (shown) or complete inside the card.
+- Advisor and member pop-outs — same shared shell as events and benefits. Contact is direct (email / LinkedIn / website), not brokered through the Nexus Partner.
 
 ## How this is built
 

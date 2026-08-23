@@ -1,13 +1,21 @@
 # Changes in this handoff
 
-Rebuilt from `member-portal-demo-new.html` (22 Aug 2026, 21:41). Replaces the previous demo HTML.
+Rebuilt from `Clickable prototype navigation review-cards.zip` (22 Aug 2026, 22:01). The pop-out card is now the shared pattern for opening any item.
 
-## Benefit pop-out card (new)
+The handoff HTML omitted the Content library list screen; that screen is restored from the previous live demo so Library still works. Recording detail, search, and advisor-from-recording pop-out are unchanged.
 
-Benefits cards now state the offer terms on the face (navy term chip + lead line, e.g. **Credits** / Up to $100,000 in Google Cloud credits). Clicking a card or **View offer** opens a shared pop-out: partner identity, headline, about, **Your member offer** perk list, how to claim, and **Go to partner's site**. Same card pattern as the event pop-out.
+## 1. Advisors — pop-out replaces the profile page
 
-Open: whether claiming should stay a partner-site jump (shown) or complete inside the card.
+Roster rows (and **Profile →**) open a pop-out: avatar, organization, location, topic chips + rating, **How they help**, the investor disclaimer where it applies, **Their sessions in the library →**, and Email / LinkedIn / Website. Advisor links on Dashboard Recent Activity and on recording detail open the same pop-out instead of navigating away.
+
+## 2. Directory — member pop-out replaces the profile page
+
+Rows (and **Profile →**) open a pop-out: avatar, name, role + company, location, industry / Stage 1 / rating chips, **What they're building**, LinkedIn and the member's email. Direct outreach — no "Ask Sarah for an introduction." You keep your place in the list.
+
+## 3. Benefits and events (unchanged this pass)
+
+Benefit cards still show the lead offer term and open the benefit pop-out. **More for you** still opens the event pop-out.
 
 ## Unchanged
 
-Directory, Advisors roster, Dashboard calendar, event pop-out, Content library, Profile, mobile proposal, Nexus Partner card under the nav, partner-logo tiles, darkened link color. Dashed **Notes** chips are still prototype-only (hide with `?annotations=0`).
+Dashboard calendar, Content library, Profile, mobile proposal, Nexus Partner card under the nav, partner-logo tiles. Dashed **Notes** chips are still prototype-only (hide with `?annotations=0`).
