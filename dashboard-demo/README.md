@@ -11,10 +11,10 @@ Internal review only. The page is `noindex, nofollow`.
 
 ## What's new in this build
 
-Rebuilt from the 21 Aug 11:47 `member-portal-demo.html` handoff (`CHANGES.md`):
+Rebuilt from the 22 Aug 21:41 `member-portal-demo-new.html` handoff (`CHANGES.md`):
 
-- **Event pop-out card** — click a **More for you** row to open a shared card (kind, ticket strip, takeaways, host, register). **View & register** replaced the old inline Register button.
-- Directory, Advisors roster, and Benefits search/select from the previous pass are unchanged.
+- **Benefit pop-out card** — Benefits tiles now show the lead offer term on the card. Click a tile or **View offer** to open a shared pop-out (partner, headline, perk list, how to claim, partner-site CTA).
+- Event pop-out, Directory, Advisors roster, and Benefits search/select from the previous pass are unchanged.
 
 ## What to click through
 
@@ -22,13 +22,14 @@ Rebuilt from the 21 Aug 11:47 `member-portal-demo.html` handoff (`CHANGES.md`):
 | --- | --- |
 | Dashboard | Calendar-first. "Coming up" is the only card with a shadow; one status pill per row. Click a **More for you** row to open the event pop-out. "What we're working on" is the right column. |
 | Event pop-out | Reached from **More for you**. Navy kind label, date ticket, when/where, takeaways, host, **Register to attend**. After register: "You're registered — it's on your calendar." **Full event page →** opens the live event page. |
+| Benefit pop-out | Reached from a Benefits card or **View offer**. Partner identity, headline, **Your member offer** perk list, how to claim, **Go to partner's site**. Overlay or X closes. |
 | Advisors | Search + one topic Select. Dense roster table (Advisor, Organization, Expertise, Location, Rating, Profile); rows open the advisor profile. Ratings appear only where one exists. |
 | Advisor profile | Reached by clicking any roster row. Investor-affiliated advisors carry a quiet "advice, not investment access" note. |
 | Directory | Industry Select + name/company search. Roster of founders at your stage (Name, Company, Industry, Location). Rows open a member profile. No member-to-member messaging. |
 | Member profile | Reached from a Directory row. Role, company, industry, Stage 1, short bio. |
 | Content library | Search + category. Typing 3+ characters (try `discount`) surfaces the exploratory transcript-moments panel. |
 | Recording detail | Reached from any recording card or transcript moment. Key moments list with timestamps. |
-| Benefits | Search + category Select. "Offer a benefit to the community" opens the submission dialog — no moderation gate, submissions list directly. |
+| Benefits | Search + category Select. Cards show the lead offer term; click a card or **View offer** to open the pop-out (perks, how to claim, partner-site CTA). "Offer a benefit to the community" opens the submission dialog. |
 | Profile | Account email vs. work email, calendar connection, membership and billing. |
 | Dashboard — mobile | Linked from the top-right of the Dashboard. Pinned bottom bar carries the Nexus Partner contact, since the sidebar disappears on mobile. |
 
@@ -57,6 +58,7 @@ decisions and do not ship.
 - Rating source and threshold — implementation logic, never page copy.
 - Headshots — the demo shows initials as a stand-in. Production uses real headshots, never stock, never initials.
 - Event pop-out — first pass at a reusable card for sessions, dinners, and introductions. Open whether registering should stay in the card or route to the full event page.
+- Benefit pop-out — same card pattern as events, used for partner offers. Open whether claiming should stay a partner-site jump (shown) or complete inside the card.
 
 ## How this is built
 
