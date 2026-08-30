@@ -1,21 +1,35 @@
 # Changes in this handoff
 
-Rebuilt from `Clickable prototype navigation review-cards.zip` (22 Aug 2026, 22:01). The pop-out card is now the shared pattern for opening any item.
+Rebuilt from `Clickable prototype navigation review.zip` (29 Aug 2026, 18:32). Source of truth: `HANDOFF.md` in that zip.
 
-The handoff HTML omitted the Content library list screen; that screen is restored from the previous live demo so Library still works. Recording detail, search, and advisor-from-recording pop-out are unchanged.
+## 1. Account is a new nav item
 
-## 1. Advisors — pop-out replaces the profile page
+Seven-item nav: Dashboard, Advisors, Directory, Content library, Benefits, Profile, **Account**. Profile is personal only. Everything payable (subscription, payment, billing, sign-in, email prefs) lives on Account.
 
-Roster rows (and **Profile →**) open a pop-out: avatar, organization, location, topic chips + rating, **How they help**, the investor disclaimer where it applies, **Their sessions in the library →**, and Email / LinkedIn / Website. Advisor links on Dashboard Recent Activity and on recording detail open the same pop-out instead of navigating away.
+## 2. Invited-to-paid conversion
 
-## 2. Directory — member pop-out replaces the profile page
+A `memberState` of Invited shows a dashboard invitation card and an Account chooser. **Choose your membership** opens the shared pop-out: stage cards at or below the qualified maximum → Stripe payment fields → "You're in." A dashed **Review · member state** switcher in the topbar flips Active / Invited (review chrome, not product UI). URL: `?member=invited`.
 
-Rows (and **Profile →**) open a pop-out: avatar, name, role + company, location, industry / Stage 1 / rating chips, **What they're building**, LinkedIn and the member's email. Direct outreach — no "Ask Sarah for an introduction." You keep your place in the list.
+## 3. Event status vocabulary (deliberate reversal)
 
-## 3. Benefits and events (unchanged this pass)
+Coming up rows use five status pills instead of a single "On your calendar" state: **Invitation sent** · **Pending acceptance** · **Accepted** · **On your calendar** · **Declined**. Flagged for a second look.
 
-Benefit cards still show the lead offer term and open the benefit pop-out. **More for you** still opens the event pop-out.
+## 4. Release your spot
+
+Registered event pop-outs no longer say Cancel / Deregister. Member-facing wording is **Can't attend? Release your spot**, with an inline confirm (navy / gray, no red). On mobile it is a full-width action at the foot of the sheet.
+
+## 5. Profile completion banner
+
+Sits first on Profile. Names the highest-value gap and why it matters, with a button that jumps to that field. Disappears at 100%. Demo gap: **What you're building** (the line the directory card reads from). Membership is gone from Profile.
+
+## 6. Advisors and Directory chips
+
+Expertise on both rosters is chips, capped at two plus a "+N" overflow on a single line. Member pop-out: industry + expertise, no ratings, no stage.
+
+## 7. Benefits cards
+
+Every card shows a **Featured benefit** eyebrow, the primary perk, and **View more benefits →** when there are further perks (otherwise **View offer →**). The old "+1 more" string is retired.
 
 ## Unchanged
 
-Dashboard calendar, Content library, Profile, mobile proposal, Nexus Partner card under the nav, partner-logo tiles. Dashed **Notes** chips are still prototype-only (hide with `?annotations=0`).
+Shared pop-out shell (events, benefits, members, advisors), Content library (recordings / article / newsletter + exploratory moments), recording detail, Nexus Partner card under the nav, partner-logo tiles, mobile proposal. Dashed **Notes** chips are still prototype-only (hide with `?annotations=0`).

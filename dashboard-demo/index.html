@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FounderNexus — Member portal redesign (clickable demo)</title>
-<meta name="description" content="Clickable prototype of the FounderNexus member portal redesign: Dashboard, Advisors, Directory, Content library, Benefits, and Profile. Internal review only.">
+<meta name="description" content="Clickable prototype of the FounderNexus member portal redesign: Dashboard, Advisors, Directory, Content library, Benefits, Profile, and Account. Internal review only.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="assets/brand/foundernexus-mark.png">
 <script>
@@ -725,13 +725,22 @@ button { font-family: inherit; }
     <img src="assets/brand/foundernexus-wordmark.png" alt="FounderNexus" style="height:26px; width:auto; display:block;">
     <div style="display:flex; align-items:center; gap:20px;">
       <sc-if value="{{ partnerHeader }}" hint-placeholder-val="{{ false }}">
-        <a href="mailto:sarah@foundernexus.com" title="Sarah Kim — Your Nexus Partner" style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 16px; border-radius:8px; background:var(--blue-500); color:#fff; font:var(--fw-semibold) 13px/1 var(--font-sans); text-decoration:none;" style-hover="background:var(--blue-700); color:#fff; text-decoration:none;">
+        <a href="mailto:sarah@foundernexus.com" title="Sarah Kim, your Nexus Partner" style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 16px; border-radius:8px; background:var(--blue-500); color:#fff; font:var(--fw-semibold) 13px/1 var(--font-sans); text-decoration:none;" style-hover="background:var(--blue-700); color:#fff; text-decoration:none;">
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
           <span style="display:flex; flex-direction:column; gap:3px; text-align:left;">
             <span style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Email Sarah</span>
             <span style="font:var(--fw-medium) 10px/1 var(--font-sans); color:var(--blue-100); letter-spacing:0.05em; text-transform:uppercase;">Your Nexus Partner</span>
           </span>
         </a>
+      </sc-if>
+      <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; align-items:center; gap:9px; padding:6px 10px 6px 12px; border:1px dashed var(--blue-300); border-radius:8px;">
+          <span style="font:var(--fw-semibold) 10px/1.3 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--blue-600); white-space:nowrap;">Review<br>member state</span>
+          <div style="display:flex; background:var(--gray-100); border-radius:7px; padding:2px;">
+            <button sc-camel-on-click="{{ setActive }}" style="height:26px; padding:0 11px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ activeBg }}; color:{{ activeFg }}; box-shadow:{{ activeShadow }};">Member</button>
+            <button sc-camel-on-click="{{ setInvited }}" style="height:26px; padding:0 11px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ invitedBg }}; color:{{ invitedFg }}; box-shadow:{{ invitedShadow }};">Invited</button>
+          </div>
+        </div>
       </sc-if>
       <div style="display:flex; align-items:center; gap:12px;">
         <div style="text-align:right;">
@@ -780,6 +789,21 @@ button { font-family: inherit; }
           <!-- Left column -->
           <div style="flex:1 1 560px; min-width:0; display:flex; flex-direction:column; gap:32px;">
 
+            <sc-if value="{{ invited }}" hint-placeholder-val="{{ false }}">
+              <section style="background:var(--blue-50); border:1px solid var(--blue-200); border-radius:12px; padding:24px 26px;">
+                <div style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--blue-600);">Your invitation is open</div>
+                <h2 style="font:var(--fw-bold) 24px/1.2 var(--font-display); letter-spacing:-0.02em; color:var(--navy-900); margin:11px 0 0;">You've been invited to join at Stage 2.</h2>
+                <p style="font:var(--fw-regular) 15px/1.55 var(--font-sans); color:var(--gray-700); margin:9px 0 0; max-width:520px;">Choose your membership to keep your seat. Until then you can look around, but you can't register for sessions or reach advisors.</p>
+                <div style="display:flex; align-items:center; gap:16px; margin-top:18px; flex-wrap:wrap;">
+                  <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" size="md" sc-camel-on-click="{{ openMembership }}" hint-size="220px,44px">Choose your membership</x-import>
+                  <a href="#" sc-camel-on-click="{{ goAccount }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">See what's included →</a>
+                </div>
+                <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex; align-items:flex-start; gap:6px; margin-top:18px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; background:#fff; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: the dashboard carries the prompt only, one card, above everything else. The durable place to choose, pay, and change a level is Account &amp; billing. The card disappears the moment the membership is active. Toggle the Membership state tweak to compare.</span></div>
+                </sc-if>
+              </section>
+            </sc-if>
+
             <!-- Coming up -->
             <section>
               <h2 style="font:var(--fw-semibold) 20px/1.2 var(--font-sans); margin:0 0 12px;">Coming up</h2>
@@ -800,13 +824,13 @@ button { font-family: inherit; }
                       </div>
                     </div>
                     <div style="display:flex; flex-direction:column; align-items:flex-end; gap:5px;">
-                      <span style="display:inline-flex; align-items:center; gap:6px; height:24px; padding:0 10px; border-radius:999px; background:var(--status-success-bg); color:var(--status-success); font:var(--fw-semibold) 12px/1 var(--font-sans);"><span style="width:6px; height:6px; border-radius:50%; background:var(--status-success);"></span>On your calendar</span>
+                      <span style="display:inline-flex; align-items:center; gap:6px; height:24px; padding:0 10px; border-radius:999px; background:{{ c.statusBg }}; color:{{ c.statusFg }}; font:var(--fw-semibold) 12px/1 var(--font-sans); white-space:nowrap;"><span style="width:6px; height:6px; border-radius:50%; background:currentColor;"></span>{{ c.status }}</span>
                     </div>
                   </div>
                 </sc-for>
               </div>
               <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex; align-items:flex-start; gap:6px; margin-top:10px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: anything FounderNexus arranged that's on your calendar lands here: sessions, Nexus Partner calls, introductions. One calendar state only ("On your calendar"): with a connected calendar, FounderNexus places agreed activity directly; no invite-acceptance workflow.</span></div>
+                <div style="display:flex; align-items:flex-start; gap:6px; margin-top:10px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: five status words, in lifecycle order. <strong>Invitation sent</strong> = we've invited you, nothing needed yet. <strong>Pending acceptance</strong> = waiting on the other side (an advisor or the person you're being introduced to). <strong>Accepted</strong> = confirmed by everyone, not yet written to your calendar. <strong>On your calendar</strong> = placed on your connected calendar. <strong>Declined</strong> = you or the other side passed; it drops off after the date. This reverses the earlier single-state decision, so it is worth a deliberate look.</span></div>
               </sc-if>
             </section>
 
@@ -902,7 +926,7 @@ button { font-family: inherit; }
             <option value="Board Matters">Board matters</option>
           </x-import>
           <div style="flex:1 1 300px; max-width:440px;">
-            <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Input" icon-left="search" placeholder="Search a problem, topic, or name — try &quot;pricing&quot;" value="{{ advisorQuery }}" sc-camel-on-change="{{ onAdvisorQuery }}" hint-size="100%,44px"></x-import>
+            <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Input" icon-left="search" placeholder="Search a problem, topic, or name. Try &quot;pricing&quot;" value="{{ advisorQuery }}" sc-camel-on-change="{{ onAdvisorQuery }}" hint-size="100%,44px"></x-import>
           </div>
         </div>
 
@@ -929,7 +953,14 @@ button { font-family: inherit; }
                   <span style="font:var(--fw-semibold) 14px/1.2 var(--font-sans); color:var(--navy-900); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ a.name }}</span>
                 </span>
                 <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ a.org }}</span>
-                <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ a.tagLine }}</span>
+                <span style="display:flex; align-items:center; gap:5px; min-width:0; overflow:hidden;">
+                  <sc-for list="{{ a.chips }}" as="ch" hint-placeholder-count="2">
+                    <span style="flex:none; display:inline-flex; align-items:center; height:21px; padding:0 8px; border-radius:5px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 12px/1 var(--font-sans); white-space:nowrap;">{{ ch }}</span>
+                  </sc-for>
+                  <sc-if value="{{ a.hasMoreChips }}" hint-placeholder-val="{{ false }}">
+                    <span style="flex:none; font:var(--fw-medium) 12px/1 var(--font-sans); color:var(--gray-500); white-space:nowrap;">{{ a.moreChips }}</span>
+                  </sc-if>
+                </span>
                 <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); white-space:nowrap;">{{ a.loc }}</span>
                 <sc-if value="{{ a.hasRating }}" hint-placeholder-val="{{ true }}">
                   <span style="display:inline-flex; align-items:center; gap:4px; font:var(--fw-semibold) 13px/1 var(--font-sans); color:var(--navy-900);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M12 2.5 14.9 8.4l6.5.95-4.7 4.58 1.1 6.47L12 17.9l-5.8 3.05 1.1-6.47L2.6 9.35l6.5-.95Z"></path></svg>{{ a.rating }}</span>
@@ -943,7 +974,7 @@ button { font-family: inherit; }
         <sc-if value="{{ noAdvisors }}" hint-placeholder-val="{{ false }}">
           <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; padding:32px; max-width:560px;">
             <div style="font:var(--fw-semibold) 16px/1.3 var(--font-sans); color:var(--navy-900);">No advisors match that search.</div>
-            <p style="font:var(--fw-regular) 14px/1.55 var(--font-sans); color:var(--gray-600); margin:8px 0 0;">Advisor availability depends on your stage. If you need someone we haven't listed, <a href="mailto:sarah@foundernexus.com" style="font-weight:var(--fw-semibold);">ask Sarah</a>. Routing you is her job.</p>
+            <p style="font:var(--fw-regular) 14px/1.55 var(--font-sans); color:var(--gray-600); margin:8px 0 0;">Advisor availability depends on your stage. If you need someone we haven't listed, <a href="mailto:sarah@foundernexus.com" style="font-weight:var(--fw-semibold);">ask your Nexus Partner</a>. Routing you is their job.</p>
           </div>
         </sc-if>
       </sc-if>
@@ -970,27 +1001,34 @@ button { font-family: inherit; }
 
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
           <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
-            <span style="display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.3 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: rows open a pop-out card, the same pattern used for sessions, advisors, and benefits. Members reach each other directly by LinkedIn or email — no Nexus Partner introduction required. Includes members and selected active prospects, intentionally unlabeled. Stage gating is automatic: you see people at your stage or below (you're Stage 1). Filter label and taxonomy TBD pending the tagging review with Bogdan.</span></span>
+            <span style="display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.3 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: rows open a pop-out card, the same pattern used for sessions, advisors, and benefits. Members reach each other directly by LinkedIn or email. No Nexus Partner introduction required. Includes members and selected active prospects, intentionally unlabeled. Stage gating is automatic: you see people at your stage or below (you're Stage 1). Filter label and taxonomy TBD pending the tagging review with Bogdan.</span></span>
           </sc-if>
         </div>
 
         <sc-if value="{{ hasDir }}" hint-placeholder-val="{{ true }}">
           <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); overflow-x:auto;">
-            <div style="min-width:720px; display:grid; grid-template-columns:minmax(160px,1.3fr) minmax(0,1fr) minmax(0,1fr) minmax(110px,auto) 70px; gap:12px; align-items:center; padding:10px 20px; border-bottom:1px solid var(--border-subtle); background:var(--gray-50);">
+            <div style="min-width:720px; display:grid; grid-template-columns:minmax(160px,1.2fr) minmax(0,1fr) minmax(0,1.6fr) minmax(110px,auto) 70px; gap:12px; align-items:center; padding:10px 20px; border-bottom:1px solid var(--border-subtle); background:var(--gray-50);">
               <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Name</span>
               <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Company</span>
-              <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Industry</span>
+              <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Expertise</span>
               <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Location</span>
               <span></span>
             </div>
             <sc-for list="{{ directory }}" as="d" hint-placeholder-count="8">
-              <div sc-camel-on-click="{{ d.onOpen }}" style="min-width:720px; display:grid; grid-template-columns:minmax(160px,1.3fr) minmax(0,1fr) minmax(0,1fr) minmax(110px,auto) 70px; gap:12px; align-items:center; padding:11px 20px; border-bottom:1px solid var(--gray-100); cursor:pointer;" style-hover="background:var(--blue-50);">
+              <div sc-camel-on-click="{{ d.onOpen }}" style="min-width:720px; display:grid; grid-template-columns:minmax(160px,1.2fr) minmax(0,1fr) minmax(0,1.6fr) minmax(110px,auto) 70px; gap:12px; align-items:center; padding:11px 20px; border-bottom:1px solid var(--gray-100); cursor:pointer;" style-hover="background:var(--blue-50);">
                 <span style="display:inline-flex; align-items:center; gap:10px; min-width:0;">
                   <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Avatar" name="{{ d.name }}" size="sm" hint-size="28px,28px"></x-import>
                   <span style="font:var(--fw-semibold) 14px/1.2 var(--font-sans); color:var(--navy-900); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ d.name }}</span>
                 </span>
                 <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ d.company }}</span>
-                <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ d.industry }}</span>
+                <span style="display:flex; align-items:center; gap:5px; min-width:0; overflow:hidden;">
+                  <sc-for list="{{ d.chips }}" as="ch" hint-placeholder-count="2">
+                    <span style="flex:none; display:inline-flex; align-items:center; height:21px; padding:0 8px; border-radius:5px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 12px/1 var(--font-sans); white-space:nowrap;">{{ ch }}</span>
+                  </sc-for>
+                  <sc-if value="{{ d.hasMoreChips }}" hint-placeholder-val="{{ false }}">
+                    <span style="flex:none; font:var(--fw-medium) 12px/1 var(--font-sans); color:var(--gray-500); white-space:nowrap;">{{ d.moreChips }}</span>
+                  </sc-if>
+                </span>
                 <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); white-space:nowrap;">{{ d.loc }}</span>
                 <a href="#" sc-camel-on-click="{{ d.onOpen }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans); text-align:right;">Profile →</a>
               </div>
@@ -1008,28 +1046,35 @@ button { font-family: inherit; }
       <!-- ============ CONTENT LIBRARY ============ -->
       <sc-if value="{{ sLib }}" hint-placeholder-val="{{ false }}">
         <h1 style="font:var(--fw-bold) 34px/1.1 var(--font-display); letter-spacing:-0.02em; margin:0 0 8px;">Content library</h1>
-        <p style="font:var(--fw-regular) 15px/1.5 var(--font-sans); color:var(--gray-600); margin:0; max-width:640px;">Have a specific question? Search what past rooms actually discussed.</p>
+        <p style="font:var(--fw-regular) 15px/1.5 var(--font-sans); color:var(--gray-600); margin:0; max-width:640px;">Search what past rooms actually discussed. Recordings, written guides, and pieces we think are worth your time.</p>
 
-        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:22px 0 22px;">
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:22px 0 14px;">
           <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Select" value="{{ libCat }}" sc-camel-on-change="{{ onLibCat }}" style="width:210px" hint-size="210px,44px">
             <option value="All">All topics</option>
+            <option value="GTM">GTM</option>
             <option value="Sales">Sales</option>
             <option value="Pricing">Pricing</option>
-            <option value="Hiring">Hiring</option>
+            <option value="Fundraising">Fundraising</option>
+            <option value="Legal">Legal</option>
             <option value="Product">Product</option>
             <option value="Customer Discovery">Customer discovery</option>
+            <option value="Hiring">Hiring</option>
             <option value="Operations">Operations</option>
           </x-import>
           <div style="flex:1 1 300px; max-width:440px;">
-            <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Input" icon-left="search" placeholder="Search topics, questions, or keywords — try &quot;discount policy&quot;" value="{{ libQuery }}" sc-camel-on-change="{{ onLibQuery }}" hint-size="100%,44px"></x-import>
+            <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Input" icon-left="search" placeholder="Search topics, questions, or keywords" value="{{ libQuery }}" sc-camel-on-change="{{ onLibQuery }}" hint-size="100%,44px"></x-import>
           </div>
         </div>
+
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:flex-start; gap:6px; margin-bottom:18px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans); max-width:760px;"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: the library holds more than video. Written guides open in the portal; outside pieces are framed and linked, never republished. Titles carry the subject, not the name of the session they came from. Topic values are representative only, pending the tagging review with Bogdan.</span></div>
+        </sc-if>
 
         <sc-if value="{{ hasMatches }}" hint-placeholder-val="{{ false }}">
           <section style="background:var(--blue-50); border:1px solid var(--blue-200); border-radius:12px; padding:18px 22px; margin-bottom:24px;">
             <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
               <h2 style="font:var(--fw-semibold) 16px/1.2 var(--font-sans); margin:0;">Moments inside recordings</h2>
-              <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex; align-items:center; height:22px; padding:0 9px; border-radius:999px; background:var(--blue-500); color:#fff; font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.04em; text-transform:uppercase;">Exploratory</span></sc-if>
+              <span style="display:inline-flex; align-items:center; height:22px; padding:0 9px; border-radius:999px; background:var(--blue-500); color:#fff; font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.04em; text-transform:uppercase;">Exploratory</span>
             </div>
             <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:0 0 6px;">Transcript search found where this came up in past sessions.</p>
             <sc-for list="{{ matches }}" as="mm" hint-placeholder-count="1">
@@ -1043,14 +1088,14 @@ button { font-family: inherit; }
               </div>
             </sc-for>
             <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex; align-items:flex-start; gap:6px; margin-top:12px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; background:#fff; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: transcript-level search remains exploratory; the Library works fully without it.</span></div>
+              <div style="display:flex; align-items:flex-start; gap:6px; margin-top:12px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; background:#fff; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: transcript-level search is a concept; feasibility not yet validated. The library works fully without it.</span></div>
             </sc-if>
           </section>
         </sc-if>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(400px, 1fr)); gap:16px;">
           <sc-for list="{{ recs }}" as="r" hint-placeholder-count="4">
-            <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:20px; display:flex; flex-direction:column; gap:10px;">
+            <div sc-camel-on-click="{{ r.onOpen }}" style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:20px; display:flex; flex-direction:column; gap:10px; cursor:pointer; transition:box-shadow var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);" style-hover="box-shadow:var(--shadow-md); transform:translateY(-2px);">
               <div style="display:flex; align-items:center; gap:8px;">
                 <span style="display:inline-flex; align-items:center; height:22px; padding:0 8px; border-radius:6px; background:var(--blue-100); color:var(--navy-900); font:var(--fw-medium) 12px/1 var(--font-sans);">{{ r.typeLabel }}</span>
                 <span style="font:var(--fw-regular) 12px/1 var(--font-sans); color:var(--gray-400);">{{ r.dur }}</span>
@@ -1060,9 +1105,9 @@ button { font-family: inherit; }
               <p style="font:var(--fw-regular) 14px/1.55 var(--font-sans); color:var(--gray-700); margin:0;">{{ r.summary }}</p>
               <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:auto; padding-top:6px;">
                 <sc-for list="{{ r.tags }}" as="tg" hint-placeholder-count="2">
-                  <span style="display:inline-flex; align-items:center; height:24px; padding:0 9px; border-radius:6px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 12px/1 var(--font-sans); white-space:nowrap;">{{ tg }}</span>
+                  <span style="display:inline-flex; align-items:center; height:24px; padding:0 9px; border-radius:6px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 12px/1 var(--font-sans);">{{ tg }}</span>
                 </sc-for>
-                <a href="#" sc-camel-on-click="{{ r.onOpen }}" style="margin-left:auto; display:inline-flex; align-items:center; gap:4px; font:var(--fw-semibold) 13px/1 var(--font-sans);">{{ r.openLabel }}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+                <a href="#" sc-camel-on-click="{{ r.onOpen }}" style="margin-left:auto; display:inline-flex; align-items:center; gap:4px; font:var(--fw-semibold) 13px/1 var(--font-sans); white-space:nowrap;">{{ r.openLabel }}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
               </div>
             </div>
           </sc-for>
@@ -1220,13 +1265,15 @@ button { font-family: inherit; }
                   <span style="display:inline-flex; align-items:center; height:22px; padding:0 9px; border-radius:999px; background:var(--blue-100); color:var(--blue-700); font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.04em; text-transform:uppercase;">New</span>
                 </sc-if>
               </div>
-              <div style="display:flex; gap:9px; align-items:flex-start;">
-                <span style="flex:none; display:inline-flex; align-items:center; height:22px; padding:0 8px; border-radius:5px; background:var(--blue-600); color:#fff; font:var(--fw-semibold) 11px/1 var(--font-sans); white-space:nowrap;">{{ b.leadLabel }}</span>
-                <span style="font:var(--fw-medium) 14px/1.45 var(--font-sans); color:var(--navy-900);">{{ b.leadText }}</span>
+              <div>
+                <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400); margin-bottom:9px;">Featured benefit</div>
+                <div style="display:flex; gap:9px; align-items:flex-start;">
+                  <span style="flex:none; display:inline-flex; align-items:center; height:22px; padding:0 8px; border-radius:5px; background:var(--blue-600); color:#fff; font:var(--fw-semibold) 11px/1 var(--font-sans); white-space:nowrap;">{{ b.leadLabel }}</span>
+                  <span style="font:var(--fw-medium) 14px/1.45 var(--font-sans); color:var(--navy-900);">{{ b.leadText }}</span>
+                </div>
               </div>
-              <div style="margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
-                <span style="font:var(--fw-regular) 12px/1 var(--font-sans); color:var(--gray-500);">{{ b.moreLine }}</span>
-                <a href="#" sc-camel-on-click="{{ b.onOpen }}" style="display:inline-flex; align-items:center; gap:4px; font:var(--fw-semibold) 13px/1 var(--font-sans);">View offer<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="m9 18 6-6-6-6"></path></svg></a>
+              <div style="margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:flex-end;">
+                <a href="#" sc-camel-on-click="{{ b.onOpen }}" style="display:inline-flex; align-items:center; gap:4px; font:var(--fw-semibold) 13px/1 var(--font-sans);">{{ b.linkLabel }}<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="m9 18 6-6-6-6"></path></svg></a>
               </div>
             </div>
           </sc-for>
@@ -1236,10 +1283,29 @@ button { font-family: inherit; }
       <!-- ============ PROFILE ============ -->
       <sc-if value="{{ sProf }}" hint-placeholder-val="{{ false }}">
         <h1 style="font:var(--fw-bold) 34px/1.1 var(--font-display); letter-spacing:-0.02em; margin:0 0 8px;">Profile</h1>
-        <p style="font:var(--fw-regular) 15px/1.5 var(--font-sans); color:var(--gray-600); margin:0;">Your account, company, calendar, and membership details.</p>
+        <p style="font:var(--fw-regular) 15px/1.5 var(--font-sans); color:var(--gray-600); margin:0;">Your personal details, expertise, and how other members reach you. Membership, payment, and security live in <a href="#" sc-camel-on-click="{{ goAccount }}">Account</a>.</p>
 
-        <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:28px; align-items:flex-start;">
-          <div style="flex:1 1 480px; min-width:0; display:flex; flex-direction:column; gap:20px;">
+        <sc-if value="{{ completion.incomplete }}" hint-placeholder-val="{{ true }}">
+        <section style="display:flex; align-items:center; gap:22px; flex-wrap:wrap; background:var(--blue-50); border:1px solid var(--blue-200); border-radius:12px; padding:18px 22px; margin-top:22px;">
+          <div style="flex:none; display:flex; align-items:baseline; gap:8px;">
+            <span style="font:var(--fw-bold) 30px/1 var(--font-display); color:var(--navy-900);">{{ completion.pct }}</span>
+            <span style="font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--gray-600);">complete</span>
+          </div>
+          <div style="flex:1 1 260px; min-width:200px;">
+            <div style="height:6px; border-radius:999px; background:#fff; overflow:hidden;">
+              <div style="width:{{ completion.pct }}; height:100%; background:var(--blue-500);"></div>
+            </div>
+            <div style="font:var(--fw-regular) 13px/1.4 var(--font-sans); color:var(--gray-700); margin-top:9px;">{{ completion.line }}</div>
+          </div>
+          <a href="#" sc-camel-on-click="{{ noopPrevent }}" style="flex:none; display:inline-flex; align-items:center; gap:5px; height:38px; padding:0 15px; border-radius:8px; background:var(--blue-600); color:#fff; font:var(--fw-semibold) 13px/1 var(--font-sans); text-decoration:none;" style-hover="background:var(--blue-700); color:#fff; text-decoration:none;">{{ completion.cta }}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        </section>
+        </sc-if>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:flex-start; gap:6px; margin-top:10px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans); max-width:760px;"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: the banner names whatever is actually missing, not LinkedIn specifically. Tracked fields: personal details, company and role, expertise, LinkedIn, connected calendar, and a line on what you're building. It calls out the highest-value gap first, says why it matters, and the button jumps to that field. The whole banner disappears at 100%. In this sample the gap is the "what you're building" line, which is also the field the directory card reads from.</span></div>
+        </sc-if>
+
+        <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:22px; align-items:flex-start;">
+          <div style="flex:1 1 480px; max-width:760px; min-width:0; display:flex; flex-direction:column; gap:20px;">
 
             <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
               <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0 0 16px;">Personal information</h2>
@@ -1258,7 +1324,7 @@ button { font-family: inherit; }
                 </div>
                 <div>
                   <label style="display:block; font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--gray-700); margin-bottom:6px;">LinkedIn</label>
-                  <input placeholder="linkedin.com/in/you" style="width:100%; box-sizing:border-box; height:42px; padding:0 12px; border:1px solid var(--border-default); border-radius:8px; font:var(--fw-regular) 14px/1 var(--font-sans); color:var(--navy-900); background:#fff;">
+                  <input value="linkedin.com/in/mattmckinney" style="width:100%; box-sizing:border-box; height:42px; padding:0 12px; border:1px solid var(--border-default); border-radius:8px; font:var(--fw-regular) 14px/1 var(--font-sans); color:var(--navy-900); background:#fff;">
                 </div>
               </div>
               <div style="margin-top:14px;">
@@ -1292,9 +1358,27 @@ button { font-family: inherit; }
                 <input value="matt@northlight.io" style="width:100%; box-sizing:border-box; height:42px; padding:0 12px; border:1px solid var(--border-default); border-radius:8px; font:var(--fw-regular) 14px/1 var(--font-sans); color:var(--navy-900); background:#fff;">
                 <p style="font:var(--fw-regular) 12px/1.4 var(--font-sans); color:var(--gray-400); margin:6px 0 0;">For sessions and calendar invites, separate from your account email above.</p>
               </div>
+              <div style="margin-top:14px;">
+                <label style="display:block; font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--gray-700); margin-bottom:6px;">What you're building</label>
+                <textarea rows="2" placeholder="One or two sentences. This is what other founders read on your directory card." style="width:100%; box-sizing:border-box; padding:10px 12px; border:1px solid var(--blue-600); border-radius:8px; font:var(--fw-regular) 14px/1.5 var(--font-sans); color:var(--navy-900); background:#fff; resize:vertical;"></textarea>
+              </div>
               <div style="margin-top:18px;">
                 <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ noop }}" hint-size="140px,36px">Update company</x-import>
               </div>
+            </section>
+
+            <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
+              <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0 0 4px;">Expertise</h2>
+              <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:0 0 16px;">What other founders can ask you about. This is what appears on your directory card.</p>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <span style="display:inline-flex; align-items:center; gap:7px; height:30px; padding:0 12px; border-radius:8px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 13px/1 var(--font-sans);">Founder-led sales<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; cursor:pointer;"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span>
+                <span style="display:inline-flex; align-items:center; gap:7px; height:30px; padding:0 12px; border-radius:8px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 13px/1 var(--font-sans);">Enterprise pricing<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; cursor:pointer;"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span>
+                <span style="display:inline-flex; align-items:center; gap:7px; height:30px; padding:0 12px; border-radius:8px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 13px/1 var(--font-sans);">B2B SaaS<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; cursor:pointer;"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span>
+                <button style="display:inline-flex; align-items:center; gap:6px; height:30px; padding:0 12px; border-radius:8px; border:1px dashed var(--border-default); background:#fff; color:var(--gray-600); font:var(--fw-medium) 13px/1 var(--font-sans); cursor:pointer;" style-hover="border-color:var(--blue-500); color:var(--blue-600);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>Add expertise</button>
+              </div>
+              <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:flex-start; gap:6px; margin-top:14px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: values shown are free text for the mockup. Once the tagging model is settled with Bogdan these should draw from the same topic list as Advisors and the Content library.</span></div>
+              </sc-if>
             </section>
 
             <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
@@ -1312,41 +1396,208 @@ button { font-family: inherit; }
             </section>
           </div>
 
-          <section style="flex:1 1 300px; max-width:380px; background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
-            <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0 0 16px;">Membership &amp; billing</h2>
-            <div style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400); margin-bottom:8px;">Status</div>
-            <span style="display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 10px; border-radius:999px; background:var(--status-success-bg); color:var(--status-success); font:var(--fw-semibold) 13px/1 var(--font-sans);"><span style="width:6px; height:6px; border-radius:50%; background:var(--status-success);"></span>Active member</span>
-            <div style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400); margin:18px 0 8px;">Stage</div>
-            <div style="font:var(--fw-semibold) 15px/1.3 var(--font-sans); color:var(--navy-900);">Stage 1 · $0–2M ARR · Pre-Seed/Seed</div>
-            <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:6px 0 0;">Your stage decides which sessions and advisors you see.</p>
-            <div style="margin-top:12px;">
-              <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ noop }}" hint-size="160px,36px">Discuss next stage</x-import>
+        </div>
+      </sc-if>
+
+      <!-- ============ ACCOUNT ============ -->
+      <sc-if value="{{ sAcct }}" hint-placeholder-val="{{ false }}">
+        <h1 style="font:var(--fw-bold) 34px/1.1 var(--font-display); letter-spacing:-0.02em; margin:0 0 8px;">Account</h1>
+        <p style="font:var(--fw-regular) 15px/1.5 var(--font-sans); color:var(--gray-600); margin:0;">Your membership, billing, and sign-in. Personal details and expertise live in <a href="#" sc-camel-on-click="{{ goProfile }}">Profile</a>.</p>
+
+        <sc-if value="{{ invited }}" hint-placeholder-val="{{ false }}">
+          <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:28px; margin-top:26px; max-width:900px;">
+            <h2 style="font:var(--fw-semibold) 22px/1.25 var(--font-display); margin:0;">You don't have an active membership</h2>
+            <p style="font:var(--fw-regular) 15px/1.55 var(--font-sans); color:var(--gray-600); margin:8px 0 0; max-width:620px;">You've been invited to join at Stage 2. Choose the level that fits where you are today. You can move up later without losing anything.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-top:18px;">
+          <sc-for list="{{ stages }}" as="st" hint-placeholder-count="2">
+            <div sc-camel-on-click="{{ st.onSelect }}" style="border:1px solid {{ st.borderColor }}; background:{{ st.bg }}; border-radius:12px; padding:20px; cursor:pointer; display:flex; flex-direction:column; gap:10px;" style-hover="border-color:var(--blue-500);">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
+                <div style="font:var(--fw-semibold) 17px/1.2 var(--font-sans); color:var(--navy-900);">{{ st.name }}</div>
+                <sc-if value="{{ st.isMax }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:inline-flex; align-items:center; height:22px; padding:0 9px; border-radius:6px; background:var(--blue-100); color:var(--blue-700); font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.04em; text-transform:uppercase; white-space:nowrap;">Your qualified level</span>
+                </sc-if>
+              </div>
+              <div style="font:var(--fw-regular) 13px/1.4 var(--font-sans); color:var(--gray-600);">{{ st.band }}</div>
+              <div style="font:var(--fw-bold) 26px/1 var(--font-display); color:var(--navy-900); margin-top:2px;">{{ st.price }}<span style="font:var(--fw-regular) 13px/1 var(--font-sans); color:var(--gray-500);"> / year</span></div>
+              <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:2px 0 0;">{{ st.room }}</p>
+              <div style="margin-top:auto; padding-top:12px;">
+                <sc-if value="{{ st.selected }}" hint-placeholder-val="{{ true }}">
+                  <span style="display:inline-flex; align-items:center; gap:6px; height:36px; padding:0 14px; border-radius:8px; background:var(--blue-600); color:#fff; font:var(--fw-semibold) 13px/1 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M20 6 9 17l-5-5"></path></svg>Selected</span>
+                </sc-if>
+                <sc-if value="{{ st.unselected }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:inline-flex; align-items:center; height:36px; padding:0 14px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--navy-900); font:var(--fw-semibold) 13px/1 var(--font-sans);">Select</span>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+            <div style="display:flex; align-items:center; gap:16px; margin-top:20px; flex-wrap:wrap;">
+              <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" size="md" sc-camel-on-click="{{ openMembership }}" hint-size="220px,44px">Continue to payment</x-import>
+              <span style="font:var(--fw-regular) 13px/1.4 var(--font-sans); color:var(--gray-500);">Payments are processed by Stripe. Cancel anytime.</span>
             </div>
             <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex; align-items:flex-start; gap:6px; margin-top:10px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: concept only: this triggers a Nexus Partner conversation, never an automatic stage change. Open decision: member initiated vs. Nexus Partner initiated.</span></div>
+              <div style="display:flex; align-items:flex-start; gap:6px; margin-top:18px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans); max-width:700px;"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: only levels at or below the qualified maximum are rendered. Higher stages are not shown at all rather than shown locked, so there is nothing to negotiate against. Prices are placeholders. Switch the Membership state tweak to see the active-member view.</span></div>
             </sc-if>
-            <div style="border-top:1px solid var(--gray-100); margin:18px 0;"></div>
-            <div style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400); margin-bottom:8px;">Billing</div>
-            <div style="font:var(--fw-semibold) 15px/1.3 var(--font-sans); color:var(--navy-900);">Comped</div>
-            <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:6px 0 0;">Your membership is complimentary. Nothing to pay here.</p>
-            <div style="border-top:1px solid var(--gray-100); margin:18px 0;"></div>
-            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:8px;">
-              <div style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Billing &amp; mailing address</div>
-              <a href="#" sc-camel-on-click="{{ noopPrevent }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Edit</a>
-            </div>
-            <div style="font:var(--fw-regular) 14px/1.5 var(--font-sans); color:var(--navy-900);">Northlight Systems<br>2101 4th Ave, Suite 1400<br>Seattle, WA 98121</div>
-            <p style="font:var(--fw-regular) 12px/1.5 var(--font-sans); color:var(--gray-400); margin:8px 0 0;">Used for billing and tax documents.</p>
           </section>
-        </div>
+        </sc-if>
+
+        <sc-if value="{{ active }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:28px; align-items:flex-start;">
+            <div style="flex:1 1 480px; min-width:0; display:flex; flex-direction:column; gap:20px;">
+
+              <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
+                <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0 0 16px;">Subscription</h2>
+                <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+                  <div>
+                    <div style="font:var(--fw-semibold) 16px/1.3 var(--font-sans); color:var(--navy-900);">Stage 1 membership</div>
+                    <div style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin-top:4px;">$0–2M ARR · Pre-Seed/Seed</div>
+                    <div style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600);">Renews March 14, 2027</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div style="font:var(--fw-bold) 24px/1 var(--font-display); color:var(--navy-900);">$4,800<span style="font:var(--fw-regular) 13px/1 var(--font-sans); color:var(--gray-500);"> / year</span></div>
+                    <span style="display:inline-flex; align-items:center; gap:6px; height:24px; padding:0 10px; border-radius:999px; background:var(--status-success-bg); color:var(--status-success); font:var(--fw-semibold) 12px/1 var(--font-sans); margin-top:8px;"><span style="width:6px; height:6px; border-radius:50%; background:var(--status-success);"></span>Active</span>
+                  </div>
+                </div>
+                <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:16px 0 0; padding-top:16px; border-top:1px solid var(--gray-100);">Your stage decides which sessions, advisors, and founders you see. Moving up is a conversation with your Nexus Partner, never automatic.</p>
+                <div style="display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;">
+                  <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ openMembership }}" hint-size="200px,36px">Change membership level</x-import>
+                  <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ noop }}" hint-size="160px,36px">Discuss next stage</x-import>
+                  <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="ghost" size="sm" sc-camel-on-click="{{ noop }}" hint-size="160px,36px">Cancel membership</x-import>
+                </div>
+                <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex; align-items:flex-start; gap:6px; margin-top:14px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: membership moved off Profile entirely and lives here with everything else payable. "Change membership level" is self-service; "Discuss next stage" opens a Nexus Partner conversation. Open decision on who initiates a stage change.</span></div>
+                </sc-if>
+              </section>
+
+              <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
+                <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0 0 4px;">Sign-in &amp; security</h2>
+                <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:0 0 16px;">How you get into your account. Your membership follows this email if you change companies.</p>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                  <div style="display:flex; align-items:center; gap:12px; border:1px solid var(--border-subtle); border-radius:10px; padding:13px 16px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:160px;">
+                      <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900);">Account email</div>
+                      <div style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">mattm@foundernexus.com</div>
+                    </div>
+                    <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ noop }}" hint-size="90px,36px">Change</x-import>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:12px; border:1px solid var(--border-subtle); border-radius:10px; padding:13px 16px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:160px;">
+                      <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900);">Password</div>
+                      <div style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">Last changed 8 months ago</div>
+                    </div>
+                    <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ noop }}" hint-size="90px,36px">Update</x-import>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:12px; border:1px solid var(--border-subtle); border-radius:10px; padding:13px 16px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:160px;">
+                      <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900);">Two-factor authentication</div>
+                      <div style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">Not enabled</div>
+                    </div>
+                    <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ noop }}" hint-size="90px,36px">Enable</x-import>
+                  </div>
+                </div>
+              </section>
+
+              <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
+                <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0 0 4px;">Email preferences</h2>
+                <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:0 0 16px;">What we send you. Session invitations and anything your Nexus Partner arranges are always sent.</p>
+                <div style="display:flex; flex-direction:column;">
+                  <sc-for list="{{ prefs }}" as="pf" hint-placeholder-count="3">
+                    <div style="display:flex; align-items:center; gap:14px; padding:13px 0; border-bottom:1px solid var(--gray-100);">
+                      <div style="flex:1; min-width:0;">
+                        <div style="font:var(--fw-medium) 14px/1.3 var(--font-sans); color:var(--navy-900);">{{ pf.name }}</div>
+                        <div style="font:var(--fw-regular) 13px/1.4 var(--font-sans); color:var(--gray-600); margin-top:2px;">{{ pf.detail }}</div>
+                      </div>
+                      <span style="flex:none; width:40px; height:23px; border-radius:999px; background:{{ pf.trackBg }}; position:relative; cursor:pointer;">
+                        <span style="position:absolute; top:2px; left:{{ pf.knobLeft }}; width:19px; height:19px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(1,5,42,0.18);"></span>
+                      </span>
+                    </div>
+                  </sc-for>
+                </div>
+              </section>
+
+              <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
+                <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0 0 16px;">Payment method</h2>
+                <div style="display:flex; align-items:center; gap:14px; border:1px solid var(--border-subtle); border-radius:10px; padding:14px 16px;">
+                  <div style="width:44px; height:30px; border-radius:5px; background:var(--navy-700); color:#fff; display:flex; align-items:center; justify-content:center; font:var(--fw-bold) 11px/1 var(--font-sans); letter-spacing:0.04em; flex:none;">VISA</div>
+                  <div style="flex:1; min-width:0;">
+                    <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900);">Visa ending 4242</div>
+                    <div style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">Expires 04 / 2029</div>
+                  </div>
+                  <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ noop }}" hint-size="90px,36px">Update</x-import>
+                </div>
+                <p style="display:flex; align-items:center; gap:6px; font:var(--fw-regular) 12px/1.5 var(--font-sans); color:var(--gray-400); margin:10px 0 0;"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Card details are handled by Stripe. FounderNexus never stores your card number.</p>
+              </section>
+
+              <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
+                <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0 0 16px;">Billing history</h2>
+                <div style="border:1px solid var(--border-subtle); border-radius:10px; overflow:hidden;">
+                  <div style="display:grid; grid-template-columns:100px minmax(0,1fr) 90px 72px; gap:12px; padding:9px 16px; background:var(--gray-50); border-bottom:1px solid var(--border-subtle);">
+                    <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Date</span>
+                    <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400);">Description</span>
+                    <span style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-400); text-align:right;">Amount</span>
+                    <span></span>
+                  </div>
+                  <sc-for list="{{ invoices }}" as="iv" hint-placeholder-count="3">
+                    <div style="display:grid; grid-template-columns:100px minmax(0,1fr) 90px 72px; gap:12px; padding:11px 16px; border-bottom:1px solid var(--gray-100); align-items:center;">
+                      <span style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600);">{{ iv.date }}</span>
+                      <span style="font:var(--fw-medium) 13px/1.3 var(--font-sans); color:var(--navy-900); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ iv.desc }}</span>
+                      <span style="font:var(--fw-medium) 13px/1.3 var(--font-sans); color:var(--navy-900); text-align:right;">{{ iv.amount }}</span>
+                      <a href="#" sc-camel-on-click="{{ noopPrevent }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans); text-align:right;">Invoice</a>
+                    </div>
+                  </sc-for>
+                </div>
+              </section>
+            </div>
+
+            <section style="flex:1 1 300px; max-width:380px; background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
+              <div style="display:flex; align-items:baseline; justify-content:space-between; gap:8px;">
+                <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0;">Billing address</h2>
+                <a href="#" sc-camel-on-click="{{ noopPrevent }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Edit</a>
+              </div>
+              <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:6px 0 16px;">Used for invoices, tax documents, and card verification.</p>
+              <div style="display:grid; gap:12px;">
+                <div>
+                  <label style="display:block; font:var(--fw-medium) 12px/1 var(--font-sans); color:var(--gray-500); margin-bottom:5px;">Company</label>
+                  <div style="font:var(--fw-regular) 14px/1.4 var(--font-sans); color:var(--navy-900);">Northlight Systems</div>
+                </div>
+                <div>
+                  <label style="display:block; font:var(--fw-medium) 12px/1 var(--font-sans); color:var(--gray-500); margin-bottom:5px;">Street</label>
+                  <div style="font:var(--fw-regular) 14px/1.4 var(--font-sans); color:var(--navy-900);">2101 4th Ave, Suite 1400</div>
+                </div>
+                <div style="display:grid; grid-template-columns:1.4fr 0.6fr 0.9fr; gap:12px;">
+                  <div>
+                    <label style="display:block; font:var(--fw-medium) 12px/1 var(--font-sans); color:var(--gray-500); margin-bottom:5px;">City</label>
+                    <div style="font:var(--fw-regular) 14px/1.4 var(--font-sans); color:var(--navy-900);">Seattle</div>
+                  </div>
+                  <div>
+                    <label style="display:block; font:var(--fw-medium) 12px/1 var(--font-sans); color:var(--gray-500); margin-bottom:5px;">State</label>
+                    <div style="font:var(--fw-regular) 14px/1.4 var(--font-sans); color:var(--navy-900);">WA</div>
+                  </div>
+                  <div>
+                    <label style="display:block; font:var(--fw-medium) 12px/1 var(--font-sans); color:var(--gray-500); margin-bottom:5px;">ZIP</label>
+                    <div style="font:var(--fw-regular) 14px/1.4 var(--font-sans); color:var(--navy-900);">98121</div>
+                  </div>
+                </div>
+                <div>
+                  <label style="display:block; font:var(--fw-medium) 12px/1 var(--font-sans); color:var(--gray-500); margin-bottom:5px;">Tax ID (optional)</label>
+                  <div style="font:var(--fw-regular) 14px/1.4 var(--font-sans); color:var(--gray-500);">Not provided</div>
+                </div>
+              </div>
+              <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:flex-start; gap:6px; margin-top:18px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: ZIP is broken out because Stripe verifies it against the card. The comped-membership state is not shown here; prices are placeholders.</span></div>
+              </sc-if>
+            </section>
+          </div>
+        </sc-if>
       </sc-if>
 
       <!-- ============ MOBILE PROPOSAL ============ -->
       <sc-if value="{{ sMob }}" hint-placeholder-val="{{ false }}">
         <a href="#" sc-camel-on-click="{{ backDesktop }}" style="display:inline-flex; align-items:center; gap:4px; font:var(--fw-semibold) 13px/1 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="m15 18-6-6 6-6"></path></svg>Back to dashboard</a>
         <div style="display:flex; align-items:baseline; gap:14px; margin-top:14px; flex-wrap:wrap;">
-          <h1 style="font:var(--fw-bold) 28px/1.15 var(--font-display); letter-spacing:-0.02em; margin:0;">Dashboard — mobile</h1>
+          <h1 style="font:var(--fw-bold) 28px/1.15 var(--font-display); letter-spacing:-0.02em; margin:0;">Dashboard, mobile</h1>
           <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
-            <span style="display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.3 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: explicit order: Coming up → Working on → More for you → Recent activity. The sidebar disappears on mobile, so the pinned bottom bar is the persistent Nexus Partner contact.</span></span>
+            <span style="display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.3 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: explicit order: Coming up → Working on → More for you → Recent activity. The sidebar disappears on mobile, so the pinned bottom bar is the persistent Nexus Partner contact. Event status sits on the row; Release your spot is a full-width action at the foot of the event sheet, never next to the close control.</span></span>
           </sc-if>
         </div>
 
@@ -1384,6 +1635,17 @@ button { font-family: inherit; }
                   <div style="font:var(--fw-regular) 12px/1.4 var(--font-sans); color:var(--gray-600); margin-top:3px;">{{ w.detail }}</div>
                 </div>
               </sc-for>
+            </div>
+
+            <div style="border:1px solid var(--border-subtle); border-radius:12px; background:#fff; padding:13px 14px; margin-bottom:20px;">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                <span style="font:var(--fw-semibold) 13px/1.3 var(--font-sans); color:var(--navy-900);">Pricing for enterprise deals</span>
+                <span style="display:inline-flex; align-items:center; gap:5px; height:22px; padding:0 9px; border-radius:999px; background:var(--status-success-bg); color:var(--status-success); font:var(--fw-semibold) 11px/1 var(--font-sans); white-space:nowrap;"><span style="width:5px; height:5px; border-radius:50%; background:currentColor;"></span>On your calendar</span>
+              </div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px; padding-top:10px; border-top:1px solid var(--gray-100);">
+                <span style="font:var(--fw-regular) 12px/1.3 var(--font-sans); color:var(--gray-600);">Can't attend?</span>
+                <span style="font:var(--fw-semibold) 12px/1 var(--font-sans); color:var(--gray-700); border:1px solid var(--border-default); border-radius:7px; padding:7px 11px;">Release your spot</span>
+              </div>
             </div>
 
             <div style="font:var(--fw-semibold) 15px/1.2 var(--font-sans); margin:0 0 8px;">More for you</div>
@@ -1448,7 +1710,7 @@ button { font-family: inherit; }
         <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">How they help</div>
         <p style="font:var(--fw-regular) 15px/1.6 var(--font-sans); color:var(--gray-700); margin:10px 0 0; text-wrap:pretty;">{{ advisor.bio }}</p>
         <sc-if value="{{ advisor.investor }}" hint-placeholder-val="{{ false }}">
-          <p style="display:flex; align-items:flex-start; gap:6px; font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-500); margin:12px 0 0;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg>An investor by day — here as an advisor. Sessions are advice, not investment access.</p>
+          <p style="display:flex; align-items:flex-start; gap:6px; font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-500); margin:12px 0 0;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg>An investor by day, here as an advisor. Sessions are advice, not investment access.</p>
         </sc-if>
         <sc-if value="{{ advisor.hasRecs }}" hint-placeholder-val="{{ false }}">
           <a href="#" sc-camel-on-click="{{ advisor.onLibrary }}" style="display:inline-flex; margin-top:14px; font:var(--fw-semibold) 13px/1 var(--font-sans);">Their sessions in the library →</a>
@@ -1480,17 +1742,19 @@ button { font-family: inherit; }
           </div>
         </div>
         <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:16px;">
-          <span style="display:inline-flex; align-items:center; height:24px; padding:0 9px; border-radius:6px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 12px/1 var(--font-sans); white-space:nowrap;">{{ member.industry }}</span>
-          <span style="display:inline-flex; align-items:center; height:24px; padding:0 9px; border-radius:6px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 12px/1 var(--font-sans); white-space:nowrap;">Stage 1</span>
-          <sc-if value="{{ member.hasRating }}" hint-placeholder-val="{{ true }}">
-            <span style="display:inline-flex; align-items:center; gap:4px; height:24px; padding:0 9px; border-radius:6px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-semibold) 12px/1 var(--font-sans);" title="FounderNexus rating"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M12 2.5 14.9 8.4l6.5.95-4.7 4.58 1.1 6.47L12 17.9l-5.8 3.05 1.1-6.47L2.6 9.35l6.5-.95Z"></path></svg>{{ member.rating }}</span>
-          </sc-if>
+          <span style="display:inline-flex; align-items:center; height:24px; padding:0 9px; border-radius:6px; background:var(--gray-100); color:var(--gray-700); font:var(--fw-medium) 12px/1 var(--font-sans); white-space:nowrap;">{{ member.industry }}</span>
+          <sc-for list="{{ member.expertise }}" as="x" hint-placeholder-count="3">
+            <span style="display:inline-flex; align-items:center; height:24px; padding:0 9px; border-radius:6px; background:var(--blue-50); color:var(--navy-900); font:var(--fw-medium) 12px/1 var(--font-sans); white-space:nowrap;">{{ x }}</span>
+          </sc-for>
         </div>
       </div>
 
       <div style="padding:20px 28px 22px;">
         <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">What they're building</div>
         <p style="font:var(--fw-regular) 15px/1.6 var(--font-sans); color:var(--gray-700); margin:10px 0 0; text-wrap:pretty;">{{ member.bio }}</p>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:flex-start; gap:6px; margin-top:14px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: same structure as the advisor card. Contribution scores are not shown. Stage is deliberately omitted: gating is already automatic, so surfacing it only ranks peers against each other. Headshots render in a fixed square with object-fit cover so a portrait or landscape upload can never distort.</span></div>
+        </sc-if>
       </div>
 
       <div style="padding:16px 28px 20px; background:var(--gray-50); border-top:1px solid var(--border-subtle); display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
@@ -1543,8 +1807,109 @@ button { font-family: inherit; }
 
       <div style="padding:16px 28px 20px; background:var(--gray-50); border-top:1px solid var(--border-subtle); display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
         <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" size="md" href="{{ benefitCard.url }}" hint-size="180px,44px">{{ benefitCard.cta }}</x-import>
-        <a href="mailto:sarah@foundernexus.com" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Questions? Ask Sarah →</a>
+        <a href="mailto:sarah@foundernexus.com" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Questions? Ask your Nexus Partner →</a>
       </div>
+    </div>
+  </div>
+</sc-if>
+
+<!-- ============ MEMBERSHIP POP-OUT CARD ============ -->
+<sc-if value="{{ membershipOpen }}" hint-placeholder-val="{{ false }}">
+  <div sc-camel-on-click="{{ closeMembership }}" style="position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(1,5,42,0.45); backdrop-filter:blur(2px); animation:fnFade var(--dur-base) var(--ease-out);">
+    <div sc-camel-on-click="{{ stop }}" style="width:100%; max-width:660px; max-height:92vh; overflow-y:auto; background:#fff; border-radius:var(--radius-xl); box-shadow:var(--shadow-xl); animation:fnPop var(--dur-base) var(--ease-out);">
+
+      <div style="position:relative; padding:26px 28px 20px; border-bottom:1px solid var(--border-subtle);">
+        <button sc-camel-on-click="{{ closeMembership }}" aria-label="Close" style="position:absolute; top:18px; right:18px; width:32px; height:32px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--gray-600); display:flex; align-items:center; justify-content:center; cursor:pointer;" style-hover="background:var(--gray-50);"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+        <h2 style="font:var(--fw-bold) 24px/1.2 var(--font-display); letter-spacing:-0.02em; color:var(--navy-900); margin:0; padding-right:44px;">{{ payTitle }}</h2>
+        <p style="font:var(--fw-regular) 14px/1.55 var(--font-sans); color:var(--gray-600); margin:9px 0 0; padding-right:44px;">{{ paySub }}</p>
+      </div>
+
+      <sc-if value="{{ stepChoose }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:22px 28px 24px;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:14px;">
+            <sc-for list="{{ stages }}" as="st" hint-placeholder-count="2">
+              <div sc-camel-on-click="{{ st.onSelect }}" style="border:1px solid {{ st.borderColor }}; background:{{ st.bg }}; border-radius:12px; padding:18px; cursor:pointer; display:flex; flex-direction:column; gap:8px;" style-hover="border-color:var(--blue-500);">
+                <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
+                  <div style="font:var(--fw-semibold) 16px/1.2 var(--font-sans); color:var(--navy-900);">{{ st.name }}</div>
+                  <sc-if value="{{ st.isMax }}" hint-placeholder-val="{{ false }}">
+                    <span style="display:inline-flex; align-items:center; height:21px; padding:0 8px; border-radius:6px; background:var(--blue-100); color:var(--blue-700); font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.04em; text-transform:uppercase; white-space:nowrap;">Qualified</span>
+                  </sc-if>
+                </div>
+                <div style="font:var(--fw-regular) 12px/1.4 var(--font-sans); color:var(--gray-600);">{{ st.band }}</div>
+                <div style="font:var(--fw-bold) 23px/1 var(--font-display); color:var(--navy-900); margin-top:2px;">{{ st.price }}<span style="font:var(--fw-regular) 12px/1 var(--font-sans); color:var(--gray-500);"> / year</span></div>
+                <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:2px 0 0;">{{ st.room }}</p>
+                <div style="margin-top:auto; padding-top:10px;">
+                  <sc-if value="{{ st.selected }}" hint-placeholder-val="{{ true }}">
+                    <span style="display:inline-flex; align-items:center; gap:6px; height:34px; padding:0 13px; border-radius:8px; background:var(--blue-600); color:#fff; font:var(--fw-semibold) 13px/1 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M20 6 9 17l-5-5"></path></svg>Selected</span>
+                  </sc-if>
+                  <sc-if value="{{ st.unselected }}" hint-placeholder-val="{{ false }}">
+                    <span style="display:inline-flex; align-items:center; height:34px; padding:0 13px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--navy-900); font:var(--fw-semibold) 13px/1 var(--font-sans);">Select</span>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-500); margin:16px 0 0;">You can choose any level at or below the stage you qualified for. Moving up later is a conversation with your Nexus Partner, not a new application.</p>
+        </div>
+        <div style="padding:16px 28px 20px; background:var(--gray-50); border-top:1px solid var(--border-subtle); display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" size="md" sc-camel-on-click="{{ goPay }}" hint-size="200px,44px">Continue to payment</x-import>
+          <span style="font:var(--fw-regular) 13px/1.4 var(--font-sans); color:var(--gray-500);">{{ chosenSummary }}</span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ stepPay }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:20px 28px 4px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; background:var(--blue-50); border:1px solid var(--blue-200); border-radius:10px; padding:14px 16px;">
+            <div>
+              <div style="font:var(--fw-semibold) 15px/1.3 var(--font-sans); color:var(--navy-900);">{{ chosenStage }} membership</div>
+              <div style="font:var(--fw-regular) 12px/1.3 var(--font-sans); color:var(--gray-600); margin-top:3px;">Billed annually. Renews automatically.</div>
+            </div>
+            <div style="font:var(--fw-bold) 21px/1 var(--font-display); color:var(--navy-900); white-space:nowrap;">{{ chosenPrice }}</div>
+          </div>
+        </div>
+        <div style="padding:18px 28px 24px;">
+          <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">Payment details</div>
+          <div style="margin-top:13px;">
+            <label style="display:block; font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--gray-700); margin-bottom:6px;">Card number</label>
+            <input placeholder="1234 1234 1234 1234" style="width:100%; box-sizing:border-box; height:42px; padding:0 12px; border:1px solid var(--border-default); border-radius:8px; font:var(--fw-regular) 14px/1 var(--font-sans); color:var(--navy-900); background:#fff;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:13px;">
+            <div>
+              <label style="display:block; font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--gray-700); margin-bottom:6px;">Expiry</label>
+              <input placeholder="MM / YY" style="width:100%; box-sizing:border-box; height:42px; padding:0 12px; border:1px solid var(--border-default); border-radius:8px; font:var(--fw-regular) 14px/1 var(--font-sans); color:var(--navy-900); background:#fff;">
+            </div>
+            <div>
+              <label style="display:block; font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--gray-700); margin-bottom:6px;">CVC</label>
+              <input placeholder="123" style="width:100%; box-sizing:border-box; height:42px; padding:0 12px; border:1px solid var(--border-default); border-radius:8px; font:var(--fw-regular) 14px/1 var(--font-sans); color:var(--navy-900); background:#fff;">
+            </div>
+            <div>
+              <label style="display:block; font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--gray-700); margin-bottom:6px;">Billing ZIP</label>
+              <input placeholder="98121" style="width:100%; box-sizing:border-box; height:42px; padding:0 12px; border:1px solid var(--border-default); border-radius:8px; font:var(--fw-regular) 14px/1 var(--font-sans); color:var(--navy-900); background:#fff;">
+            </div>
+          </div>
+          <p style="display:flex; align-items:center; gap:6px; font:var(--fw-regular) 12px/1.5 var(--font-sans); color:var(--gray-400); margin:12px 0 0;"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Processed by Stripe. FounderNexus never sees or stores your card number.</p>
+        </div>
+        <div style="padding:16px 28px 20px; background:var(--gray-50); border-top:1px solid var(--border-subtle); display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" size="md" sc-camel-on-click="{{ goDone }}" hint-size="180px,44px">{{ payLabel }}</x-import>
+          <a href="#" sc-camel-on-click="{{ backChoose }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Change level</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ stepDone }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:26px 28px 28px;">
+          <div style="display:flex; align-items:flex-start; gap:12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--status-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>
+            <div>
+              <div style="font:var(--fw-semibold) 18px/1.3 var(--font-sans); color:var(--navy-900);">You're in.</div>
+              <p style="font:var(--fw-regular) 14px/1.55 var(--font-sans); color:var(--gray-600); margin:7px 0 0;">Your {{ chosenStage }} membership is active. Your Nexus Partner will be in touch this week to place you in your first room. A receipt is on its way to your account email.</p>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 28px 20px; background:var(--gray-50); border-top:1px solid var(--border-subtle); display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" size="md" sc-camel-on-click="{{ closeMembershipBtn }}" hint-size="180px,44px">Go to your dashboard</x-import>
+          <span style="font:var(--fw-regular) 13px/1.4 var(--font-sans); color:var(--gray-500);">Manage it anytime in Account.</span>
+        </div>
+      </sc-if>
     </div>
   </div>
 </sc-if>
@@ -1618,14 +1983,28 @@ button { font-family: inherit; }
             <a href="https://foundernexus.github.io/event-page/index.html" target="_blank" rel="noopener" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Full event page →</a>
           </div>
         </sc-if>
-        <sc-if value="{{ eventCard.registered }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ eventCard.registeredIdle }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-            <span style="display:inline-flex; align-items:center; gap:7px; color:var(--status-success); font:var(--fw-semibold) 14px/1 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>You're registered — it's on your calendar</span>
+            <span style="display:inline-flex; align-items:center; gap:7px; color:var(--status-success); font:var(--fw-semibold) 14px/1 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>You're registered, it's on your calendar</span>
             <a href="#" sc-camel-on-click="{{ closeCard }}" style="margin-left:auto; font:var(--fw-semibold) 13px/1 var(--font-sans);">Done</a>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border-subtle); flex-wrap:wrap;">
+            <span style="font:var(--fw-regular) 13px/1.4 var(--font-sans); color:var(--gray-600);">Can't attend? Let the room know so the seat can go to someone else.</span>
+            <button sc-camel-on-click="{{ eventCard.askRelease }}" style="margin-left:auto; height:36px; padding:0 14px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--gray-700); font:var(--fw-semibold) 13px/1 var(--font-sans); cursor:pointer; white-space:nowrap;" style-hover="background:#fff; border-color:var(--navy-900); color:var(--navy-900);">Release your spot</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ eventCard.confirming }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px solid var(--border-default); border-radius:10px; background:#fff; padding:16px;">
+            <div style="font:var(--fw-semibold) 15px/1.35 var(--font-sans); color:var(--navy-900);">Release your spot for this session?</div>
+            <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:6px 0 14px;">It comes off your calendar and the seat opens up for another member. You can register again if a seat is still free.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button sc-camel-on-click="{{ eventCard.onRelease }}" style="height:38px; padding:0 16px; border-radius:8px; border:1px solid var(--navy-900); background:var(--navy-900); color:#fff; font:var(--fw-semibold) 13px/1 var(--font-sans); cursor:pointer;" style-hover="background:#000;">Yes, release it</button>
+              <button sc-camel-on-click="{{ eventCard.cancelRelease }}" style="height:38px; padding:0 16px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--gray-700); font:var(--fw-semibold) 13px/1 var(--font-sans); cursor:pointer;" style-hover="background:var(--gray-50);">Keep my spot</button>
+            </div>
           </div>
         </sc-if>
         <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex; align-items:flex-start; gap:6px; margin-top:14px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: first pass at a shared pop-out card — navy band, ticket strip, takeaways, host, one action. Intended as the reusable format for sessions, dinners, and introductions across the portal. Open: whether registering here should stay in the card (shown) or route to the full event page.</span></div>
+          <div style="display:flex; align-items:flex-start; gap:6px; margin-top:14px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: "Deregister" is system language, so the member-facing wording is <strong>Release your spot</strong>, framed as "Can't attend?". It sits in the action bar, far from the close X, and always asks for confirmation. On mobile this card becomes a bottom sheet and Release your spot is a full-width action at the foot of the sheet, with the same inline confirm. Open: whether registering stays in the card (shown) or routes to the full event page.</span></div>
         </sc-if>
       </div>
 
@@ -1635,11 +2014,13 @@ button { font-family: inherit; }
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{
   &quot;showAnnotations&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Review&quot; },
-  &quot;partnerControl&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;nav&quot;, &quot;header&quot;], &quot;default&quot;: &quot;nav&quot;, &quot;tsType&quot;: &quot;\&quot;nav\&quot; | \&quot;header\&quot;&quot;, &quot;section&quot;: &quot;Nexus Partner&quot; }
+  &quot;partnerControl&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;nav&quot;, &quot;header&quot;], &quot;default&quot;: &quot;nav&quot;, &quot;tsType&quot;: &quot;\&quot;nav\&quot; | \&quot;header\&quot;&quot;, &quot;section&quot;: &quot;Nexus Partner&quot; },
+  &quot;memberState&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;active&quot;, &quot;invited&quot;], &quot;default&quot;: &quot;active&quot;, &quot;tsType&quot;: &quot;\&quot;active\&quot; | \&quot;invited\&quot;&quot;, &quot;section&quot;: &quot;Membership&quot; }
 }">
 class Component extends DCLogic {
   state = {
-    screen: "dashboard", detailId: null, advisorId: null, memberId: null,
+    screen: "dashboard", detailId: null, advisorId: null, memberId: null, confirmRelease: false, stateOverride: null,
+    showMembership: false, chosenStage: "Stage 2", payStep: "choose",
     advisorQuery: "", advisorCat: "All",
     dirQuery: "", dirCat: "All",
     libQuery: "", libCat: "All",
@@ -1649,7 +2030,7 @@ class Component extends DCLogic {
   };
 
   go(screen, extra) {
-    this.setState({ screen, advisorId: null, memberId: null, cardId: null, benefitId: null, ...(extra || {}) });
+    this.setState({ screen, ...(extra || {}) });
     window.scrollTo(0, 0);
   }
 
@@ -1659,7 +2040,7 @@ class Component extends DCLogic {
     const partnerControl = this.props.partnerControl ?? "nav";
     const prevent = (fn) => (e) => { e && e.preventDefault && e.preventDefault(); fn && fn(); };
 
-    // Topic values are representative placeholders — tagging/taxonomy model pending review with Bogdan.
+    // Topic values are representative placeholders; tagging/taxonomy model pending review with Bogdan.
     const ADVISORS = [
       { id: "collin", name: "Collin Stewart", org: "Predictable Revenue", loc: "Vancouver, BC", rating: "4.9", email: "collin@predictablerevenue.com", investor: false, hasRecs: true,
         tags: ["GTM", "Sales", "Pricing"],
@@ -1719,51 +2100,51 @@ class Component extends DCLogic {
         offer: "Cloud credits and startup-program access for eligible FounderNexus members.",
         headline: "Run your infrastructure on Google Cloud without the early-stage bill",
         about: "Google for Startups gives venture-backed companies cloud credits, technical support, and access to the startup program team.",
-        perks: [{ label: "Credits", text: "Up to $100,000 in Google Cloud credits over two years" }, { label: "Free", text: "Technical architecture review with a Google Cloud engineer" }],
+        perks: [{ label: "Credits", text: "Up to $100,000 in Google Cloud credits over two years", primary: true }, { label: "Free", text: "Technical architecture review with a Google Cloud engineer" }],
         claim: "Follow the link and apply with FounderNexus as your referring community.", cta: "Go to partner's site", url: "#" },
       { id: "hubspot", name: "HubSpot", initials: "H", logo: null, cat: "Tools & software", tab: "tools", isNew: true,
         offer: "HubSpot for Startups: 30% off your first year on Marketing and Sales hubs.",
         headline: "Put your marketing and sales on one system before you have a RevOps hire",
         about: "HubSpot for Startups is the discounted tier of the HubSpot CRM platform, sized for teams still building their first repeatable pipeline.",
-        perks: [{ label: "-30%", text: "First year on Marketing Hub and Sales Hub, any tier" }, { label: "-15%", text: "Second year, applied automatically at renewal" }, { label: "Free", text: "Onboarding session with a HubSpot startup specialist" }],
+        perks: [{ label: "-30%", text: "First year on Marketing Hub and Sales Hub, any tier", primary: true }, { label: "-15%", text: "Second year, applied automatically at renewal" }, { label: "Free", text: "Onboarding session with a HubSpot startup specialist" }],
         claim: "Follow the link so we can send you the FounderNexus partner code.", cta: "Go to partner's site", url: "#" },
       { id: "docusign", name: "DocuSign", initials: "D", logo: null, cat: "Tools & software", tab: "tools", isNew: false,
         offer: "eSignature Business Pro plan, free for your first 12 months.",
         headline: "Accelerate your revenue and customer engagement with electronic agreements",
         about: "DocuSign is the global leader in e-signature and intelligent agreement management. Get your contracts and agreements executed faster, speeding up revenue traction.",
-        perks: [{ label: "Free", text: "eSignature Business Pro plan for your first 12 months" }, { label: "-25%", text: "Year two when you sign up for an annual plan" }],
+        perks: [{ label: "Free", text: "eSignature Business Pro plan for your first 12 months", primary: true }, { label: "-25%", text: "Year two when you sign up for an annual plan" }],
         claim: "Please follow the link so we can send you the discount code.", cta: "Go to partner's site", url: "#" },
       { id: "seedip", name: "Seed IP", initials: "SI", logo: "assets/partners/seed-ip-logo.png", cat: "Service providers · Legal", tab: "services", isNew: true,
         offer: "Member rate on IP strategy and first patent filing for early-stage companies.",
         headline: "Get your IP position right before it becomes expensive to fix",
         about: "Seed IP is a Seattle intellectual property firm working with early-stage technology companies on patent strategy, filings, and trademark protection.",
-        perks: [{ label: "Free", text: "One-hour IP strategy consultation, no engagement required" }, { label: "Member rate", text: "Discounted first provisional patent filing" }],
+        perks: [{ label: "Member rate", text: "Discounted first provisional patent filing", primary: true }, { label: "Free", text: "One-hour IP strategy consultation, no engagement required" }],
         claim: "To claim, send an email with FounderNexus in the subject line to intake@seedip.com.", cta: "Go to partner's site", url: "#" },
       { id: "wsgr", name: "Wilson Sonsini", initials: "WS", logo: null, cat: "Service providers · Legal", tab: "services", isNew: false,
         offer: "Deferred-fee company formation and startup counsel package.",
         headline: "Company formation counsel that defers fees until you raise",
         about: "Wilson Sonsini represents technology and growth companies from formation through exit, including venture financings, board matters, and M&A.",
-        perks: [{ label: "Deferred", text: "Formation fees deferred until your first priced round" }, { label: "Free", text: "Term sheet review for your first institutional raise" }],
+        perks: [{ label: "Deferred", text: "Formation fees deferred until your first priced round", primary: true }, { label: "Free", text: "Term sheet review for your first institutional raise" }],
         claim: "Follow the link and mention FounderNexus when you submit the intake form.", cta: "Go to partner's site", url: "#" },
       { id: "predrev", name: "Predictable Revenue", initials: "PR", logo: null, cat: "Service providers · Consulting", tab: "services", isNew: false,
         offer: "Member rate on a founder-led-sales audit with the Predictable Revenue team.",
         headline: "Find out where your pipeline is actually breaking",
         about: "Predictable Revenue works with early B2B teams on founder-led sales, outbound process, and the first sales hires.",
-        perks: [{ label: "Free", text: "90-minute pipeline teardown with a Predictable Revenue advisor" }, { label: "Member rate", text: "Full founder-led-sales audit and playbook build" }],
+        perks: [{ label: "Free", text: "90-minute pipeline teardown with a Predictable Revenue advisor", primary: true }, { label: "Member rate", text: "Full founder-led-sales audit and playbook build" }],
         claim: "Fill out the form on the website to discuss your requirements.", cta: "Go to partner's site", url: "#" },
     ];
 
     // Members + selected active prospects, intentionally unlabeled. Viewer is Stage 1 → Stage 1 shown.
     const DIRECTORY = [
-      { id: "maya",email: "maya@loopwell.com", name: "Maya Chen", company: "Loopwell", role: "Co-founder & CEO", industry: "B2B SaaS", loc: "Seattle", rating: "4.9", bio: "Building Loopwell, workflow automation for property managers. Previously product at Zillow." },
-      { id: "andy",email: "andy@unlock.co", name: "Andy Liu", company: "Unlock", role: "Co-founder & CEO", industry: "Fintech", loc: "SF Bay Area", rating: "4.8", bio: "Building Unlock, payroll-linked savings for hourly workers. Second-time founder; sold his first company to Gusto." },
-      { id: "priya",email: "priya@fieldnote.ai", name: "Priya Natarajan", company: "Fieldnote", role: "Founder & CEO", industry: "AI", loc: "Portland", rating: "4.9", bio: "Building Fieldnote, AI note-taking for field service teams. Previously engineering lead at Twilio." },
-      { id: "jordan",email: "jordan@cartwheel.co", name: "Jordan Meeks", company: "Cartwheel", role: "Co-founder & CEO", industry: "Marketplace", loc: "Seattle", rating: null, bio: "Building Cartwheel, a marketplace for youth sports coaching." },
-      { id: "sofia",email: "sofia@brightlinehealth.com", name: "Sofia Reyes", company: "Brightline Health", role: "Co-founder & CEO", industry: "Healthcare", loc: "San Diego", rating: "4.7", bio: "Building Brightline Health, bilingual patient intake for clinics. Former clinic operations director." },
-      { id: "hannah",email: "hannah@verdant.eco", name: "Hannah Cole", company: "Verdant", role: "Founder & CEO", industry: "Climate", loc: "Vancouver, BC", rating: "4.8", bio: "Building Verdant, carbon accounting for mid-market manufacturers." },
-      { id: "dan",email: "dan@shipmate.io", name: "Dan Brooks", company: "Shipmate", role: "Co-founder & CTO", industry: "B2B SaaS", loc: "Tacoma", rating: null, bio: "Building Shipmate, freight quoting for regional carriers. Twenty years in logistics software." },
-      { id: "lena",email: "lena@kestrel.ai", name: "Lena Fischer", company: "Kestrel AI", role: "Founder & CEO", industry: "AI", loc: "Seattle", rating: "4.9", bio: "Building Kestrel AI, anomaly detection for industrial sensors. PhD in machine learning, UW." },
-      { id: "tom",email: "tom@relay.co", name: "Tom Okafor", company: "Relay", role: "Co-founder & CEO", industry: "Marketplace", loc: "Seattle", rating: "4.6", bio: "Building Relay, same-day courier marketplace for independent pharmacies." },
+      { id: "maya", email: "maya@loopwell.com", name: "Maya Chen", company: "Loopwell", role: "Co-founder & CEO", industry: "B2B SaaS", loc: "Seattle", expertise: ["Product", "Pricing", "Vertical SaaS"], bio: "Building Loopwell, workflow automation for property managers. Previously product at Zillow." },
+      { id: "andy", email: "andy@unlock.co", name: "Andy Liu", company: "Unlock", role: "Co-founder & CEO", industry: "Fintech", loc: "SF Bay Area", expertise: ["Fundraising", "Regulated markets", "Second-time founder"], bio: "Building Unlock, payroll-linked savings for hourly workers. Second-time founder; sold his first company to Gusto." },
+      { id: "priya", email: "priya@fieldnote.ai", name: "Priya Natarajan", company: "Fieldnote", role: "Founder & CEO", industry: "AI", loc: "Portland", expertise: ["Applied AI", "Engineering leadership", "Field sales"], bio: "Building Fieldnote, AI note-taking for field service teams. Previously engineering lead at Twilio." },
+      { id: "jordan", email: "jordan@cartwheel.co", name: "Jordan Meeks", company: "Cartwheel", role: "Co-founder & CEO", industry: "Marketplace", loc: "Seattle", expertise: ["Marketplace supply", "Community growth"], bio: "Building Cartwheel, a marketplace for youth sports coaching." },
+      { id: "sofia", email: "sofia@brightlinehealth.com", name: "Sofia Reyes", company: "Brightline Health", role: "Co-founder & CEO", industry: "Healthcare", loc: "San Diego", expertise: ["Healthcare ops", "Enterprise sales", "Compliance"], bio: "Building Brightline Health, bilingual patient intake for clinics. Former clinic operations director." },
+      { id: "hannah", email: "hannah@verdant.eco", name: "Hannah Cole", company: "Verdant", role: "Founder & CEO", industry: "Climate", loc: "Vancouver, BC", expertise: ["Climate", "Mid-market sales", "Grant funding"], bio: "Building Verdant, carbon accounting for mid-market manufacturers." },
+      { id: "dan", email: "dan@shipmate.io", name: "Dan Brooks", company: "Shipmate", role: "Co-founder & CTO", industry: "B2B SaaS", loc: "Tacoma", expertise: ["Logistics", "Technical hiring", "Integrations"], bio: "Building Shipmate, freight quoting for regional carriers. Twenty years in logistics software." },
+      { id: "lena", email: "lena@kestrel.ai", name: "Lena Fischer", company: "Kestrel AI", role: "Founder & CEO", industry: "AI", loc: "Seattle", expertise: ["Applied AI", "Research to product", "Industrial"], bio: "Building Kestrel AI, anomaly detection for industrial sensors. PhD in machine learning, UW." },
+      { id: "tom", email: "tom@relay.co", name: "Tom Okafor", company: "Relay", role: "Co-founder & CEO", industry: "Marketplace", loc: "Seattle", expertise: ["Marketplace ops", "Local GTM", "Pharmacy"], bio: "Building Relay, same-day courier marketplace for independent pharmacies." },
     ];
 
     const RECENT_ALL = [
@@ -1773,7 +2154,7 @@ class Component extends DCLogic {
       { date: "Jul 30", title: "Make the most of limited resources", person: "Court Lorenzini", advisorId: "court", recId: "resources" },
       { date: "Jul 22", title: "Pitch deck teardown", person: "Becki DeGraw", advisorId: "becki" },
       { date: "Jul 15", title: "Nexus Partner call", person: "Sarah Kim" },
-      { date: "Jul 9", title: "Stage 1 roundtable: founder-led sales", person: "Collin Stewart", advisorId: "collin" },
+      { date: "Jul 9", title: "Founder-led sales roundtable", person: "Collin Stewart", advisorId: "collin" },
       { date: "Jun 12", title: "How to build a sales team", person: "Collin Stewart", advisorId: "collin", recId: "sales-team" },
     ];
 
@@ -1781,7 +2162,9 @@ class Component extends DCLogic {
     const advisors = ADVISORS.filter((a) => {
       const hay = (a.name + " " + a.org + " " + a.tags.join(" ")).toLowerCase();
       return (!aq || hay.includes(aq)) && (S.advisorCat === "All" || a.tags.includes(S.advisorCat));
-    }).map((a) => ({ ...a, hasRating: !!a.rating, noRatingRow: !a.rating, tagLine: a.tags.join(" · "), onOpen: prevent(() => this.setState({ advisorId: a.id })) }));
+    }).map((a) => ({ ...a, hasRating: !!a.rating, noRatingRow: !a.rating,
+      chips: a.tags.slice(0, 2), hasMoreChips: a.tags.length > 2, moreChips: "+" + (a.tags.length - 2),
+      onOpen: prevent(() => this.setState({ advisorId: a.id })) }));
 
     const advisorRaw = ADVISORS.find((a) => a.id === S.advisorId) || ADVISORS[0];
     const advisor = {
@@ -1793,12 +2176,14 @@ class Component extends DCLogic {
 
     const dq = S.dirQuery.trim().toLowerCase();
     const directory = DIRECTORY.filter((d) => {
-      const hay = (d.name + " " + d.company).toLowerCase();
+      const hay = (d.name + " " + d.company + " " + d.expertise.join(" ")).toLowerCase();
       return (!dq || hay.includes(dq)) && (S.dirCat === "All" || d.industry === S.dirCat);
-    }).map((d) => ({ ...d, onOpen: prevent(() => this.setState({ memberId: d.id })) }));
+    }).map((d) => ({ ...d,
+      chips: d.expertise.slice(0, 2), hasMoreChips: d.expertise.length > 2, moreChips: "+" + (d.expertise.length - 2),
+      onOpen: prevent(() => this.setState({ memberId: d.id })) }));
 
     const memberRaw = DIRECTORY.find((d) => d.id === S.memberId) || DIRECTORY[0];
-    const member = { ...memberRaw, hasRating: !!memberRaw.rating };
+    const member = { ...memberRaw };
 
     const lq = S.libQuery.trim().toLowerCase();
     const recs = RECS.filter((r) => {
@@ -1822,15 +2207,19 @@ class Component extends DCLogic {
     const benefits = BENEFITS.filter((b) => {
       const hay = (b.name + " " + b.cat + " " + b.offer + " " + b.perks.map((p) => p.label + " " + p.text).join(" ")).toLowerCase();
       return (!bq || hay.includes(bq)) && (S.benCat === "All" || b.tab === S.benCat);
-    }).map((b) => ({
-      ...b, hasLogo: !!b.logo, noLogo: !b.logo,
-      leadLabel: b.perks[0].label, leadText: b.perks[0].text,
-      moreLine: b.perks.length > 1 ? "+" + (b.perks.length - 1) + " more" : "",
-      onOpen: prevent(() => this.setState({ benefitId: b.id })),
-    }));
+    }).map((b) => {
+      const lead = b.perks.find((p) => p.primary) || b.perks[0];
+      return {
+        ...b, hasLogo: !!b.logo, noLogo: !b.logo,
+        leadLabel: lead.label, leadText: lead.text,
+        linkLabel: b.perks.length > 1 ? "View more benefits" : "View offer",
+        onOpen: prevent(() => this.setState({ benefitId: b.id })),
+      };
+    });
 
     const benRaw = S.benefitId ? BENEFITS.find((b) => b.id === S.benefitId) : null;
-    const benefitCard = benRaw ? { ...benRaw, hasLogo: !!benRaw.logo, noLogo: !benRaw.logo } : {};
+    const benefitCard = benRaw ? { ...benRaw, hasLogo: !!benRaw.logo, noLogo: !benRaw.logo,
+      perks: [...benRaw.perks].sort((x, y) => (y.primary ? 1 : 0) - (x.primary ? 1 : 0)).map((p) => ({ ...p, isPrimary: !!p.primary })) } : {};
 
     const MORE = [
       { id: "m1", when: "Wed, Sep 9 · 4:00 PM PDT", title: "Customer discovery that changes the roadmap", person: "Aaron Goldfeder", where: "Zoom" },
@@ -1838,7 +2227,7 @@ class Component extends DCLogic {
       { id: "m3", when: "Fri, Sep 18 · 12:00 PM PDT", title: "Term sheets without the pain", person: "Becki DeGraw", where: "Zoom" },
     ];
 
-    // Shared pop-out card content — same shape for every kind of item (session, dinner, introduction).
+    // Shared pop-out card content; same shape for every kind of item (session, dinner, introduction).
     const EVENT_CARDS = {
       m1: {
         kind: "Customer Discovery · Playbook", title: "Customer discovery that changes the roadmap",
@@ -1850,7 +2239,7 @@ class Component extends DCLogic {
         takeaways: [
           "How to structure discovery calls so customers correct you",
           "The difference between real pull and polite interest",
-          "Open Q&A — bring a live discovery question",
+          "Open Q&A. Bring a live discovery question",
         ],
       },
       m2: {
@@ -1876,21 +2265,26 @@ class Component extends DCLogic {
         takeaways: [
           "The four terms that actually decide the outcome",
           "What to push on and what to concede in a first raise",
-          "Open Q&A — bring the term sheet you're reading",
+          "Open Q&A. Bring the term sheet you're reading",
         ],
       },
     };
     const cardRaw = S.cardId ? EVENT_CARDS[S.cardId] : null;
+    const isReg = !!S.registered[S.cardId];
     const eventCard = cardRaw ? {
       ...cardRaw,
-      registered: !!S.registered[S.cardId],
-      unregistered: !S.registered[S.cardId],
-      onRegister: () => this.setState((s) => ({ registered: { ...s.registered, [S.cardId]: true } })),
+      unregistered: !isReg,
+      registeredIdle: isReg && !S.confirmRelease,
+      confirming: isReg && S.confirmRelease,
+      onRegister: () => this.setState((s) => ({ registered: { ...s.registered, [S.cardId]: true }, confirmRelease: false })),
+      askRelease: () => this.setState({ confirmRelease: true }),
+      cancelRelease: () => this.setState({ confirmRelease: false }),
+      onRelease: () => this.setState((s) => { const r = { ...s.registered }; delete r[S.cardId]; return { registered: r, confirmRelease: false }; }),
     } : {};
 
     const workingOn = [
       { stage: "Scheduling", title: "Pricing expert session for your enterprise-deal question", detail: "Coordinating availability with two pricing experts.", updated: "Updated yesterday" },
-      { stage: "Need more information", title: "Introductions to enterprise CHROs", detail: "Sarah needs a little more detail on the type of company and role you're targeting.", updated: "Waiting on you" },
+      { stage: "Need more information", title: "Introductions to enterprise CHROs", detail: "Your Nexus Partner needs a little more detail on the type of company and role you're targeting.", updated: "Waiting on you" },
       { stage: "In progress", title: "Introductions to 5 target founders", detail: "2 introductions complete · 3 in progress", updated: "Updated 2 days ago" },
     ];
     if (S.benefitSubmitted) workingOn.push({ stage: "In progress", title: "Reviewing your FounderNexus benefit submission", detail: "Submitted Aug 20", updated: "" });
@@ -1906,6 +2300,47 @@ class Component extends DCLogic {
 
     const nav = (S.screen === "recording") ? "library" : (S.screen === "mobile") ? "dashboard" : S.screen;
 
+    const memberState = S.stateOverride || this.props.memberState || "active";
+
+    // Profile completion: the banner names whatever is actually missing, highest-value gap first.
+    const PROFILE_FIELDS = [
+      { label: "personal details", done: true, cta: "Add details", why: "" },
+      { label: "company and role", done: true, cta: "Add company", why: "so we can match you to the right room" },
+      { label: "expertise", done: true, cta: "Add expertise", why: "so other founders know what to ask you about" },
+      { label: "your LinkedIn", done: true, cta: "Add LinkedIn", why: "so other founders can place you" },
+      { label: "a connected calendar", done: true, cta: "Connect calendar", why: "so FounderNexus can place sessions directly" },
+      { label: "a line on what you're building", done: false, cta: "Add summary", why: "so your directory card says more than your job title" },
+    ];
+    const doneCount = PROFILE_FIELDS.filter((p) => p.done).length;
+    const missing = PROFILE_FIELDS.filter((p) => !p.done);
+    const words = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"];
+    const completion = {
+      pct: Math.round((doneCount / PROFILE_FIELDS.length) * 100) + "%",
+      cta: missing.length ? missing[0].cta : "View profile",
+      incomplete: missing.length > 0,
+      line: missing.length
+        ? words[doneCount] + " of " + words[PROFILE_FIELDS.length].toLowerCase() + " done. Add " + missing[0].label + " " + missing[0].why + "."
+          + (missing.length > 1 ? " Still to add: " + missing.slice(1).map((m) => m.label).join(", ") + "." : "")
+        : "Your profile is complete.",
+    };
+    const STAGES = [
+      { name: "Stage 1", band: "$0–2M ARR · Pre-Seed/Seed", price: "$4,800", room: "Founders working out what repeatable revenue looks like." },
+      { name: "Stage 2", band: "$2–10M ARR · Series A", price: "$7,200", room: "Founders building the team and system behind the revenue." },
+      { name: "Stage 3", band: "$10–50M ARR · Series B/C", price: "$9,600", room: "Founders running an organization rather than a team." },
+      { name: "Stage 4", band: "$50M+ ARR · Series D+", price: "$12,000", room: "Founders making decisions with a board and a market watching." },
+    ];
+    const QUALIFIED_MAX = 2;
+    const stages = STAGES.slice(0, QUALIFIED_MAX).map((s, i) => ({
+      ...s,
+      isMax: i === QUALIFIED_MAX - 1,
+      selected: S.chosenStage === s.name,
+      unselected: S.chosenStage !== s.name,
+      borderColor: S.chosenStage === s.name ? "var(--blue-500)" : "var(--border-subtle)",
+      bg: S.chosenStage === s.name ? "var(--blue-50)" : "#fff",
+      onSelect: () => this.setState({ chosenStage: s.name }),
+    }));
+    const chosen = STAGES.find((s) => s.name === S.chosenStage) || STAGES[0];
+
     return {
       notes,
       partnerNav: partnerControl === "nav",
@@ -1917,6 +2352,7 @@ class Component extends DCLogic {
         { value: "library", label: "Content library", icon: "folder" },
         { value: "benefits", label: "Benefits", icon: "gift" },
         { value: "profile", label: "Profile", icon: "user" },
+        { value: "account", label: "Account", icon: "settings" },
       ],
       navValue: nav,
       onNav: (v) => this.go(v),
@@ -1933,6 +2369,48 @@ class Component extends DCLogic {
       sRec: S.screen === "recording",
       sBen: S.screen === "benefits",
       sProf: S.screen === "profile",
+      sAcct: S.screen === "account",
+      goAccount: prevent(() => this.go("account")),
+      goProfile: prevent(() => this.go("profile")),
+      active: memberState === "active",
+      invited: memberState === "invited",
+      setActive: () => this.setState({ stateOverride: "active" }),
+      setInvited: () => this.setState({ stateOverride: "invited" }),
+      activeBg: memberState === "active" ? "#fff" : "transparent",
+      activeFg: memberState === "active" ? "var(--navy-900)" : "var(--gray-600)",
+      activeShadow: memberState === "active" ? "0 1px 2px rgba(1,5,42,0.10)" : "none",
+      invitedBg: memberState === "invited" ? "#fff" : "transparent",
+      invitedFg: memberState === "invited" ? "var(--navy-900)" : "var(--gray-600)",
+      invitedShadow: memberState === "invited" ? "0 1px 2px rgba(1,5,42,0.10)" : "none",
+      stages,
+      completion,
+      prefs: [
+        { name: "Session invitations", detail: "New sessions and rooms matched to your stage", trackBg: "var(--blue-500)", knobLeft: "19px" },
+        { name: "Weekly digest", detail: "What the rooms discussed this week", trackBg: "var(--blue-500)", knobLeft: "19px" },
+        { name: "New benefits", detail: "When a partner offer is added", trackBg: "var(--gray-200)", knobLeft: "2px" },
+        { name: "Community announcements", detail: "Occasional news from FounderNexus", trackBg: "var(--gray-200)", knobLeft: "2px" },
+      ],
+      invoices: [
+        { date: "Mar 14, 2026", desc: "Stage 1 membership · annual", amount: "$4,800.00" },
+        { date: "Mar 14, 2025", desc: "Stage 1 membership · annual", amount: "$4,800.00" },
+        { date: "Mar 14, 2024", desc: "Stage 1 membership · annual", amount: "$4,800.00" },
+      ],
+      membershipOpen: S.showMembership,
+      openMembership: () => this.setState({ showMembership: true, payStep: "choose" }),
+      closeMembership: prevent(() => this.setState({ showMembership: false })),
+      closeMembershipBtn: () => this.setState({ showMembership: false, screen: "dashboard" }),
+      stepChoose: S.payStep === "choose",
+      stepPay: S.payStep === "pay",
+      stepDone: S.payStep === "done",
+      goPay: () => this.setState({ payStep: "pay" }),
+      goDone: () => this.setState({ payStep: "done" }),
+      backChoose: prevent(() => this.setState({ payStep: "choose" })),
+      payTitle: S.payStep === "done" ? "Welcome to FounderNexus" : S.payStep === "pay" ? "Confirm and pay" : "Choose your membership",
+      paySub: S.payStep === "done" ? "Your membership is active." : S.payStep === "pay" ? "One annual payment. Cancel anytime from Account and billing." : "You qualified through Stage 2. Choose the level that fits where you are today.",
+      chosenStage: S.chosenStage,
+      chosenPrice: chosen.price,
+      chosenSummary: S.chosenStage + " · " + chosen.price + " per year",
+      payLabel: "Pay " + chosen.price,
       sMob: S.screen === "mobile",
       goMobile: prevent(() => this.go("mobile")),
       backDesktop: prevent(() => this.go("dashboard")),
@@ -1941,10 +2419,16 @@ class Component extends DCLogic {
       closeAdvisor: prevent(() => this.setState({ advisorId: null })),
 
       comingUp: [
-        { day: "24", mon: "Aug", title: "Pricing for enterprise deals", type: "Session", time: "4:00 – 5:00 PM PDT", person: "Collin Stewart", place: "Zoom" },
-        { day: "26", mon: "Aug", title: "Call with Sarah Kim", type: "Nexus Partner call", time: "9:30 – 10:00 AM PDT", person: "Sarah Kim", place: "Zoom" },
-        { day: "28", mon: "Aug", title: "Introduction: Andy Liu, Unlock", type: "Introduction", time: "1:00 – 1:30 PM PDT", person: "Andy Liu", place: "Zoom" },
-        { day: "03", mon: "Sep", title: "Stage 1 roundtable: hiring your first sales rep", type: "Session", time: "12:00 – 1:00 PM PDT", person: "Court Lorenzini", place: "Zoom" },
+        { day: "24", mon: "Aug", title: "Pricing for enterprise deals", type: "Session", time: "4:00 – 5:00 PM PDT", person: "Collin Stewart", place: "Zoom",
+          status: "On your calendar", statusBg: "var(--status-success-bg)", statusFg: "var(--status-success)" },
+        { day: "26", mon: "Aug", title: "Call with Sarah Kim", type: "Nexus Partner call", time: "9:30 – 10:00 AM PDT", person: "Sarah Kim", place: "Zoom",
+          status: "Accepted", statusBg: "var(--status-success-bg)", statusFg: "var(--status-success)" },
+        { day: "28", mon: "Aug", title: "Introduction: Andy Liu, Unlock", type: "Introduction", time: "1:00 – 1:30 PM PDT", person: "Andy Liu", place: "Zoom",
+          status: "Pending acceptance", statusBg: "#FFF4E5", statusFg: "#B45309" },
+        { day: "03", mon: "Sep", title: "Hiring your first sales rep", type: "Session", time: "12:00 – 1:00 PM PDT", person: "Court Lorenzini", place: "Zoom",
+          status: "Invitation sent", statusBg: "var(--blue-50)", statusFg: "var(--blue-700)" },
+        { day: "09", mon: "Sep", title: "Board reporting for a first institutional board", type: "Session", time: "3:00 – 4:00 PM PDT", person: "Becki DeGraw", place: "Zoom",
+          status: "Declined", statusBg: "var(--gray-100)", statusFg: "var(--gray-600)" },
       ],
       workingOn: workingOn.map((w) => ({ ...w, hasUpdated: !!w.updated })),
       moreForYou: MORE.map((m) => ({
@@ -1955,7 +2439,7 @@ class Component extends DCLogic {
       })),
       cardOpen: !!cardRaw,
       eventCard,
-      closeCard: prevent(() => this.setState({ cardId: null })),
+      closeCard: prevent(() => this.setState({ cardId: null, confirmRelease: false })),
       benefitOpen: !!benRaw,
       benefitCard,
       closeBenefit: prevent(() => this.setState({ benefitId: null })),
@@ -2010,12 +2494,12 @@ class Component extends DCLogic {
 }
 </script>
 
-
 <script>
   /* Review flags, set from the URL — see README.md
-       ?annotations=0            hide the dashed "Notes" chips (default: shown)
-       ?partner=nav|header|sidebar   where the Nexus Partner control sits (default: nav)
-     Both are demo-only review affordances and ship with nothing else attached. */
+       ?annotations=0                 hide the dashed "Notes" chips (default: shown)
+       ?partner=nav|header            where the Nexus Partner control sits (default: nav)
+       ?member=active|invited         membership state (default: active)
+     These are demo-only review affordances and ship with nothing else attached. */
   (function () {
     var q = new URLSearchParams(location.search);
     var overrides = {};
@@ -2024,7 +2508,10 @@ class Component extends DCLogic {
     if (a !== null) overrides.showAnnotations = !/^(0|false|off|no)$/i.test(a);
 
     var p = q.get('partner');
-    if (p && ['nav', 'header', 'sidebar'].indexOf(p) >= 0) overrides.partnerControl = p;
+    if (p && ['nav', 'header'].indexOf(p) >= 0) overrides.partnerControl = p;
+
+    var m = q.get('member');
+    if (m && ['active', 'invited'].indexOf(m) >= 0) overrides.memberState = m;
 
     if (!Object.keys(overrides).length) return;
 

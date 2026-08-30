@@ -11,56 +11,64 @@ Internal review only. The page is `noindex, nofollow`.
 
 ## What's new in this build
 
-Rebuilt from the 22 Aug 22:01 `Clickable prototype navigation review-cards.zip` handoff (`CHANGES.md`):
+Rebuilt from the 29 Aug 18:32 `Clickable prototype navigation review.zip` handoff (`CHANGES.md`):
 
-- **Advisor pop-out** — roster rows open a shared card (how they help, investor note, Email / LinkedIn / Website). The separate advisor profile page is gone.
-- **Directory pop-out** — rows open a shared card (what they're building, LinkedIn, member email). Direct outreach; the profile page is gone.
-- Event and benefit pop-outs from the previous pass are unchanged. Content library is still in the demo.
+- **Account** is a seventh nav item. Profile is personal only; subscription, payment, billing, sign-in, and email prefs live here.
+- **Invited-to-paid conversion** — invitation card on the Dashboard, membership chooser + Stripe pay flow in the shared pop-out. Flip Active / Invited from the topbar or `?member=invited`.
+- **Five event statuses** on Coming up (Invitation sent → Declined), replacing the single "On your calendar" pill.
+- **Release your spot** in the registered event pop-out (inline confirm, no red).
+- **Profile completion banner** first on Profile; **What you're building** is the open gap. Membership moved off Profile.
+- Advisor and Directory expertise chips capped at two plus "+N". Benefits cards always show a **Featured benefit** line.
 
 ## What to click through
 
 | Screen | What to look at |
 | --- | --- |
-| Dashboard | Calendar-first. "Coming up" is the only card with a shadow; one status pill per row. Click a **More for you** row to open the event pop-out. "What we're working on" is the right column. |
-| Event pop-out | Reached from **More for you**. Navy kind label, date ticket, when/where, takeaways, host, **Register to attend**. After register: "You're registered — it's on your calendar." **Full event page →** opens the live event page. |
-| Benefit pop-out | Reached from a Benefits card or **View offer**. Partner identity, headline, **Your member offer** perk list, how to claim, **Go to partner's site**. Overlay or X closes. |
-| Advisors | Search + one topic Select. Dense roster table; click a row or **Profile →** to open the pop-out. Ratings appear only where one exists. |
-| Advisor pop-out | Reached from a roster row, Recent Activity, or a recording's advisor name. How they help, investor disclaimer when it applies, **Their sessions in the library →**, Email / LinkedIn / Website. Overlay or X closes. |
-| Directory | Industry Select + name/company search. Roster of founders at your stage. Click a row or **Profile →** to open the pop-out. Direct LinkedIn / email — no messaging product. |
-| Member pop-out | Reached from a Directory row. Role, company, industry, Stage 1, what they're building, LinkedIn and email. Overlay or X closes. |
-| Content library | Search + category. Typing 3+ characters (try `discount`) surfaces the exploratory transcript-moments panel. |
+| Dashboard | Calendar-first. Coming up is the only card with a shadow; each row has a status pill. Click a **More for you** row to open the event pop-out. "What we're working on" is the right column. |
+| Invited dashboard | Flip the topbar to **Invited** (or `?member=invited`). Pale-blue invitation card → **Choose your membership**. |
+| Event pop-out | Reached from **More for you**. Navy kind label, date ticket, takeaways, host, **Register to attend**. After register: confirmation + **Release your spot**. **Full event page →** opens the live event page. |
+| Benefit pop-out | Reached from a Benefits card. Partner identity, headline, **Your member offer** perk list, how to claim, **Go to partner's site**. |
+| Membership pop-out | Reached from the invite card or Account **Change membership level**. Stage cards at or below the qualified max → pay → "You're in." |
+| Advisors | Search + one topic Select. Dense roster; expertise chips capped at two plus "+N". Click a row or **Profile →** for the pop-out. |
+| Advisor pop-out | How they help, investor disclaimer when it applies, **Their sessions in the library →**, Email / LinkedIn / Website. |
+| Directory | Industry Select + search. Same column grammar as Advisors. No ratings, no stage. Click a row for the member pop-out. |
+| Member pop-out | Role, company, industry + expertise, what they're building, LinkedIn and email. Direct outreach. |
+| Content library | Search + category. Recordings, one in-portal **Article**, one **Newsletter** that links out to Substack. Typing 3+ characters (try `discount`) surfaces the exploratory transcript-moments panel. |
 | Recording detail | Reached from any recording card or transcript moment. Key moments list with timestamps. |
-| Benefits | Search + category Select. Cards show the lead offer term; click a card or **View offer** to open the pop-out (perks, how to claim, partner-site CTA). "Offer a benefit to the community" opens the submission dialog. |
-| Profile | Account email vs. work email, calendar connection, membership and billing. |
-| Dashboard — mobile | Linked from the top-right of the Dashboard. Pinned bottom bar carries the Nexus Partner contact, since the sidebar disappears on mobile. |
+| Benefits | Search + category Select. Cards show **Featured benefit** + the primary perk; **View more benefits →** when there are further perks. "Offer a benefit to the community" opens the submission dialog. |
+| Profile | Completion banner first, then personal / company / **What you're building** / expertise / calendar. No prices. |
+| Account | Subscription, sign-in & security, email prefs, payment method, billing history, billing address + ZIP + Tax ID. Invited state is the inline chooser. |
+| Dashboard — mobile | Linked from the top-right of the Dashboard. Pinned bottom bar carries the Nexus Partner contact. Release your spot is a full-width action at the foot of the event sheet. |
 
 ## Review flags (URL parameters)
 
 | URL | Effect |
 | --- | --- |
-| `/dashboard-demo/` | Default. Dashed blue **Notes** chips visible. |
+| `/dashboard-demo/` | Default. Dashed blue **Notes** chips visible. Active member. Partner card under the nav. |
 | `/dashboard-demo/?annotations=0` | Hides the review chips — the clean product view. |
+| `/dashboard-demo/?member=invited` | Invited prospect: dashboard invitation card + Account chooser. |
+| `/dashboard-demo/?member=active` | Active member (the default). |
 | `/dashboard-demo/?partner=header` | Moves the Nexus Partner control to a topbar button. |
-| `/dashboard-demo/?partner=sidebar` | Moves it to a sidebar footer. |
 | `/dashboard-demo/?partner=nav` | Default: pale-blue card under the nav items. |
 
-The **Notes** chips are review annotations, not product UI. They mark open
-decisions and do not ship.
+The **Notes** chips and the topbar **Review · member state** switcher are review annotations, not product UI. They mark open decisions and do not ship.
 
 ## Open decisions flagged in the demo
 
-- Directory membership — list includes members and selected active prospects, unlabeled on purpose.
-- Directory filter label and taxonomy — pending the tagging review with Bogdan.
-- No member-to-member messaging in this iteration. Members contact each other by LinkedIn or email.
-- Advisor roster as the browse layer; the richer treatment is the pop-out card. Topic values are representative; tagging model pending review with Bogdan.
-- Transcript "moments" and timestamp navigation — exploratory, feasibility not yet validated. The Library works fully without it.
-- Working-on stage labels (Finding expert / Scheduling / Waiting for confirmation) — ship only if Ops will reliably maintain them.
+- Tagging / taxonomy — pending review with Bogdan. All topic values are representative placeholders.
+- Event status vocabulary — five states reverse the earlier single-state decision; confirm before build.
+- Recent Activity default count — 3 vs. 5 (demo shows 5).
+- Stage progression — member-initiated vs. Nexus Partner-initiated "Discuss next stage" (both entry points sit on Account).
+- Member stage on directory cards — currently hidden.
+- Directory filter label and taxonomy — currently a representative industry dropdown.
+- Comped memberships — the demo member now pays so billing has something to show; the comped state needs its own treatment.
+- Member-to-member messaging — out of scope this iteration. Members contact each other by LinkedIn or email.
 - "New since last visit" time logic on Benefits.
-- Rating source and threshold — implementation logic, never page copy.
+- Transcript "moments" — exploratory; feasibility unvalidated. The Library works fully without it.
+- Working-on stage labels — ship only if Ops will reliably maintain them.
 - Headshots — the demo shows initials as a stand-in. Production uses real headshots, never stock, never initials.
-- Event pop-out — first pass at a reusable card for sessions, dinners, and introductions. Open whether registering should stay in the card or route to the full event page.
-- Benefit pop-out — same card pattern as events, used for partner offers. Open whether claiming should stay a partner-site jump (shown) or complete inside the card.
-- Advisor and member pop-outs — same shared shell as events and benefits. Contact is direct (email / LinkedIn / website), not brokered through the Nexus Partner.
+- Event pop-out — open whether registering should stay in the card or route to the full event page.
+- Benefit pop-out — open whether claiming should stay a partner-site jump (shown) or complete inside the card.
 
 ## How this is built
 
