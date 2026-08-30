@@ -11,10 +11,11 @@ Internal review only. The page is `noindex, nofollow`.
 
 ## What's new in this build
 
-Rebuilt from the 29 Aug 18:32 `Clickable prototype navigation review.zip` handoff (`CHANGES.md`):
+Rebuilt from the 29 Aug 18:50 `Clickable prototype navigation review.zip` handoff (`CHANGES.md`):
 
+- **Prototype controls** bar above the topbar: **Active member / Invited prospect** and **Review notes On / Off**. Same switches via `?member=invited` and `?annotations=0`.
 - **Account** is a seventh nav item. Profile is personal only; subscription, payment, billing, sign-in, and email prefs live here.
-- **Invited-to-paid conversion** — invitation card on the Dashboard, membership chooser + Stripe pay flow in the shared pop-out. Flip Active / Invited from the topbar or `?member=invited`.
+- **Invited-to-paid conversion** — invitation card on the Dashboard, membership chooser + Stripe pay flow in the shared pop-out.
 - **Five event statuses** on Coming up (Invitation sent → Declined), replacing the single "On your calendar" pill.
 - **Release your spot** in the registered event pop-out (inline confirm, no red).
 - **Profile completion banner** first on Profile; **What you're building** is the open gap. Membership moved off Profile.
@@ -25,7 +26,7 @@ Rebuilt from the 29 Aug 18:32 `Clickable prototype navigation review.zip` handof
 | Screen | What to look at |
 | --- | --- |
 | Dashboard | Calendar-first. Coming up is the only card with a shadow; each row has a status pill. Click a **More for you** row to open the event pop-out. "What we're working on" is the right column. |
-| Invited dashboard | Flip the topbar to **Invited** (or `?member=invited`). Pale-blue invitation card → **Choose your membership**. |
+| Invited dashboard | Use **Prototype controls → Invited prospect** (or `?member=invited`). Pale-blue invitation card → **Choose your membership**. |
 | Event pop-out | Reached from **More for you**. Navy kind label, date ticket, takeaways, host, **Register to attend**. After register: confirmation + **Release your spot**. **Full event page →** opens the live event page. |
 | Benefit pop-out | Reached from a Benefits card. Partner identity, headline, **Your member offer** perk list, how to claim, **Go to partner's site**. |
 | Membership pop-out | Reached from the invite card or Account **Change membership level**. Stage cards at or below the qualified max → pay → "You're in." |
@@ -51,7 +52,7 @@ Rebuilt from the 29 Aug 18:32 `Clickable prototype navigation review.zip` handof
 | `/dashboard-demo/?partner=header` | Moves the Nexus Partner control to a topbar button. |
 | `/dashboard-demo/?partner=nav` | Default: pale-blue card under the nav items. |
 
-The **Notes** chips and the topbar **Review · member state** switcher are review annotations, not product UI. They mark open decisions and do not ship.
+The **Notes** chips and the navy **Prototype controls** bar are review annotations, not product UI. They mark open decisions and do not ship.
 
 ## Open decisions flagged in the demo
 

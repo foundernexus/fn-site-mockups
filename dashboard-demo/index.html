@@ -720,6 +720,26 @@ button { font-family: inherit; }
 
 <div style="min-height:100vh; background:var(--gray-50); font-family:var(--font-sans); color:var(--navy-900); display:flex; flex-direction:column;">
 
+  <!-- Prototype controls (review only — not product UI) -->
+  <div style="background:var(--navy-900); color:#fff; padding:9px 28px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; flex:none;">
+    <span style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.09em; text-transform:uppercase; color:#8FA3B8; white-space:nowrap;">Prototype controls</span>
+    <div style="display:flex; align-items:center; gap:9px;">
+      <span style="font:var(--fw-medium) 12px/1 var(--font-sans); color:#C6D4E0; white-space:nowrap;">Member state</span>
+      <div style="display:flex; background:rgba(255,255,255,0.10); border-radius:7px; padding:2px;">
+        <button sc-camel-on-click="{{ setActive }}" style="height:26px; padding:0 12px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ activeBg }}; color:{{ activeFg }};">Active member</button>
+        <button sc-camel-on-click="{{ setInvited }}" style="height:26px; padding:0 12px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ invitedBg }}; color:{{ invitedFg }};">Invited prospect</button>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:9px;">
+      <span style="font:var(--fw-medium) 12px/1 var(--font-sans); color:#C6D4E0; white-space:nowrap;">Review notes</span>
+      <div style="display:flex; background:rgba(255,255,255,0.10); border-radius:7px; padding:2px;">
+        <button sc-camel-on-click="{{ notesOn }}" style="height:26px; padding:0 12px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ notesOnBg }}; color:{{ notesOnFg }};">On</button>
+        <button sc-camel-on-click="{{ notesOff }}" style="height:26px; padding:0 12px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ notesOffBg }}; color:{{ notesOffFg }};">Off</button>
+      </div>
+    </div>
+    <span style="margin-left:auto; font:var(--fw-regular) 12px/1.4 var(--font-sans); color:#8FA3B8;">Review chrome for the design demo. Not part of the product.</span>
+  </div>
+
   <!-- Topbar -->
   <header style="height:72px; background:#fff; border-bottom:1px solid var(--border-subtle); display:flex; align-items:center; justify-content:space-between; padding:0 28px; flex:none;">
     <img src="assets/brand/foundernexus-wordmark.png" alt="FounderNexus" style="height:26px; width:auto; display:block;">
@@ -732,15 +752,6 @@ button { font-family: inherit; }
             <span style="font:var(--fw-medium) 10px/1 var(--font-sans); color:var(--blue-100); letter-spacing:0.05em; text-transform:uppercase;">Your Nexus Partner</span>
           </span>
         </a>
-      </sc-if>
-      <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex; align-items:center; gap:9px; padding:6px 10px 6px 12px; border:1px dashed var(--blue-300); border-radius:8px;">
-          <span style="font:var(--fw-semibold) 10px/1.3 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--blue-600); white-space:nowrap;">Review<br>member state</span>
-          <div style="display:flex; background:var(--gray-100); border-radius:7px; padding:2px;">
-            <button sc-camel-on-click="{{ setActive }}" style="height:26px; padding:0 11px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ activeBg }}; color:{{ activeFg }}; box-shadow:{{ activeShadow }};">Member</button>
-            <button sc-camel-on-click="{{ setInvited }}" style="height:26px; padding:0 11px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ invitedBg }}; color:{{ invitedFg }}; box-shadow:{{ invitedShadow }};">Invited</button>
-          </div>
-        </div>
       </sc-if>
       <div style="display:flex; align-items:center; gap:12px;">
         <div style="text-align:right;">
@@ -2021,7 +2032,7 @@ button { font-family: inherit; }
 }">
 class Component extends DCLogic {
   state = {
-    screen: "dashboard", detailId: null, advisorId: null, memberId: null, confirmRelease: false, stateOverride: null,
+    screen: "dashboard", detailId: null, advisorId: null, memberId: null, confirmRelease: false, stateOverride: null, notesOverride: null,
     showMembership: false, chosenStage: "Stage 2", payStep: "choose",
     advisorQuery: "", advisorCat: "All",
     dirQuery: "", dirCat: "All",
@@ -2038,7 +2049,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const S = this.state;
-    const notes = this.props.showAnnotations ?? true;
+    const notes = S.notesOverride !== null ? S.notesOverride : (this.props.showAnnotations ?? true);
     const partnerControl = this.props.partnerControl ?? "nav";
     const prevent = (fn) => (e) => { e && e.preventDefault && e.preventDefault(); fn && fn(); };
 
@@ -2379,11 +2390,15 @@ class Component extends DCLogic {
       setActive: () => this.setState({ stateOverride: "active" }),
       setInvited: () => this.setState({ stateOverride: "invited" }),
       activeBg: memberState === "active" ? "#fff" : "transparent",
-      activeFg: memberState === "active" ? "var(--navy-900)" : "var(--gray-600)",
-      activeShadow: memberState === "active" ? "0 1px 2px rgba(1,5,42,0.10)" : "none",
+      activeFg: memberState === "active" ? "var(--navy-900)" : "#C6D4E0",
       invitedBg: memberState === "invited" ? "#fff" : "transparent",
-      invitedFg: memberState === "invited" ? "var(--navy-900)" : "var(--gray-600)",
-      invitedShadow: memberState === "invited" ? "0 1px 2px rgba(1,5,42,0.10)" : "none",
+      invitedFg: memberState === "invited" ? "var(--navy-900)" : "#C6D4E0",
+      notesOn: () => this.setState({ notesOverride: true }),
+      notesOff: () => this.setState({ notesOverride: false }),
+      notesOnBg: notes ? "#fff" : "transparent",
+      notesOnFg: notes ? "var(--navy-900)" : "#C6D4E0",
+      notesOffBg: notes ? "transparent" : "#fff",
+      notesOffFg: notes ? "#C6D4E0" : "var(--navy-900)",
       stages,
       completion,
       prefs: [
@@ -2501,6 +2516,7 @@ class Component extends DCLogic {
        ?annotations=0                 hide the dashed "Notes" chips (default: shown)
        ?partner=nav|header            where the Nexus Partner control sits (default: nav)
        ?member=active|invited         membership state (default: active)
+     The navy Prototype controls bar also toggles member state and notes in-page.
      These are demo-only review affordances and ship with nothing else attached. */
   (function () {
     var q = new URLSearchParams(location.search);
@@ -2517,7 +2533,6 @@ class Component extends DCLogic {
 
     if (!Object.keys(overrides).length) return;
 
-    // The runtime boots asynchronously (it loads React first), so wait for it.
     var tries = 0;
     (function apply() {
       if (window.__dcSetProps && window.__dcRootName) {
