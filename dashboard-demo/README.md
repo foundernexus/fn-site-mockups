@@ -13,7 +13,8 @@ Internal review only. The page is `noindex, nofollow`.
 
 Rebuilt from the 29 Aug 18:50 `Clickable prototype navigation review.zip` handoff (`CHANGES.md`):
 
-- **Prototype controls** bar above the topbar: **Active member / Invited prospect** and **Review notes On / Off**. Same switches via `?member=invited` and `?annotations=0`.
+- **Prototype controls** bar above the topbar: **Active member / Invited prospect**, **Review notes On / Off**, and **Calendar Connected / Not connected**. Same switches via `?member=invited`, `?annotations=0`, and `?calendar=0`.
+- **Profile calendar** — connected (Manage) and not connected (Connect calendar) states. Both open a pop-out: Google / Microsoft → weekly availability → saved. Disconnect is inside the card, behind a confirmation.
 - **Account** is a seventh nav item. Profile is personal only; subscription, payment, billing, sign-in, and email prefs live here.
 - **Invited-to-paid conversion** — invitation card on the Dashboard, membership chooser + Stripe pay flow in the shared pop-out.
 - **Five event statuses** on Coming up (Invitation sent → Declined), replacing the single "On your calendar" pill.
@@ -37,7 +38,8 @@ Rebuilt from the 29 Aug 18:50 `Clickable prototype navigation review.zip` handof
 | Content library | Search + category. Recordings, one in-portal **Article**, one **Newsletter** that links out to Substack. Typing 3+ characters (try `discount`) surfaces the exploratory transcript-moments panel. |
 | Recording detail | Reached from any recording card or transcript moment. Key moments list with timestamps. |
 | Benefits | Search + category Select. Cards show **Featured benefit** + the primary perk; **View more benefits →** when there are further perks. "Offer a benefit to the community" opens the submission dialog. |
-| Profile | Completion banner first, then personal / company / **What you're building** / expertise / calendar. No prices. |
+| Profile | Completion banner first, then personal / company / **What you're building** / expertise / calendar. Calendar shows **connected** (Manage) or **not connected** (Connect calendar). No prices. |
+| Calendar pop-out | Reached from Profile **Manage** or **Connect calendar**. Connect: Google / Microsoft + what we ask for. Availability: timezone, weekly hours, accounts. Saved confirmation. **Disconnect all** sits in the card behind a confirm. |
 | Account | Subscription, sign-in & security, email prefs, payment method, billing history, billing address + ZIP + Tax ID. Invited state is the inline chooser. |
 | Dashboard — mobile | Linked from the top-right of the Dashboard. Pinned bottom bar carries the Nexus Partner contact. Release your spot is a full-width action at the foot of the event sheet. |
 
@@ -49,6 +51,7 @@ Rebuilt from the 29 Aug 18:50 `Clickable prototype navigation review.zip` handof
 | `/dashboard-demo/?annotations=0` | Hides the review chips — the clean product view. |
 | `/dashboard-demo/?member=invited` | Invited prospect: dashboard invitation card + Account chooser. |
 | `/dashboard-demo/?member=active` | Active member (the default). |
+| `/dashboard-demo/?calendar=0` | Profile calendar empty state (Not connected). Default is connected. |
 | `/dashboard-demo/?partner=header` | Moves the Nexus Partner control to a topbar button. |
 | `/dashboard-demo/?partner=nav` | Default: pale-blue card under the nav items. |
 

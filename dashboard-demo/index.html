@@ -737,6 +737,13 @@ button { font-family: inherit; }
         <button sc-camel-on-click="{{ notesOff }}" style="height:26px; padding:0 12px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ notesOffBg }}; color:{{ notesOffFg }};">Off</button>
       </div>
     </div>
+    <div style="display:flex; align-items:center; gap:9px;">
+      <span style="font:var(--fw-medium) 12px/1 var(--font-sans); color:#C6D4E0; white-space:nowrap;">Calendar</span>
+      <div style="display:flex; background:rgba(255,255,255,0.10); border-radius:7px; padding:2px;">
+        <button sc-camel-on-click="{{ calOn }}" style="height:26px; padding:0 12px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ calOnBg }}; color:{{ calOnFg }};">Connected</button>
+        <button sc-camel-on-click="{{ calOff }}" style="height:26px; padding:0 12px; border:none; border-radius:5px; cursor:pointer; font:var(--fw-semibold) 12px/1 var(--font-sans); background:{{ calOffBg }}; color:{{ calOffFg }};">Not connected</button>
+      </div>
+    </div>
     <span style="margin-left:auto; font:var(--fw-regular) 12px/1.4 var(--font-sans); color:#8FA3B8;">Review chrome for the design demo. Not part of the product.</span>
   </div>
 
@@ -1396,16 +1403,30 @@ button { font-family: inherit; }
 
             <section style="background:#fff; border:1px solid var(--border-subtle); border-radius:12px; box-shadow:var(--shadow-sm); padding:24px;">
               <h2 style="font:var(--fw-semibold) 18px/1.2 var(--font-sans); margin:0 0 4px;">Calendar</h2>
-              <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:0 0 16px;">Once connected, FounderNexus can place agreed sessions, calls, and introductions directly on your calendar.</p>
-              <div style="display:flex; align-items:center; gap:12px; border:1px solid var(--border-subtle); border-radius:10px; padding:14px 16px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--status-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>
-                <div style="flex:1;">
-                  <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900);">Google Calendar connected</div>
-                  <div style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">matt@northlight.io</div>
+              <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:0 0 16px;">Once connected, FounderNexus checks when you're busy and places agreed sessions, calls, and introductions directly on your calendar.</p>
+              <sc-if value="{{ calConnected }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex; align-items:center; gap:12px; border:1px solid var(--border-subtle); border-radius:10px; padding:14px 16px; flex-wrap:wrap;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--status-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>
+                  <div style="flex:1; min-width:180px;">
+                    <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900);">{{ calProvider }} connected</div>
+                    <div style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">matt@northlight.io · {{ calSummary }}</div>
+                  </div>
+                  <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ openCalManage }}" hint-size="90px,36px">Manage</x-import>
                 </div>
-                <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="secondary" size="sm" sc-camel-on-click="{{ noop }}" hint-size="90px,36px">Manage</x-import>
-                <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="ghost" size="sm" sc-camel-on-click="{{ noop }}" hint-size="100px,36px">Disconnect</x-import>
-              </div>
+              </sc-if>
+              <sc-if value="{{ calNotConnected }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:center; gap:12px; border:1px dashed var(--border-default); border-radius:10px; padding:14px 16px; flex-wrap:wrap;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>
+                  <div style="flex:1; min-width:180px;">
+                    <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900);">No calendar connected</div>
+                    <div style="font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-600); margin-top:2px;">Sessions can't be placed for you until one is.</div>
+                  </div>
+                  <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" variant="primary" size="sm" sc-camel-on-click="{{ openCalConnect }}" hint-size="140px,36px">Connect calendar</x-import>
+                </div>
+              </sc-if>
+              <sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:flex-start; gap:6px; margin-top:14px; padding:8px 10px; border:1px dashed var(--blue-300); border-radius:6px; color:var(--gray-600); font:var(--fw-medium) 12px/1.45 var(--font-sans);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg><span><strong style="color:var(--blue-600);">Notes</strong>: Manage and Connect both open the same pop-out card as sessions and benefits. One card, three states: connect (provider choice + what we ask for), availability (accounts, timezone, weekly hours), saved. The provider sign-in itself stays on Google or Microsoft's page and returns here. Disconnect moved inside the card so it always sits behind a confirmation. Toggle the Calendar connected tweak to see the empty state.</span></div>
+              </sc-if>
             </section>
           </div>
 
@@ -1927,6 +1948,177 @@ button { font-family: inherit; }
   </div>
 </sc-if>
 
+<!-- ============ CALENDAR POP-OUT CARD ============ -->
+<sc-if value="{{ calOpen }}" hint-placeholder-val="{{ false }}">
+  <div sc-camel-on-click="{{ closeCal }}" style="position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(1,5,42,0.45); backdrop-filter:blur(2px); animation:fnFade var(--dur-base) var(--ease-out);">
+    <div sc-camel-on-click="{{ stop }}" style="width:100%; max-width:620px; max-height:92vh; overflow-y:auto; background:#fff; border-radius:var(--radius-xl); box-shadow:var(--shadow-xl); animation:fnPop var(--dur-base) var(--ease-out);">
+
+      <div style="position:relative; padding:24px 28px 20px; border-bottom:1px solid var(--border-subtle);">
+        <button sc-camel-on-click="{{ closeCal }}" aria-label="Close" style="position:absolute; top:18px; right:18px; width:32px; height:32px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--gray-600); display:flex; align-items:center; justify-content:center; cursor:pointer;" style-hover="background:var(--gray-50);"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+        <div style="font:var(--fw-semibold) 11px/1 var(--font-sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--blue-600); padding-right:44px;">Calendar</div>
+        <h2 style="font:var(--fw-bold) 24px/1.18 var(--font-display); letter-spacing:-0.02em; color:var(--navy-900); margin:10px 0 0; padding-right:44px;">{{ calTitle }}</h2>
+        <p style="font:var(--fw-regular) 14px/1.55 var(--font-sans); color:var(--gray-600); margin:9px 0 0; padding-right:44px;">{{ calSub }}</p>
+      </div>
+
+      <!-- Step: connect -->
+      <sc-if value="{{ calStepConnect }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:22px 28px 24px;">
+          <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">Choose the calendar you use for work</div>
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:12px;">
+            <button sc-camel-on-click="{{ connectGoogle }}" style="display:flex; align-items:center; justify-content:center; gap:10px; height:46px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--navy-900); font:var(--fw-semibold) 14px/1 var(--font-sans); cursor:pointer;" style-hover="background:var(--gray-50); border-color:var(--navy-900);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" sc-camel-view-box="0 0 48 48" style="flex:none;"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.5l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-2.8-.4-4H24v8.1h12.9c-.3 2.2-1.7 5.4-4.8 7.6l7.4 5.7c4.4-4.1 7-10.1 7-17.4z"></path><path fill="#FBBC05" d="M10.5 28.6A14.6 14.6 0 0 1 9.7 24c0-1.6.3-3.2.8-4.6l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.9-6.1z"></path><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.7c-2 1.4-4.8 2.4-8.5 2.4-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"></path></svg>
+              Continue with Google
+            </button>
+            <button sc-camel-on-click="{{ connectMicrosoft }}" style="display:flex; align-items:center; justify-content:center; gap:10px; height:46px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--navy-900); font:var(--fw-semibold) 14px/1 var(--font-sans); cursor:pointer;" style-hover="background:var(--gray-50); border-color:var(--navy-900);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" sc-camel-view-box="0 0 24 24" style="flex:none;"><rect x="1" y="1" width="10" height="10" fill="#F25022"></rect><rect x="13" y="1" width="10" height="10" fill="#7FBA00"></rect><rect x="1" y="13" width="10" height="10" fill="#00A4EF"></rect><rect x="13" y="13" width="10" height="10" fill="#FFB900"></rect></svg>
+              Continue with Microsoft
+            </button>
+          </div>
+
+          <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400); margin-top:22px;">What you're granting</div>
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:12px;">
+            <div style="display:flex; gap:11px; align-items:flex-start;">
+              <span style="flex:none; width:22px; height:22px; border-radius:7px; background:#E7F6EE; color:var(--status-success); display:inline-flex; align-items:center; justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+              <span style="font:var(--fw-medium) 14px/1.45 var(--font-sans); color:var(--navy-900);">When you're busy, so we never propose a time you can't make</span>
+            </div>
+            <div style="display:flex; gap:11px; align-items:flex-start;">
+              <span style="flex:none; width:22px; height:22px; border-radius:7px; background:#E7F6EE; color:var(--status-success); display:inline-flex; align-items:center; justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+              <span style="font:var(--fw-medium) 14px/1.45 var(--font-sans); color:var(--navy-900);">Permission to add agreed sessions to your main calendar</span>
+            </div>
+            <div style="display:flex; gap:11px; align-items:flex-start;">
+              <span style="flex:none; width:22px; height:22px; border-radius:7px; background:var(--gray-100); color:var(--gray-600); display:inline-flex; align-items:center; justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span>
+              <span style="font:var(--fw-medium) 14px/1.45 var(--font-sans); color:var(--gray-700);">Never what your meetings are, and never your email, files, or contacts</span>
+            </div>
+          </div>
+
+          <div style="margin-top:20px; background:var(--blue-50); border:1px solid var(--blue-200); border-radius:10px; padding:14px 16px;">
+            <div style="font:var(--fw-semibold) 13px/1.4 var(--font-sans); color:var(--navy-900);">Google will say this app isn't verified yet.</div>
+            <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-700); margin:5px 0 0;">That's expected while our review with Google is in progress. Choose <strong>Advanced → Continue</strong>. Google asks in two steps: the first screen shows your email address so we know whose calendar this is; the calendar permission is on the second screen.</p>
+          </div>
+        </div>
+        <div style="padding:16px 28px 20px; background:var(--gray-50); border-top:1px solid var(--border-subtle); display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <a href="#" sc-camel-on-click="{{ closeCal }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Not now</a>
+          <span style="margin-left:auto; font:var(--fw-regular) 12px/1.4 var(--font-sans); color:var(--gray-400);"><a href="#" style="color:var(--gray-500);">Privacy Policy</a> · <a href="#" style="color:var(--gray-500);">Terms of Service</a></span>
+        </div>
+      </sc-if>
+
+      <!-- Step: availability -->
+      <sc-if value="{{ calStepAvail }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; align-items:center; gap:16px; padding:16px 28px; background:var(--blue-50); border-bottom:1px solid var(--border-subtle); flex-wrap:wrap;">
+          <div style="flex:none; width:40px; height:40px; border-radius:10px; background:#fff; border:1px solid var(--border-subtle); display:flex; align-items:center; justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" sc-camel-view-box="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.5l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-2.8-.4-4H24v8.1h12.9c-.3 2.2-1.7 5.4-4.8 7.6l7.4 5.7c4.4-4.1 7-10.1 7-17.4z"></path><path fill="#FBBC05" d="M10.5 28.6A14.6 14.6 0 0 1 9.7 24c0-1.6.3-3.2.8-4.6l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.9-6.1z"></path><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.7c-2 1.4-4.8 2.4-8.5 2.4-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"></path></svg>
+          </div>
+          <div style="flex:1; min-width:160px;">
+            <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">Sessions go to</div>
+            <div style="font:var(--fw-semibold) 14px/1.3 var(--font-sans); color:var(--navy-900); margin-top:5px;">{{ calEmail }}</div>
+            <div style="display:inline-flex; align-items:center; gap:5px; margin-top:4px; color:var(--status-success); font:var(--fw-semibold) 12px/1 var(--font-sans);"><span style="width:6px; height:6px; border-radius:50%; background:currentColor;"></span>{{ calProvider }} · Connected</div>
+          </div>
+          <div style="flex:1; min-width:180px;">
+            <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400); margin-bottom:5px;">Your timezone</div>
+            <sc-raw-select value="{{ tz }}" sc-camel-on-change="{{ onTz }}" style="width:100%; height:36px; padding:0 10px; border:1px solid var(--border-default); border-radius:8px; background:#fff; font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--navy-900);">
+              <sc-for list="{{ tzOptions }}" as="z" hint-placeholder-count="3"><option value="{{ z }}">{{ z }}</option></sc-for>
+            </sc-raw-select>
+          </div>
+        </div>
+
+        <div style="padding:20px 28px 22px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+            <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">Weekly availability</div>
+            <span style="font:var(--fw-regular) 12px/1.3 var(--font-sans); color:var(--gray-500);">Outer bounds. Your calendar is still checked on top.</span>
+          </div>
+          <div style="margin-top:12px; border:1px solid var(--border-subtle); border-radius:10px; overflow:hidden;">
+            <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+              <div style="display:flex; align-items:flex-start; gap:14px; padding:11px 14px; border-bottom:1px solid var(--gray-100);">
+                <span sc-camel-on-click="{{ d.toggle }}" style="flex:none; margin-top:6px; width:36px; height:21px; border-radius:999px; background:{{ d.trackBg }}; position:relative; cursor:pointer; transition:background var(--dur-fast) var(--ease-out);">
+                  <span style="position:absolute; top:2px; left:{{ d.knobLeft }}; width:17px; height:17px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(1,5,42,0.18); transition:left var(--dur-fast) var(--ease-out);"></span>
+                </span>
+                <span style="flex:none; width:36px; margin-top:8px; font:var(--fw-semibold) 13px/1.3 var(--font-sans); color:{{ d.labelColor }};">{{ d.label }}</span>
+                <sc-if value="{{ d.on }}" hint-placeholder-val="{{ true }}">
+                  <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+                    <sc-for list="{{ d.blocks }}" as="b" hint-placeholder-count="1">
+                      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                        <sc-raw-select value="{{ b.from }}" sc-camel-on-change="{{ b.onFrom }}" style="height:34px; padding:0 8px; border:1px solid var(--border-default); border-radius:8px; background:#fff; font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--navy-900);">
+                          <sc-for list="{{ times }}" as="t" hint-placeholder-count="2"><option value="{{ t }}">{{ t }}</option></sc-for>
+                        </sc-raw-select>
+                        <span style="font:var(--fw-regular) 13px/1 var(--font-sans); color:var(--gray-400);">–</span>
+                        <sc-raw-select value="{{ b.to }}" sc-camel-on-change="{{ b.onTo }}" style="height:34px; padding:0 8px; border:1px solid var(--border-default); border-radius:8px; background:#fff; font:var(--fw-medium) 13px/1 var(--font-sans); color:var(--navy-900);">
+                          <sc-for list="{{ times }}" as="t" hint-placeholder-count="2"><option value="{{ t }}">{{ t }}</option></sc-for>
+                        </sc-raw-select>
+                        <sc-if value="{{ b.canRemove }}" hint-placeholder-val="{{ false }}">
+                          <button sc-camel-on-click="{{ b.remove }}" aria-label="Remove block" style="width:30px; height:30px; border-radius:7px; border:none; background:transparent; color:var(--gray-400); display:inline-flex; align-items:center; justify-content:center; cursor:pointer;" style-hover="background:var(--gray-100); color:var(--navy-900);"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+                        </sc-if>
+                        <sc-if value="{{ b.isLast }}" hint-placeholder-val="{{ true }}">
+                          <a href="#" sc-camel-on-click="{{ d.addBlock }}" style="font:var(--fw-semibold) 12px/1 var(--font-sans); margin-left:4px;">+ Add block</a>
+                        </sc-if>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ d.off }}" hint-placeholder-val="{{ false }}">
+                  <span style="flex:1; margin-top:8px; font:var(--fw-regular) 13px/1.3 var(--font-sans); color:var(--gray-400);">Unavailable</span>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:22px; padding-top:20px; border-top:1px solid var(--gray-100);">
+            <div style="font:var(--fw-semibold) 10px/1 var(--font-sans); letter-spacing:0.05em; text-transform:uppercase; color:var(--gray-400);">Your calendars</div>
+            <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:8px 0 0;">Checked before you're offered a time. Inside each account we read your main calendar, including anything someone else books into it. A separate calendar you created isn't checked, so keep anything that should block a session on your main one.</p>
+            <div style="display:flex; align-items:center; gap:12px; margin-top:14px; padding:12px 14px; border:1px solid var(--border-subtle); border-radius:10px; flex-wrap:wrap;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" sc-camel-view-box="0 0 48 48" style="flex:none;"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.5l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-2.8-.4-4H24v8.1h12.9c-.3 2.2-1.7 5.4-4.8 7.6l7.4 5.7c4.4-4.1 7-10.1 7-17.4z"></path><path fill="#FBBC05" d="M10.5 28.6A14.6 14.6 0 0 1 9.7 24c0-1.6.3-3.2.8-4.6l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.9-6.1z"></path><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.7c-2 1.4-4.8 2.4-8.5 2.4-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"></path></svg>
+              <span style="flex:1; min-width:140px; font:var(--fw-medium) 14px/1.3 var(--font-sans); color:var(--navy-900);">{{ calEmail }}</span>
+              <span style="display:inline-flex; align-items:center; height:24px; padding:0 9px; border-radius:6px; background:var(--blue-50); color:var(--blue-700); font:var(--fw-semibold) 12px/1 var(--font-sans); white-space:nowrap;">Sessions added here</span>
+              <a href="#" sc-camel-on-click="{{ noopPrevent }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Reconnect</a>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+              <button sc-camel-on-click="{{ noop }}" style="display:inline-flex; align-items:center; gap:6px; height:32px; padding:0 12px; border-radius:8px; border:1px dashed var(--border-default); background:#fff; color:var(--gray-600); font:var(--fw-medium) 13px/1 var(--font-sans); cursor:pointer;" style-hover="border-color:var(--blue-500); color:var(--blue-600);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>Another Google calendar</button>
+              <button sc-camel-on-click="{{ noop }}" style="display:inline-flex; align-items:center; gap:6px; height:32px; padding:0 12px; border-radius:8px; border:1px dashed var(--border-default); background:#fff; color:var(--gray-600); font:var(--fw-medium) 13px/1 var(--font-sans); cursor:pointer;" style-hover="border-color:var(--blue-500); color:var(--blue-600);"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>Microsoft calendar</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:16px 28px 20px; background:var(--gray-50); border-top:1px solid var(--border-subtle);">
+          <sc-if value="{{ calNotDisconnecting }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+              <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" size="md" sc-camel-on-click="{{ saveCal }}" hint-size="170px,44px">Save availability</x-import>
+              <span style="font:var(--fw-regular) 13px/1.4 var(--font-sans); color:var(--gray-500);">{{ calSummary }}</span>
+              <button sc-camel-on-click="{{ askDisconnect }}" style="margin-left:auto; height:36px; padding:0 12px; border-radius:8px; border:none; background:transparent; color:var(--gray-600); font:var(--fw-semibold) 13px/1 var(--font-sans); cursor:pointer; white-space:nowrap;" style-hover="background:#fff; color:var(--navy-900);">Disconnect all</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ calDisconnecting }}" hint-placeholder-val="{{ false }}">
+            <div style="border:1px solid var(--border-default); border-radius:10px; background:#fff; padding:16px;">
+              <div style="font:var(--fw-semibold) 15px/1.35 var(--font-sans); color:var(--navy-900);">Disconnect your calendar?</div>
+              <p style="font:var(--fw-regular) 13px/1.5 var(--font-sans); color:var(--gray-600); margin:6px 0 14px;">We stop checking your availability and can no longer place sessions for you. Anything already on your calendar stays there. Your weekly hours are kept for when you reconnect.</p>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button sc-camel-on-click="{{ disconnectCal }}" style="height:38px; padding:0 16px; border-radius:8px; border:1px solid var(--navy-900); background:var(--navy-900); color:#fff; font:var(--fw-semibold) 13px/1 var(--font-sans); cursor:pointer;" style-hover="background:#000;">Yes, disconnect</button>
+                <button sc-camel-on-click="{{ cancelDisconnect }}" style="height:38px; padding:0 16px; border-radius:8px; border:1px solid var(--border-default); background:#fff; color:var(--gray-700); font:var(--fw-semibold) 13px/1 var(--font-sans); cursor:pointer;" style-hover="background:var(--gray-50);">Keep it connected</button>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- Step: saved -->
+      <sc-if value="{{ calStepDone }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:26px 28px 28px;">
+          <div style="display:flex; align-items:flex-start; gap:12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--status-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>
+            <div>
+              <div style="font:var(--fw-semibold) 18px/1.3 var(--font-sans); color:var(--navy-900);">Availability saved.</div>
+              <p style="font:var(--fw-regular) 14px/1.55 var(--font-sans); color:var(--gray-600); margin:7px 0 0;">{{ calSummary }}, {{ tz }}. We only propose times inside these hours, and we check {{ calEmail }} before proposing any of them.</p>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 28px 20px; background:var(--gray-50); border-top:1px solid var(--border-subtle); display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Button" size="md" sc-camel-on-click="{{ closeCalBtn }}" hint-size="100px,44px">Done</x-import>
+          <a href="#" sc-camel-on-click="{{ backToAvail }}" style="font:var(--fw-semibold) 13px/1 var(--font-sans);">Edit hours</a>
+        </div>
+      </sc-if>
+
+    </div>
+  </div>
+</sc-if>
+
 <!-- ============ EVENT POP-OUT CARD ============ -->
 <sc-if value="{{ cardOpen }}" hint-placeholder-val="{{ false }}">
   <div sc-camel-on-click="{{ closeCard }}" style="position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(1,5,42,0.45); backdrop-filter:blur(2px); animation:fnFade var(--dur-base) var(--ease-out);">
@@ -2028,7 +2220,8 @@ button { font-family: inherit; }
 <script type="text/x-dc" data-dc-script="" data-props="{
   &quot;showAnnotations&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Review&quot; },
   &quot;partnerControl&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;nav&quot;, &quot;header&quot;], &quot;default&quot;: &quot;nav&quot;, &quot;tsType&quot;: &quot;\&quot;nav\&quot; | \&quot;header\&quot;&quot;, &quot;section&quot;: &quot;Nexus Partner&quot; },
-  &quot;memberState&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;active&quot;, &quot;invited&quot;], &quot;default&quot;: &quot;active&quot;, &quot;tsType&quot;: &quot;\&quot;active\&quot; | \&quot;invited\&quot;&quot;, &quot;section&quot;: &quot;Membership&quot; }
+  &quot;memberState&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;active&quot;, &quot;invited&quot;], &quot;default&quot;: &quot;active&quot;, &quot;tsType&quot;: &quot;\&quot;active\&quot; | \&quot;invited\&quot;&quot;, &quot;section&quot;: &quot;Membership&quot; },
+  &quot;calendarConnected&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Calendar&quot; }
 }">
 class Component extends DCLogic {
   state = {
@@ -2040,7 +2233,22 @@ class Component extends DCLogic {
     benQuery: "", benCat: "All",
     showSubmit: false, submitted: false, benefitSubmitted: false,
     recentOpen: false, registered: {}, cardId: null, benefitId: null,
+    calOpen: false, calStep: "connect", calConnectedOverride: null, calProvider: "Google Calendar", calDisconnecting: false,
+    tz: "Los Angeles — GMT-7",
+    days: [
+      { key: "mon", label: "Mon", on: true, blocks: [{ from: "9:00 AM", to: "5:00 PM" }] },
+      { key: "tue", label: "Tue", on: true, blocks: [{ from: "9:00 AM", to: "5:00 PM" }] },
+      { key: "wed", label: "Wed", on: true, blocks: [{ from: "9:00 AM", to: "12:00 PM" }, { from: "2:00 PM", to: "5:00 PM" }] },
+      { key: "thu", label: "Thu", on: true, blocks: [{ from: "9:00 AM", to: "5:00 PM" }] },
+      { key: "fri", label: "Fri", on: true, blocks: [{ from: "9:00 AM", to: "3:00 PM" }] },
+      { key: "sat", label: "Sat", on: false, blocks: [{ from: "9:00 AM", to: "5:00 PM" }] },
+      { key: "sun", label: "Sun", on: false, blocks: [{ from: "9:00 AM", to: "5:00 PM" }] },
+    ],
   };
+
+  updDay(i, fn) {
+    this.setState((s) => ({ days: s.days.map((d, k) => (k === i ? fn(d) : d)) }));
+  }
 
   go(screen, extra) {
     this.setState({ screen, ...(extra || {}) });
@@ -2315,13 +2523,46 @@ class Component extends DCLogic {
 
     const memberState = S.stateOverride || this.props.memberState || "active";
 
+    // Calendar & availability card
+    const propConnected = this.props.calendarConnected ?? true;
+    if (this._lastPropConnected !== undefined && this._lastPropConnected !== propConnected && S.calConnectedOverride !== null) {
+      setTimeout(() => this.setState({ calConnectedOverride: null }), 0);
+    }
+    this._lastPropConnected = propConnected;
+    const calConnected = S.calConnectedOverride !== null ? S.calConnectedOverride : propConnected;
+    const TIMES = ["6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM"];
+    const days = S.days.map((d, i) => ({
+      ...d,
+      off: !d.on,
+      trackBg: d.on ? "var(--blue-500)" : "var(--gray-200)",
+      knobLeft: d.on ? "17px" : "2px",
+      labelColor: d.on ? "var(--navy-900)" : "var(--gray-400)",
+      toggle: () => this.updDay(i, (x) => ({ ...x, on: !x.on })),
+      addBlock: prevent(() => this.updDay(i, (x) => ({ ...x, blocks: [...x.blocks, { from: "2:00 PM", to: "5:00 PM" }] }))),
+      blocks: d.blocks.map((b, j) => ({
+        ...b,
+        isLast: j === d.blocks.length - 1,
+        canRemove: d.blocks.length > 1,
+        onFrom: (e) => { const v = e.target.value; this.updDay(i, (x) => ({ ...x, blocks: x.blocks.map((bb, k) => (k === j ? { ...bb, from: v } : bb)) })); },
+        onTo: (e) => { const v = e.target.value; this.updDay(i, (x) => ({ ...x, blocks: x.blocks.map((bb, k) => (k === j ? { ...bb, to: v } : bb)) })); },
+        remove: () => this.updDay(i, (x) => ({ ...x, blocks: x.blocks.filter((_, k) => k !== j) })),
+      })),
+    }));
+    const onDays = S.days.filter((d) => d.on);
+    const calSummary = onDays.length === 0 ? "No hours set" : onDays.length + (onDays.length === 1 ? " day" : " days") + " a week, " + onDays[0].blocks[0].from + "–" + onDays[0].blocks[onDays[0].blocks.length - 1].to;
+    const calTitle = S.calStep === "connect" ? "Connect your calendar" : S.calStep === "done" ? "You're set" : "Your availability";
+    const calSub = S.calStep === "connect"
+      ? "Pick the calendar you use for work. We only ever ask to see when you're busy, never what your meetings are."
+      : S.calStep === "done" ? "Sessions will only ever be proposed inside the hours you set."
+      : "The days and times you're open to sessions, and which calendars we check before offering you one.";
+
     // Profile completion: the banner names whatever is actually missing, highest-value gap first.
     const PROFILE_FIELDS = [
       { label: "personal details", done: true, cta: "Add details", why: "" },
       { label: "company and role", done: true, cta: "Add company", why: "so we can match you to the right room" },
       { label: "expertise", done: true, cta: "Add expertise", why: "so other founders know what to ask you about" },
       { label: "your LinkedIn", done: true, cta: "Add LinkedIn", why: "so other founders can place you" },
-      { label: "a connected calendar", done: true, cta: "Connect calendar", why: "so FounderNexus can place sessions directly" },
+      { label: "a connected calendar", done: calConnected, cta: "Connect calendar", why: "so FounderNexus can place sessions directly" },
       { label: "a line on what you're building", done: false, cta: "Add summary", why: "so your directory card says more than your job title" },
     ];
     const doneCount = PROFILE_FIELDS.filter((p) => p.done).length;
@@ -2399,6 +2640,38 @@ class Component extends DCLogic {
       notesOnFg: notes ? "var(--navy-900)" : "#C6D4E0",
       notesOffBg: notes ? "transparent" : "#fff",
       notesOffFg: notes ? "#C6D4E0" : "var(--navy-900)",
+      calOpen: S.calOpen,
+      calStepConnect: S.calStep === "connect",
+      calStepAvail: S.calStep === "avail",
+      calStepDone: S.calStep === "done",
+      calTitle, calSub, calSummary,
+      calConnected, calNotConnected: !calConnected,
+      calOn: () => this.setState({ calConnectedOverride: true, calOpen: false }),
+      calOff: () => this.setState({ calConnectedOverride: false, calOpen: false, calStep: "connect" }),
+      calOnBg: calConnected ? "#fff" : "transparent",
+      calOnFg: calConnected ? "var(--navy-900)" : "#C6D4E0",
+      calOffBg: calConnected ? "transparent" : "#fff",
+      calOffFg: calConnected ? "#C6D4E0" : "var(--navy-900)",
+      calEmail: "matt@northlight.io",
+      calProvider: S.calProvider,
+      openCalConnect: () => this.setState({ calOpen: true, calStep: "connect", calDisconnecting: false }),
+      openCalManage: () => this.setState({ calOpen: true, calStep: "avail", calDisconnecting: false }),
+      closeCal: prevent(() => this.setState({ calOpen: false, calDisconnecting: false })),
+      closeCalBtn: () => this.setState({ calOpen: false }),
+      connectGoogle: () => this.setState({ calConnectedOverride: true, calProvider: "Google Calendar", calStep: "avail" }),
+      connectMicrosoft: () => this.setState({ calConnectedOverride: true, calProvider: "Microsoft 365", calStep: "avail" }),
+      saveCal: () => this.setState({ calStep: "done" }),
+      backToAvail: prevent(() => this.setState({ calStep: "avail" })),
+      askDisconnect: () => this.setState({ calDisconnecting: true }),
+      cancelDisconnect: () => this.setState({ calDisconnecting: false }),
+      calDisconnecting: S.calDisconnecting,
+      calNotDisconnecting: !S.calDisconnecting,
+      disconnectCal: () => this.setState({ calConnectedOverride: false, calOpen: false, calDisconnecting: false, calStep: "connect" }),
+      tz: S.tz,
+      onTz: (e) => this.setState({ tz: e.target.value }),
+      tzOptions: ["Los Angeles — GMT-7", "Denver — GMT-6", "Chicago — GMT-5", "New York — GMT-4", "London — GMT+1", "Berlin — GMT+2"],
+      times: TIMES,
+      days,
       stages,
       completion,
       prefs: [
@@ -2516,7 +2789,8 @@ class Component extends DCLogic {
        ?annotations=0                 hide the dashed "Notes" chips (default: shown)
        ?partner=nav|header            where the Nexus Partner control sits (default: nav)
        ?member=active|invited         membership state (default: active)
-     The navy Prototype controls bar also toggles member state and notes in-page.
+       ?calendar=0|disconnected       Profile calendar empty state (default: connected)
+     The navy Prototype controls bar also toggles member state, notes, and calendar in-page.
      These are demo-only review affordances and ship with nothing else attached. */
   (function () {
     var q = new URLSearchParams(location.search);
@@ -2530,6 +2804,12 @@ class Component extends DCLogic {
 
     var m = q.get('member');
     if (m && ['active', 'invited'].indexOf(m) >= 0) overrides.memberState = m;
+
+    var c = q.get('calendar');
+    if (c !== null) {
+      if (/^(0|false|off|no|disconnected)$/i.test(c)) overrides.calendarConnected = false;
+      else if (/^(1|true|on|yes|connected)$/i.test(c)) overrides.calendarConnected = true;
+    }
 
     if (!Object.keys(overrides).length) return;
 

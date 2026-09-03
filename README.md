@@ -19,9 +19,10 @@ The partner contact sits in a pale-blue card under the sidebar nav.
 
 Dashed blue **Notes** chips mark open decisions and are visible by default. A navy
 **Prototype controls** bar at the top of the demo flips Active member / Invited
-prospect and turns notes on or off. `?annotations=0` and `?member=invited` do the
-same via URL. See `dashboard-demo/README.md` for the full list of review flags
-and open decisions.
+prospect, turns notes on or off, and switches the Profile calendar between
+connected and not connected. `?annotations=0`, `?member=invited`, and
+`?calendar=0` do the same via URL. See `dashboard-demo/README.md` for the full
+list of review flags and open decisions.
 
 ## Current homepage mockup
 

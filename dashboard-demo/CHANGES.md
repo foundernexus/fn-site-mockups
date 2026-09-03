@@ -4,6 +4,10 @@ Rebuilt from `Clickable prototype navigation review.zip` (29 Aug 2026, 18:50). S
 
 Hosted-demo layout kept from the previous live pass: Coming up / Working on headings sit above their cards at the same size so the two modules share a top edge, and the Profile completion banner is capped at 760px to match the form cards.
 
+## 8. Profile calendar — connected and disconnected
+
+Profile Calendar now has two states. **Connected** shows the provider, work email, weekly-hours summary, and **Manage**. **Not connected** is a dashed empty state with **Connect calendar**. Manage and Connect open the same pop-out: provider choice (Google / Microsoft) → availability (timezone, weekly hours, accounts) → saved. Disconnect lives inside the card, behind a confirmation. Prototype controls add a **Calendar** Connected / Not connected switch (`?calendar=0` does the same). When disconnected, the completion banner treats a connected calendar as the highest-value gap.
+
 ## 1. Account is a new nav item
 
 Seven-item nav: Dashboard, Advisors, Directory, Content library, Benefits, Profile, **Account**. Profile is personal only. Everything payable (subscription, payment, billing, sign-in, email prefs) lives on Account.
@@ -12,7 +16,7 @@ Seven-item nav: Dashboard, Advisors, Directory, Content library, Benefits, Profi
 
 A `memberState` of Invited shows a dashboard invitation card and an Account chooser. **Choose your membership** opens the shared pop-out: stage cards at or below the qualified maximum → Stripe payment fields → "You're in."
 
-A navy **Prototype controls** bar (review chrome, not product UI) sits above the topbar with **Member state** (Active member / Invited prospect) and **Review notes** (On / Off). Same switches via URL: `?member=invited` and `?annotations=0`.
+A navy **Prototype controls** bar (review chrome, not product UI) sits above the topbar with **Member state** (Active member / Invited prospect), **Review notes** (On / Off), and **Calendar** (Connected / Not connected). Same switches via URL: `?member=invited`, `?annotations=0`, and `?calendar=0`.
 
 ## 3. Event status vocabulary (deliberate reversal)
 
