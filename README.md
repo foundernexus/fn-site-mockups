@@ -6,6 +6,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 
 | Mockup | Path | Live |
 | --- | --- | --- |
+| Acquisition homepage prototype | `vn-home-mockup.html` | https://foundernexus.github.io/fn-site-mockups/vn-home-mockup.html |
 | Public homepage (June 2026 v2) | `index.html` | https://foundernexus.github.io/fn-site-mockups/ |
 | Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
 
