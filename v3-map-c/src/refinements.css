@@ -61,3 +61,6 @@
 .people .person-role{font-size:11px;letter-spacing:.055em;text-transform:uppercase;color:#0072BA}
 .people-grid h3{font-size:clamp(24px,2.4vw,30px)}
 @media(max-width:480px){.partner-steps li{gap:16px}.people-grid{gap:32px}}
+
+/* Four navigation destinations retain full labels on small screens. */
+@media(max-width:600px){.site-header nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.site-header nav a{justify-content:center;padding:10px 6px}}
