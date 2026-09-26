@@ -40,6 +40,7 @@ A qualified founder or leadership-team member of a venture-backed company should
 
 ## Latest visual and audience refinement
 
+- Subsequent hero review restored "Better decisions. Faster execution." with larger type, shortened the supporting copy to one sentence and removed the extra note beneath the actions. Desktop and 390px/320px phone previews retain a two-line headline. The member proof continues to carry the human story below the hero.
 - Restored the earlier member-company strip using Imperative/Nicole Resch, Identient/Steve Tout, ConversionMagic/Jasper Kuria and ARY Engineering/Arthur Baranovskiy. These pairings come from the original supplied page and testimonial set. The label is "Member voices from"; these organizations are not presented as formal partners.
 - The earlier landing-page export contained placeholder logo slots, not supplied logo artwork. This pass uses plain company names with human attribution. Actual approved company marks can replace those names later without changing the relationship label.
 - Moved the highlighted Nicole quote near the top and paired it with a captioned group-session photograph. The photograph is not presented as a portrait of Nicole.
