@@ -6,14 +6,15 @@ Review date: September 25, 2026. This is a working mockup, not a conversion-test
 
 A qualified founder or leadership-team member of a venture-backed company should understand the recurring membership value, recognize credible experience behind it, and apply to explore fit and an individual trial.
 
-## The seven-section argument
+## Current page argument
 
 | Section | Visitor question | Evidence or action |
 | --- | --- | --- |
 | Hero | Is this for me, and what does it help me do? | Venture-backed leadership audience, decision/execution outcome, named membership formats, Apply now |
-| People | Why should I trust the caliber? | Verified credentials with accurate founder/contributor labels; an unchanged member quote |
+| Early member proof | Who has participated? | Company names paired with actual testimonial authors; a real session photo and unchanged member quote |
 | Membership mechanism | What happens beyond joining a network? | Monthly Nexus Partner conversation, connection formats, evolving priorities, session examples |
-| Decision examples | Where could I use this? | GTM, senior hiring and capital situations with intended takeaways |
+| Decision examples | Where could I use this? | Revenue, hiring, capital, product and technology situations with intended takeaways |
+| Credentials | Who brings the experience? | Verified founder and session-contributor credentials, placed after the offer is explained |
 | Fit and stages | Does my role and company context belong? | Leadership roles, reciprocal contribution, four existing stage bands |
 | Joining | What happens after I apply? | Apply, discuss fit and terms, take part; individual trial stated once |
 | Closing | What is my next step? | One invitation and one application action |
@@ -37,6 +38,15 @@ A qualified founder or leadership-team member of a venture-backed company should
 5. Changed the tablet breakpoint after visual review showed that the two-column hero crowded the map.
 6. Kept all stage-panel IDs present so each disclosure control points to a real element, including closed panels.
 
+## Latest visual and audience refinement
+
+- Restored the earlier member-company strip using Imperative/Nicole Resch, Identient/Steve Tout, ConversionMagic/Jasper Kuria and ARY Engineering/Arthur Baranovskiy. These pairings come from the original supplied page and testimonial set. The label is "Member voices from"; these organizations are not presented as formal partners.
+- The earlier landing-page export contained placeholder logo slots, not supplied logo artwork. This pass uses plain company names with human attribution. Actual approved company marks can replace those names later without changing the relationship label.
+- Moved the highlighted Nicole quote near the top and paired it with a captioned group-session photograph. The photograph is not presented as a portrait of Nicole.
+- Added blue headline emphasis, clearer card styling, explicit leadership roles and a product/technology example. Company context, individual responsibilities and Nexus Partner support are connected in the fit copy.
+- Primary action wording is now "Apply for membership" with a fit-conversation expectation. It remains a prototype action and does not submit information.
+- Mobile review caught crowding between map role badges and the caption/control area. Added vertical space and reserved a footer area in the compact map.
+
 ## Research and claim sources
 
 The design follows the principles of explicit purpose, authentic organizational information, concrete examples, scannable copy and a clear next step. These are design inputs, not evidence that this specific page will convert.
@@ -54,9 +64,9 @@ Obtain the wider founding team's approved names, roles, credentials and portrait
 
 ## Verification results
 
-- Seven main sections, down from thirteen. The default rendered main-page text is approximately 661 words versus 1,512 in the previous pass (about 56% less). This measures DOM `innerText`, excluding navigation, footer and iframe content; disclosure state affects the count.
+- Eight main sections, down from thirteen. The latest people-focused pass contains approximately 780 words of default rendered main-page copy versus 1,512 before consolidation. The restored member proof adds useful evidence without reintroducing duplicate eligibility or benefits sections. Counts exclude navigation, footer and iframe content; disclosure state affects the count.
 - Visual review at phone, tablet and desktop sizes; horizontal-boundary checks at 320, 390, 768, 1024 and 1440px. The tablet hero was changed to a single column after the first check exposed crowding. No remaining text or iframe clipping was found in the checked layouts.
-- One H1, a main landmark, skip link, seven labeled sections, visible focus styles and a reduced-motion path are present. This is basic accessibility verification, not a full accessibility certification.
+- One H1, a main landmark, skip link, eight labeled sections, visible focus styles and a reduced-motion path are present. This is basic accessibility verification, not a full accessibility certification.
 - Map Pause/Resume, stage switching with expanded-state feedback, the session disclosure, application dialog, Escape dismissal and focus restoration were exercised in the browser.
 - All internal anchors resolve; no broken images were found. Selected testimonial text and the original embedded asset manifest were checked against the previous committed version.
 - Source JavaScript syntax checks and an idempotent rebuild pass. The known baseline export-runtime error remains documented below.

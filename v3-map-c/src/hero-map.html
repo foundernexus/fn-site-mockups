@@ -35,7 +35,7 @@ path.l.on{opacity:.55}
 #wrap.sm .dec{font-size:15px}
 #wrap.sm .match{font-size:12px;margin-top:12px;padding-top:10px}
 
-#motion{position:absolute;bottom:12px;right:12px;z-index:4;border:1px solid #D3D6DA;border-radius:6px;background:#fff;color:#01052A;padding:10px 12px;min-height:44px;font:600 12px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer}#motion:focus-visible{outline:3px solid #0072BA;outline-offset:3px}#map-note{z-index:4;position:absolute;bottom:16px;left:12px;max-width:65%;font-size:11px;line-height:1.5;color:#56646F} @media(prefers-reduced-motion:reduce){.ease,path.l{transition:none}}
+#motion{position:absolute;bottom:12px;right:12px;z-index:4;border:1px solid #D3D6DA;border-radius:6px;background:#fff;color:#01052A;padding:10px 12px;min-height:44px;font:600 12px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer}#motion:focus-visible{outline:3px solid #0072BA;outline-offset:3px}#map-note{margin:0;z-index:4;position:absolute;bottom:16px;left:12px;max-width:65%;font-size:11px;line-height:1.5;color:#56646F} @media(prefers-reduced-motion:reduce){.ease,path.l{transition:none}}
 </style></head><body>
 <div id="wrap"><p id="map-note">Illustrative matching, not live member locations.</p><button id="motion" type="button" aria-pressed="false">Pause</button><canvas id="bg"></canvas><svg id="svg"></svg>
 <div id="card" class="ease"><span class="chip" id="chip"></span><div class="lbl">A leader is deciding</div><div class="dec" id="dec"></div><div class="match ease" id="match"><i>✓</i><span id="mt"></span></div></div>
@@ -66,7 +66,7 @@ function layout() {
   const top = cr.top - wr.top, bot = cr.bottom - wr.top, lft = cr.left - wr.left, rgt = cr.right - wr.left;
   PEOPLE.forEach((p, i) => {
     let x = p.pos[0] * W, y = p.pos[1] * H;
-    if (sm) { x = [.16, .84, .84, .16][i] * W; y = i < 2 ? Math.max(22, top / 2) : Math.min(H - 22, bot + (H - bot) / 2); }
+    if (sm) { x = [.16, .84, .84, .16][i] * W; y = i < 2 ? Math.max(22, top / 2) : Math.min(H - 90, bot + (H - bot) / 2); }
     else { const pw = els[i].offsetWidth / 2 + 8; x = Math.min(W - pw, Math.max(pw, x)); if (i < 2) y = Math.min(y, top - 34); else y = Math.max(y, bot + 34); } const e = els[i];
     e.style.left = x + 'px'; e.style.top = y + 'px';
     if (!e.classList.contains('on')) e.style.transform = `translate(calc(-50% + ${(cx - x) * .25}px), calc(-50% + ${(cy - y) * .25}px)) scale(.9)`;
