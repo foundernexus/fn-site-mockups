@@ -28,9 +28,9 @@ canvas,svg{position:absolute;inset:0;width:100%;height:100%}
 .p small{display:block;margin-top:2px;font:500 11px/1.2 'Plus Jakarta Sans',system-ui,sans-serif;color:#56646F}
 path.l{fill:none;stroke:#0072BA;stroke-width:1.5;stroke-dasharray:4 5;opacity:0;transition:opacity .32s}
 path.l.on{opacity:.55}
-#wrap.sm .p{padding:3px;gap:0}
-#wrap.sm .p > span:last-child{display:none}
-#wrap.sm .av{width:34px;height:34px;font-size:12px}
+#wrap.sm .p{padding:6px;gap:4px;flex-direction:column;border-radius:10px;min-width:54px}
+#wrap.sm .p b{font-size:10px;line-height:1.2}#wrap.sm .p small{display:none}
+#wrap.sm .av{width:26px;height:26px;font-size:10px}
 #wrap.sm #card{width:min(260px,64%);padding:14px}
 #wrap.sm .dec{font-size:15px}
 #wrap.sm .match{font-size:12px;margin-top:12px;padding-top:10px}
@@ -61,7 +61,7 @@ const lines = PEOPLE.map(() => { const l = document.createElementNS('http://www.
 let scene = 0, paused = false, manualpaused = reduce, timers = [];
 function layout() {
   const W = wrap.clientWidth, H = wrap.clientHeight; svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  const cx = W / 2, cy = H / 2, sm = W < 560; wrap.classList.toggle('sm', sm);
+  const cx = W / 2, cy = H / 2, sm = W < 440; wrap.classList.toggle('sm', sm);
   const cr = card.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
   const top = cr.top - wr.top, bot = cr.bottom - wr.top, lft = cr.left - wr.left, rgt = cr.right - wr.left;
   PEOPLE.forEach((p, i) => {

@@ -13,7 +13,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 
 ## Homepage v3 — Map C
 
-`v3-map-c/` is the September 2026 homepage prototype. The updated story focuses on leadership teams of venture-backed companies, the decisions they own, and the Nexus Partner support around those priorities. It retains the Map C hero, supplied photography, logos and testimonials. Illustrative decision examples replace the assumed success-probability calculator.
+`v3-map-c/` is the September 2026 homepage prototype. Its seven-section story focuses on leadership teams of venture-backed companies: value, credibility, membership mechanism, concrete decisions, fit, joining and a final invitation. It retains the Map C hero, supplied photography and logos, with two selected testimonials unchanged. Illustrative decision examples replace the assumed success-probability calculator. See [the editorial audit](v3-map-c/EDITORIAL-AUDIT.md) for sources, design decisions, self-audit corrections and remaining launch requirements.
 
 The map loads geography and drawing libraries from public CDNs. Its people and locations are illustrative, and motion can be paused. Sessions are examples, not a live event calendar. Application, login and other unfinished destinations display a preview notice; this page does not collect applications.
 
