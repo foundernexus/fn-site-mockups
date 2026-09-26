@@ -1,52 +1,36 @@
-import {calculate, formatScore, formatRatio} from './model.mjs';
-
-const controls = ['decisions', 'score-a', 'score-b'].map(id => document.getElementById(id));
-const presets = {small: [10, 80, 85], equal: [10, 80, 80], long: [20, 80, 85]};
-const presetButtons = [...document.querySelectorAll('[data-preset]')];
-let announcement;
+import {calculate, formatPercent, formatRatio} from './model.mjs';
+const inputs = ['decisions', 'baseline', 'supported', 'participants'].map(id => document.getElementById(id));
+const defaults = [3, 80, 85, 1];
 const write = (id, text) => { document.getElementById(id).textContent = text; };
-
+let announcement;
 function render(announce = true) {
-  const [n, a, b] = controls.map(control => Number(control.value));
-  const model = calculate(n, a, b);
-  write('decisions-value', n);
-  write('score-a-value', a + ' / 100');
-  write('score-b-value', b + ' / 100');
-  controls[0].setAttribute('aria-valuetext', n + (n === 1 ? ' decision' : ' decisions'));
-  controls[1].setAttribute('aria-valuetext', a + ' out of 100');
-  controls[2].setAttribute('aria-valuetext', b + ' out of 100');
-  write('ratio', formatRatio(model.ratio));
-  write('mobile-ratio', formatRatio(model.ratio));
-  document.getElementById('ratio').classList.toggle('compact', formatRatio(model.ratio).length > 7);
-  document.getElementById('ratio').classList.toggle('undefined', model.ratio === null);
-  write('result-a', formatScore(model.finalA));
-  write('result-b', formatScore(model.finalB));
-  const delta = b - a;
-  const summary = (delta === 0 ? 'Same score' : Math.abs(delta) + '-point score ' + (delta > 0 ? 'increase' : 'decrease')) + ' across ' + n + (n === 1 ? ' decision' : ' decisions');
-  write('assumption-summary', summary);
-  const resultDescription = `Scenario A ends at ${formatScore(model.finalA)} and Scenario B at ${formatScore(model.finalB)}, out of 100, after ${n} decisions. Scores are illustrative, not success probabilities.`;
-  write('chart-description', resultDescription);
-  write('chart-end', 'Decision ' + n);
-  write('result-note', model.ratio === null
-    ? 'Scenario A has a zero score, so the ratio is undefined. The model scores are illustrative, not a forecast of company success.'
-    : 'This ratio compares model scores. It is not a forecast of company success or a measured membership benefit.');
-  for (const key of ['a', 'b']) {
-    const points = model[key].map((score, i) => [42 + 496 * i / n, 192 - 172 * score / 100]);
-    document.getElementById('line-' + key).setAttribute('d', points.map(([x, y], i) => (i ? 'L' : 'M') + x.toFixed(2) + ',' + y.toFixed(2)).join(' '));
-    const end = document.getElementById('end-' + key);
-    end.setAttribute('cx', points[n][0]);
-    end.setAttribute('cy', points[n][1]);
-  }
-  presetButtons.forEach(button => button.setAttribute('aria-pressed', String(presets[button.dataset.preset].every((value, i) => value === Number(controls[i].value)))));
+  const [d, a, b, m] = inputs.map(input => Number(input.value));
+  const result = calculate(d, a, b, m);
+  write('decisions-value', d);
+  write('baseline-value', a + '%');
+  write('supported-value', b + '%');
+  write('participants-value', m + ' of 4');
+  inputs[0].setAttribute('aria-valuetext', d + ' decisions per leader');
+  inputs[1].setAttribute('aria-valuetext', a + ' percent');
+  inputs[2].setAttribute('aria-valuetext', b + ' percent');
+  inputs[3].setAttribute('aria-valuetext', m + ' of 4 leaders');
+  write('baseline-result', formatPercent(result.without));
+  write('supported-result', formatPercent(result.withSupport));
+  write('ratio', formatRatio(result.ratio));
+  document.getElementById('ratio').classList.toggle('compact', formatRatio(result.ratio).length > 6);
+  write('coverage', `${result.covered} of ${result.total} decisions`);
+  write('full-team', formatPercent(result.fullTeam));
+  document.querySelector('.full-team-note').hidden = m === 4;
+  write('result-caption', `Hypothetical probability that all ${result.total} modeled decisions achieve their intended outcome`);
+  write('ratio-label', result.ratio === null ? 'Zero baseline; ratio undefined' : 'Relative likelihood in this model');
+  write('coverage-note', b > a ? 'The higher assumed probability applies only to participating leaders’ decisions.' : b === a ? 'With equal assumptions, adding participants does not change the modeled result.' : 'With a lower support assumption, adding participants reduces the modeled result.');
+  document.querySelectorAll('.leader-node').forEach((node, i) => node.classList.toggle('active', i < m));
+  document.querySelectorAll('[data-members]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.members) === m)));
   clearTimeout(announcement);
-  if (announce) announcement = setTimeout(() => write('result-status', summary + '. ' + resultDescription + ' Modeled ratio: ' + formatRatio(model.ratio) + '.'), 250);
+  if (announce) announcement = setTimeout(() => write('result-status', `${m} of 4 leaders participating. Baseline ${formatPercent(result.without)}. With support ${formatPercent(result.withSupport)}. Relative likelihood ${formatRatio(result.ratio)}. Hypothetical results, not company success odds.`), 250);
 }
-function setExample(values) {
-  controls.forEach((control, i) => { control.value = values[i]; });
-  render();
-}
-controls.forEach(control => control.addEventListener('input', () => render()));
-presetButtons.forEach(button => button.addEventListener('click', () => setExample(presets[button.dataset.preset])));
-document.getElementById('reset').addEventListener('click', () => setExample(presets.small));
+inputs.forEach(input => input.addEventListener('input', () => render()));
+document.querySelectorAll('[data-members]').forEach(button => button.addEventListener('click', () => { inputs[3].value = button.dataset.members; render(); }));
+document.getElementById('reset').addEventListener('click', () => { inputs.forEach((input, i) => { input.value = defaults[i]; }); render(); });
 document.getElementById('login').addEventListener('click', () => document.getElementById('prototype-notice').showModal());
 render(false);

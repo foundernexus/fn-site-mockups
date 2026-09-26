@@ -1,27 +1,37 @@
-# Success Equation preview
+# The Leadership Multiplier
 
-Dedicated page linked from the Map C homepage navigation. Serve the repository root, then open `/v3-map-c/success-equation/`. All fonts, styles, logo and scripts load locally. The official logo is extracted unchanged from the homepage's embedded asset manifest.
+Working name for the dedicated page previously titled Success Equation. The existing `/v3-map-c/success-equation/` route is retained so shared preview links keep working. Homepage and page navigation use Leadership Multiplier.
 
-## Design and content
+## What changed
 
-- A centered, spacious introduction leads to the calculator as the main feature.
-- Three keyboard-operable sliders compare two assumed decision scores across a sequence of decisions. Example presets, reset, live chart and readable results respond immediately.
-- On phones, a compact result beside the controls supplements the full result panel below. Results also have a debounced accessible status announcement.
-- An expandable method explains the original multiplicative idea; the closing section connects it to relevant experience and Nexus Partner support for leadership teams.
-- Application links return to the homepage invitation. The homepage application itself remains a prototype notice. Login on this page also shows a local preview notice.
+Restored the original calculator's three-card comparison and removed the descending chart. Added a participation control for an explicitly illustrative four-leader team. The page now separates the proposition, calculator, functional benefits, independent evidence and membership invitation so each section makes a different point.
 
-## Model choice
+## Model
 
-The original calculator used `(quality / 100) ** decisions`, labeled its results as success probabilities and attributed the higher assumption to FounderNexus. This version preserves that mathematical interaction as an illustrative index: `100 × (score / 100) ** decisions`.
+For four leaders, each making d decisions: n = 4d. If m leaders participate, k = md decisions receive the user-assumed support probability q. Others retain the baseline probability p.
 
-Scenario A and B are user-set assumptions, not with/without-membership estimates. The score is not a success probability or a financial projection. The ratio is B divided by A, displayed only when A is nonzero. Real decisions can be correlated, revisited and differently weighted; the model does not capture that complexity. Adding factors in [0,1] reduces the absolute score or leaves it unchanged, even when the relative gap widens. This is explained in the page's method section.
+- Baseline: p^n
+- Support scenario: p^(n-k) × q^k
+- Relative likelihood: support scenario / baseline; undefined if baseline is zero.
 
-Defaults: 10 decisions, scores 80 and 85. Combined scores: 10.74 and 19.69 out of 100; ratio: 1.83×. These defaults are examples, not measured benchmarks.
+These are hypothetical probabilities of ALL modeled decision outcomes occurring, under equal independent probabilities. They are not company-success estimates, financial forecasts or measured FounderNexus effects. The ratio is not a statistical odds ratio. Holding the team and total decisions fixed avoids changing the comparison denominator when participation changes. More participants only increase the output when the user assumes q > p. No uplift is mechanically assigned to membership.
 
-## Editing and verification
+Default: three decisions each, p=80%, q=85%, one participant. Baseline 6.87%, support 8.24%, relative likelihood 1.20×. Whole-team participation under the same assumptions gives 14.22% and 2.07×. Defaults are examples, not benchmarks.
 
-Edit `index.html`, `style.css`, `calculator.js`, and the pure calculation module `model.mjs` directly. Shared header styles come from `../src/refinements.css`. Rebuild the homepage after editing its source navigation with `python v3-map-c/build.py`.
+## Evidence
 
-Run `node --test v3-map-c/success-equation/model.test.mjs` from the repo root. Tests cover the default calculation, equal/lower/perfect scores, zero-reference handling, small-number formatting, sequence length and invalid values. Browser checks cover presets, keyboard changes, reset, method disclosure, responsive boundaries and links back to the homepage.
+Cai and Szeidl (2018), Interfirm Relationships and Business Performance, Quarterly Journal of Economics 133(3), 1229–1282. DOI: 10.1093/qje/qjx049.
 
-Saved to the existing review branch. Publishing the live/default branch is outside this preview pass.
+Source checked September 26, 2026: https://research.ceu.edu/en/publications/interfirm-relationships-and-business-performance/
+
+The published abstract describes a randomized study of 2,820 young Chinese firms, monthly manager meetings over one year, and an 8.1% revenue effect. The page keeps the sample and treatment context beside the statistic, identifies it as independent research, and explicitly distinguishes it from FounderNexus results, venture-backed benchmarks and evidence for team-member amplification. The study does not calibrate the calculator.
+
+## Naming recommendation
+
+The Leadership Multiplier is the proposed page name because it connects the individual member's benefit to broader leadership participation. The hero supplies the outcome framing. Team Decision Advantage is a more literal alternative; Success Equation is retained only as a bridge to the familiar concept. The naming is a proposal, not a registered or validated brand claim.
+
+## Verification
+
+Run `node --test v3-map-c/success-equation/model.test.mjs`. Tests cover default arithmetic, fixed decision coverage, full-team participation, no-participation/equal/lower-support cases, zero/perfect/tiny probabilities and invalid inputs. Browser checks exercise participation, keyboard inputs, reset, disclosure and responsive layout. All model and UI assets are local. The academic source opens externally.
+
+The homepage application and login remain prototype destinations. Changes are saved on the existing review branch; the live site is unchanged.

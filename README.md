@@ -19,7 +19,7 @@ The map loads geography and drawing libraries from public CDNs. Its people and l
 
 ### Editing Map C
 
-The navigation now includes a dedicated [Success Equation](v3-map-c/success-equation/) preview. Its interactive calculator revisits the original multiplicative concept as two illustrative, user-set scenarios, with an explicit method explanation and no assumed membership success lift. See [its notes](v3-map-c/success-equation/README.md) for editing and model tests. This addition is on the review branch and is not yet published to the live default branch.
+The navigation includes [The Leadership Multiplier](v3-map-c/success-equation/), the working name for the dedicated Success Equation page. Its original-style calculator compares hypothetical decision outcomes and lets visitors explore support across an example leadership team. Independent peer-learning research is clearly separated from FounderNexus results. See [the model and evidence notes](v3-map-c/success-equation/README.md). This addition is on the review branch and is not published to the live default branch.
 
 Edit `v3-map-c/src/page.html`, `src/hero-map.html`, and `src/refinements.css`, then run `python v3-map-c/build.py` from the repository root. Commit both the sources and rebuilt `v3-map-c/index.html`. The builder preserves the original embedded asset manifest. Serve the repository root locally to keep the map's font paths working.
 
