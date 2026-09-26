@@ -8,7 +8,14 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | --- | --- | --- |
 | Acquisition homepage prototype | `vn-home-mockup.html` | https://foundernexus.github.io/fn-site-mockups/vn-home-mockup.html |
 | Public homepage (June 2026 v2) | `index.html` | https://foundernexus.github.io/fn-site-mockups/ |
+| Homepage v3 — Map C | `v3-map-c/` | https://foundernexus.github.io/fn-site-mockups/v3-map-c/ |
 | Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
+
+## Homepage v3 — Map C
+
+`v3-map-c/` is the September 2026 homepage prototype (source file: FounderNexus v3 Map C). It is a single self-contained page: hero, membership fit, the success-equation calculator, stage rooms, Nexus Partner, admission, comparison, sessions, and the location map. The map loads geography and drawing libraries from public CDNs when the page opens.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/v3-map-c/
 
 ## Member portal demo
 
