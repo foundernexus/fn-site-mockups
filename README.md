@@ -13,7 +13,15 @@ This repo hosts static FounderNexus website mockups for internal review through 
 
 ## Homepage v3 — Map C
 
-`v3-map-c/` is the September 2026 homepage prototype (source file: FounderNexus v3 Map C). It is a single self-contained page: hero, membership fit, the success-equation calculator, stage rooms, Nexus Partner, admission, comparison, sessions, and the location map. The map loads geography and drawing libraries from public CDNs when the page opens.
+`v3-map-c/` is the September 2026 homepage prototype. The updated story focuses on leadership teams of venture-backed companies, the decisions they own, and the Nexus Partner support around those priorities. It retains the Map C hero, supplied photography, logos and testimonials. Illustrative decision examples replace the assumed success-probability calculator.
+
+The map loads geography and drawing libraries from public CDNs. Its people and locations are illustrative, and motion can be paused. Sessions are examples, not a live event calendar. Application, login and other unfinished destinations display a preview notice; this page does not collect applications.
+
+### Editing Map C
+
+Edit `v3-map-c/src/page.html`, `src/hero-map.html`, and `src/refinements.css`, then run `python v3-map-c/build.py` from the repository root. Commit both the sources and rebuilt `v3-map-c/index.html`. The builder preserves the original embedded asset manifest. Serve the repository root locally to keep the map's font paths working.
+
+The original export runtime has a broad camel-case attribute transform, including within iframe documents. Keep newly assigned JavaScript variable names in `hero-map.html` lowercase (for example, `manualpaused`) and check the rendered iframe after rebuilding.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/v3-map-c/
 

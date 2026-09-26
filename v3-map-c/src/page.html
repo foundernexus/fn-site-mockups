@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FounderNexus | Experience for your next decision</title>
+<script src="c21be763-e400-429b-8e56-48055caca159"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+
+<style>@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("9afee7f2-6706-4ffc-9c5a-2f70e51a863c") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("4a0464a1-0805-4156-94ef-68023e3ff9ff") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("e155e823-b904-44d7-8430-0a7cb1da4a6d") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("e5e588cf-76d0-47f6-accc-0c5d9e4f1215") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+</style>
+<style>/* FounderNexus — M2 brand tokens (Brand Book M2, Aug 2026)
+   Supersedes M1 (print-only) and the v1 design-system palette.
+   Change of record: the brand blue is #0072BA, taken from the logo artwork.
+   #007BE4 is retired. Navy is ratified as brand ink and dark field.
+   #929497 is a PRIMARY brand color (the gray inside the mark). */
+
+:root {
+  /* ---- Brand core (the logo palette) ---- */
+  --fn-blue:      #0072BA;   /* PRIMARY. CMYK 88/52/0/0 · RGB 0/114/186 · 5.10:1 on white (AA) */
+  --fn-gray:      #929497;   /* PRIMARY neutral. CMYK 45/36/35/1 · RGB 146/148/151 · large text/UI only */
+  --fn-navy:      #01052A;   /* Brand ink — text, headings */
+
+  /* ---- Blue ramp ---- */
+  --blue-800: #004886;   /* pressed */
+  --blue-700: #0059A8;   /* hover */
+  --blue-600: #0072BA;   /* = --fn-blue, primary action */
+  --blue-300: #66B2F0;   /* on-dark accent, email label */
+  --blue-200: #A6D2F7;
+  --blue-100: #D3EAFD;   /* chips, secondary copy on a blue field */
+  --blue-50:  #F1F8FF;   /* pale emphasis panel */
+  --blue-legacy: #007BE4; /* RETIRED — migrate to --blue-600. 4.25:1 on white, fails AA */
+
+  /* Compatibility overrides: any v1 component still reading these names
+     now resolves to the M2 blue rather than the retired one. */
+  --blue-500:   #0072BA;
+  --blue-450:   #0072BA;
+  --blue-400:   #0072BA;
+  --blue-action: #0072BA;
+  --text-brand: #0072BA;
+  --border-focus: #0072BA;
+  --status-info: #0072BA;
+
+  /* ---- Navy ramp ---- */
+  --navy-900: #01052A;   /* ink */
+  --navy-700: #061B2C;   /* dark surface, email header, consequence field */
+  --navy-600: #0C2438;   /* mark on a navy field */
+
+  /* ---- Neutrals ---- */
+  --white:    #FFFFFF;
+  --gray-50:  #F9F9F9;   /* page */
+  --gray-100: #F1F5F9;   /* subtle surface, deck panel */
+  --gray-200: #E2E8F0;   /* subtle border */
+  --gray-300: #D0D5DD;
+  --gray-350: #D3D6DA;   /* default border */
+  --gray-400: #9EADBA;   /* muted text (large / non-essential only) */
+  --gray-450: #929497;   /* = --fn-gray, deck captions and slide numbers */
+  --gray-600: #56646F;   /* secondary text — 5.9:1 on white */
+  --gray-800: #334155;   /* body on white slides */
+
+  /* ---- Status ---- */
+  --green-500: #12A150;
+  --red-500:   #D92D20;
+  --amber-500: #B45309;
+  --yellow:    #FFCC00;  /* product status label only, never dominant */
+
+  /* ---- Semantic ---- */
+  --text-primary:   var(--navy-900);
+  --text-secondary: var(--gray-600);
+  --text-muted:     var(--gray-400);
+  --text-link:      var(--blue-600);
+  --surface-page:   var(--gray-50);
+  --surface-card:   var(--white);
+  --surface-subtle: var(--gray-100);
+  --surface-accent: var(--blue-50);
+  --surface-chip:   var(--blue-100);
+  --surface-dark:   var(--navy-700);
+  --border-default: var(--gray-350);
+  --border-subtle:  var(--gray-200);
+
+  --action-primary:        var(--blue-600);
+  --action-primary-hover:  var(--blue-700);
+  --action-primary-active: var(--blue-800);
+  --action-disabled:       var(--gray-200);
+  --action-disabled-text:  var(--gray-400);
+  --shadow-focus: 0 0 0 3px rgba(0, 114, 186, 0.28);
+  --shadow-button-hover: 0 4px 12px rgba(1, 5, 42, 0.20); /* pairs with translateY(-1px) on hover; pressed removes it */
+
+  /* ---- Deck ---- */
+  --deck-headline:       var(--navy-900);
+  --deck-field:          var(--blue-600);   /* opportunity / upside */
+  --deck-field-deep:     var(--navy-700);   /* risk / consequence */
+  --deck-accent:         var(--blue-600);
+  --deck-ink:            var(--gray-800);
+  --deck-muted:          var(--gray-450);
+  --deck-on-field:       var(--white);
+  --deck-on-field-muted: var(--blue-100);
+  --deck-panel:          var(--gray-100);
+  --deck-panel-border:   var(--gray-200);
+
+  /* ---- Email (literal hex required in markup) ---- */
+  --email-page:        #F1F2F4;
+  --email-shell:       #E2E8F0;
+  --email-rule:        #EEF1F4;
+  --email-footer:      #F9FAFB;
+  --email-on-navy:     #66B2F0;
+  --email-on-navy-dim: #93A7B8;
+  --post-ask:     #0072BA;
+  --post-offer:   #12A150;
+  --post-vouch:   #B45309;
+  --post-thanks:  #64748B;
+  --post-general: #475467;
+
+  /* ---- v1 compatibility (names still read by existing components) ---- */
+  --navy-800: #040A43;
+  --ink-900:  #202020;
+  --gray-25:  #FCFCFD;
+  --gray-500: #64748B;
+  --gray-700: #475467;
+  --green-50: #E7F6EE;
+  --red-50:   #FEF3F2;
+  --amber-50: #FEF6E0;
+  --status-success: var(--green-500);
+  --status-error:   var(--red-500);
+  --status-warning: var(--amber-500);
+}
+</style>
+<style>/* FounderNexus — Typography tokens
+   Plus Jakarta Sans only (M2 — Roboto retired; Arial is the email fallback). */
+
+:root {
+  /* Families */
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-product: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* M2: Roboto retired */
+  --font-display: "Plus Jakarta Sans", -apple-system, sans-serif;
+
+  /* Weights */
+  --fw-regular: 400;   /* @kind font */
+  --fw-medium: 500;    /* @kind font */
+  --fw-semibold: 600;  /* @kind font */
+  --fw-bold: 700;      /* @kind font */
+
+  /* Type scale (px) — found in source */
+  --fs-xs: 12px;     /* small labels / meta */
+  --fs-sm: 14px;     /* secondary body, controls */
+  --fs-base: 16px;   /* body default */
+  --fs-md: 18px;     /* lead body */
+  --fs-lg: 20px;     /* small section heading */
+  --fs-xl: 24px;     /* section heading */
+  --fs-2xl: 30px;    /* large section heading */
+  --fs-3xl: 40px;    /* hero / page title */
+  --fs-4xl: 50px;    /* large hero */
+  --fs-5xl: 80px;    /* display hero (desktop) */
+
+  /* Presentation scale (px) — for 1920×1080 slides ONLY, never web UI.
+     Derived from the Trust/GTM keynote authored at 960×540 (×2). */
+  --fs-deck-eyebrow: 24px;   /* uppercase kicker + slide number */
+  --fs-deck-note: 28px;      /* citation / footnote */
+  --fs-deck-body-sm: 30px;   /* card body */
+  --fs-deck-body: 38px;      /* slide body copy */
+  --fs-deck-lead: 48px;      /* lead-in / list statement */
+  --fs-deck-h2: 66px;        /* content-slide headline */
+  --fs-deck-h1: 88px;        /* section statement headline */
+  --fs-deck-display: 104px;  /* title + closing statement */
+  --fs-deck-stat: 132px;     /* single big figure */
+
+  /* Line heights */
+  --lh-tight: 1.1;    /* @kind font */
+  --lh-snug: 1.25;    /* @kind font */
+  --lh-normal: 1.45;  /* @kind font */
+  --lh-relaxed: 1.6;  /* @kind font */
+
+  /* Letter spacing */
+  --ls-tight: -0.02em;   /* @kind font */
+  --ls-snug: -0.01em;    /* @kind font */
+  --ls-normal: 0;        /* @kind font */
+  --ls-wide: 0.04em;     /* @kind font */
+
+  /* ---- Semantic roles ---- */
+  --text-display: var(--fw-bold) var(--fs-5xl)/var(--lh-tight) var(--font-display);
+  --text-h1: var(--fw-bold) var(--fs-3xl)/var(--lh-snug) var(--font-display);
+  --text-h2: var(--fw-semibold) var(--fs-2xl)/var(--lh-snug) var(--font-sans);
+  --text-h3: var(--fw-semibold) var(--fs-xl)/var(--lh-snug) var(--font-sans);
+  --text-h4: var(--fw-semibold) var(--fs-lg)/var(--lh-normal) var(--font-sans);
+  --text-body: var(--fw-regular) var(--fs-base)/var(--lh-relaxed) var(--font-sans);
+  --text-body-sm: var(--fw-regular) var(--fs-sm)/var(--lh-relaxed) var(--font-sans);
+  --text-label: var(--fw-medium) var(--fs-sm)/var(--lh-normal) var(--font-sans);
+  --text-meta: var(--fw-medium) var(--fs-xs)/var(--lh-normal) var(--font-sans);
+
+  /* ---- Presentation roles (1920×1080 slides) ---- */
+  --text-deck-display: var(--fw-bold) var(--fs-deck-display)/1.06 var(--font-display);
+  --text-deck-h1: var(--fw-bold) var(--fs-deck-h1)/1.08 var(--font-display);
+  --text-deck-h2: var(--fw-bold) var(--fs-deck-h2)/1.12 var(--font-display);
+  --text-deck-lead: var(--fw-medium) var(--fs-deck-lead)/1.3 var(--font-sans);
+  --text-deck-body: var(--fw-regular) var(--fs-deck-body)/1.45 var(--font-sans);
+  --text-deck-note: var(--fw-regular) var(--fs-deck-note)/1.45 var(--font-sans);
+  --text-deck-eyebrow: var(--fw-semibold) var(--fs-deck-eyebrow)/1.2 var(--font-sans);
+}
+</style>
+<style>/* FounderNexus — Spacing, radius, shadow tokens. 8px-based rhythm. */
+
+:root {
+  /* Spacing scale */
+  --space-0: 0;
+  --space-1: 4px;    /* tight internal */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;   /* card padding */
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;  /* major section separation */
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Radii — compact, restrained */
+  --radius-xs: 4px;    /* compact controls, product/table UI */
+  --radius-sm: 6px;
+  --radius-md: 8px;    /* buttons, inputs, default cards */
+  --radius-lg: 12px;   /* cards, panels */
+  --radius-xl: 16px;
+  --radius-2xl: 20px;  /* large special surfaces */
+  --radius-3xl: 24px;
+  --radius-pill: 9999px; /* chips, tags, avatars, pills only */
+
+  /* Borders */
+  --border-width: 1px;
+
+  /* Shadows — soft, low elevation; FounderNexus reads quiet */
+  --shadow-xs: 0 1px 2px rgba(1, 5, 42, 0.05);
+  --shadow-sm: 0 1px 3px rgba(1, 5, 42, 0.08), 0 1px 2px rgba(1, 5, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(1, 5, 42, 0.08);
+  --shadow-lg: 0 8px 24px rgba(1, 5, 42, 0.10);
+  --shadow-xl: 0 16px 40px rgba(1, 5, 42, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(0, 114, 186, 0.28);
+  --shadow-button-hover: 0 4px 12px rgba(1, 5, 42, 0.20);
+
+  /* Layout */
+  --container-max: 1200px;   /* @kind other */
+  --container-wide: 1320px;  /* @kind other */
+  --header-height: 80px;     /* @kind other */
+
+  /* Motion — calm, no bounce */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.0, 0, 0.2, 1); /* @kind other */
+  --dur-fast: 120ms;  /* @kind other */
+  --dur-base: 200ms;  /* @kind other */
+  --dur-slow: 320ms;  /* @kind other */
+}
+</style>
+<style>/* FounderNexus — base element defaults.
+   Light reset + brand defaults so any surface inherits the system. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font: var(--text-body);
+  color: var(--text-primary);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; color: var(--text-primary); }
+p { margin: 0; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { display: block; max-width: 100%; }
+
+button { font-family: inherit; }
+
+::selection { background: var(--blue-100); color: var(--navy-900); }
+
+/* Utility eyebrow / overline */
+.fn-eyebrow {
+  font: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--blue-500);
+}
+</style>
+<style>/* FounderNexus Design System — global CSS entry point.
+   Consumers link this one file. Keep it as @import lines only. */
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("9afee7f2-6706-4ffc-9c5a-2f70e51a863c") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("4a0464a1-0805-4156-94ef-68023e3ff9ff") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("e155e823-b904-44d7-8430-0a7cb1da4a6d") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("e5e588cf-76d0-47f6-accc-0c5d9e4f1215") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+
+/* FounderNexus — M2 brand tokens (Brand Book M2, Aug 2026)
+   Supersedes M1 (print-only) and the v1 design-system palette.
+   Change of record: the brand blue is #0072BA, taken from the logo artwork.
+   #007BE4 is retired. Navy is ratified as brand ink and dark field.
+   #929497 is a PRIMARY brand color (the gray inside the mark). */
+
+:root {
+  /* ---- Brand core (the logo palette) ---- */
+  --fn-blue:      #0072BA;   /* PRIMARY. CMYK 88/52/0/0 · RGB 0/114/186 · 5.10:1 on white (AA) */
+  --fn-gray:      #929497;   /* PRIMARY neutral. CMYK 45/36/35/1 · RGB 146/148/151 · large text/UI only */
+  --fn-navy:      #01052A;   /* Brand ink — text, headings */
+
+  /* ---- Blue ramp ---- */
+  --blue-800: #004886;   /* pressed */
+  --blue-700: #0059A8;   /* hover */
+  --blue-600: #0072BA;   /* = --fn-blue, primary action */
+  --blue-300: #66B2F0;   /* on-dark accent, email label */
+  --blue-200: #A6D2F7;
+  --blue-100: #D3EAFD;   /* chips, secondary copy on a blue field */
+  --blue-50:  #F1F8FF;   /* pale emphasis panel */
+  --blue-legacy: #007BE4; /* RETIRED — migrate to --blue-600. 4.25:1 on white, fails AA */
+
+  /* Compatibility overrides: any v1 component still reading these names
+     now resolves to the M2 blue rather than the retired one. */
+  --blue-500:   #0072BA;
+  --blue-450:   #0072BA;
+  --blue-400:   #0072BA;
+  --blue-action: #0072BA;
+  --text-brand: #0072BA;
+  --border-focus: #0072BA;
+  --status-info: #0072BA;
+
+  /* ---- Navy ramp ---- */
+  --navy-900: #01052A;   /* ink */
+  --navy-700: #061B2C;   /* dark surface, email header, consequence field */
+  --navy-600: #0C2438;   /* mark on a navy field */
+
+  /* ---- Neutrals ---- */
+  --white:    #FFFFFF;
+  --gray-50:  #F9F9F9;   /* page */
+  --gray-100: #F1F5F9;   /* subtle surface, deck panel */
+  --gray-200: #E2E8F0;   /* subtle border */
+  --gray-300: #D0D5DD;
+  --gray-350: #D3D6DA;   /* default border */
+  --gray-400: #9EADBA;   /* muted text (large / non-essential only) */
+  --gray-450: #929497;   /* = --fn-gray, deck captions and slide numbers */
+  --gray-600: #56646F;   /* secondary text — 5.9:1 on white */
+  --gray-800: #334155;   /* body on white slides */
+
+  /* ---- Status ---- */
+  --green-500: #12A150;
+  --red-500:   #D92D20;
+  --amber-500: #B45309;
+  --yellow:    #FFCC00;  /* product status label only, never dominant */
+
+  /* ---- Semantic ---- */
+  --text-primary:   var(--navy-900);
+  --text-secondary: var(--gray-600);
+  --text-muted:     var(--gray-400);
+  --text-link:      var(--blue-600);
+  --surface-page:   var(--gray-50);
+  --surface-card:   var(--white);
+  --surface-subtle: var(--gray-100);
+  --surface-accent: var(--blue-50);
+  --surface-chip:   var(--blue-100);
+  --surface-dark:   var(--navy-700);
+  --border-default: var(--gray-350);
+  --border-subtle:  var(--gray-200);
+
+  --action-primary:        var(--blue-600);
+  --action-primary-hover:  var(--blue-700);
+  --action-primary-active: var(--blue-800);
+  --action-disabled:       var(--gray-200);
+  --action-disabled-text:  var(--gray-400);
+  --shadow-focus: 0 0 0 3px rgba(0, 114, 186, 0.28);
+  --shadow-button-hover: 0 4px 12px rgba(1, 5, 42, 0.20); /* pairs with translateY(-1px) on hover; pressed removes it */
+
+  /* ---- Deck ---- */
+  --deck-headline:       var(--navy-900);
+  --deck-field:          var(--blue-600);   /* opportunity / upside */
+  --deck-field-deep:     var(--navy-700);   /* risk / consequence */
+  --deck-accent:         var(--blue-600);
+  --deck-ink:            var(--gray-800);
+  --deck-muted:          var(--gray-450);
+  --deck-on-field:       var(--white);
+  --deck-on-field-muted: var(--blue-100);
+  --deck-panel:          var(--gray-100);
+  --deck-panel-border:   var(--gray-200);
+
+  /* ---- Email (literal hex required in markup) ---- */
+  --email-page:        #F1F2F4;
+  --email-shell:       #E2E8F0;
+  --email-rule:        #EEF1F4;
+  --email-footer:      #F9FAFB;
+  --email-on-navy:     #66B2F0;
+  --email-on-navy-dim: #93A7B8;
+  --post-ask:     #0072BA;
+  --post-offer:   #12A150;
+  --post-vouch:   #B45309;
+  --post-thanks:  #64748B;
+  --post-general: #475467;
+
+  /* ---- v1 compatibility (names still read by existing components) ---- */
+  --navy-800: #040A43;
+  --ink-900:  #202020;
+  --gray-25:  #FCFCFD;
+  --gray-500: #64748B;
+  --gray-700: #475467;
+  --green-50: #E7F6EE;
+  --red-50:   #FEF3F2;
+  --amber-50: #FEF6E0;
+  --status-success: var(--green-500);
+  --status-error:   var(--red-500);
+  --status-warning: var(--amber-500);
+}
+
+/* FounderNexus — Typography tokens
+   Plus Jakarta Sans only (M2 — Roboto retired; Arial is the email fallback). */
+
+:root {
+  /* Families */
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-product: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* M2: Roboto retired */
+  --font-display: "Plus Jakarta Sans", -apple-system, sans-serif;
+
+  /* Weights */
+  --fw-regular: 400;   /* @kind font */
+  --fw-medium: 500;    /* @kind font */
+  --fw-semibold: 600;  /* @kind font */
+  --fw-bold: 700;      /* @kind font */
+
+  /* Type scale (px) — found in source */
+  --fs-xs: 12px;     /* small labels / meta */
+  --fs-sm: 14px;     /* secondary body, controls */
+  --fs-base: 16px;   /* body default */
+  --fs-md: 18px;     /* lead body */
+  --fs-lg: 20px;     /* small section heading */
+  --fs-xl: 24px;     /* section heading */
+  --fs-2xl: 30px;    /* large section heading */
+  --fs-3xl: 40px;    /* hero / page title */
+  --fs-4xl: 50px;    /* large hero */
+  --fs-5xl: 80px;    /* display hero (desktop) */
+
+  /* Presentation scale (px) — for 1920×1080 slides ONLY, never web UI.
+     Derived from the Trust/GTM keynote authored at 960×540 (×2). */
+  --fs-deck-eyebrow: 24px;   /* uppercase kicker + slide number */
+  --fs-deck-note: 28px;      /* citation / footnote */
+  --fs-deck-body-sm: 30px;   /* card body */
+  --fs-deck-body: 38px;      /* slide body copy */
+  --fs-deck-lead: 48px;      /* lead-in / list statement */
+  --fs-deck-h2: 66px;        /* content-slide headline */
+  --fs-deck-h1: 88px;        /* section statement headline */
+  --fs-deck-display: 104px;  /* title + closing statement */
+  --fs-deck-stat: 132px;     /* single big figure */
+
+  /* Line heights */
+  --lh-tight: 1.1;    /* @kind font */
+  --lh-snug: 1.25;    /* @kind font */
+  --lh-normal: 1.45;  /* @kind font */
+  --lh-relaxed: 1.6;  /* @kind font */
+
+  /* Letter spacing */
+  --ls-tight: -0.02em;   /* @kind font */
+  --ls-snug: -0.01em;    /* @kind font */
+  --ls-normal: 0;        /* @kind font */
+  --ls-wide: 0.04em;     /* @kind font */
+
+  /* ---- Semantic roles ---- */
+  --text-display: var(--fw-bold) var(--fs-5xl)/var(--lh-tight) var(--font-display);
+  --text-h1: var(--fw-bold) var(--fs-3xl)/var(--lh-snug) var(--font-display);
+  --text-h2: var(--fw-semibold) var(--fs-2xl)/var(--lh-snug) var(--font-sans);
+  --text-h3: var(--fw-semibold) var(--fs-xl)/var(--lh-snug) var(--font-sans);
+  --text-h4: var(--fw-semibold) var(--fs-lg)/var(--lh-normal) var(--font-sans);
+  --text-body: var(--fw-regular) var(--fs-base)/var(--lh-relaxed) var(--font-sans);
+  --text-body-sm: var(--fw-regular) var(--fs-sm)/var(--lh-relaxed) var(--font-sans);
+  --text-label: var(--fw-medium) var(--fs-sm)/var(--lh-normal) var(--font-sans);
+  --text-meta: var(--fw-medium) var(--fs-xs)/var(--lh-normal) var(--font-sans);
+
+  /* ---- Presentation roles (1920×1080 slides) ---- */
+  --text-deck-display: var(--fw-bold) var(--fs-deck-display)/1.06 var(--font-display);
+  --text-deck-h1: var(--fw-bold) var(--fs-deck-h1)/1.08 var(--font-display);
+  --text-deck-h2: var(--fw-bold) var(--fs-deck-h2)/1.12 var(--font-display);
+  --text-deck-lead: var(--fw-medium) var(--fs-deck-lead)/1.3 var(--font-sans);
+  --text-deck-body: var(--fw-regular) var(--fs-deck-body)/1.45 var(--font-sans);
+  --text-deck-note: var(--fw-regular) var(--fs-deck-note)/1.45 var(--font-sans);
+  --text-deck-eyebrow: var(--fw-semibold) var(--fs-deck-eyebrow)/1.2 var(--font-sans);
+}
+
+/* FounderNexus — Spacing, radius, shadow tokens. 8px-based rhythm. */
+
+:root {
+  /* Spacing scale */
+  --space-0: 0;
+  --space-1: 4px;    /* tight internal */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;   /* card padding */
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;  /* major section separation */
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Radii — compact, restrained */
+  --radius-xs: 4px;    /* compact controls, product/table UI */
+  --radius-sm: 6px;
+  --radius-md: 8px;    /* buttons, inputs, default cards */
+  --radius-lg: 12px;   /* cards, panels */
+  --radius-xl: 16px;
+  --radius-2xl: 20px;  /* large special surfaces */
+  --radius-3xl: 24px;
+  --radius-pill: 9999px; /* chips, tags, avatars, pills only */
+
+  /* Borders */
+  --border-width: 1px;
+
+  /* Shadows — soft, low elevation; FounderNexus reads quiet */
+  --shadow-xs: 0 1px 2px rgba(1, 5, 42, 0.05);
+  --shadow-sm: 0 1px 3px rgba(1, 5, 42, 0.08), 0 1px 2px rgba(1, 5, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(1, 5, 42, 0.08);
+  --shadow-lg: 0 8px 24px rgba(1, 5, 42, 0.10);
+  --shadow-xl: 0 16px 40px rgba(1, 5, 42, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(0, 114, 186, 0.28);
+  --shadow-button-hover: 0 4px 12px rgba(1, 5, 42, 0.20);
+
+  /* Layout */
+  --container-max: 1200px;   /* @kind other */
+  --container-wide: 1320px;  /* @kind other */
+  --header-height: 80px;     /* @kind other */
+
+  /* Motion — calm, no bounce */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.0, 0, 0.2, 1); /* @kind other */
+  --dur-fast: 120ms;  /* @kind other */
+  --dur-base: 200ms;  /* @kind other */
+  --dur-slow: 320ms;  /* @kind other */
+}
+
+/* FounderNexus — base element defaults.
+   Light reset + brand defaults so any surface inherits the system. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font: var(--text-body);
+  color: var(--text-primary);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; color: var(--text-primary); }
+p { margin: 0; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { display: block; max-width: 100%; }
+
+button { font-family: inherit; }
+
+::selection { background: var(--blue-100); color: var(--navy-900); }
+
+/* Utility eyebrow / overline */
+.fn-eyebrow {
+  font: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--blue-500);
+}
+
+</style>
+<script src="78045b0c-387e-40d6-9984-85d4ddfbd9c3"></script>
+<style>html{scroll-behavior:smooth;scroll-padding-top:96px}body{margin:0;background:#fff;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#01052A;-webkit-font-smoothing:antialiased}a{color:#0072BA;text-decoration:none}a:hover{color:#0059A8}input[type=range]{accent-color:#0072BA;width:100%}.fn-scroll::-webkit-scrollbar{display:none}</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(255,255,255,.82);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%)">
+  <div style="max-width:1280px;margin:0 auto;height:72px;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px">
+    <a href="#top" style="display:flex;align-items:center"><img src="98852d27-c159-499e-9dee-9b2425730959" alt="FounderNexus logo" style="height:26px"></a>
+    <nav style="display:flex;gap:4px">
+      <a href="#prototype-notice" sc-camel-on-click="{{ openPreview }}" style="padding:10px 16px;border-radius:12px;font:500 15px/1 'Plus Jakarta Sans';color:#334155" style-hover="background:#F4F6F9;color:#01052A">Blog</a>
+      <a href="#membership-fit" style="padding:10px 16px;border-radius:12px;font:500 15px/1 'Plus Jakarta Sans';color:#334155" style-hover="background:#F4F6F9;color:#01052A">Membership</a>
+      <a href="#nexus-partner" style="padding:10px 16px;border-radius:12px;font:500 15px/1 'Plus Jakarta Sans';color:#334155" style-hover="background:#F4F6F9;color:#01052A">Nexus Partner</a>
+    </nav>
+    <div style="display:flex;justify-content:flex-end;align-items:center;gap:8px">
+      <a href="#prototype-notice" sc-camel-on-click="{{ openPreview }}" style="padding:12px 16px;border-radius:12px;font:600 15px/1 'Plus Jakarta Sans';color:#01052A" style-hover="background:#F4F6F9;color:#01052A">Log in</a>
+      <a href="#apply" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;white-space:nowrap;border-radius:12px;background:#01052A;color:#fff;font:600 15px/1 'Plus Jakarta Sans'" style-hover="background:#0072BA;color:#fff">Apply now</a>
+    </div>
+  </div>
+</header><main>
+
+<section id="top" style="max-width:1280px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,4vw,40px) clamp(64px,8vw,104px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(24px,4vw,56px);align-items:center;min-height:clamp(560px,80vh,760px)">
+  <div style="display:flex;flex-direction:column;align-items:flex-start">
+    <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#0072BA">For the leadership teams of venture-backed companies</div>
+    <h1 style="margin:20px 0 0;font:600 clamp(38px,4.8vw,64px)/1.04 'Plus Jakarta Sans';letter-spacing:-.045em;color:#01052A;text-wrap:balance">The next decision can change your company. <span style="color:#0072BA">Bring the right experience to it.</span></h1>
+    <p style="margin:24px 0 0;max-width:520px;font:400 clamp(17px,1.4vw,19px)/1.6 'Plus Jakarta Sans';color:#56646F;text-wrap:pretty">Work through critical decisions with relevant founder and operator experience. Your Nexus Partner connects the support to your role, stage, and priorities.</p>
+    <div style="display:flex;gap:10px;margin-top:32px;flex-wrap:wrap">
+      <a href="#apply" style="display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;white-space:nowrap;border-radius:16px;background:#0072BA;color:#fff;font:600 16px/1 'Plus Jakarta Sans';box-shadow:0 12px 32px -12px rgba(0,114,186,.8)" style-hover="background:#0059A8;color:#fff">Apply now<x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="arrow-right" size="18" hint-size="18px,18px"></x-import></a>
+      <a href="#nexus-partner" style="display:inline-flex;align-items:center;height:56px;padding:0 28px;white-space:nowrap;border-radius:16px;background:#F4F6F9;color:#01052A;font:600 16px/1 'Plus Jakarta Sans'" style-hover="background:#E8EDF3;color:#01052A">How Nexus Partners work</a>
+    </div>
+    <div style="margin-top:32px;display:flex;align-items:center;gap:10px;font:500 14px/1.4 'Plus Jakarta Sans';color:#56646F"><span style="display:flex;color:#0072BA"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="users" size="18" hint-size="18px,18px"></x-import></span><span><strong style="font-weight:700;color:#01052A">Support for each eligible leader</strong> with an individual trial experience. Online and in person.</span></div>
+  </div>
+  <div style="position:relative;width:100%;max-width:640px;justify-self:center;aspect-ratio:1/1">
+    <iframe srcdoc="{{HERO_MAP_DOCUMENT}}" title="Illustration: a leadership decision connected to relevant experience" style="position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent"></iframe>
+  </div>
+</section>
+
+<section style="background:#F1F8FF;border-top:1px solid #DCEBFA;border-bottom:1px solid #DCEBFA;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px);text-align:center"><div style="max-width:1100px;margin:0 auto">
+  <p ref="{{ rWords }}" style="margin:0;font:600 clamp(30px,4.4vw,60px)/1.15 'Plus Jakarta Sans';letter-spacing:-.035em;text-wrap:balance">
+    <sc-for list="{{ tagWords }}" as="w" hint-placeholder-count="12"><span style="color:#56646F;transition:color .25s">{{ w }} </span></sc-for>
+  </p>
+</div>
+</section>
+
+<section id="nexus-partner" style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,4vw,40px)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,96px);align-items:start">
+    <div style="position:sticky;top:120px">
+      <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#0072BA">The Nexus Partner</div>
+      <h2 style="margin:14px 0 0;font:600 clamp(32px,4.4vw,56px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em;text-wrap:balance">Your advocate inside FounderNexus.</h2>
+      <p style="margin:20px 0 0;font:400 17px/1.7 'Plus Jakarta Sans';color:#56646F;text-wrap:pretty">Your Nexus Partner is your point of contact inside FounderNexus. A focused monthly conversation clarifies your priorities and helps connect you with relevant peers, operators, experts and working sessions. As your priorities change, so does the support.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/10;background:#E8EDF3"><img src="86e4be4e-f31d-4be4-b148-3c2fd9381f4b" alt="A FounderNexus session" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="padding:28px 32px;border-radius:16px;background:#F4F6F9;display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px"><span style="width:56px;height:56px;border-radius:9999px;background:#fff;color:#0072BA;display:flex;align-items:center;justify-content:center;font:600 22px/1 'Plus Jakarta Sans'">1</span><div><h3 style="margin:0;font:600 20px/1.3 'Plus Jakarta Sans'">Clarify the pressing issues</h3><p style="margin:8px 0 0;font:400 15px/1.65 'Plus Jakarta Sans';color:#56646F">A focused 1:1 surfaces the challenge, constraint, or inflection point you're carrying.</p></div></div>
+      <div style="padding:28px 32px;border-radius:16px;background:#F4F6F9;display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px"><span style="width:56px;height:56px;border-radius:9999px;background:#fff;color:#0072BA;display:flex;align-items:center;justify-content:center;font:600 22px/1 'Plus Jakarta Sans'">2</span><div><h3 style="margin:0;font:600 20px/1.3 'Plus Jakarta Sans'">Identify the type of support you need</h3><p style="margin:8px 0 0;font:400 15px/1.65 'Plus Jakarta Sans';color:#56646F">Some issues require a referral, an introduction, a 1:1 discussion or a group session. Your Nexus Partner helps identify the support most relevant to your situation.</p></div></div>
+      <div style="padding:28px 32px;border-radius:16px;background:#0072BA;color:#fff;display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px"><span style="width:56px;height:56px;border-radius:9999px;background:#fff;color:#0072BA;display:flex;align-items:center;justify-content:center;font:600 22px/1 'Plus Jakarta Sans'">3</span><div><h3 style="margin:0;font:600 20px/1.3 'Plus Jakarta Sans'">Connect the next useful step</h3><p style="margin:8px 0 0;font:400 15px/1.65 'Plus Jakarta Sans';color:#fff">Your Nexus Partner helps you reach relevant people and resources while the decision is still live.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="proposition" class="decision-examples">
+<div class="chapter-wrap"><div class="example-heading"><p class="section-label">Put experience to work</p><h2>Start with the decision on your desk.</h2><p>Capital raised brings new expectations. Hiring, growth and fundraising decisions can arrive before your team has lived through them.</p></div>
+<div class="example-grid"><article><p class="section-label">Go-to-market</p><h3>“What should we change to build a repeatable sales motion?”</h3><p>Pressure-test your assumptions with a founder or revenue leader who has worked through a similar stage or customer profile.</p></article><article><p class="section-label">Leadership &amp; hiring</p><h3>“Is it time for a senior hire, and what should they own?”</h3><p>Compare timing, scope and tradeoffs with someone who has built that function at a comparable stage.</p></article><article><p class="section-label">Capital</p><h3>“What needs to be true before we start the next raise?”</h3><p>Bring relevant founder and operator experience around the readiness of your story and operating plan.</p></article></div><p class="example-note">Illustrative situations. Support is shaped around each member’s priorities.</p></div></section>
+
+<section style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,4vw,40px)">
+  <div style="max-width:760px">
+    <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#0072BA">Why FounderNexus</div>
+    <h2 style="margin:14px 0 0;font:600 clamp(32px,4.4vw,56px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em;text-wrap:balance">Relevant experience for the decisions you own.</h2>
+  </div>
+  <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px 40px">
+    <sc-for list="{{ why }}" as="w" hint-placeholder-count="6">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="width:52px;height:52px;border-radius:16px;background:#F1F8FF;color:#0072BA;display:flex;align-items:center;justify-content:center"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="{{ w.icon }}" size="22" hint-size="22px,22px"></x-import></span>
+        <h3 style="margin:8px 0 0;font:600 21px/1.3 'Plus Jakarta Sans';letter-spacing:-.015em">{{ w.t }}</h3>
+        <p style="margin:0;font:400 16px/1.65 'Plus Jakarta Sans';color:#56646F">{{ w.d }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,4vw,40px) 0">
+  <div style="max-width:820px">
+    <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#0072BA">Recurring member value</div>
+    <h2 style="margin:14px 0 0;font:600 clamp(32px,4.4vw,56px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em;text-wrap:balance">The next challenge deserves the right conversation, too.</h2>
+    <p style="margin:20px 0 0;max-width:680px;font:400 18px/1.65 'Plus Jakarta Sans';color:#56646F;text-wrap:pretty">Your priorities will change. FounderNexus brings together relevant peers, Nexus Partner support and practical working sessions around what matters to you now.</p>
+  </div>
+  <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+    <div style="padding:clamp(28px,3.5vw,40px);border-radius:16px;background:#F4F6F9">
+      <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#56646F">The decisions on your desk</div>
+      <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ elsewhere }}" as="x" hint-placeholder-count="5"><div style="display:flex;justify-content:space-between;gap:16px;padding:16px 20px;border-radius:16px;background:#fff;font:400 16px/1.45 'Plus Jakarta Sans';color:#56646F"><span>{{ x }}</span><span style="font-size:13px;color:#56646F;white-space:nowrap">your priorities</span></div></sc-for>
+      </div>
+    </div>
+    <div style="padding:clamp(28px,3.5vw,40px);border-radius:16px;background:#0072BA;color:#fff">
+      <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#D3EAFD">What FounderNexus delivers every month</div>
+      <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ delivers }}" as="x" hint-placeholder-count="5"><div style="display:flex;justify-content:space-between;gap:16px;padding:16px 20px;border-radius:16px;background:rgba(255,255,255,.12);font:500 16px/1.45 'Plus Jakarta Sans'"><span>{{ x }}</span><span style="font-size:13px;color:#D3EAFD;white-space:nowrap">ongoing</span></div></sc-for>
+      </div>
+    </div>
+  </div>
+  <p style="margin:20px 0 0;font:400 14px/1.6 'Plus Jakarta Sans';color:#56646F">Support is shaped around each member’s role, stage, and priorities.</p>
+</section>
+
+<section style="background:#F1F8FF;padding:clamp(80px,10vw,140px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <div><h2 style="margin:0;max-width:720px;font:600 clamp(32px,4.4vw,56px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em;text-wrap:balance">In their words.</h2><p style="max-width:720px;margin:24px 0 0;color:#56646F;font-size:17px;line-height:1.7">Developed by experienced founders, including Court Lorenzini. Built to bring a wider range of founder and operator experience around each member’s priorities.</p></div>
+    <div style="display:flex;gap:8px">
+      <button sc-camel-on-click="{{ qPrev }}" aria-label="Previous" style="width:52px;height:52px;border-radius:9999px;border:0;background:#fff;color:#01052A;cursor:pointer;display:flex;align-items:center;justify-content:center;transform:rotate(180deg)" style-hover="background:#D3EAFD"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="arrow-right" size="18" hint-size="18px,18px"></x-import></button>
+      <button sc-camel-on-click="{{ qNext }}" aria-label="Next" style="width:52px;height:52px;border-radius:9999px;border:0;background:#fff;color:#01052A;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#D3EAFD"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="arrow-right" size="18" hint-size="18px,18px"></x-import></button>
+    </div>
+  </div>
+  <div ref="{{ rQ }}" class="fn-scroll" style="margin-top:40px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-padding-inline:max(clamp(20px,4vw,40px),calc((100vw - 1280px) / 2 + 40px));padding:0 max(clamp(20px,4vw,40px),calc((100vw - 1280px) / 2 + 40px)) 8px;align-items:stretch">
+    <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="4">
+      <figure style="flex:0 0 {{ q.w }};scroll-snap-align:start;margin:0;padding:32px;border-radius:16px;background:{{ q.bg }};color:{{ q.fg }};display:flex;flex-direction:column;justify-content:space-between;gap:32px;min-height:320px">
+        <blockquote style="margin:0;font:500 {{ q.fs }}/1.45 'Plus Jakarta Sans';letter-spacing:-.01em;text-wrap:pretty">“{{ q.text }}”</blockquote>
+        <figcaption style="display:flex;align-items:center;gap:14px"><span style="width:44px;height:44px;flex:none;border-radius:9999px;background:{{ q.avBg }};color:{{ q.avFg }};display:flex;align-items:center;justify-content:center;font:600 14px/1 'Plus Jakarta Sans'">{{ q.ini }}</span><span style="display:flex;flex-direction:column;gap:3px"><span style="font:600 15px/1.2 'Plus Jakarta Sans'">{{ q.name }}</span><span style="font:400 13px/1.2 'Plus Jakarta Sans';color:{{ q.sub }}">{{ q.role }}</span></span></figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<section id="tier" style="padding:0 clamp(12px,2vw,24px)">
+  <div style="max-width:1400px;margin:0 auto;border-radius:16px;background:#01052A;color:#fff;overflow:hidden;position:relative">
+    <img src="3e649494-5059-4426-b6f9-bdddfffecfd3" alt="" style="position:absolute;right:-160px;top:-160px;width:600px;opacity:.7;pointer-events:none">
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(32px,5vw,80px);align-items:end">
+        <div><div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#66B2F0">Stage-matched peer groups</div><h2 style="margin:14px 0 0;font:600 clamp(32px,4.4vw,56px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em;color:#fff">The stage system.</h2></div>
+        <p style="margin:0;font:400 18px/1.65 'Plus Jakarta Sans';color:#D3EAFD;text-wrap:pretty">Your company stage provides context for the decisions ahead. Connect with peers facing similar challenges, with support shaped around your role and priorities.</p>
+      </div>
+      <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(24px,4vw,56px);align-items:stretch">
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ stages }}" as="s" hint-placeholder-count="4">
+            <button sc-camel-on-click="{{ s.pick }}" style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;width:100%;text-align:left;padding:24px 0;border:0;border-top:1px solid rgba(255,255,255,.12);background:transparent;cursor:pointer;font-family:inherit;color:#fff">
+              <span style="display:flex;flex-direction:column;gap:10px">
+                <span style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap"><span style="font:600 clamp(26px,3vw,36px)/1 'Plus Jakarta Sans';letter-spacing:-.03em;color:{{ s.titleColor }};transition:color .25s">{{ s.name }}</span><span style="font:500 15px/1.3 'Plus Jakarta Sans';color:#66B2F0">{{ s.band }}</span></span>
+                <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}"><span style="max-width:460px;font:400 16px/1.6 'Plus Jakarta Sans';color:#D3EAFD">{{ s.d }}</span></sc-if>
+              </span>
+              <span style="width:40px;height:40px;border-radius:9999px;background:{{ s.dotBg }};color:#fff;display:flex;align-items:center;justify-content:center;transition:background .25s"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="arrow-up-right" size="16" hint-size="16px,16px"></x-import></span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="position:relative;min-height:420px;border-radius:16px;overflow:hidden;background:#0C2438">
+          <img src="5476ee9d-3cfb-46cb-a894-9660d39cd14f" alt="Founders in a peer group discussion" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ op0 }};transition:opacity .5s"><img src="449b4a8e-fb38-4e28-8ca2-184bfb448cfe" alt="Founders in a peer group discussion" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ op1 }};transition:opacity .5s"><img src="fc82e78b-f1bd-496f-8d60-93895e095583" alt="Founders in a peer group discussion" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ op2 }};transition:opacity .5s"><img src="7b16638a-41dd-4c6c-b261-809267969a75" alt="Founders in a peer group discussion" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ op3 }};transition:opacity .5s">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="membership-fit" style="padding:clamp(80px,10vw,140px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+    <div style="max-width:720px">
+      <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#0072BA">Membership Fit</div>
+      <h2 style="margin:14px 0 0;font:600 clamp(32px,4.4vw,56px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em;text-wrap:balance">For the leaders moving a venture-backed company forward.</h2>
+      <p style="margin:20px 0 0;max-width:600px;font:400 18px/1.65 'Plus Jakarta Sans';color:#56646F;text-wrap:pretty">Founders and leadership-team members bring different responsibilities to the same company journey. Find perspective relevant to your work, and contribute the experience you have earned.</p>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button sc-camel-on-click="{{ belPrev }}" aria-label="Previous" style="width:52px;height:52px;border-radius:9999px;border:0;background:#F4F6F9;color:#01052A;cursor:pointer;display:flex;align-items:center;justify-content:center;transform:rotate(180deg)" style-hover="background:#E8EDF3"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="arrow-right" size="18" hint-size="18px,18px"></x-import></button>
+      <button sc-camel-on-click="{{ belNext }}" aria-label="Next" style="width:52px;height:52px;border-radius:9999px;border:0;background:#F4F6F9;color:#01052A;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#E8EDF3"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="arrow-right" size="18" hint-size="18px,18px"></x-import></button>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:clamp(48px,6vw,72px) auto 0;padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;gap:16px"><span style="font:600 14px/1.4 'Plus Jakarta Sans';color:#01052A;white-space:nowrap">Who belongs in the room</span><span style="flex:1;height:1px;background:#E2E8F0"></span></div>
+  <div ref="{{ rBel }}" class="fn-scroll" style="margin-top:16px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-padding-inline:max(clamp(20px,4vw,40px),calc((100vw - 1280px) / 2 + 40px));padding:0 max(clamp(20px,4vw,40px),calc((100vw - 1280px) / 2 + 40px)) 8px">
+    <article style="flex:0 0 min(400px,84vw);scroll-snap-align:start;display:flex;flex-direction:column;gap:20px">
+        <div style="position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#E8EDF3">
+          <img src="29ba18ff-03ae-4c6f-a1d1-bc449549a509" alt="FounderNexus members in a session" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+          <span style="position:absolute;left:20px;top:20px;padding:8px 12px;border-radius:9999px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);font:600 13px/1 'Plus Jakarta Sans';color:#01052A">01</span>
+        </div>
+        <div style="padding:0 4px"><h3 style="margin:0;font:600 22px/1.25 'Plus Jakarta Sans';letter-spacing:-.02em">You bring hard-won experience</h3><p style="margin:10px 0 0;font:400 16px/1.6 'Plus Jakarta Sans';color:#56646F">The decisions you have made, including the difficult ones, can help another leader see their situation more clearly.</p></div>
+      </article>
+      <article style="flex:0 0 min(400px,84vw);scroll-snap-align:start;display:flex;flex-direction:column;gap:20px">
+        <div style="position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#E8EDF3">
+          <img src="5476ee9d-3cfb-46cb-a894-9660d39cd14f" alt="FounderNexus members in a session" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+          <span style="position:absolute;left:20px;top:20px;padding:8px 12px;border-radius:9999px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);font:600 13px/1 'Plus Jakarta Sans';color:#01052A">02</span>
+        </div>
+        <div style="padding:0 4px"><h3 style="margin:0;font:600 22px/1.25 'Plus Jakarta Sans';letter-spacing:-.02em">You own consequential decisions</h3><p style="margin:10px 0 0;font:400 16px/1.6 'Plus Jakarta Sans';color:#56646F">Company direction, hiring, growth or functional execution. Bring the decisions you are responsible for now.</p></div>
+      </article>
+      <article style="flex:0 0 min(400px,84vw);scroll-snap-align:start;display:flex;flex-direction:column;gap:20px">
+        <div style="position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#E8EDF3">
+          <img src="d41bd676-a955-41fc-8705-52bc92d46ff8" alt="FounderNexus members in a session" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+          <span style="position:absolute;left:20px;top:20px;padding:8px 12px;border-radius:9999px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);font:600 13px/1 'Plus Jakarta Sans';color:#01052A">03</span>
+        </div>
+        <div style="padding:0 4px"><h3 style="margin:0;font:600 22px/1.25 'Plus Jakarta Sans';letter-spacing:-.02em">You give as much as you take</h3><p style="margin:10px 0 0;font:400 16px/1.6 'Plus Jakarta Sans';color:#56646F">Membership is reciprocal. You're simultaneously a student and a resource for everyone else in the room.</p></div>
+      </article>
+      <article style="flex:0 0 min(400px,84vw);scroll-snap-align:start;display:flex;flex-direction:column;gap:20px">
+        <div style="position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#E8EDF3">
+          <img src="fc82e78b-f1bd-496f-8d60-93895e095583" alt="FounderNexus members in a session" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+          <span style="position:absolute;left:20px;top:20px;padding:8px 12px;border-radius:9999px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);font:600 13px/1 'Plus Jakarta Sans';color:#01052A">04</span>
+        </div>
+        <div style="padding:0 4px"><h3 style="margin:0;font:600 22px/1.25 'Plus Jakarta Sans';letter-spacing:-.02em">You are leading a venture-backed company</h3><p style="margin:10px 0 0;font:400 16px/1.6 'Plus Jakarta Sans';color:#56646F">Shared stage and operating context help make the experience around you relevant to the work ahead.</p></div>
+      </article>
+  </div>
+  <div style="max-width:1280px;margin:56px auto 0;padding:0 clamp(20px,4vw,40px)">
+    <div style="padding:clamp(28px,4vw,48px);border-radius:16px;background:#F1F8FF;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:32px">
+      <div><div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#0072BA">Membership fit</div><p style="margin:12px 0 0;font:400 15px/1.6 'Plus Jakarta Sans';color:#56646F">We consider your company, role and current priorities together.</p></div>
+      <div style="display:flex;flex-direction:column;gap:14px"><span style="font:600 40px/1 'Plus Jakarta Sans';letter-spacing:-.04em;color:#0072BA">01</span><span style="font:500 17px/1.5 'Plus Jakarta Sans'">Founder or leadership-team member of a venture-backed company</span></div>
+      <div style="display:flex;flex-direction:column;gap:14px"><span style="font:600 40px/1 'Plus Jakarta Sans';letter-spacing:-.04em;color:#0072BA">02</span><span style="font:500 17px/1.5 'Plus Jakarta Sans'">A live decision that would benefit from relevant operating experience</span></div>
+      <div style="display:flex;flex-direction:column;gap:14px"><span style="font:600 40px/1 'Plus Jakarta Sans';letter-spacing:-.04em;color:#0072BA">03</span><span style="font:500 17px/1.5 'Plus Jakarta Sans'">Ready to contribute your perspective and learn from other members.</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#F4F6F9;padding:clamp(80px,10vw,140px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="max-width:820px;margin:0 auto;text-align:center">
+      <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#0072BA">Membership process</div>
+      <h2 style="margin:14px 0 0;font:600 clamp(32px,4.4vw,56px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em">Start with fit. Experience the support.</h2>
+      <p style="margin:20px auto 0;max-width:620px;font:400 18px/1.65 'Plus Jakarta Sans';color:#56646F;text-wrap:pretty">Explore how relevant experience could support your work and how your own perspective could help other members.</p>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:12px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px">
+        <div style="padding:28px;border-radius:16px;background:#fff;display:flex;flex-direction:column;gap:12px;min-height:240px"><span style="font:600 14px/1 'Plus Jakarta Sans';color:#0072BA">01</span><h3 style="margin:auto 0 0;font:600 22px/1.25 'Plus Jakarta Sans';letter-spacing:-.02em">Apply</h3><p style="margin:0;font:400 15px/1.6 'Plus Jakarta Sans';color:#56646F">Tell us about your company, your role and the decisions you are working through.</p></div>
+        <div style="padding:28px;border-radius:16px;background:#fff;display:flex;flex-direction:column;gap:12px;min-height:240px"><span style="font:600 14px/1 'Plus Jakarta Sans';color:#0072BA">02</span><h3 style="margin:auto 0 0;font:600 22px/1.25 'Plus Jakarta Sans';letter-spacing:-.02em">Explore the fit</h3><p style="margin:0;font:400 15px/1.6 'Plus Jakarta Sans';color:#56646F">Discuss your priorities and whether the available experience and support are relevant to them.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px">
+        <div style="padding:28px;border-radius:16px;background:#fff;display:flex;flex-direction:column;gap:12px;min-height:240px"><span style="font:600 14px/1 'Plus Jakarta Sans';color:#0072BA">03</span><h3 style="margin:auto 0 0;font:600 22px/1.25 'Plus Jakarta Sans';letter-spacing:-.02em">Experience it yourself</h3><p style="margin:0;font:400 15px/1.6 'Plus Jakarta Sans';color:#56646F">Each eligible leader has their own trial experience. Take part and assess the value for your work.</p></div>
+        <div style="padding:28px;border-radius:16px;background:#01052A;color:#fff;display:flex;flex-direction:column;gap:12px;min-height:240px"><span style="font:600 14px/1 'Plus Jakarta Sans';color:#66B2F0">04</span><h3 style="margin:auto 0 0;font:600 22px/1.25 'Plus Jakarta Sans';letter-spacing:-.02em">Continue with relevant support</h3><p style="margin:0;font:400 15px/1.6 'Plus Jakarta Sans';color:#D3EAFD">If there is a fit, explore ongoing membership and support shaped around your role, stage and priorities.</p></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:24px 28px;border-radius:16px;background:#fff;display:grid;grid-template-columns:52px minmax(0,1fr);gap:20px;align-items:center">
+      <span style="width:52px;height:52px;border-radius:16px;background:#F1F8FF;color:#0072BA;display:flex;align-items:center;justify-content:center"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="briefcase" size="22" hint-size="22px,22px"></x-import></span>
+      <div><div style="font:600 17px/1.35 'Plus Jakarta Sans'">Referred by a partner?</div><p style="margin:6px 0 0;font:400 15px/1.6 'Plus Jakarta Sans';color:#56646F">Include your referring partner when you apply so we can understand the context of your introduction.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,4vw,40px)">
+  <div style="max-width:820px">
+    <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#0072BA">How the support comes together</div>
+    <h2 style="margin:14px 0 0;font:600 clamp(32px,4.4vw,56px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em">Start with your context. Bring in relevant experience.</h2>
+    <p style="margin:20px 0 0;max-width:640px;font:400 18px/1.65 'Plus Jakarta Sans';color:#56646F;text-wrap:pretty">The value starts with your situation: the decision you own, the stage of your company and the perspective that could help.</p>
+  </div>
+  <div style="margin-top:48px;border-radius:16px;background:#F4F6F9;overflow:hidden">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:24px clamp(20px,3vw,40px);gap:24px">
+      <div><div style="font:600 18px/1.3 'Plus Jakarta Sans';color:#56646F">What you bring</div><div style="margin-top:4px;font:400 14px/1.4 'Plus Jakarta Sans';color:#56646F">Your role, stage and live priorities.</div></div>
+      <div><div style="font:600 18px/1.3 'Plus Jakarta Sans';color:#0072BA">FounderNexus</div><div style="margin-top:4px;font:400 14px/1.4 'Plus Jakarta Sans';color:#01052A">Relevant people, perspective and support.</div></div>
+    </div>
+    <sc-for list="{{ compare }}" as="c" hint-placeholder-count="6">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding:20px clamp(20px,3vw,40px);border-top:1px solid #E2E8F0;background:#fff">
+        <span style="font:400 16px/1.5 'Plus Jakarta Sans';color:#56646F;text-decoration:none">{{ c.a }}</span>
+        <span style="display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;font:500 16px/1.5 'Plus Jakarta Sans';color:#01052A"><span style="width:22px;height:22px;border-radius:9999px;background:#0072BA;color:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="check" size="12" hint-size="12px,12px"></x-import></span>{{ c.b }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="sessions" style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,4vw,40px)">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <div style="max-width:640px"><h2 style="margin:0;font:600 clamp(32px,4.4vw,56px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em">Working sessions</h2><p style="margin:16px 0 0;font:400 18px/1.65 'Plus Jakarta Sans';color:#56646F">Examples of the topics members work through together. Sessions are shaped around current member priorities.</p></div>
+    <a href="#prototype-notice" sc-camel-on-click="{{ openPreview }}" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:14px;background:#F4F6F9;color:#01052A;font:600 15px/1 'Plus Jakarta Sans'" style-hover="background:#E8EDF3;color:#01052A">View all sessions<x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="arrow-right" size="16" hint-size="16px,16px"></x-import></a>
+  </div>
+  <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+    <sc-for list="{{ sessions }}" as="s" hint-placeholder-count="3">
+      <a href="#prototype-notice" sc-camel-on-click="{{ openPreview }}" style="display:flex;flex-direction:column;border-radius:16px;background:#F4F6F9;color:#01052A;overflow:hidden" style-hover="background:#E8EDF3;color:#01052A">
+        <div style="position:relative;aspect-ratio:16/10;background:#E8EDF3;overflow:hidden"><img src="7b16638a-41dd-4c6c-b261-809267969a75" alt="A FounderNexus session" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ s.d0 }}"><img src="449b4a8e-fb38-4e28-8ca2-184bfb448cfe" alt="A FounderNexus session" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ s.d1 }}"><img src="86e4be4e-f31d-4be4-b148-3c2fd9381f4b" alt="A FounderNexus session" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ s.d2 }}"><span style="position:absolute;left:16px;top:16px;padding:10px 12px;border-radius:14px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font:600 12px/1.4 'Plus Jakarta Sans';color:#0072BA">Session example</span></span></div>
+        <div style="padding:24px;display:flex;flex-direction:column;gap:12px;flex:1">
+          <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-if value="{{ s.members }}" hint-placeholder-val="{{ false }}"><span style="padding:6px 10px;border-radius:9999px;background:#FFCC00;font:600 12px/1 'Plus Jakarta Sans';color:#01052A">Members only</span></sc-if><span style="padding:6px 10px;border-radius:9999px;background:#fff;font:600 12px/1 'Plus Jakarta Sans';color:#56646F;text-transform:capitalize">expert</span></div>
+          <div style="font:600 19px/1.35 'Plus Jakarta Sans';letter-spacing:-.015em;flex:1">{{ s.t }}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px 14px;font:500 14px/1.3 'Plus Jakarta Sans';color:#56646F"><span>Online</span><span>{{ s.who }}</span></div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<section id="apply" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,40px) clamp(80px,10vw,140px)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:16px">
+    <div style="position:relative;overflow:hidden;padding:clamp(32px,4.5vw,56px);border-radius:16px;background:#0072BA;color:#fff;display:flex;flex-direction:column;gap:20px;min-height:460px">
+      <img src="6fcc31e9-a4f2-4e5a-b6e5-e45acf7822ea" alt="" style="position:absolute;right:-120px;bottom:-140px;width:440px;pointer-events:none">
+      <div style="position:relative;font:600 14px/1.4 'Plus Jakarta Sans';color:#D3EAFD">Bring your next decision</div>
+      <h2 style="position:relative;margin:0;font:600 clamp(32px,3.8vw,48px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em;color:#fff">What is your team working through next?</h2>
+      <p style="position:relative;margin:0;max-width:440px;font:400 17px/1.65 'Plus Jakarta Sans';color:#fff">Tell us about your company, your role and your current priorities. Each eligible member has their own trial experience.</p>
+      <a href="#prototype-notice" sc-camel-on-click="{{ openPreview }}" style="position:relative;margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;white-space:nowrap;border-radius:16px;background:#fff;color:#01052A;font:600 16px/1 'Plus Jakarta Sans'" style-hover="background:#F1F8FF;color:#01052A">Apply now<x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="arrow-right" size="18" hint-size="18px,18px"></x-import></a>
+    </div>
+    <div style="padding:clamp(32px,4.5vw,56px);border-radius:16px;background:#01052A;color:#fff;display:flex;flex-direction:column;gap:20px;min-height:460px">
+      <div style="font:600 14px/1.4 'Plus Jakarta Sans';color:#66B2F0">Find your room</div>
+      <h2 style="margin:0;font:600 clamp(32px,3.8vw,48px)/1.06 'Plus Jakarta Sans';letter-spacing:-.04em;color:#fff">Start with fit. Then the right room.</h2>
+      <p style="margin:0;font:400 16px/1.65 'Plus Jakarta Sans';color:#D3EAFD">FounderNexus connects leadership-team members with experience relevant to their stage and responsibilities. Start with the decision you are carrying and explore the support that could help.</p>
+      <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ fit }}" as="x" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;font:500 15px/1.5 'Plus Jakarta Sans'"><span style="width:22px;height:22px;border-radius:9999px;background:#0072BA;color:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px"><x-import component-from-global-scope="FounderNexusDesignSystem_c60151.Icon" name="check" size="12" hint-size="12px,12px"></x-import></span>{{ x }}</div></sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main><footer style="border-top:1px solid #EEF1F4;overflow:hidden">
+  <div style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,4vw,40px) 0">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:40px">
+      <div style="min-width:0;max-width:420px;font:400 15px/1.65 'Plus Jakarta Sans';color:#56646F">Relevant founder and operator experience for the leadership teams of venture-backed companies.</div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:600 13px/1 'Plus Jakarta Sans';color:#01052A;margin-bottom:4px">Company</div><a href="#proposition" style="font:500 15px/1.4 'Plus Jakarta Sans';color:#56646F">Value proposition</a><a href="#membership-fit" style="font:500 15px/1.4 'Plus Jakarta Sans';color:#56646F">Member admission</a><a href="#tier" style="font:500 15px/1.4 'Plus Jakarta Sans';color:#56646F">Stage system</a><a href="#prototype-notice" sc-camel-on-click="{{ openPreview }}" style="font:500 15px/1.4 'Plus Jakarta Sans';color:#56646F">Blog</a></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:600 13px/1 'Plus Jakarta Sans';color:#01052A;margin-bottom:4px">Contact</div><a href="tel:+13603292121" style="font:500 15px/1.4 'Plus Jakarta Sans';color:#56646F">+1 (360) 329–2121</a><a href="mailto:seattle1@foundernexus.com" style="font:500 15px/1.4 'Plus Jakarta Sans';color:#56646F">seattle1@foundernexus.com</a></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:600 13px/1 'Plus Jakarta Sans';color:#01052A;margin-bottom:4px">Legal</div><a href="#prototype-notice" sc-camel-on-click="{{ openPreview }}" style="font:500 15px/1.4 'Plus Jakarta Sans';color:#56646F">Terms of use</a><a href="#prototype-notice" sc-camel-on-click="{{ openPreview }}" style="font:500 15px/1.4 'Plus Jakarta Sans';color:#56646F">Privacy policy</a></div>
+    </div>
+    <img src="98852d27-c159-499e-9dee-9b2425730959" alt="FounderNexus" style="display:block;width:100%;margin:clamp(56px,8vw,96px) 0 clamp(24px,3vw,40px)">
+    <div style="padding:20px 0 28px;border-top:1px solid #EEF1F4;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font:500 13px/1.4 'Plus Jakarta Sans';color:#56646F"><span>© 2026 FounderNexus. All rights reserved.</span><span style="display:flex;gap:16px"><span>Seattle</span><span>Online</span><span>Wherever you're building</span></span></div>
+  </div>
+</footer>
+<dialog id="prototype-notice" ref="{{ rNotice }}" aria-labelledby="notice-title"><h2 id="notice-title">Preview only</h2><p>This working mockup does not connect to applications, account access or the live content pages yet.</p><button sc-camel-on-click="{{ closePreview }}">Return to the page</button></dialog>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+class Component extends DCLogic {
+  state = { stageIdx: 0 };
+  r = Object.fromEntries(['rCanvas', 'rWords', 'rBel', 'rQ', 'rNotice'].map(k => [k, React.createRef()]));
+  componentDidMount() {
+    this.reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.onScroll = () => { if (!this.sraf) this.sraf = requestAnimationFrame(() => { this.sraf = 0; this.words(); }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.words();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    clearTimeout(this.retry);
+    if (this.cleanup) this.cleanup();
+  }
+  words() {
+    const el = this.r.rWords.current; if (!el) return;
+    const spans = el.querySelectorAll('span'); const rc = el.getBoundingClientRect();
+    const p = Math.max(0, Math.min(1, (innerHeight * 0.85 - rc.top) / (rc.height + innerHeight * 0.35)));
+    const lit = this.reduce ? spans.length : Math.round(p * spans.length);
+    spans.forEach((s, i) => { s.style.color = i < lit ? '#01052A' : '#56646F'; });
+  }
+  initField() {
+    const c = this.r.rCanvas.current;
+    if (!c || !c.clientWidth) { this.retry = setTimeout(() => this.initField(), 120); return; }
+    const ctx = c.getContext('2d'); let W, H, dpr, pts = [], mouse = { x: -9999, y: -9999 }, raf = 0, t0 = performance.now();
+    const cols = ['#0072BA', '#0072BA', '#01052A', '#66B2F0', '#9EADBA'];
+    const build = () => {
+      dpr = Math.min(2, devicePixelRatio || 1); W = c.clientWidth; H = c.clientHeight;
+      c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      pts = []; const cx = W / 2, cy = H / 2, step = W < 700 ? 34 : 30;
+      for (let x = step / 2; x < W; x += step) for (let y = step / 2; y < H; y += step) {
+        const dx = (x - cx) / (W * 0.5), dy = (y - cy) / (H * 0.5), d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 0.62 || Math.random() > Math.min(0.55, (d - 0.62) * 1.6)) continue;
+        const a = Math.atan2(y - cy, x - cx);
+        pts.push({ hx: x, hy: y, x: cx + (x - cx) * 0.2, y: cy + (y - cy) * 0.2, vx: 0, vy: 0, a, c: cols[(Math.random() * cols.length) | 0], l: 3 + Math.random() * 5 });
+      }
+      if (this.reduce) pts.forEach(p => { p.x = p.hx; p.y = p.hy; });
+    };
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H); let moving = false;
+      for (const p of pts) {
+        const mx = p.x - mouse.x, my = p.y - mouse.y, md = mx * mx + my * my;
+        if (md < 16000) { const f = (16000 - md) / 16000 * 1.6; const m = Math.sqrt(md) || 1; p.vx += mx / m * f; p.vy += my / m * f; }
+        p.vx += (p.hx - p.x) * 0.045; p.vy += (p.hy - p.y) * 0.045; p.vx *= 0.82; p.vy *= 0.82;
+        p.x += p.vx; p.y += p.vy;
+        if (Math.abs(p.vx) + Math.abs(p.vy) > 0.02 || Math.abs(p.hx - p.x) + Math.abs(p.hy - p.y) > 0.3) moving = true;
+        ctx.strokeStyle = p.c; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+        const ca = Math.cos(p.a) * p.l / 2, sa = Math.sin(p.a) * p.l / 2;
+        ctx.beginPath(); ctx.moveTo(p.x - ca, p.y - sa); ctx.lineTo(p.x + ca, p.y + sa); ctx.stroke();
+      }
+      raf = moving ? requestAnimationFrame(draw) : 0;
+    };
+    const kick = () => { if (!raf) raf = requestAnimationFrame(draw); };
+    const onMove = e => { const r = c.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; kick(); };
+    const onLeave = () => { mouse.x = mouse.y = -9999; kick(); };
+    const onResize = () => { build(); kick(); };
+    const host = c.parentElement;
+    host.addEventListener('pointermove', onMove); host.addEventListener('pointerleave', onLeave);
+    let lastW = 0, lastH = 0;
+    const ro = new ResizeObserver(() => { if (c.clientWidth && (c.clientWidth !== lastW || c.clientHeight !== lastH)) { lastW = c.clientWidth; lastH = c.clientHeight; onResize(); } });
+    ro.observe(c);
+    this.cleanup = () => { cancelAnimationFrame(raf); clearTimeout(this.retry); ro.disconnect(); host.removeEventListener('pointermove', onMove); host.removeEventListener('pointerleave', onLeave); };
+  }
+  scrollEl(ref, d) { const g = ref.current; if (g) g.scrollBy({ left: d * (g.firstElementChild ? g.firstElementChild.getBoundingClientRect().width + 16 : 400), behavior: 'smooth' }); }
+  renderVals() {
+    const { stageIdx } = this.state;
+    const imgs = ['assets/img-sm/founder-dinner-table.jpg', 'assets/img-sm/small-group-table.jpg', 'assets/img-sm/members-social.jpg', 'assets/img-sm/boardroom-pmf-session.jpg'];
+    const stages = [
+      ["Stage 1", "$0-2M ARR · Pre-Seed/Seed", "MVP development, ICP discovery, co-founder selection, early GTM motion, searching for PMF, seed capital."],
+      ["Stage 2", "$2-10M ARR · Series A", "Repeatable sales motion, customer profiling, outbound marketing, the early leadership team."],
+      ["Stage 3", "$10-50M ARR · Series B/C", "Senior and executive hires, the leadership layer, board dynamics, the first hard scaling decisions."],
+      ["Stage 4", "$50M+ ARR · Series D+", "Executive redesign, board pressure, market expansion — the decisions of a large, mature venture-scale company."]
+    ];
+    const stageImgs = ['assets/img-sm/small-group-table.jpg', 'assets/img-sm/boardroom-discussion.jpg', 'assets/img-sm/boardroom-pmf-session.jpg', 'assets/img-sm/session-room-wide.jpg'];
+    const Q = [
+      ["I was initially hesitant to join yet another group as there is no shortage of people claiming to help entrepreneurs, but Court Lorenzini and FounderNexus are the real deal. Any serious founder will benefit immensely from joining FounderNexus.", "Jasper Kuria", "co-founder, ConversionMagic"],
+      ["I have attended sessions nationwide and joined so-called “MasterMind” groups, but nothing comes close to the network and support I have experienced at FounderNexus.", "Arthur Baranovskiy", "co-founder, ARY Engineering"],
+      ["I can say with confidence that I get far more value from FounderNexus than the cost of the membership, and I'm not even taking full advantage!", "Steve Tout", "founder, Identient"],
+      ["This was a fast track to relevant experience/advice in a room where you hold nothing back.", "Nicole Resch", "Co-founder, Imperative"],
+      ["FounderNexus fills a gap for entrepreneurs by complementing traditional incubator and early investment programs with a high-quality peer founder network.", "Bob Lach", "founder, Lightbridge Solutions"],
+      ["I also felt a sense of real community for the first time as a founder. You're all onto something special here!", "Elias DeFaria", "co-founder, SDF Labs"],
+      ["The session was great! Highlight: Encouragement of diverse viewpoints and good founder mix.", "Darian Parrish", "founder, PwrOn"],
+      ["I think the breakout sessions are a loose but useful way to get people talking about challenges and resolutions.", "Mark Fiebig", "founder, Payscore"],
+      ["I really loved how welcoming the vibe felt from the moment I arrived.", "Katrina Romatowski", "founder, reSpace"],
+      ["Great session, I learned a lot! Looking forward to the next one.", "Shama Keskar", "founder, Mudita Studios"],
+      ["It was awesome.", "Edan Shahar", "founder, Wild Zebra"]
+    ];
+    const qTheme = [['#01052A', '#fff', '#93A7B8', '#0072BA', '#fff'], ['#fff', '#01052A', '#56646F', '#F1F8FF', '#0072BA'], ['#0072BA', '#fff', '#D3EAFD', '#fff', '#0072BA'], ['#fff', '#01052A', '#56646F', '#F1F8FF', '#0072BA']];
+    return {
+      ...this.r,
+      openPreview: e => { e.preventDefault(); this.r.rNotice.current.showModal(); },
+      closePreview: () => this.r.rNotice.current.close(),
+      tagWords: 'Relevant experience around the decisions that matter most'.split(' '),
+      belong: [
+        ["You bring hard-won experience", "The decisions you have made, including the difficult ones, can help another leader see their situation more clearly."],
+        ["You own consequential decisions", "Company direction, hiring, growth or functional execution. Bring the decisions you are responsible for now."],
+        ["You give as much as you take", "Membership is reciprocal. You're simultaneously a student and a resource for everyone else in the room."],
+        ["You are leading a venture-backed company", "Shared stage and operating context help make the experience around you relevant to the work ahead."]
+      ].map(([t, d], i) => ({ t, d, img: imgs[i], n: String(i + 1).padStart(2, '0') })),
+      belPrev: () => this.scrollEl(this.r.rBel, -1), belNext: () => this.scrollEl(this.r.rBel, 1),
+      why: [
+        ["users", "Stage-based support", "Direct 1:1 engagement with a dedicated Nexus Partner focused on the current decisions you're making and the stage context around them."],
+        ["check", "Individual trial experience", "Each eligible member can experience the support through their own trial before exploring ongoing membership."],
+        ["calendar", "Custom-curated content", "Working sessions are shaped around the live challenges and priorities members bring."],
+        ["location", "Online and in person", "Join working sessions online, with in-person opportunities to connect where available."],
+        ["arrow-up-right", "You don't age out", "Pre-seed through Exit. FN is present for you at every inflection point as you grow your business."],
+        ["mail", "Beyond your circle of trust", "Reach beyond your existing circle when a challenge calls for a different founder, operator or expert perspective."]
+      ].map(([icon, t, d]) => ({ icon, t, d })),
+      stages: stages.map(([name, band, d], i) => { const on = i === stageIdx; return { name, band, d, open: on, titleColor: on ? '#fff' : '#93A7B8', dotBg: on ? '#0072BA' : 'rgba(255,255,255,.08)', pick: () => this.setState({ stageIdx: i }) }; }),
+      op0: stageIdx === 0 ? 1 : 0, op1: stageIdx === 1 ? 1 : 0, op2: stageIdx === 2 ? 1 : 0, op3: stageIdx === 3 ? 1 : 0,
+      elsewhere: ["Building a repeatable sales motion", "Defining a senior leadership role", "Prioritizing product and growth", "Preparing for the next raise", "Working through board expectations"],
+      delivers: ["Relevant peers around live leadership decisions", "Nexus Partner support to clarify the decision and next step", "Practical pressure-testing with founders and operators", "Broader peer, expert, or resource access when context calls for it", "Follow-up while the decision is still live"],
+      compare: [["Your company stage", "Peers with relevant stage experience"], ["Your role and responsibilities", "Support for founders and leadership-team members"], ["The challenge you are carrying", "Practical founder and operator perspective"], ["Changing priorities", "A regular conversation with your Nexus Partner"], ["Your own experience", "Opportunities to contribute to other members"], ["A need for specific expertise", "Connections to relevant peers, experts and working sessions"]].map(([a, b]) => ({ a, b })),
+      quotes: Q.map(([text, name, role], i) => { const th = qTheme[i % 4], long = text.length > 140; return { text, name, role, ini: name.split(' ').map(s => s[0]).join(''), bg: th[0], fg: th[1], sub: th[2], avBg: th[3], avFg: th[4], w: long ? 'min(520px,86vw)' : 'min(360px,78vw)', fs: long ? '20px' : '22px' }; }),
+      qPrev: () => this.scrollEl(this.r.rQ, -1), qNext: () => this.scrollEl(this.r.rQ, 1),
+      sessions: [
+        { day: '01', mon: 'October', t: 'Building Your AI for GTM: From Experiments to Workflows That Actually Run', time: '7:00 PM - 8:00 PM', who: 'Lawrence Coburn', members: false, img: 'assets/img-sm/session-room-wide.jpg' },
+        { day: '01', mon: 'October', t: 'How to Time and Structure a Seed Raise That Closes', time: '9:00 PM - 10:00 PM', who: 'Randy Wootton', members: true, img: 'assets/img-sm/boardroom-discussion.jpg' },
+        { day: '02', mon: 'October', t: 'Pitch deck review with Isaac Kato', time: '10:00 PM - 11:00 PM', who: 'Isaac Kato', members: true, img: 'assets/img-sm/session-speaker-seated.jpg' }
+      ].map((s, i) => ({ ...s, d0: i === 0 ? 'block' : 'none', d1: i === 1 ? 'block' : 'none', d2: i === 2 ? 'block' : 'none' })),
+      fit: ["You lead a venture-backed company or serve on its leadership team", "You own a decision that would benefit from relevant operating experience", "You can contribute hard-won experience to peers at a similar stage", "You want a room that is curated for fit, not broad access"]
+    };
+  }
+}
+</script>
+
+
+</body></html>

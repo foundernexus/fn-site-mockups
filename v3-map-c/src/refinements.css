@@ -1,0 +1,61 @@
+/* M2 brand corrections. Preserve the Map C composition and generous spacing. */
+* { box-sizing: border-box; }
+html { scroll-padding-top: 104px; }
+a:focus-visible, button:focus-visible { outline:3px solid #0072BA; outline-offset:4px; }
+a, button { -webkit-tap-highlight-color:transparent; }
+header > div > a { min-width:180px; }
+header img { width:192px; height:auto !important; }
+header nav a, header > div > div > a { display:flex; min-height:44px; align-items:center; white-space:nowrap; }
+a[href="#apply"] { background:#0072BA !important; color:#fff !important; border-radius:8px !important; box-shadow:none !important; }
+a[href="#apply"]:hover { background:#0059A8 !important; }
+#top a { border-radius:8px !important; box-shadow:none !important; }
+h3 { color:inherit !important; }
+#top iframe { border-radius:12px; }
+.chapter-wrap { max-width:1280px; margin:0 auto; padding:0 clamp(20px,4vw,40px); }
+.decision-examples { background:#F1F8FF; padding:clamp(80px,10vw,140px) 0; }
+.section-label { color:#0072BA; font-size:13px; font-weight:600; line-height:1.5; margin:0 0 20px; }
+.example-heading { max-width:900px; }
+.example-heading h2 { font-size:clamp(32px,4.4vw,56px); font-weight:600; line-height:1.12; letter-spacing:-.04em; margin:0; text-wrap:balance; }
+.example-heading > p:last-child { max-width:730px; color:#56646F; font-size:18px; line-height:1.75; margin:24px 0 0; }
+.example-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px; margin-top:56px; }
+.example-grid article { border-top:1px solid #A6D2F7; padding-top:28px; }
+.example-grid h3 { font-size:24px; font-weight:600; line-height:1.4; letter-spacing:-.02em; margin:0 0 20px; }
+.example-grid article > p:last-child { color:#56646F; font-size:16px; line-height:1.8; margin:0; }
+.example-note { font-size:13px; line-height:1.6; color:#56646F; margin:40px 0 0; }
+#prototype-notice { border:0; border-radius:12px; padding:36px; max-width:480px; width:calc(100% - 40px); color:#01052A; box-shadow:0 20px 64px #01052a26; }
+#prototype-notice::backdrop { background:#061b2c99; }
+#prototype-notice h2 { font-size:28px; line-height:1.2; margin:0 0 20px; }
+#prototype-notice p { font-size:16px; line-height:1.7; color:#56646F; margin:0 0 28px; }
+#prototype-notice button { background:#0072BA; color:white; padding:14px 24px; min-height:48px; border:0; border-radius:8px; font:600 15px/1.3 'Plus Jakarta Sans',sans-serif; }
+@media(max-width:1000px) {
+ header > div { grid-template-columns:auto 1fr !important; height:auto !important; min-height:80px; gap:12px 20px !important; padding-block:16px !important; }
+ header nav { grid-column:1/-1; grid-row:2; justify-content:center; }
+ header > div > div { grid-column:2; grid-row:1; }
+ #top { grid-template-columns:minmax(0,1fr) !important; }
+ #top > div:first-child { max-width:800px; min-width:0; }
+ #top > div:last-child { width:min(100%,680px); justify-self:center; }
+}
+@media(max-width:600px) {
+ html {scroll-padding-top:24px;}
+ header { position:relative !important; }
+ header > div { padding:16px 20px !important; gap:12px 8px !important; }
+ header > div > a { min-width:0; }
+ header img { width:150px; max-width:100%; }
+ header nav { gap:0 !important; justify-content:space-between; }
+ header nav a { font-size:12px !important; padding:10px 8px !important; }
+ header > div > div { gap:4px !important; }
+ header > div > div > a { font-size:12px !important; padding:10px 8px !important; }
+ #top { padding-top:48px !important; gap:40px !important; }
+ #top h1 { font-size:clamp(35px,9.5vw,48px) !important; line-height:1.13 !important; }
+ #top > div:first-child > div:nth-of-type(2) { width:100%; }
+ #top > div:first-child > div:nth-of-type(2) > a { width:100%; justify-content:center; }
+ #top > div:last-child { min-height:380px !important; }
+ .example-grid { grid-template-columns:1fr; gap:36px; margin-top:40px; }
+ #nexus-partner > div:last-child > div { padding:24px !important; grid-template-columns:40px minmax(0,1fr) !important; gap:16px !important; }
+ #nexus-partner > div:last-child > div > span { width:40px !important; height:40px !important; }
+ #sessions > div:first-child { flex-wrap:wrap; }
+ #apply > div { grid-template-columns:1fr !important; }
+ footer a { overflow-wrap:anywhere; }
+}
+@media(max-width:360px) {header img {width:125px}header > div {padding-inline:12px !important}}
+@media(prefers-reduced-motion:reduce) {html{scroll-behavior:auto !important}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

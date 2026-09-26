@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FounderNexus decision to room</title>
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+
+<style>
+@font-face{font-family:'Plus Jakarta Sans';src:url('../assets/fonts/plus-jakarta-sans/plus-jakarta-sans-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Plus Jakarta Sans';src:url('../assets/fonts/plus-jakarta-sans/plus-jakarta-sans-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Plus Jakarta Sans';src:url('../assets/fonts/plus-jakarta-sans/plus-jakarta-sans-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Plus Jakarta Sans';src:url('../assets/fonts/plus-jakarta-sans/plus-jakarta-sans-700.woff2') format('woff2');font-weight:700;font-display:swap}
+html,body{margin:0;height:100%;background:transparent;overflow:hidden;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#01052A}
+#wrap{position:relative;width:100%;height:100%}
+canvas,svg{position:absolute;inset:0;width:100%;height:100%}
+.ease{transition:opacity .32s cubic-bezier(.2,.7,.2,1),transform .32s cubic-bezier(.2,.7,.2,1)}
+#card{position:absolute;left:50%;top:50%;width:min(300px,56%);transform:translate(-50%,-50%);padding:20px;border-radius:14px;background:#fff;border:1px solid #E2E8F0;box-shadow:0 24px 56px -20px rgba(1,5,42,.35);box-sizing:border-box;z-index:2}
+#card.out{opacity:0;transform:translate(-50%,calc(-50% + 10px))}
+.chip{display:inline-flex;padding:6px 10px;border-radius:9999px;background:#D3EAFD;color:#0059A8;font:600 12px/1 'Plus Jakarta Sans',system-ui,sans-serif}
+.lbl{margin-top:14px;font:600 11px/1 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#56646F}
+.dec{margin-top:8px;font:700 clamp(17px,2.4vw,21px)/1.3 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:-.015em;text-wrap:balance}
+.match{margin-top:16px;padding-top:14px;border-top:1px solid #EEF1F4;display:flex;align-items:center;gap:10px;font:600 14px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;color:#0072BA;opacity:0;transform:translateY(4px)}
+.match.on{opacity:1;transform:none}
+.match i{width:22px;height:22px;border-radius:9999px;background:#0072BA;color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px/1 sans-serif;font-style:normal;flex:none}
+.p{position:absolute;display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9999px;background:#fff;border:1px solid #E2E8F0;box-shadow:0 10px 28px -14px rgba(1,5,42,.35);white-space:nowrap;opacity:0;z-index:3}
+.p.on{opacity:1;transform:translate(-50%,-50%) scale(1)!important}
+.av{width:36px;height:36px;border-radius:9999px;display:flex;align-items:center;justify-content:center;font:700 13px/1 'Plus Jakarta Sans',system-ui,sans-serif;flex:none}
+.p b{display:block;font:600 13px/1.2 'Plus Jakarta Sans',system-ui,sans-serif}
+.p small{display:block;margin-top:2px;font:500 11px/1.2 'Plus Jakarta Sans',system-ui,sans-serif;color:#56646F}
+path.l{fill:none;stroke:#0072BA;stroke-width:1.5;stroke-dasharray:4 5;opacity:0;transition:opacity .32s}
+path.l.on{opacity:.55}
+#wrap.sm .p{padding:3px;gap:0}
+#wrap.sm .p > span:last-child{display:none}
+#wrap.sm .av{width:34px;height:34px;font-size:12px}
+#wrap.sm #card{width:min(260px,64%);padding:14px}
+#wrap.sm .dec{font-size:15px}
+#wrap.sm .match{font-size:12px;margin-top:12px;padding-top:10px}
+
+#motion{position:absolute;bottom:12px;right:12px;z-index:4;border:1px solid #D3D6DA;border-radius:6px;background:#fff;color:#01052A;padding:10px 12px;min-height:44px;font:600 12px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer}#motion:focus-visible{outline:3px solid #0072BA;outline-offset:3px}#map-note{z-index:4;position:absolute;bottom:16px;left:12px;max-width:65%;font-size:11px;line-height:1.5;color:#56646F} @media(prefers-reduced-motion:reduce){.ease,path.l{transition:none}}
+</style></head><body>
+<div id="wrap"><p id="map-note">Illustrative matching, not live member locations.</p><button id="motion" type="button" aria-pressed="false">Pause</button><canvas id="bg"></canvas><svg id="svg"></svg>
+<div id="card" class="ease"><span class="chip" id="chip"></span><div class="lbl">A leader is deciding</div><div class="dec" id="dec"></div><div class="match ease" id="match"><i>✓</i><span id="mt"></span></div></div>
+</div>
+<script>
+// Decisions come from the site's stage descriptions. People are illustrative roles, not real members.
+const SCENES = [
+  { stage: 1, band: 'Stage 1 · Pre-Seed/Seed', dec: 'How to time and structure a seed raise' },
+  { stage: 2, band: 'Stage 2 · Series A', dec: 'Building a repeatable sales motion' },
+  { stage: 3, band: 'Stage 3 · Series B/C', dec: 'Hiring the first senior executives' },
+  { stage: 4, band: 'Stage 4 · Series D+', dec: 'Expanding into a new market' }
+];
+const PEOPLE = [
+  { ini: 'NP', name: 'Nexus Partner', sub: 'Your advocate', bg: '#01052A', fg: '#fff', pos: [.18, .2] },
+  { ini: 'F', name: 'Founder', sub: 'Same stage', bg: '#0072BA', fg: '#fff', pos: [.82, .2] },
+  { ini: 'O', name: 'Operator', sub: 'Relevant experience', bg: '#D3EAFD', fg: '#0059A8', pos: [.84, .82] },
+  { ini: 'P', name: 'Peer', sub: 'Has made this call', bg: '#F1F8FF', fg: '#0072BA', pos: [.16, .8] }
+];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const wrap = document.getElementById('wrap'), card = document.getElementById('card'), svg = document.getElementById('svg'), match = document.getElementById('match');
+const els = PEOPLE.map(p => { const d = document.createElement('div'); d.className = 'p ease'; d.innerHTML = `<span class="av" style="background:${p.bg};color:${p.fg}">${p.ini}</span><span><b>${p.name}</b><small>${p.sub}</small></span>`; wrap.appendChild(d); return d; });
+const lines = PEOPLE.map(() => { const l = document.createElementNS('http://www.w3.org/2000/svg', 'path'); l.setAttribute('class', 'l'); svg.appendChild(l); return l; });
+let scene = 0, paused = false, manualpaused = reduce, timers = [];
+function layout() {
+  const W = wrap.clientWidth, H = wrap.clientHeight; svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const cx = W / 2, cy = H / 2, sm = W < 560; wrap.classList.toggle('sm', sm);
+  const cr = card.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
+  const top = cr.top - wr.top, bot = cr.bottom - wr.top, lft = cr.left - wr.left, rgt = cr.right - wr.left;
+  PEOPLE.forEach((p, i) => {
+    let x = p.pos[0] * W, y = p.pos[1] * H;
+    if (sm) { x = [.16, .84, .84, .16][i] * W; y = i < 2 ? Math.max(22, top / 2) : Math.min(H - 22, bot + (H - bot) / 2); }
+    else { const pw = els[i].offsetWidth / 2 + 8; x = Math.min(W - pw, Math.max(pw, x)); if (i < 2) y = Math.min(y, top - 34); else y = Math.max(y, bot + 34); } const e = els[i];
+    e.style.left = x + 'px'; e.style.top = y + 'px';
+    if (!e.classList.contains('on')) e.style.transform = `translate(calc(-50% + ${(cx - x) * .25}px), calc(-50% + ${(cy - y) * .25}px)) scale(.9)`;
+    const mx = (x + cx) / 2 + (y < cy ? 0 : 0), my = (y + cy) / 2 - 20;
+    lines[i].setAttribute('d', `M${x},${y} Q${mx},${my} ${cx},${cy}`);
+  });
+  drawBg(W, H);
+}
+let land;
+function drawBg(W, H) {
+  const cv = document.getElementById('bg'); if (!land || !W) return; const dpr = Math.min(2, devicePixelRatio || 1);
+  cv.width = W * dpr; cv.height = H * dpr; const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+  const R = Math.min(W, H) * .48, proj = d3.geoOrthographic().translate([W / 2, H / 2]).scale(R).rotate([100, -25]).clipAngle(90);
+  ctx.beginPath(); ctx.arc(W / 2, H / 2, R, 0, 7); ctx.fillStyle = '#F7F9FB'; ctx.fill(); ctx.strokeStyle = '#EEF1F4'; ctx.stroke();
+  ctx.fillStyle = '#C9D2DC';
+  for (let lat = -60; lat <= 78; lat += 2.4) { const s = 2.4 / Math.max(.25, Math.cos(lat * Math.PI / 180)); for (let lon = -180; lon < 180; lon += s) { if (d3.geoDistance([lon, lat], [-100, 25]) > 1.5) continue; if (!d3.geoContains(land, [lon, lat])) continue; const [x, y] = proj([lon, lat]); ctx.globalAlpha = .7; ctx.fillRect(x - 1, y - 1, 2, 2); } }
+  ctx.globalAlpha = 1;
+}
+function clear() { timers.forEach(clearTimeout); timers = []; }
+function at(ms, fn) { timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+function play(i) {
+  clear(); scene = i; const s = SCENES[i];
+  card.classList.add('out'); match.classList.remove('on'); els.forEach(e => e.classList.remove('on')); lines.forEach(l => l.classList.remove('on')); layout();
+  at(340, () => {
+    document.getElementById('chip').textContent = s.band; document.getElementById('dec').textContent = s.dec;
+    document.getElementById('mt').textContent = `Relevant experience · Stage ${s.stage}`;
+    PEOPLE.forEach((p, k) => { if (k > 0) els[k].querySelector('small').textContent = k === 3 ? 'Has made this call' : k === 2 ? 'Relevant experience' : `Stage ${s.stage} founder`; });
+    card.classList.remove('out');
+  });
+  PEOPLE.forEach((p, k) => at(900 + k * 320, () => { els[k].classList.add('on'); lines[k].classList.add('on'); }));
+  at(900 + PEOPLE.length * 320 + 250, () => match.classList.add('on'));
+  if (!reduce) at(6200, () => { if (!paused && !manualpaused) play((scene + 1) % SCENES.length); else waitResume(); });
+}
+function waitResume() { const t = setInterval(() => { if (!paused && !manualpaused) { clearInterval(t); play((scene + 1) % SCENES.length); } }, 400); timers.push(t); }
+wrap.addEventListener('pointerenter', () => paused = true); wrap.addEventListener('pointerleave', () => paused = false);
+new ResizeObserver(layout).observe(wrap);
+const motion = document.getElementById('motion');
+if (reduce) { motion.hidden = true; }
+motion.addEventListener('click', () => { manualpaused = !manualpaused; motion.textContent = manualpaused ? 'Resume' : 'Pause'; motion.setAttribute('aria-pressed', manualpaused); });
+document.fonts.ready.then(layout);
+play(1);
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(r => r.json()).then(t => { if (typeof topojson === 'undefined' || typeof d3 === 'undefined') return; land = topojson.merge(t, t.objects.countries.geometries); layout(); }).catch(() => { /* Decision and role cards remain usable without geography. */ });
+</script></body></html>
