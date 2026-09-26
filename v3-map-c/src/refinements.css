@@ -14,3 +14,13 @@
 @media(max-width:480px){.site-header{position:relative}.header-inner{padding:12px 20px;gap:8px}.brand{width:140px}.header-actions{gap:2px}.header-actions>a:not(.button){font-size:12px;padding:8px}.header-actions .button{font-size:12px;padding:10px}.site-header nav{justify-content:space-between;gap:0}.site-header nav a{font-size:13px;padding:10px 6px}.hero h1{font-size:clamp(36px,10vw,46px)}.hero-lede{font-size:17px}.hero-actions{gap:12px 20px}.hero-map{min-height:345px}.hero .eyebrow{max-width:300px}.people-grid article{display:block}.source-link{margin-top:8px}.room-photo img{height:280px}.partner-steps li{grid-template-columns:25px minmax(0,1fr);gap:14px}.stage-photo img{height:280px}.stage-heading{display:block}.stage-heading>span{display:block}.stage-heading>span:last-child{margin-top:8px}html{scroll-padding-top:24px}h2 br{display:none}}
 @media(max-width:350px){.header-inner{padding-inline:16px}.brand{width:118px}.header-actions>a:not(.button){padding-inline:6px}.hero-map{min-height:320px}.hero .text-link{font-size:13px}.hero-actions{gap:16px}.hero h1{font-size:32px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* A distinct member voice beneath the experience credentials. */
+.member-quote{position:relative;background:#061B2C;color:#fff;border:0;border-radius:12px;padding:clamp(32px,4.5vw,56px);padding-top:clamp(68px,7vw,88px);gap:40px;align-items:end;margin-top:48px}
+.member-quote .quote-mark{position:absolute;top:20px;left:clamp(32px,4.5vw,56px);font-size:84px;font-weight:600;line-height:1;color:#66B2F0;pointer-events:none}
+.member-quote blockquote{font-size:clamp(24px,2.5vw,34px);line-height:1.48;font-weight:500;letter-spacing:-.025em;color:#fff}
+.member-quote figcaption{border-left:1px solid #658095;padding:8px 0 8px 24px}
+.member-quote figcaption strong{font-size:16px;color:#fff}
+.member-quote figcaption span{font-size:13px;color:#D3EAFD;margin-top:7px;line-height:1.6}
+@media(max-width:900px){.member-quote{gap:28px}.member-quote figcaption{border-left:0;border-top:1px solid #658095;padding:24px 0 0}}
+@media(max-width:480px){.member-quote{padding:64px 24px 28px;border-radius:12px;margin-top:36px}.member-quote .quote-mark{left:24px;top:14px;font-size:72px}.member-quote blockquote{font-size:24px;line-height:1.5}.member-quote figcaption{padding-top:20px}}
