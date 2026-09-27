@@ -1,6 +1,6 @@
-# The Leadership Multiplier
+# Success Equation
 
-Working name for the dedicated page previously titled Success Equation. The existing `/v3-map-c/success-equation/` route is retained so shared preview links keep working. Homepage and page navigation use Leadership Multiplier.
+The user-selected name is Success Equation. The route remains `/v3-map-c/success-equation/`. Homepage navigation, page navigation, title and introductory label use that name.
 
 ## What changed
 
@@ -25,10 +25,6 @@ Cai and Szeidl (2018), Interfirm Relationships and Business Performance, Quarter
 Source checked September 26, 2026: https://research.ceu.edu/en/publications/interfirm-relationships-and-business-performance/
 
 The published abstract describes a randomized study of 2,820 young Chinese firms, monthly manager meetings over one year, and an 8.1% revenue effect. The page keeps the sample and treatment context beside the statistic, identifies it as independent research, and explicitly distinguishes it from FounderNexus results, venture-backed benchmarks and evidence for team-member amplification. The study does not calibrate the calculator.
-
-## Naming recommendation
-
-The Leadership Multiplier is the proposed page name because it connects the individual member's benefit to broader leadership participation. The hero supplies the outcome framing. Team Decision Advantage is a more literal alternative; Success Equation is retained only as a bridge to the familiar concept. The naming is a proposal, not a registered or validated brand claim.
 
 ## Verification
 
