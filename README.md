@@ -21,7 +21,7 @@ Review URL: https://foundernexus.github.io/fn-site-mockups/ven-brand-review/
 
 ## VEN redesign
 
-`ven/` is the Venture Executive Network review site (homepage, Our Story, Success Equation, and an unlinked wordmark page). It is a static mockup: Apply, log in, and legal actions show a preview notice, and the Success Equation is an illustrative scenario. Link previews use `assets/og-image.png`.
+`ven/` is the Venture Executive Network review site (homepage, Our Story, Success Equation, and an unlinked wordmark page). It is a static mockup: Apply, log in, and legal actions show a preview notice, and the Success Equation is an illustrative scenario. Link previews use `assets/og-image.png`. The hero's "VEN is launching soon" button plays `assets/ven-launch.mp4` in a dialog, and the globe behind the decision card spins slowly (it stays still for visitors who prefer reduced motion).
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven/
 
