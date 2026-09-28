@@ -10,7 +10,14 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | Public homepage (June 2026 v2) | `index.html` | https://foundernexus.github.io/fn-site-mockups/ |
 | Homepage v3 — Map C | `v3-map-c/` | https://foundernexus.github.io/fn-site-mockups/v3-map-c/ |
 | VEN redesign | `ven/` | https://foundernexus.github.io/fn-site-mockups/ven/ |
+| VEN logo and icon review | `ven-brand-review/` | https://foundernexus.github.io/fn-site-mockups/ven-brand-review/ |
 | Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
+
+## VEN logo and icon review
+
+`ven-brand-review/` is the round 2 wordmark review: nine directions (A is the current favorite), lockups, favicon studies, and a discussion guide. Choosing a logo updates the selected lockup. It is separate from the VEN site at `ven/`.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven-brand-review/
 
 ## VEN redesign
 
