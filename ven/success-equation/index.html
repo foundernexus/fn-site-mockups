@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore the VEN Success Equation and how relevant decision support can extend across a leadership team.">
+  <title>Success Equation | VEN</title>
+  <link rel="stylesheet" href="../src/refinements.css?v=identity-3">
+  <link rel="stylesheet" href="style.css?v=identity-3">
+  <link rel="stylesheet" href="../src/narrative.css?v=identity-3">
+  <script type="module" src="calculator.js?v=identity-3"></script>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VEN">
+<meta property="og:title" content="Success Equation | VEN">
+<meta property="og:description" content="Explore the VEN Success Equation and how relevant decision support can extend across a leadership team.">
+<meta property="og:image" content="https://foundernexus.github.io/fn-site-mockups/ven/assets/og-image.png">
+<meta property="og:url" content="https://foundernexus.github.io/fn-site-mockups/ven/success-equation/">
+<meta name="twitter:image" content="https://foundernexus.github.io/fn-site-mockups/ven/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand ven-brand" href="../#top" aria-label="VEN, Venture Executive Network, home"><img class="ven-lettering" src="../assets/ven-wordmark-blue.svg" alt="VEN" width="132" height="48"><span class="ven-full">Venture<br> Executive<br> Network</span></a>
+    <nav aria-label="Main navigation"><a href="../#nexus-partner">How it works</a><a href="../#membership-fit">Membership</a><a href="./" aria-current="page">Success Equation</a><a href="../our-story/">Our story</a></nav>
+    <div class="header-actions"><button class="login-link" type="button" id="login">Log in</button><a class="button primary" href="../#apply" aria-label="Apply for membership">Apply<span class="cta-detail">&nbsp;for membership</span></a></div>
+  </div>
+</header>
+<main id="main-content">
+<section class="equation-intro shell" aria-labelledby="page-title">
+  <p class="eyebrow">The Success Equation</p>
+  <h1 id="page-title">One team.<br> <span>More experience behind its decisions.</span></h1>
+  <p class="intro-lede">Your company’s next move depends on more than one person. Explore how support can reach more of the decisions your leadership team makes.</p>
+<nav class="chapter-links" aria-label="On this page"><a href="#calculator">Explore the model <span aria-hidden="true">↓</span></a><a href="#team">What it means for your team <span aria-hidden="true">↓</span></a><a href="#research">The research <span aria-hidden="true">↓</span></a></nav>
+</section>
+<section id="calculator" class="calculator-section shell" aria-labelledby="calculator-title">
+  <div class="calculator-heading"><div><h2 id="calculator-title">What if each decision<br> had a little more support?</h2></div><span class="model-label">Illustrative calculator</span></div>
+  <p class="example-context" id="example-context">Example assumptions: four leaders, 3 decisions each. Chance per decision: 80% without added support; 85% with it.</p>
+  <div class="classic-calculator">
+    <div class="team-assumptions"><p class="eyebrow">01 · Choose your team</p><h3>One leader. Or all four.</h3><p class="control-intro">Choose how many leaders have support. The total number of decisions stays the same.</p><div class="leader-track" aria-hidden="true"><span class="leader-node active">01</span><span class="leader-node active">02</span><span class="leader-node active">03</span><span class="leader-node active">04</span></div>
+      <div class="slider-field"><div class="field-heading"><label for="participants">Leaders using support</label><output id="participants-value" for="participants">4 of 4</output></div><input type="range" id="participants" min="0" max="4" value="4"><div class="range-limits" aria-hidden="true"><span>None</span><span>Whole team</span></div></div>
+      <p class="mobile-scenario"><span>Modeled result</span><strong id="mobile-result">14.22%</strong><a href="#scenario">See comparison ↓</a></p>
+      <p class="coverage"><strong id="coverage">12 of 12 decisions</strong> covered by support</p><p class="field-help" id="coverage-note">The higher assumed probability applies only to participating leaders’ decisions.</p>
+    </div>
+    <div class="classic-results" id="scenario"><p class="eyebrow">02 · See the modeled difference</p><p id="result-caption">Hypothetical probability that all 12 modeled decisions achieve their intended outcome</p>
+      <div class="result-primary"><span>With your participating leaders</span><strong id="supported-result">14.22%</strong></div>
+      <div class="result-baseline"><span>Without added support</span><strong id="baseline-result">6.87%</strong></div>
+      <div class="relative-result"><strong id="ratio">2.07×</strong><span id="ratio-label">Relative likelihood in this model</span></div>
+      <p class="model-boundary">This illustration assumes independent decisions. It does not estimate company success or measure VEN’s impact.</p><p id="result-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+    </div>
+  </div>
+  <details class="assumptions-disclosure"><summary><span><strong>Adjust the example</strong><span id="assumption-summary">3 decisions per leader · 80% baseline → 85% with support</span></span><span aria-hidden="true">+</span></summary>    <div class="assumptions"><div class="controls-top"><h3>Adjust the assumptions</h3><button type="button" class="reset" id="reset">Reset</button></div><p class="control-intro">An example team of four leaders. Compare decisions made with and without relevant support.</p>
+      <div class="slider-field"><div class="field-heading"><label for="decisions">Key decisions per leader</label><output id="decisions-value" for="decisions">3</output></div><input type="range" id="decisions" min="1" max="10" step="1" value="3"><div class="range-limits" aria-hidden="true"><span>1</span><span>10</span></div></div>
+      <div class="slider-field"><div class="field-heading"><label for="baseline">Baseline chance per decision</label><output id="baseline-value" for="baseline">80%</output></div><input type="range" id="baseline" min="0" max="100" value="80" aria-describedby="probability-help"><div class="range-limits" aria-hidden="true"><span>0%</span><span>100%</span></div></div>
+      <div class="slider-field"><div class="field-heading"><label for="supported">Assumed chance with support</label><output id="supported-value" for="supported">85%</output></div><input type="range" id="supported" min="0" max="100" value="85" aria-describedby="probability-help"><div class="range-limits" aria-hidden="true"><span>0%</span><span>100%</span></div></div>
+      <p class="field-help" id="probability-help">The chance of achieving a decision’s intended outcome. Both percentages are your assumptions, not measured VEN effects.</p>
+    </div>
+</details>
+  <details class="model-method"><summary>The equation and its assumptions <span aria-hidden="true">+</span></summary><div class="method-body"><div><p class="eyebrow">A product of decision probabilities</p><p class="formula">p<sup>n − k</sup> × q<sup>k</sup></p><p><strong>p</strong> = baseline probability<br>  <strong>q</strong> = assumed probability with support<br>  <strong>n</strong> = all decisions across four leaders<br>  <strong>k</strong> = participating leaders’ decisions</p></div><div><p>For three decisions per leader, four leaders make twelve decisions. One participant applies the support assumption to three decisions; four participants apply it to all twelve. Joining does not automatically raise either input.</p><p>The outputs represent the chance that <em>all</em> modeled decisions meet their intended outcomes if those outcomes are independent and the stated probabilities are accurate. A company can still succeed when some decisions do not work out. Real decisions also differ in importance, influence each other and can be revisited.</p><p>The multiplier divides the support scenario’s probability by the baseline probability. It is a relative likelihood, not a statistical odds ratio. Equal assumptions give no improvement; a lower support assumption reduces the result. A zero baseline makes the ratio undefined.</p></div></div></details>
+  <noscript><p class="noscript-note">Enable JavaScript to adjust the calculator. The displayed example assumes all four leaders participating, with three decisions each.</p></noscript>
+</section>
+<section id="team" class="human-section section" aria-labelledby="team-title"><div class="shell"><div class="section-intro"><div><p class="eyebrow">Why participation across the team matters</p><h2 id="team-title">Different responsibilities.<br> <span class="headline-accent">A shared company to build.</span></h2></div><p class="intro-copy">The CEO is not the only person making consequential decisions. When colleagues join, relevant experience reaches the leaders who own revenue, product, hiring and capital decisions.</p></div><figure class="team-photo"><img src="../assets/working-session.jpg" alt="FounderNexus members working through a topic together at an in-person session" loading="lazy" width="1200" height="700"><figcaption>Experience shared in a FounderNexus working session.</figcaption></figure><div class="team-benefits"><article><p class="benefit-number">01</p><h3>Work on your own priorities.</h3><p>Your revenue leader can work through a sales bottleneck while your technology leader pressure-tests a roadmap tradeoff.</p></article><article><p class="benefit-number">02</p><h3>Find experience relevant to your role.</h3><p>Each member’s VEN Partner focuses on that person’s stage, responsibilities and current priorities.</p></article><article><p class="benefit-number">03</p><h3>Bring the learning back to your team.</h3><p>Leaders can use what they learn to challenge assumptions, clarify dependencies and choose practical next steps with their teams.</p></article></div></div></section>
+<section id="research" class="research-section section shell" aria-labelledby="research-title"><div class="research-stat"><p class="eyebrow">Independent research</p><strong>8.1%</strong><span>higher firm revenue<br>  in a randomized peer-meeting study</span></div><div><h2 id="research-title">Peer experience deserves<br> a place in the plan.</h2><p>Cai and Szeidl’s study of 2,820 young Chinese firms found that monthly manager meetings over one year increased revenue by 8.1% relative to the control group.</p><p class="research-context">This is evidence from a different business setting, not a VEN result or a venture-backed benchmark. It does not establish the benefit of adding leadership-team members or validate this calculator.</p><a class="source-link" href="https://research.ceu.edu/en/publications/interfirm-relationships-and-business-performance/" target="_blank" rel="noopener noreferrer">Read the study · Quarterly Journal of Economics, 2018 <span aria-hidden="true">↗</span></a></div></section>
+<section class="closing" aria-labelledby="closing-title"><div class="shell closing-inner"><p class="eyebrow">Start with the decisions your team is facing</p><h2 id="closing-title">Start with your priorities.<br> See where the support fits.</h2><p>Each eligible leader has their own trial. Talk through the fit for you and your colleagues before deciding on membership.</p><a class="button light" href="../#apply">Apply for membership <span aria-hidden="true">↗</span></a><a class="closing-secondary" href="../#nexus-partner">How VEN Partner support works <span aria-hidden="true">→</span></a></div></section>
+</main>
+<footer class="subpage-footer shell"><div class="footer-top"><a class="brand ven-brand" href="../#top" aria-label="VEN, Venture Executive Network, home"><img class="ven-lettering" src="../assets/ven-wordmark-blue.svg" alt="VEN" width="132" height="48"><span class="ven-full">Venture<br> Executive<br> Network</span></a><nav aria-label="Footer navigation"><a href="../#nexus-partner">How it works</a><a href="../#membership-fit">Membership</a><a href="../success-equation/">Success Equation</a><a href="../our-story/">Our story</a></nav></div><p>A proposed identity for FounderNexus. Member stories and credentials retain their original attribution.</p><small>© 2026 FounderNexus. All rights reserved.</small></footer>
+<dialog id="prototype-notice" aria-labelledby="notice-title"><h2 id="notice-title">Preview only</h2><p>This working mockup does not connect to account access yet.</p><form method="dialog"><button>Return to the page</button></form></dialog>
+</body>
+</html>

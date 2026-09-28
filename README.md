@@ -9,7 +9,14 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | Acquisition homepage prototype | `vn-home-mockup.html` | https://foundernexus.github.io/fn-site-mockups/vn-home-mockup.html |
 | Public homepage (June 2026 v2) | `index.html` | https://foundernexus.github.io/fn-site-mockups/ |
 | Homepage v3 — Map C | `v3-map-c/` | https://foundernexus.github.io/fn-site-mockups/v3-map-c/ |
+| VEN redesign | `ven/` | https://foundernexus.github.io/fn-site-mockups/ven/ |
 | Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
+
+## VEN redesign
+
+`ven/` is the Venture Executive Network review site (homepage, Our Story, Success Equation, and an unlinked wordmark page). It is a static mockup: Apply, log in, and legal actions show a preview notice, and the Success Equation is an illustrative scenario. Link previews use `assets/og-image.png`.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven/
 
 ## Homepage v3 — Map C
 
