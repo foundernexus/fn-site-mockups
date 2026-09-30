@@ -1,0 +1,31 @@
+/* Supporting pages carry the same editorial rhythm as the decision field guide. */
+.support-page .btn{border-radius:7px}
+.story-page,.team-page{background:var(--paper,#f7f4ee);color:var(--navy,#061b2c)}
+.story-page .support-hero,.team-page .support-hero{max-width:960px;padding-bottom:48px}
+.story-origin{display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center;border-top:1px solid #c5cecc}
+.story-origin-copy h2{max-width:650px}.story-origin-copy>p:not(.eyebrow){font-size:17px;line-height:1.8;max-width:640px}
+.story-origin figure{margin:0;max-height:none}.story-origin .support-photo img{aspect-ratio:1;object-position:50% 35%;border-radius:45% 45% 3px 3px}
+.story-origin figcaption,.story-community figcaption{font-size:14px;line-height:1.7;color:#49606a;margin-top:12px}
+.story-page .story-mission{margin:24px 0 42px;padding:46px 50px;background:var(--navy,#061b2c);color:#fff}
+.story-mission .eyebrow{color:#c5dfef}.story-page .story-mission h2{max-width:890px;color:#fff;font-size:clamp(30px,3.6vw,46px)}
+.story-page .story-mission .support-lede{max-width:800px;color:#dbe7ed;font-size:17px;line-height:1.8;margin-bottom:0}
+.story-principle-copy{max-width:890px;margin:0 0 32px}.story-principle-copy h2{max-width:800px}
+.story-principle-copy>p:not(.eyebrow){max-width:720px;font-size:17px;line-height:1.8}
+.story-character{font-family:Georgia,serif;font-size:23px!important;font-style:italic;color:#005f9e}
+.story-community{margin:0;max-height:none}.story-community img{aspect-ratio:21/9;object-position:50% 50%;border-radius:3px}
+.story-page .support-cta,.team-page .support-cta{border-top:1px solid #c5cecc;padding-top:32px;margin-top:20px}
+.team-benefits{border-top:1px solid #c5cecc;gap:50px}.team-benefit{padding:0;min-width:0}
+.team-benefit h2{font-size:clamp(27px,3vw,37px)}.team-benefit>p:not(.eyebrow){max-width:490px;font-size:17px;line-height:1.8}
+.team-benefit+.team-benefit{border-left:1px solid #c5cecc;padding-left:50px}
+.team-page .sponsor-evidence{padding:35px 38px;margin:8px 0 30px;border:1px solid #c5cecc;background:#fffdf9;border-radius:0}
+.team-field-guide{margin-top:15px}.team-field-guide h2{max-width:840px}
+.team-decisions{list-style:none;padding:0;margin:28px 0 20px;counter-reset:decisions}
+.team-decisions li{display:grid;grid-template-columns:165px 1fr;gap:24px;padding:21px 0;border-top:1px solid #c5cecc;align-items:baseline;counter-increment:decisions}
+.team-decision-area{font-size:14px;font-weight:600;color:#005f9e}.team-decision-area:before{content:'0' counter(decisions) ' / ';font-size:12px}
+.team-decisions li p{font-size:clamp(18px,2.2vw,24px)!important;line-height:1.5!important;letter-spacing:-.02em;margin:0;max-width:800px}
+.team-page .team-trial{border-top:2px solid #0072ba;margin:10px 0 15px;padding-top:30px;padding-bottom:30px}.team-trial>p{max-width:780px}
+.team-page .sponsor-faq{max-width:890px}.team-page .sponsor-faq>ul{padding-left:22px}.team-page .sponsor-faq li{font-size:16px;line-height:1.8;margin:12px 0}
+.sponsor-copy-actions{display:flex;align-items:center;gap:20px;margin-top:20px}.sponsor-copy-actions p{font-size:14px;line-height:1.6;max-width:400px;margin:0;color:#49606a}
+#challenge-carry-note{margin:0 0 20px;border-left:2px solid #0072ba;padding:8px 0 8px 16px;color:#294a5c;font-size:15px;line-height:1.7}
+@media(max-width:760px){.story-origin{grid-template-columns:1fr;gap:27px}.story-origin .support-photo{max-width:400px}.story-page .story-mission{padding:30px 24px;margin:20px 0 24px}.story-page .story-mission h2{font-size:31px}.story-community img{aspect-ratio:4/3}.team-benefits{gap:25px}.team-benefit+.team-benefit{border-left:0;border-top:1px solid #c5cecc;padding-left:0;padding-top:26px}.team-page .sponsor-evidence{padding:26px 22px}.team-decisions li{grid-template-columns:1fr;gap:8px;padding:20px 0}.team-decisions li p{font-size:20px!important}.sponsor-copy-actions{flex-direction:column;align-items:flex-start;gap:12px}.story-page .support-hero,.team-page .support-hero{padding-bottom:35px}}
+@media print{.story-page .story-mission{background:white;color:black;border-top:1px solid #aaa;padding:20px 0;margin:0}.story-page .story-mission h2,.story-page .story-mission .support-lede,.story-page .story-mission .eyebrow{color:black}.team-decisions li,.sponsor-evidence{break-inside:avoid}.sponsor-copy-actions{display:none!important}.team-benefit+.team-benefit{border-left:0;padding-left:0}.story-origin{display:block}}

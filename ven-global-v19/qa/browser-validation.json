@@ -1,0 +1,669 @@
+{
+  "scope": "Fresh isolated headless Edge, local mockup only",
+  "responsive": [
+    {
+      "page": "index",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "For leadership teams of venture-backed companies",
+          "font": "14px"
+        },
+        {
+          "text": "Membership, in practice",
+          "font": "14px"
+        },
+        {
+          "text": "From the FounderNexus community",
+          "font": "14px"
+        },
+        {
+          "text": "[Member name, role and company. One decision, the useful input an",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "index",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "For leadership teams of venture-backed companies",
+          "font": "14px"
+        },
+        {
+          "text": "Membership, in practice",
+          "font": "14px"
+        },
+        {
+          "text": "From the FounderNexus community",
+          "font": "14px"
+        },
+        {
+          "text": "[Member name, role and company. One decision, the useful input an",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "index",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "For leadership teams of venture-backed companies",
+          "font": "14px"
+        },
+        {
+          "text": "Membership, in practice",
+          "font": "14px"
+        },
+        {
+          "text": "From the FounderNexus community",
+          "font": "14px"
+        },
+        {
+          "text": "[Member name, role and company. One decision, the useful input an",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "index",
+      "width": 768,
+      "scrollWidth": 768,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "For leadership teams of venture-backed companies",
+          "font": "14px"
+        },
+        {
+          "text": "Membership, in practice",
+          "font": "14px"
+        },
+        {
+          "text": "From the FounderNexus community",
+          "font": "14px"
+        },
+        {
+          "text": "[Member name, role and company. One decision, the useful input an",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "index",
+      "width": 390,
+      "scrollWidth": 390,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "For leadership teams of venture-backed companies",
+          "font": "14px"
+        },
+        {
+          "text": "Membership, in practice",
+          "font": "14px"
+        },
+        {
+          "text": "From the FounderNexus community",
+          "font": "14px"
+        },
+        {
+          "text": "[Member name, role and company. One decision, the useful input an",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "index",
+      "width": 320,
+      "scrollWidth": 320,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "For leadership teams of venture-backed companies",
+          "font": "14px"
+        },
+        {
+          "text": "Membership, in practice",
+          "font": "14px"
+        },
+        {
+          "text": "From the FounderNexus community",
+          "font": "14px"
+        },
+        {
+          "text": "[Member name, role and company. One decision, the useful input an",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "story",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "story",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "story",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "story",
+      "width": 768,
+      "scrollWidth": 768,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "story",
+      "width": 390,
+      "scrollWidth": 390,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "[Member name][Role] · [Company][Company stage]",
+          "font": "14px"
+        },
+        {
+          "text": "Story details to supply",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "story",
+      "width": 320,
+      "scrollWidth": 320,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "[Member name][Role] · [Company][Company stage]",
+          "font": "14px"
+        },
+        {
+          "text": "Story details to supply",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "team",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "team",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "team",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "team",
+      "width": 768,
+      "scrollWidth": 768,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "team",
+      "width": 390,
+      "scrollWidth": 390,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "[CEO name][Company][Participating leadership functions]",
+          "font": "14px"
+        },
+        {
+          "text": "Sponsor quote to supply",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "team",
+      "width": 320,
+      "scrollWidth": 320,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "[CEO name][Company][Participating leadership functions]",
+          "font": "14px"
+        },
+        {
+          "text": "Sponsor quote to supply",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "equation",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "equation",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "equation",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "equation",
+      "width": 768,
+      "scrollWidth": 768,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "equation",
+      "width": 390,
+      "scrollWidth": 390,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "equation",
+      "width": 320,
+      "scrollWidth": 320,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "events",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "6 upcoming sessions",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "events",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "6 upcoming sessions",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "events",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "6 upcoming sessions",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "events",
+      "width": 768,
+      "scrollWidth": 768,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "6 upcoming sessions",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "events",
+      "width": 390,
+      "scrollWidth": 390,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "6 upcoming sessions",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "events",
+      "width": 320,
+      "scrollWidth": 320,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": [
+        {
+          "text": "6 upcoming sessions",
+          "font": "14px"
+        }
+      ]
+    },
+    {
+      "page": "blog",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "blog",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "blog",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "blog",
+      "width": 768,
+      "scrollWidth": 768,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "blog",
+      "width": 390,
+      "scrollWidth": 390,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "blog",
+      "width": 320,
+      "scrollWidth": 320,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "challenges",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "challenges",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "challenges",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "challenges",
+      "width": 768,
+      "scrollWidth": 768,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "challenges",
+      "width": 390,
+      "scrollWidth": 390,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "challenges",
+      "width": 320,
+      "scrollWidth": 320,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "apply",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "apply",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "apply",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "apply",
+      "width": 768,
+      "scrollWidth": 768,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "apply",
+      "width": 390,
+      "scrollWidth": 390,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    },
+    {
+      "page": "apply",
+      "width": 320,
+      "scrollWidth": 320,
+      "imageFailures": [],
+      "zeroSizeVisibleImages": [],
+      "headings": 1,
+      "jakarta": true,
+      "bodyTextBelow16": []
+    }
+  ],
+  "interactions": {
+    "skipLink": true,
+    "mobileMenuKeyboard": true,
+    "indexDisclosures": 3,
+    "storyDisclosures": 1,
+    "teamDisclosures": 3,
+    "storyProofLinkRevealsTarget": true,
+    "calculatorResponds": true,
+    "calculatorExamples": true,
+    "twoChallengeCarry": true,
+    "localInquiryReviewAndEdit": true,
+    "withoutJavaScript": true
+  },
+  "errors": [],
+  "responses": [],
+  "status": "PASS"
+}

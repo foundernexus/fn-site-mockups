@@ -1,0 +1,37 @@
+[
+  {
+    "page": "index",
+    "width": 320,
+    "scroll": 320,
+    "navVisible": "flex",
+    "menuVisible": "none",
+    "formVisible": null
+  },
+  {
+    "page": "story",
+    "width": 320,
+    "scroll": 320,
+    "navVisible": "flex",
+    "menuVisible": "none",
+    "formVisible": null
+  },
+  {
+    "noJsStoryDisclosureOpen": true
+  },
+  {
+    "page": "team",
+    "width": 320,
+    "scroll": 320,
+    "navVisible": "flex",
+    "menuVisible": "none",
+    "formVisible": null
+  },
+  {
+    "page": "apply",
+    "width": 320,
+    "scroll": 320,
+    "navVisible": "flex",
+    "menuVisible": "none",
+    "formVisible": "none"
+  }
+]

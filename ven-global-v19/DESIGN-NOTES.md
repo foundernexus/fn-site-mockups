@@ -1,0 +1,13 @@
+# VEN Global v19 design notes
+
+September 30, 2026. Final design assessment: pass for mockup review. This revision addresses the audited loss of warmth in the main site. The previous main mockup and homepage explorations remain preserved.
+
+The personality comes from recognising the work and the person doing it. “More pipeline, or a better handoff?” and “Another hire, or clearer ownership?” describe consequential tradeoffs with a light touch. “You have useful experience to share, too” makes membership reciprocal rather than presenting the visitor as someone who only needs help. Story’s “Recognition is useful. Agreement is optional” allows independent thinking. Team’s “Some decisions sit with you. Their effects don’t” introduces the actual product argument: choices across a company influence one another. The closing reassurance makes a clear invitation approachable. These moments supply the wit; decorative tape, invented dialogue and arbitrary doodles do not.
+
+Real people now carry more of the narrative. Home pairs its practical offer with a candid exchange that preserves both faces and the speaker’s gesture. Court’s photograph enters Story’s opening, making the FounderNexus origin visible immediately. The community photograph sits beside the peer principle, with truthful historical context. Team begins with two leaders working through a question before showing the connected decision example. The photographs remain bounded and subordinate to useful reading.
+
+The shared cream, navy, blue, Jakarta typography and supplied VEN | global logo hold the site together. Softer framing supports the invitation. The reading rhythm varies between an open photographic introduction, a short working brief, peer perspective, genuine member voice, stage context, connected decisions and practical next steps. Detailed proof drafts and sponsorship tools remain accessible through native disclosures without dominating the default story.
+
+The concrete offer remains: leadership teams of venture-backed companies, a dedicated Partner, each member’s top two challenges monthly, support shaped around role and stage, and each eligible colleague’s own trial. Stage bands, evidence qualifications and company decision ownership survive. Calculator arithmetic is unchanged.
+
+I assessed the actual local browser captures of Home’s opening and the full Story and Team pages. No material design blocker remains. Separate copy and independent rendered reviews passed. This is approval of the mockup experience, not proof of conversion improvement, target-user preference or production readiness. Permissioned evidence and confirmed operating terms still require real inputs.

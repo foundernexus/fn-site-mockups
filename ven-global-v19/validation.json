@@ -1,0 +1,13 @@
+{
+  "version": "19",
+  "website_pages": 8,
+  "handoff_pages": 1,
+  "referenced_html_pages": 9,
+  "static_checks": "passed",
+  "copy_review": "passed for mockup review",
+  "independent_rendered_review": "approved for mockup review",
+  "browser_checks": "48 responsive cases and essential interactions passed",
+  "calculation_sources": "unchanged",
+  "previous_main_and_explorations": "preserved",
+  "scope": "expert mockup review; not conversion testing or accessibility certification"
+}

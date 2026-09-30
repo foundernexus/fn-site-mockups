@@ -1,0 +1,456 @@
+{
+  "result": [
+    {
+      "name": "index",
+      "width": 1280,
+      "scroll": 1280,
+      "height": 4512,
+      "words": 639,
+      "images": [
+        {
+          "alt": "Two people exchanging perspectives at a FounderNexus gathering",
+          "loaded": true,
+          "rect": {
+            "w": 556,
+            "h": 417
+          }
+        },
+        {
+          "alt": "ConversionMagic",
+          "loaded": true,
+          "rect": {
+            "w": 165,
+            "h": 32.3125
+          }
+        },
+        {
+          "alt": "Identient",
+          "loaded": true,
+          "rect": {
+            "w": 157.25,
+            "h": 38.984375
+          }
+        },
+        {
+          "alt": "Payscore",
+          "loaded": true,
+          "rect": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "alt": "ARY Engineering",
+          "loaded": true,
+          "rect": {
+            "w": 107.6875,
+            "h": 42.984375
+          }
+        },
+        {
+          "alt": "Two leaders working through a question together at a FounderNexus session",
+          "loaded": true,
+          "rect": {
+            "w": 647.4375,
+            "h": 385
+          }
+        },
+        {
+          "alt": "People from the FounderNexus community together at a gathering",
+          "loaded": true,
+          "rect": {
+            "w": 529.625,
+            "h": 298.046875
+          }
+        }
+      ]
+    },
+    {
+      "name": "index",
+      "width": 768,
+      "scroll": 768,
+      "height": 5398,
+      "words": 639,
+      "images": [
+        {
+          "alt": "Two people exchanging perspectives at a FounderNexus gathering",
+          "loaded": true,
+          "rect": {
+            "w": 610,
+            "h": 381.25
+          }
+        },
+        {
+          "alt": "ConversionMagic",
+          "loaded": true,
+          "rect": {
+            "w": 165,
+            "h": 32.3125
+          }
+        },
+        {
+          "alt": "Identient",
+          "loaded": true,
+          "rect": {
+            "w": 157.25,
+            "h": 38.984375
+          }
+        },
+        {
+          "alt": "Payscore",
+          "loaded": true,
+          "rect": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "alt": "ARY Engineering",
+          "loaded": true,
+          "rect": {
+            "w": 107.6875,
+            "h": 42.984375
+          }
+        },
+        {
+          "alt": "Two leaders working through a question together at a FounderNexus session",
+          "loaded": true,
+          "rect": {
+            "w": 384.671875,
+            "h": 295
+          }
+        },
+        {
+          "alt": "People from the FounderNexus community together at a gathering",
+          "loaded": true,
+          "rect": {
+            "w": 316.8125,
+            "h": 178.28125
+          }
+        }
+      ]
+    },
+    {
+      "name": "index",
+      "width": 390,
+      "scroll": 390,
+      "height": 7531,
+      "words": 639,
+      "images": [
+        {
+          "alt": "Two people exchanging perspectives at a FounderNexus gathering",
+          "loaded": true,
+          "rect": {
+            "w": 350,
+            "h": 262.5
+          }
+        },
+        {
+          "alt": "ConversionMagic",
+          "loaded": true,
+          "rect": {
+            "w": 143,
+            "h": 28
+          }
+        },
+        {
+          "alt": "Identient",
+          "loaded": true,
+          "rect": {
+            "w": 137.09375,
+            "h": 33.984375
+          }
+        },
+        {
+          "alt": "Payscore",
+          "loaded": true,
+          "rect": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "alt": "ARY Engineering",
+          "loaded": true,
+          "rect": {
+            "w": 95,
+            "h": 37.921875
+          }
+        },
+        {
+          "alt": "Two leaders working through a question together at a FounderNexus session",
+          "loaded": true,
+          "rect": {
+            "w": 350,
+            "h": 312.5
+          }
+        },
+        {
+          "alt": "People from the FounderNexus community together at a gathering",
+          "loaded": true,
+          "rect": {
+            "w": 350,
+            "h": 196.96875
+          }
+        }
+      ]
+    },
+    {
+      "name": "index",
+      "width": 320,
+      "scroll": 320,
+      "height": 8569,
+      "words": 639,
+      "images": [
+        {
+          "alt": "Two people exchanging perspectives at a FounderNexus gathering",
+          "loaded": true,
+          "rect": {
+            "w": 288,
+            "h": 216
+          }
+        },
+        {
+          "alt": "ConversionMagic",
+          "loaded": true,
+          "rect": {
+            "w": 143,
+            "h": 28
+          }
+        },
+        {
+          "alt": "Identient",
+          "loaded": true,
+          "rect": {
+            "w": 137.09375,
+            "h": 33.984375
+          }
+        },
+        {
+          "alt": "Payscore",
+          "loaded": true,
+          "rect": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "alt": "ARY Engineering",
+          "loaded": true,
+          "rect": {
+            "w": 95,
+            "h": 37.921875
+          }
+        },
+        {
+          "alt": "Two leaders working through a question together at a FounderNexus session",
+          "loaded": true,
+          "rect": {
+            "w": 288,
+            "h": 257.140625
+          }
+        },
+        {
+          "alt": "People from the FounderNexus community together at a gathering",
+          "loaded": true,
+          "rect": {
+            "w": 288,
+            "h": 162.078125
+          }
+        }
+      ]
+    },
+    {
+      "name": "story",
+      "width": 1280,
+      "scroll": 1280,
+      "height": 2426,
+      "words": 278,
+      "images": [
+        {
+          "alt": "Court Lorenzini, founding CEO of DocuSign",
+          "loaded": true,
+          "rect": {
+            "w": 500.40625,
+            "h": 375.296875
+          }
+        },
+        {
+          "alt": "People connecting at a FounderNexus gathering",
+          "loaded": true,
+          "rect": {
+            "w": 618.75,
+            "h": 348.21875
+          }
+        }
+      ]
+    },
+    {
+      "name": "story",
+      "width": 768,
+      "scroll": 768,
+      "height": 2912,
+      "words": 278,
+      "images": [
+        {
+          "alt": "Court Lorenzini, founding CEO of DocuSign",
+          "loaded": true,
+          "rect": {
+            "w": 319.671875,
+            "h": 319.671875
+          }
+        },
+        {
+          "alt": "People connecting at a FounderNexus gathering",
+          "loaded": true,
+          "rect": {
+            "w": 704,
+            "h": 396.1875
+          }
+        }
+      ]
+    },
+    {
+      "name": "story",
+      "width": 390,
+      "scroll": 390,
+      "height": 3796,
+      "words": 278,
+      "images": [
+        {
+          "alt": "Court Lorenzini, founding CEO of DocuSign",
+          "loaded": true,
+          "rect": {
+            "w": 350,
+            "h": 262.5
+          }
+        },
+        {
+          "alt": "People connecting at a FounderNexus gathering",
+          "loaded": true,
+          "rect": {
+            "w": 350,
+            "h": 196.96875
+          }
+        }
+      ]
+    },
+    {
+      "name": "story",
+      "width": 320,
+      "scroll": 320,
+      "height": 4112,
+      "words": 278,
+      "images": [
+        {
+          "alt": "Court Lorenzini, founding CEO of DocuSign",
+          "loaded": true,
+          "rect": {
+            "w": 288,
+            "h": 216
+          }
+        },
+        {
+          "alt": "People connecting at a FounderNexus gathering",
+          "loaded": true,
+          "rect": {
+            "w": 288,
+            "h": 162.078125
+          }
+        }
+      ]
+    },
+    {
+      "name": "team",
+      "width": 1280,
+      "scroll": 1280,
+      "height": 2986,
+      "words": 338,
+      "images": [
+        {
+          "alt": "Two leaders working through a question together at a FounderNexus session",
+          "loaded": true,
+          "rect": {
+            "w": 500.40625,
+            "h": 350
+          }
+        }
+      ]
+    },
+    {
+      "name": "team",
+      "width": 768,
+      "scroll": 768,
+      "height": 3180,
+      "words": 338,
+      "images": [
+        {
+          "alt": "Two leaders working through a question together at a FounderNexus session",
+          "loaded": true,
+          "rect": {
+            "w": 319.671875,
+            "h": 239.75
+          }
+        }
+      ]
+    },
+    {
+      "name": "team",
+      "width": 390,
+      "scroll": 390,
+      "height": 5012,
+      "words": 338,
+      "images": [
+        {
+          "alt": "Two leaders working through a question together at a FounderNexus session",
+          "loaded": true,
+          "rect": {
+            "w": 350,
+            "h": 312.5
+          }
+        }
+      ]
+    },
+    {
+      "name": "team",
+      "width": 320,
+      "scroll": 320,
+      "height": 5647,
+      "words": 338,
+      "images": [
+        {
+          "alt": "Two leaders working through a question together at a FounderNexus session",
+          "loaded": true,
+          "rect": {
+            "w": 288,
+            "h": 257.140625
+          }
+        }
+      ]
+    }
+  ],
+  "menuOpen": "true",
+  "menuClose": "false",
+  "focus": "menu-toggle",
+  "details": [
+    {
+      "text": "Content placeholder\nA company sponsor’s perspective",
+      "open": true
+    },
+    {
+      "text": "The practical questions, before you decide",
+      "open": true
+    },
+    {
+      "text": "A note to start the sponsorship conversation",
+      "open": true
+    }
+  ],
+  "storyOpen": true,
+  "anchor": {
+    "url": "http://127.0.0.1:6622/team.html#connected-decisions",
+    "top": 1297.375,
+    "header": 76
+  },
+  "equation": "http://127.0.0.1:6622/equation.html"
+}

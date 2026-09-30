@@ -1,0 +1,122 @@
+[
+  {
+    "width": 1280,
+    "scroll": 1280,
+    "logos": [
+      {
+        "name": "ConversionMagic",
+        "w": 165,
+        "h": 32.3125,
+        "loaded": true
+      },
+      {
+        "name": "Identient",
+        "w": 157.25,
+        "h": 38.984375,
+        "loaded": true
+      },
+      {
+        "name": "Payscore",
+        "w": 162,
+        "h": 30.5625,
+        "loaded": true
+      },
+      {
+        "name": "ARY Engineering",
+        "w": 107.6875,
+        "h": 42.984375,
+        "loaded": true
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "scroll": 768,
+    "logos": [
+      {
+        "name": "ConversionMagic",
+        "w": 165,
+        "h": 32.3125,
+        "loaded": true
+      },
+      {
+        "name": "Identient",
+        "w": 157.25,
+        "h": 38.984375,
+        "loaded": true
+      },
+      {
+        "name": "Payscore",
+        "w": 162,
+        "h": 30.5625,
+        "loaded": true
+      },
+      {
+        "name": "ARY Engineering",
+        "w": 107.6875,
+        "h": 42.984375,
+        "loaded": true
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "scroll": 390,
+    "logos": [
+      {
+        "name": "ConversionMagic",
+        "w": 143,
+        "h": 28,
+        "loaded": true
+      },
+      {
+        "name": "Identient",
+        "w": 137.09375,
+        "h": 33.984375,
+        "loaded": true
+      },
+      {
+        "name": "Payscore",
+        "w": 143,
+        "h": 26.984375,
+        "loaded": true
+      },
+      {
+        "name": "ARY Engineering",
+        "w": 95,
+        "h": 37.921875,
+        "loaded": true
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "scroll": 320,
+    "logos": [
+      {
+        "name": "ConversionMagic",
+        "w": 131,
+        "h": 25.65625,
+        "loaded": true
+      },
+      {
+        "name": "Identient",
+        "w": 131,
+        "h": 32.484375,
+        "loaded": true
+      },
+      {
+        "name": "Payscore",
+        "w": 131,
+        "h": 24.71875,
+        "loaded": true
+      },
+      {
+        "name": "ARY Engineering",
+        "w": 95,
+        "h": 37.921875,
+        "loaded": true
+      }
+    ]
+  }
+]
