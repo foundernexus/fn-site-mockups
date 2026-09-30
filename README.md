@@ -10,8 +10,17 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | Public homepage (June 2026 v2) | `index.html` | https://foundernexus.github.io/fn-site-mockups/ |
 | Homepage v3 — Map C | `v3-map-c/` | https://foundernexus.github.io/fn-site-mockups/v3-map-c/ |
 | VEN redesign | `ven/` | https://foundernexus.github.io/fn-site-mockups/ven/ |
+| VEN Global team review | `ven-global/` | https://foundernexus.github.io/fn-site-mockups/ven-global/ |
 | VEN logo and icon review | `ven-brand-review/` | https://foundernexus.github.io/fn-site-mockups/ven-brand-review/ |
 | Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
+
+## VEN Global team review
+
+`ven-global/` is the September 29, 2026 VEN Global concept (v15.3): Home, For your team, Success Equation, Our story, Events, Blog, and Explore membership. It is a static review prototype. The membership form shows a local summary and does not submit. Member login, blog articles, and event links leave the mockup for the existing FounderNexus site. Events are an October 2026 snapshot. The Success Equation is illustrative. Company logos are the integrated set from this handoff.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven-global/
+
+Review guide: https://foundernexus.github.io/fn-site-mockups/ven-global/HANDOFF.html
 
 ## VEN logo and icon review
 
