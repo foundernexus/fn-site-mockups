@@ -6,8 +6,13 @@ let frame=document.getElementById('ven-site');
 const rootURL=location.href.split('#')[0];
 const assetURLs={};
 for(const [name,data] of Object.entries(bundle.assets)){
- const binary=atob(data.base64),bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
- assetURLs[name]=URL.createObjectURL(new Blob([bytes],{type:data.mime}));
+ let mime=data.mime;
+ if(mime==='application/octet-stream'){
+  if(data.base64.startsWith('UklGR'))mime='image/webp';
+  else if(data.base64.startsWith('/9j/'))mime='image/jpeg';
+  else if(data.base64.startsWith('iVBOR'))mime='image/png';
+ }
+ assetURLs[name]='data:'+mime+';base64,'+data.base64;
 }
 const favicon=document.createElement('link');favicon.rel='icon';favicon.href=assetURLs['assets/venture-executive-network-icon.svg'];document.head.append(favicon);
 const fillAssets=text=>text.replace(/\[\[VEN_ASSET:([^\]]+)\]\]/g,(_,key)=>assetURLs[key]);
@@ -82,7 +87,7 @@ function render(){
  js+='<script>('+childBoot.toString()+')();<\/script>';
  html=html.replace('</body>',js+'</body>');
  frame.onload=async()=>{
-  const doc=frame.contentDocument;await doc.fonts.ready;
+  const doc=frame.contentDocument;if(!doc)return;await doc.fonts.ready;
   if(current.anchor){doc.querySelectorAll('img').forEach(i=>i.loading='eager');await Promise.all([...doc.images].map(i=>i.decode().catch(()=>{})));jump(current.anchor);}
   else{frame.contentWindow.scrollTo(0,0);const h1=doc.querySelector('h1');if(focusHeading&&h1){h1.tabIndex=-1;h1.style.outline='none';h1.focus({preventScroll:true});}}
  };
