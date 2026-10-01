@@ -129,7 +129,10 @@
     enhancements+='<script>'+safe(embeddedBridge(current.path,current.search,current.hash,focusContent))+close;
     doc=doc.replace('</body>',enhancements+'</body>');
     // A fresh browsing context keeps iframe document loads out of Back history.
-    mountViewer(frame=>{frame.srcdoc=doc;});
+    mountViewer(frame=>{
+      frame.addEventListener('load',()=>frame.contentWindow.postMessage({type:'ven-scroll',hash:current.hash},'*'),{once:true});
+      frame.srcdoc=doc;
+    });
   }
   function navigate(route,focusContent=false){
     const next=normalize(route);writeRoute(next);
