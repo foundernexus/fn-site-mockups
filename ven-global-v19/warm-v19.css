@@ -311,3 +311,19 @@
 }
 @media(prefers-reduced-motion:reduce){.warm-v19{scroll-behavior:auto}.warm-v19 *,.warm-v19 *:before,.warm-v19 *:after{animation:none!important;transition:none!important}.warm-v19 .button:hover{transform:none}}
 @media print{.warm-v19,.warm-v19 .support-page{background:#fff;color:#000}.warm-v19 .story-opening,.warm-v19 .team-opening{display:block;padding:10px 0}.warm-v19 .story-founder-photo,.warm-v19 .team-opening-photo{max-width:350px}.warm-v19 .story-principle{display:block}.warm-v19 .story-community{max-width:500px}.warm-v19 .story-mission,.warm-v19 .team-decision-visual,.warm-v19 .team-trial{background:#fff!important;color:#000!important;border:1px solid #999!important}.warm-v19 .story-proof-draft,.warm-v19 .team-proof-draft,.warm-v19 .team-practical,.warm-v19 .team-share-note{break-inside:avoid}.warm-v19 details::details-content{content-visibility:visible!important;display:block!important}.warm-v19 details>*:not(summary){display:block!important}.warm-v19 .decision-node{background:#fff}.warm-v19 .decision-outcome{background:#fff;color:#000;border:1px solid #999}.warm-v19 .decision-outcome h3,.warm-v19 .decision-outcome p{color:#000}}
+
+/* Warm Welcome: an even section rhythm and a single FAQ divider. */
+.home-v19 .relevance-v17{padding-block:40px 48px}
+.home-v19 .community-proof-v17{padding-block:48px}
+.home-v19 .context-v17{padding-top:48px;padding-bottom:40px}
+.home-v19 .questions-v17{padding-bottom:48px}
+.home-v19 .team-invitation p{max-width:56ch}
+.home-v19 .faq-list details>div{max-width:60ch}
+@media(min-width:761px){.home-v19 .questions-v17 .faq-list{border-top:0}}
+@media(max-width:760px){
+ .home-v19 .relevance-v17{padding-top:24px;padding-bottom:36px}
+ .home-v19 .community-proof-v17{padding-block:36px}
+ .home-v19 .context-v17{padding-block:36px}
+ .home-v19 .questions-v17{padding-bottom:36px}
+ .home-v19 .process-list li,.home-v19 .process-list li:first-child{padding-top:22px}
+}

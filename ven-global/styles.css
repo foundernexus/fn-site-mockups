@@ -87,3 +87,14 @@
 .company-logos .logo-ary{max-width:146px}
 @media(max-width:1050px){.company-band-inner{grid-template-columns:1fr;gap:30px}.company-band h2{font-size:24px}.company-band h2 span{display:inline;margin-left:10px;max-width:none;font-size:15px}.company-logos{gap:35px}.company-band{padding:37px 0 39px}}
 @media(max-width:600px){.company-band{padding:33px 0 35px}.company-band-inner{gap:25px}.company-band h2{font-size:23px;padding-left:17px}.company-band h2 span{display:block;margin:5px 0 0;font-size:14px;max-width:none}.company-logos{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px;row-gap:15px}.company-logos li{height:61px}.company-logos img{max-height:49px}.company-logos .logo-ary{max-width:132px}}
+
+/* Whimsy: retain the editorial accents, with less space between reading sections. */
+.home-whimsy .faq-list details>div{max-width:60ch}
+.home-whimsy .section-heading-row>p{max-width:36ch}
+@media(min-width:1051px){.home-whimsy .section-pad{padding-block:80px}}
+@media(max-width:720px){
+ .home-whimsy .section-pad{padding-block:44px}
+ .home-whimsy .stages{padding-top:44px;padding-bottom:40px}
+ .home-whimsy .member-voice{padding-block:40px}
+ .home-whimsy .membership-grid,.home-whimsy .team-grid{row-gap:28px}
+}
