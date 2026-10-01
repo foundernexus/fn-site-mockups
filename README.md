@@ -13,6 +13,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | VEN Global team review | `ven-global/` | https://foundernexus.github.io/fn-site-mockups/ven-global/ |
 | VEN Global v19 team review | `ven-global-v19/` | https://foundernexus.github.io/fn-site-mockups/ven-global-v19/ |
 | Venture Executive Network v22.4 | `ven-v22/` | https://foundernexus.github.io/fn-site-mockups/ven-v22/ |
+| Venture Executive Network hospitality and roles | `ven-hospitality-roles/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-roles/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
 | Venture Executive Network logo variations | `ven-logo-variations/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-variations/ |
@@ -32,6 +33,12 @@ Review URL: https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/
 `ven-v22/` is the latest full site, standalone v22.4. Open a page with a hash such as `#/team.html`, `#/equation.html`, or `#/apply.html`. The membership and partnership inquiries stay on the page and do not submit. Member login, articles, and event links leave the mockup. Section 4 of the critique guide opens these pages.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-v22/
+
+## Venture Executive Network hospitality and roles
+
+`ven-hospitality-roles/` is a separate review of a new Home, a By role page, and a Membership page. It does not replace `ven-v22/`. Open a page with a hash such as `#/roles.html`, `#/membership.html`, or `#/apply.html`. Role examples use a query such as `#/roles.html?role=ceo#role-detail`. Inquiries stay on the page and do not submit. Member login leaves the mockup.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-roles/
 
 ## VEN Global v19 team review
 
