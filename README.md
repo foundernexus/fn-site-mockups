@@ -12,6 +12,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | VEN redesign | `ven/` | https://foundernexus.github.io/fn-site-mockups/ven/ |
 | VEN Global team review | `ven-global/` | https://foundernexus.github.io/fn-site-mockups/ven-global/ |
 | VEN Global v19 team review | `ven-global-v19/` | https://foundernexus.github.io/fn-site-mockups/ven-global-v19/ |
+| Venture Executive Network v22.4 | `ven-v22/` | https://foundernexus.github.io/fn-site-mockups/ven-v22/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
 | Venture Executive Network logo variations | `ven-logo-variations/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-variations/ |
@@ -22,9 +23,15 @@ This repo hosts static FounderNexus website mockups for internal review through 
 
 ## VEN homepage design review
 
-`ven-homepage-review/` is a single self-contained page for comparing three homepage concepts: Working Table, Field Notes, and Open Door, plus the approved v17.3 baseline and its supporting pages. The page opens on the October 1 critique guide. The View menu follows that order: color, the two logo pages, the three homepage directions, the other site pages, then earlier homepages (approved v17.3, the Whimsy home page, and v19) and the advisor page. ← Guide returns to the agenda. The address records the selected view so a teammate can open a specific concept. Inquiry forms stay on the page and do not submit. Event, article, and member-login links leave the mockup. This is the v18 concept collection and does not replace `ven-global/` or `ven-global-v19/`.
+`ven-homepage-review/` is a single self-contained page for comparing three homepage concepts: Working Table, Field Notes, and Open Door, plus the approved v17.3 baseline and its supporting pages. The page opens on the October 1 critique guide. The View menu follows that order: color, the two logo pages, the three homepage directions, the latest v22.4 site, then earlier homepages (Clear Path, the Whimsy home page, and Warm Welcome) and the advisor page. ← Guide returns to the agenda. The address records the selected view so a teammate can open a specific concept. Inquiry forms stay on the page and do not submit. Event, article, and member-login links leave the mockup. This is the v18 concept collection and does not replace `ven-global/` or `ven-global-v19/`.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/
+
+## Venture Executive Network v22.4
+
+`ven-v22/` is the latest full site, standalone v22.4. Open a page with a hash such as `#/team.html`, `#/equation.html`, or `#/advisors.html`. The membership and partnership inquiries stay on the page and do not submit. Member login, articles, and event links leave the mockup. Section 4 of the critique guide opens these pages.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven-v22/
 
 ## VEN Global v19 team review
 
