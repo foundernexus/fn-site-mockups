@@ -14,12 +14,13 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | VEN Global v19 team review | `ven-global-v19/` | https://foundernexus.github.io/fn-site-mockups/ven-global-v19/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
+| Venture Executive Network color proposal | `ven-color-proposal/` | https://foundernexus.github.io/fn-site-mockups/ven-color-proposal/ |
 | VEN logo and icon review | `ven-brand-review/` | https://foundernexus.github.io/fn-site-mockups/ven-brand-review/ |
 | Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
 
 ## VEN homepage design review
 
-`ven-homepage-review/` is a single self-contained page for comparing three homepage concepts: Working Table, Field Notes, and Open Door, plus the approved v17.3 baseline and its supporting pages. The selector at the top switches designs, and also opens the September 29 homepage, the v19 homepage, and the Venture Executive Network logo review. “All designs” returns to the comparison. The address records the selected view so a teammate can open a specific concept. Inquiry forms stay on the page and do not submit. Event, article, and member-login links leave the mockup. This is the v18 concept collection and does not replace `ven-global/` or `ven-global-v19/`.
+`ven-homepage-review/` is a single self-contained page for comparing three homepage concepts: Working Table, Field Notes, and Open Door, plus the approved v17.3 baseline and its supporting pages. The selector at the top switches designs, and also opens the September 29 homepage, the v19 homepage, the Venture Executive Network logo review, and the copper color proposal. “All designs” returns to the comparison. The address records the selected view so a teammate can open a specific concept. Inquiry forms stay on the page and do not submit. Event, article, and member-login links leave the mockup. This is the v18 concept collection and does not replace `ven-global/` or `ven-global-v19/`.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/
 
