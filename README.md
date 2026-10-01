@@ -29,7 +29,7 @@ Review URL: https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/
 
 ## Venture Executive Network v22.4
 
-`ven-v22/` is the latest full site, standalone v22.4. Open a page with a hash such as `#/team.html`, `#/equation.html`, or `#/advisors.html`. The membership and partnership inquiries stay on the page and do not submit. Member login, articles, and event links leave the mockup. Section 4 of the critique guide opens these pages.
+`ven-v22/` is the latest full site, standalone v22.4. Open a page with a hash such as `#/team.html`, `#/equation.html`, or `#/apply.html`. The membership and partnership inquiries stay on the page and do not submit. Member login, articles, and event links leave the mockup. Section 4 of the critique guide opens these pages.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-v22/
 
