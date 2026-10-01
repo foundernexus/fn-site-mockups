@@ -22,7 +22,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 
 ## VEN homepage design review
 
-`ven-homepage-review/` is a single self-contained page for comparing three homepage concepts: Working Table, Field Notes, and Open Door, plus the approved v17.3 baseline and its supporting pages. The page opens on the October 1 critique guide. The View menu follows that order: color, the two logo pages, the three homepage directions, the other site pages, then earlier homepages and the advisor page. ← Guide returns to the agenda. The address records the selected view so a teammate can open a specific concept. Inquiry forms stay on the page and do not submit. Event, article, and member-login links leave the mockup. This is the v18 concept collection and does not replace `ven-global/` or `ven-global-v19/`.
+`ven-homepage-review/` is a single self-contained page for comparing three homepage concepts: Working Table, Field Notes, and Open Door, plus the approved v17.3 baseline and its supporting pages. The page opens on the October 1 critique guide. The View menu follows that order: color, the two logo pages, the three homepage directions, the other site pages, then earlier homepages (approved v17.3, the Whimsy home page, and v19) and the advisor page. ← Guide returns to the agenda. The address records the selected view so a teammate can open a specific concept. Inquiry forms stay on the page and do not submit. Event, article, and member-login links leave the mockup. This is the v18 concept collection and does not replace `ven-global/` or `ven-global-v19/`.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/
 
