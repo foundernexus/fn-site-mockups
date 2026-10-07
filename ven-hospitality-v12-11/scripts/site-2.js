@@ -35,11 +35,11 @@
       const team = form.elements.intent.value === 'team';
       priority.textContent = team ? 'Which leaders or operating challenges could use support? (optional)' : 'What are your top two challenges this month? (optional)';
       title.textContent = team ? 'Let’s talk about support for your team.' : 'Let’s start with your role and company.';
-      lead.textContent = team ? 'Share who you’d like to support and the work they own. You don’t need to join yourself. Each eligible colleague has their own priorities and trial.' : 'Explore membership in the VEN community for yourself. We can discuss your current work, dedicated Partner, participation and individual trial.';
+      lead.textContent = team ? 'Share the leaders you’d like to support and the work they own. You don’t need to join yourself. Each eligible colleague receives their own two-session trial.' : 'Explore support for your role and decisions. Discuss your dedicated Partner, two-session trial and participation terms.';
       form.elements.priority.placeholder = team ? 'A role or responsibility is enough to start.' : 'A sentence on each is plenty.';
       document.querySelector('[data-fit-detail="context"]').textContent = team ? 'The leaders you’d like to support, the work they own and your company context.' : 'Your role, company backing, milestones and current priorities.';
       document.querySelector('[data-fit-detail="support"]').textContent = team ? 'How each member’s Partner works alongside them and brings relevant support into their work.' : 'How your Partner works alongside you and brings relevant support into your work.';
-      document.querySelector('[data-fit-detail="questions"]').textContent = team ? 'Participation, each colleague’s individual trial and the practical arrangements before deciding.' : 'Participation, your individual trial and the practical arrangements before deciding.';
+      document.querySelector('[data-fit-detail="questions"]').textContent = team ? 'Membership cost, each colleague’s two-session trial, scheduling and confidentiality.' : 'Membership cost, the two-session trial, scheduling and confidentiality.';
     };
     form.addEventListener('change', updateIntent);
     form.addEventListener('reset', () => setTimeout(updateIntent, 0));
