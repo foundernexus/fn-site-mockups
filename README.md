@@ -15,6 +15,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | Venture Executive Network v22.4 | `ven-v22/` | https://foundernexus.github.io/fn-site-mockups/ven-v22/ |
 | Venture Executive Network hospitality and roles | `ven-hospitality-roles/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-roles/ |
 | Venture Executive Network hospitality v12.10 | `ven-hospitality-v12-10/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/ |
+| Venture Executive Network hospitality v12.11 | `ven-hospitality-v12-11/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
 | Venture Executive Network logo variations | `ven-logo-variations/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-variations/ |
@@ -50,6 +51,16 @@ Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-1
 Review note: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/START-HERE.html
 
 Selector: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/#personal-attention
+
+## Venture Executive Network hospitality v12.11
+
+`ven-hospitality-v12-11/` is the October 6, 2026 revision of the hospitality site. It does not replace `ven-hospitality-v12-10/`. The homepage explains personal operational support: understand the work, bring expertise, resources and people, and stay alongside the member. The engagement selector stays on the homepage. Membership explains working with a Partner and no longer repeats that selector. Each of the eight role pages has its own example. Inquiry forms stay on the page and do not submit. Member login leaves the mockup. `START-HERE.html` is the short review note. The same site is also in `VEN-Hospitality-v12.11-Personal-Operational-Support.html`.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/
+
+Review note: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/START-HERE.html
+
+Selector: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/#personal-attention
 
 ## VEN Global v19 team review
 
