@@ -14,6 +14,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | VEN Global v19 team review | `ven-global-v19/` | https://foundernexus.github.io/fn-site-mockups/ven-global-v19/ |
 | Venture Executive Network v22.4 | `ven-v22/` | https://foundernexus.github.io/fn-site-mockups/ven-v22/ |
 | Venture Executive Network hospitality and roles | `ven-hospitality-roles/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-roles/ |
+| Venture Executive Network hospitality v12.10 | `ven-hospitality-v12-10/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
 | Venture Executive Network logo variations | `ven-logo-variations/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-variations/ |
@@ -39,6 +40,16 @@ Review URL: https://foundernexus.github.io/fn-site-mockups/ven-v22/
 `ven-hospitality-roles/` is a separate review of a new Home, a By role page, and a Membership page. It does not replace `ven-v22/`. Open a page with a hash such as `#/roles.html`, `#/membership.html`, or `#/apply.html`. Role examples use a query such as `#/roles.html?role=ceo#role-detail`. Inquiries stay on the page and do not submit. Member login leaves the mockup.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-roles/
+
+## Venture Executive Network hospitality v12.10
+
+`ven-hospitality-v12-10/` is the October 6, 2026 hospitality site with the refined engagement selector. It does not replace `ven-hospitality-roles/` or `ven-v22/`. The homepage and membership page use one editorial list beside the photograph: four choices, a pale blue selected row, and a copper marker. Open the selector at `#personal-attention`. Inquiry forms stay on the page and do not submit. Member login leaves the mockup. `START-HERE.html` is the short review note. The same site is also in `VEN-Hospitality-v12.10-Refined-Selector.html`.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/
+
+Review note: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/START-HERE.html
+
+Selector: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/#personal-attention
 
 ## VEN Global v19 team review
 
