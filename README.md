@@ -16,6 +16,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | Venture Executive Network hospitality and roles | `ven-hospitality-roles/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-roles/ |
 | Venture Executive Network hospitality v12.10 | `ven-hospitality-v12-10/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/ |
 | Venture Executive Network hospitality v12.28 | `ven-hospitality-v12-11/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/ |
+| Venture Executive Network hospitality v13.3 | `ven-hospitality-v13-3/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
 | Venture Executive Network logo variations | `ven-logo-variations/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-variations/ |
@@ -61,6 +62,16 @@ Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-1
 Partner portrait: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/#/clean/membership.html#ven-partner
 
 Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/#/clean/apply.html
+
+## Venture Executive Network hospitality v13.3
+
+`ven-hospitality-v13-3/` is a separate October 7, 2026 comparison demo. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The folder is the v13.3 zip’s `site/` directory, unchanged. One `index.html` holds 24 pages and routes them by hash. The page asks search engines not to index this demo. “Send to a VEN Partner” shows a thank-you note and does not send anything.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/
+
+Partner portrait: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/membership.html#ven-partner
+
+Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/apply.html
 
 ## VEN Global v19 team review
 
