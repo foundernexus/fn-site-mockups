@@ -65,13 +65,9 @@ Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality
 
 ## Venture Executive Network hospitality v13.3
 
-`ven-hospitality-v13-3/` is a separate October 7, 2026 comparison demo. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The folder is the v13.3 zip’s `site/` directory, unchanged. One `index.html` holds 24 pages and routes them by hash. The page asks search engines not to index this demo. “Send to a VEN Partner” shows a thank-you note and does not send anything.
+`ven-hospitality-v13-3/` is a separate October 7, 2026 comparison demo. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The latest mockup puts a founders photograph behind the homepage headline. The first section asks which call is on your desk, with links for CEO, finance, and product. Farther down, the peer photograph is the ivory table. Pages open from the navigation on this same URL. “Send to a VEN Partner” shows a thank-you note and does not send anything. The page asks search engines not to index this demo.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/
-
-Partner portrait: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/membership.html#ven-partner
-
-Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/apply.html
 
 ## VEN Global v19 team review
 
