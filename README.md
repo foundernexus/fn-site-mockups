@@ -65,13 +65,15 @@ Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality
 
 ## Venture Executive Network hospitality v13.3
 
-`ven-hospitality-v13-3/` is a separate October 7, 2026 comparison demo. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The v13.7 update keeps the founders photograph behind the homepage headline, with the light veil held to the words so the founders at the edges stay clear. The first section asks which call is on your desk. Farther down, the peer photograph is the ivory table. Each section fades the page to its own color: ivory, limestone, sage, blush, mist, limestone, then ivory again. “Send to a VEN Partner” shows a thank-you note and does not send anything. The page asks search engines not to index this demo.
+`ven-hospitality-v13-3/` is a separate October 7, 2026 comparison demo. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The v13.9 update keeps the founders photograph. On a phone the words sit on ivory and the group photograph sits below them. The Partner and peers copy comes before the large table photograph. Each section still fades the page to its own color: ivory, limestone, sage, blush, mist, limestone, then ivory again. The inquiry is labelled Demo only, and Preview confirmation says that nothing was sent. The page asks search engines not to index this demo.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/
 
+Participation: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/membership.html#participation
+
 Partner portrait: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/membership.html#ven-partner
 
-Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/apply.html
+Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/apply.html?intent=individual&role=finance
 
 ## VEN Global v19 team review
 
