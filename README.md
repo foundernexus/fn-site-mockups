@@ -16,8 +16,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | Venture Executive Network hospitality and roles | `ven-hospitality-roles/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-roles/ |
 | Venture Executive Network hospitality v12.10 | `ven-hospitality-v12-10/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/ |
 | Venture Executive Network hospitality v12.28 | `ven-hospitality-v12-11/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/ |
-| Venture Executive Network hospitality v13.3 | `ven-hospitality-v13-3/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/ |
-| Venture Executive Network v15.0 preview | `ven-v15-preview/` | https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/ |
+| Venture Executive Network hospitality v15.1 | `ven-hospitality-v13-3/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
 | Venture Executive Network logo variations | `ven-logo-variations/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-variations/ |
@@ -64,29 +63,17 @@ Partner portrait: https://foundernexus.github.io/fn-site-mockups/ven-hospitality
 
 Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/#/clean/apply.html
 
-## Venture Executive Network hospitality v13.3
+## Venture Executive Network hospitality v15.1
 
-`ven-hospitality-v13-3/` is a separate October 7, 2026 comparison demo. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The v14.1 update keeps the founders photograph. On a phone the words sit on ivory and the group photograph sits below them. The Partner and peers copy comes before the large table photograph. Peer sessions are matched to company stage, and the two-session trial is described as free. Each section still fades the page to its own color: ivory, limestone, sage, blush, mist, limestone, then ivory again. Scrolling down lets the header float away and the section tabs take its place; scrolling up brings the header back. Advisor and Partner portraits stay warm monochrome. The inquiry is labelled Demo only, and Preview confirmation says that nothing was sent. The page asks search engines not to index this demo.
+`ven-hospitality-v13-3/` is the current hospitality demo. The October 8, 2026 v15.1 update replaced the earlier comparison content on this URL. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The homepage headline is “Venture money raises the bar. Every week.” Copy sits on the left and the photograph on the right. The header button reads “Can we help?”. Membership includes a question for companies that have not raised $1M yet. The application is labelled Demo only, and “Send for review” shows a confirmation on the page. The page asks search engines not to index this demo.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/
 
-Participation: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/membership.html#participation
+Home: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/index.html
 
-Partner portrait: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/membership.html#ven-partner
+Membership questions: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/membership.html#questions
 
-Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/apply.html?intent=individual&role=finance
-
-## Venture Executive Network v15.0 preview
-
-`ven-v15-preview/` is an October 8, 2026 staged preview of team feedback. It does not replace `ven-hospitality-v13-3/` or `ven-hospitality-v12-11/`. The homepage headline is “A global operational community for venture-backed leadership teams.” The header button reads “Can we help?”. Membership includes a question for companies that have not raised $1M yet. The application is labelled Demo only, and “Send for review” shows a confirmation on the page. The page asks search engines not to index this preview.
-
-Preview URL: https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/
-
-Home: https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/#/clean/index.html
-
-Membership questions: https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/#/clean/membership.html#questions
-
-Application: https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/#/clean/apply.html?role=finance
+Application: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/apply.html?role=finance
 
 ## VEN Global v19 team review
 
