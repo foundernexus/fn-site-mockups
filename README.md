@@ -16,7 +16,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | Venture Executive Network hospitality and roles | `ven-hospitality-roles/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-roles/ |
 | Venture Executive Network hospitality v12.10 | `ven-hospitality-v12-10/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/ |
 | Venture Executive Network hospitality v12.28 | `ven-hospitality-v12-11/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/ |
-| Venture Executive Network hospitality v15.3 | `ven-hospitality-v13-3/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/ |
+| Venture Executive Network hospitality v15.6 | `ven-hospitality-v13-3/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
 | Venture Executive Network logo variations | `ven-logo-variations/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-variations/ |
@@ -63,9 +63,9 @@ Partner portrait: https://foundernexus.github.io/fn-site-mockups/ven-hospitality
 
 Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/#/clean/apply.html
 
-## Venture Executive Network hospitality v15.3
+## Venture Executive Network hospitality v15.6
 
-`ven-hospitality-v13-3/` is the current hospitality demo. The October 8, 2026 v15.3 update replaced the earlier comparison content on this URL. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The homepage headline is “Venture money raises the bar. Every week.” On desktop it sits on one line on the open wall above four founders in a lounge, with no card behind the copy. The header floats over the photo until the hero has scrolled past. On a phone the photo sits under the bar and the copy is on a card overlapping it, ending with “$1M+ in venture funding · Worldwide · Confidential”. The header button reads “Can we help?”. Membership includes a question for companies that have not raised $1M yet. The application is labelled Demo only, and “Send for review” shows a confirmation on the page. The page asks search engines not to index this demo.
+`ven-hospitality-v13-3/` is the current hospitality demo. The October 9, 2026 v15.6 update replaced the earlier comparison content on this URL. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The homepage headline is “Venture money raises the bar.” The eyebrow reads “For CEOs and functional leaders.” The hero uses the selected three-person working discussion, labelled “Illustrative image.” The By role section is “Deliver on the company plan.” The header button reads “Can we help?”. The application is labelled Demo only, and “Send for review” shows a confirmation on the page. The page asks search engines not to index this demo.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/
 
