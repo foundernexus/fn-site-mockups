@@ -17,6 +17,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | Venture Executive Network hospitality v12.10 | `ven-hospitality-v12-10/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/ |
 | Venture Executive Network hospitality v12.28 | `ven-hospitality-v12-11/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/ |
 | Venture Executive Network hospitality v13.3 | `ven-hospitality-v13-3/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/ |
+| Venture Executive Network v15.0 preview | `ven-v15-preview/` | https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
 | Venture Executive Network logo variations | `ven-logo-variations/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-variations/ |
@@ -74,6 +75,18 @@ Participation: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v1
 Partner portrait: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/membership.html#ven-partner
 
 Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/#/clean/apply.html?intent=individual&role=finance
+
+## Venture Executive Network v15.0 preview
+
+`ven-v15-preview/` is an October 8, 2026 staged preview of team feedback. It does not replace `ven-hospitality-v13-3/` or `ven-hospitality-v12-11/`. The homepage headline is “A global operational community for venture-backed leadership teams.” The header button reads “Can we help?”. Membership includes a question for companies that have not raised $1M yet. The application is labelled Demo only, and “Send for review” shows a confirmation on the page. The page asks search engines not to index this preview.
+
+Preview URL: https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/
+
+Home: https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/#/clean/index.html
+
+Membership questions: https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/#/clean/membership.html#questions
+
+Application: https://foundernexus.github.io/fn-site-mockups/ven-v15-preview/#/clean/apply.html?role=finance
 
 ## VEN Global v19 team review
 
