@@ -16,7 +16,7 @@ This repo hosts static FounderNexus website mockups for internal review through 
 | Venture Executive Network hospitality and roles | `ven-hospitality-roles/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-roles/ |
 | Venture Executive Network hospitality v12.10 | `ven-hospitality-v12-10/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-10/ |
 | Venture Executive Network hospitality v12.28 | `ven-hospitality-v12-11/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/ |
-| Venture Executive Network hospitality v15.14 | `ven-hospitality-v13-3/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/ |
+| Venture Executive Network hospitality v15.15 | `ven-hospitality-v13-3/` | https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/ |
 | VEN homepage design review | `ven-homepage-review/` | https://foundernexus.github.io/fn-site-mockups/ven-homepage-review/ |
 | Venture Executive Network logo review | `ven-logo-review/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-review/ |
 | Venture Executive Network logo variations | `ven-logo-variations/` | https://foundernexus.github.io/fn-site-mockups/ven-logo-variations/ |
@@ -63,9 +63,9 @@ Partner portrait: https://foundernexus.github.io/fn-site-mockups/ven-hospitality
 
 Explore your fit: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v12-11/#/clean/apply.html
 
-## Venture Executive Network hospitality v15.14
+## Venture Executive Network hospitality v15.15
 
-`ven-hospitality-v13-3/` is the current hospitality demo. The October 9, 2026 v15.14 update replaced the earlier comparison content on this URL. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The homepage headline is “Accepting venture money raises expectations.” The audience line is “For leadership teams at companies with $1M+ in venture funding · Worldwide.” For your team shows six functions under “Deliver the company’s commitments.” The header button reads “Can we help?”. Header links stay in the bar on laptop widths. The application is labelled Demo only, and Preview confirmation shows a confirmation on the page. The page asks search engines not to index this demo.
+`ven-hospitality-v13-3/` is the current hospitality demo. The October 9, 2026 v15.15 update replaced the earlier comparison content on this URL. It does not replace `ven-hospitality-v12-11/` or `ven-hospitality-v12-10/`. The homepage headline is “Accepting venture money raises expectations.” The audience line is “For leadership teams at companies with $1M+ in venture funding · Worldwide.” Hero support copy uses “personalized help.” How it works states about 15 minutes a month, pricing that varies by stage and team size with no equity, and $1M from venture firms. For your team shows six functions under “Deliver the company’s commitments.” The header button reads “Can we help?”. Header links stay in the bar on laptop widths. The application is labelled Demo only, and Preview confirmation shows a confirmation on the page. The page asks search engines not to index this demo.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/
 
