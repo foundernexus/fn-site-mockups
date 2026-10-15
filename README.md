@@ -2,6 +2,12 @@
 
 This repo hosts static FounderNexus website mockups for internal review through GitHub Pages.
 
+## Current VEN publication and SEO
+
+The approved authoring source remains `ven-hospitality-v13-3/index.html`, the self-contained bundle. GitHub Pages now builds ordinary HTML pages from that source using `tools/ven-seo/`. The preview keeps `noindex,nofollow`; the separate launch build targets `https://www.venexecs.com/`. See [VEN SEO and launch instructions](tools/ven-seo/README.md).
+
+Use the source bundle in this repository for future content edits. The HTML downloaded from the published homepage is a generated page, not the 25-page authoring bundle. Existing `#/clean/…` bookmarks continue to work, while new internal links use normal page URLs. Apply Now opens the separate platform application; Can we help? opens the live HubSpot lead form.
+
 ## Mockups in this repo
 
 | Mockup | Path | Live |
