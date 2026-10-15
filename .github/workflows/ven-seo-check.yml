@@ -1,0 +1,31 @@
+name: Check VEN SEO builds
+
+on:
+  pull_request:
+    paths:
+      - 'ven-hospitality-v13-3/**'
+      - 'tools/ven-seo/**'
+      - '.github/workflows/deploy-pages.yml'
+      - '.github/workflows/ven-seo-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Check URL compatibility
+        run: node tools/ven-seo/runtime.test.cjs
+      - name: Build and verify no-index preview
+        run: |
+          python tools/ven-seo/build.py --output "${{ runner.temp }}/ven-preview" --mode preview
+          python tools/ven-seo/verify.py --output "${{ runner.temp }}/ven-preview"
+      - name: Build and verify www.venexecs.com launch artifact
+        run: |
+          python tools/ven-seo/build.py --output "${{ runner.temp }}/ven-launch" --mode production --standalone
+          python tools/ven-seo/verify.py --output "${{ runner.temp }}/ven-launch" --standalone

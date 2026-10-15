@@ -28,10 +28,21 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+
+      - name: Build VEN preview with indexing disabled
+        run: python tools/ven-seo/build.py --output "${{ runner.temp }}/ven-pages" --mode preview
+
+      - name: Verify SEO and preservation of approved content
+        run: python tools/ven-seo/verify.py --output "${{ runner.temp }}/ven-pages"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ${{ runner.temp }}/ven-pages
 
       - name: Deploy to GitHub Pages
         id: deployment

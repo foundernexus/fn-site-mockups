@@ -1,0 +1,168 @@
+{
+  "preview_url": "https://foundernexus.github.io/fn-site-mockups/ven-hospitality-v13-3/",
+  "production_url": "https://www.venexecs.com/",
+  "name": "Venture Executive Network",
+  "alternate_name": "VEN",
+  "description": "An operational support community for leadership teams of venture-backed companies, with focused peer sessions, experienced advisors and personalized support.",
+  "pages": {
+    "clean/index.html": {
+      "path": "",
+      "title": "VEN | Operational Support for Venture-Backed Leaders",
+      "description": "We help venture-backed leadership teams execute through focused peer sessions, experienced advisors and your own VEN Partner. Explore how VEN could help.",
+      "label": "Home"
+    },
+    "clean/membership.html": {
+      "path": "how-it-works/",
+      "title": "How VEN Works | Peer Sessions & Personalized Support",
+      "description": "Set your priorities with a VEN Partner and connect with relevant peers, advisors and sessions. See how personalized support fits the work you own.",
+      "label": "How it works"
+    },
+    "clean/roles.html": {
+      "path": "roles/",
+      "title": "Support for Venture-Backed Leadership Roles | VEN",
+      "description": "Find VEN support for your leadership role, from CEOs and finance to sales, marketing, product, operations and people. Start with a current decision.",
+      "label": "By role"
+    },
+    "clean/team.html": {
+      "path": "for-your-team/",
+      "title": "Support for Your Venture-Backed Leadership Team | VEN",
+      "description": "Explore VEN for your leadership team. Each leader works on their own challenges with relevant peers, experienced advisors and personalized Partner support.",
+      "label": "For your team"
+    },
+    "clean/story.html": {
+      "path": "our-story/",
+      "title": "Our Story | Venture Executive Network (VEN)",
+      "description": "VEN grew from FounderNexus members asking for peer support for their leadership teams. Read why we built a community around the work leaders need to do.",
+      "label": "Our story"
+    },
+    "clean/equation.html": {
+      "path": "decision-approach/",
+      "title": "A Practical Approach to Leadership Decisions | VEN",
+      "description": "Explore examples of leadership decisions, from hiring and budgets to ownership. Consider the questions and trade-offs before choosing your next step.",
+      "label": "Decision approach"
+    },
+    "clean/challenges.html": {
+      "path": "challenges/",
+      "title": "Work Through Your Current Leadership Challenges | VEN",
+      "description": "Start with a hiring, spending or customer question you need to resolve. Explore VEN role examples and the relevant operating experience you could draw on.",
+      "label": "Your challenges"
+    },
+    "clean/events.html": {
+      "path": "sessions/",
+      "title": "Sessions for Venture-Backed Leaders | VEN",
+      "description": "Explore FounderNexus sessions on company growth, leadership decisions and technology. See the topics, participation details and links to registration.",
+      "label": "Sessions"
+    },
+    "clean/blog.html": {
+      "path": "blog/",
+      "title": "Leadership Decisions, Hiring & Growth | VEN Blog",
+      "description": "Read FounderNexus articles on leadership decisions, hiring, fundraising and growth. Explore practical questions facing leaders of venture-backed companies.",
+      "label": "Blog"
+    },
+    "clean/advisors.html": {
+      "path": "for-advisors/",
+      "title": "Share Your Operating Experience as a VEN Advisor",
+      "description": "Help venture-backed leaders work through current decisions. Explore contributing your operating experience to VEN through sessions and advisor conversations.",
+      "label": "For advisors"
+    },
+    "clean/venture-partners.html": {
+      "path": "for-venture-firms/",
+      "title": "Portfolio Leadership Support for Venture Firms | VEN",
+      "description": "Explore VEN support for your portfolio companies' leadership teams. Connect leaders with relevant operating experience around the decisions they own.",
+      "label": "For venture firms"
+    },
+    "clean/apply.html": {
+      "path": "learn-more/",
+      "title": "Learn More About VEN | Venture Executive Network",
+      "description": "Share your role, company and what you'd like to explore about VEN. We'll follow up to answer your questions. Membership has a separate application process.",
+      "label": "Learn more"
+    },
+    "clean/partner-inquiry.html": {
+      "path": "partnership-inquiry/",
+      "title": "Explore a VEN Advisor or Venture Firm Partnership",
+      "description": "Tell us about your experience or the portfolio leaders you support. Start a conversation about contributing to VEN as an advisor or venture firm partner.",
+      "label": "Work with VEN"
+    },
+    "clean/role-ceo.html": {
+      "path": "roles/ceos/",
+      "title": "Peer Support for CEOs of Venture-Backed Companies | VEN",
+      "description": "Compare funding, hiring and delivery trade-offs with CEOs who have faced similar decisions. Explore VEN peer sessions, advisor access and Partner support.",
+      "label": "CEOs",
+      "parent": "clean/roles.html"
+    },
+    "clean/role-sales.html": {
+      "path": "roles/sales-revenue/",
+      "title": "Peer Support for Sales & Revenue Leaders | VEN",
+      "description": "Work through deal delays, hiring and revenue commitments with relevant sales peers and advisors. See how VEN supports leaders at venture-backed companies.",
+      "label": "Sales and revenue",
+      "parent": "clean/roles.html"
+    },
+    "clean/role-marketing.html": {
+      "path": "roles/marketing/",
+      "title": "Peer Support for Marketing Leaders | VEN",
+      "description": "Compare growth channels, qualified demand and budget decisions with leaders facing similar work. Explore VEN support for venture-backed marketing teams.",
+      "label": "Marketing",
+      "parent": "clean/roles.html"
+    },
+    "clean/role-finance.html": {
+      "path": "roles/finance/",
+      "title": "Peer Support for Finance Leaders | VEN",
+      "description": "Pressure-test hiring and revenue assumptions before committing the budget. Explore relevant finance peers, experienced advisors and VEN Partner support.",
+      "label": "Finance",
+      "parent": "clean/roles.html"
+    },
+    "clean/role-product.html": {
+      "path": "roles/product-technology/",
+      "title": "Peer Support for Product & Technology Leaders | VEN",
+      "description": "Work through customer requests, reliability and delivery trade-offs with product and engineering peers. Explore operational support for your current decisions.",
+      "label": "Product and technology",
+      "parent": "clean/roles.html"
+    },
+    "clean/role-operations.html": {
+      "path": "roles/operations/",
+      "title": "Peer Support for Operations Leaders | VEN",
+      "description": "Compare staffing, handoffs and approval decisions with operators who have faced similar problems. Explore VEN support for keeping company delivery on track.",
+      "label": "Operations",
+      "parent": "clean/roles.html"
+    },
+    "clean/role-people.html": {
+      "path": "roles/people-leadership/",
+      "title": "Peer Support for People Leaders | VEN",
+      "description": "Work through executive hiring, changing responsibilities and retention with experienced people leaders. Explore VEN peer sessions and personalized support.",
+      "label": "People leadership",
+      "parent": "clean/roles.html"
+    },
+    "clean/role-other.html": {
+      "path": "roles/across-teams/",
+      "title": "Support for Leaders Working Across Teams | VEN",
+      "description": "Bring relevant outside experience to decisions that cross team boundaries. Start with the work you own and explore VEN peers, advisors and Partner support.",
+      "label": "Across teams",
+      "parent": "clean/roles.html"
+    },
+    "clean/case-study.html": {
+      "path": "decision-example/",
+      "title": "Leadership Decision Examples | VEN",
+      "description": "Work through two concrete challenges: scoping a new offer and getting a stalled data pipeline moving. Explore the questions and choices each one raises.",
+      "label": "Decision example"
+    },
+    "clean/experts.html": {
+      "path": "advisors/",
+      "title": "Operational Advisors for Venture-Backed Leaders | VEN",
+      "description": "Meet VEN operational advisors and explore their company-building, sales, finance and technology experience. Introductions depend on fit and availability.",
+      "label": "Advisors"
+    },
+    "clean/member-experience.html": {
+      "path": "member-experience/",
+      "title": "FounderNexus Member Stories | VEN",
+      "description": "Hear FounderNexus members describe decisions they worked through in the community. Watch their conversations and read the accompanying transcripts.",
+      "label": "Member experience"
+    },
+    "clean/experts-2.html": {
+      "path": "advisors/page/2/",
+      "title": "More Operational Advisors | VEN",
+      "description": "Explore more VEN advisors, including T.A. McCann, Dave Parker and Xiao Wang. Read their backgrounds and areas of experience before exploring an introduction.",
+      "label": "More advisors",
+      "parent": "clean/experts.html"
+    }
+  }
+}
