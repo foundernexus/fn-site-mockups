@@ -31,12 +31,25 @@ Use the source bundle in this repository for future content edits. The HTML down
 | VEN logo and icon review | `ven-brand-review/` | https://foundernexus.github.io/fn-site-mockups/ven-brand-review/ |
 | Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
 | VEN choose your stage | `ven-choose-stage/` | https://foundernexus.github.io/fn-site-mockups/ven-choose-stage/ |
+| VEN choose your stage, with personas | `ven-choose-stage-personas/` | https://foundernexus.github.io/fn-site-mockups/ven-choose-stage-personas/ |
 
 ## VEN choose your stage
 
 `ven-choose-stage/` is the October 20, 2026 signup mockup. It does not replace the hospitality demos. The page opens after approval, with example member Leo at Northwind AI. Monthly or yearly billing and Stage 2 or Stage 3 stay on the page. Continue shows an on-page note and does not open checkout. The page asks search engines not to index this demo.
 
 Review URL: https://foundernexus.github.io/fn-site-mockups/ven-choose-stage/
+
+## VEN choose your stage, with personas
+
+`ven-choose-stage-personas/` is a separate October 20, 2026 signup mockup. It does not replace `ven-choose-stage/`. A demo control switches among Maya Chen (CEO, first from her company), Leo Park (CTO), and Sam Rivera (fractional CRO). The CEO sees four stages and a note that invited leaders save 30%. Teammates see the stages between their company and the level they have led, at 30% off. Continue shows an on-page note and does not open checkout. The page asks search engines not to index this demo.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven-choose-stage-personas/
+
+CEO: https://foundernexus.github.io/fn-site-mockups/ven-choose-stage-personas/?as=anchor
+
+CTO: https://foundernexus.github.io/fn-site-mockups/ven-choose-stage-personas/?as=cto
+
+Fractional CRO: https://foundernexus.github.io/fn-site-mockups/ven-choose-stage-personas/?as=cro
 
 ## VEN homepage design review
 

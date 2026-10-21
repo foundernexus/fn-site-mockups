@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>VEN · Choose your stage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+<style>
+/* VEN Platform tokens. Layout: one centered column; the decision (cards + one button) sits on the first screen. */
+:root{
+  --chalk:#F4F1E9; --paper:#FCFBF7; --ink:#252C2B; --text:#3A4140; --muted:#555D5B;
+  --steel:#486174; --steel-dark:#354B5C; --mist:#E8ECEC; --rule:#CBC8BD; --hair:#DCD8CD;
+  --ok:#3E6A4C; --ok-tint:#E3ECE4;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--chalk);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--steel-dark);outline-offset:4px}
+
+.demo{background:var(--paper);border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted)}
+.demo .wrap{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between;padding-block:8px}
+.demo label{display:flex;gap:8px;align-items:center}
+.demo select{font:inherit;font-size:13px;color:var(--ink);background:var(--chalk);border:1px solid var(--muted);border-radius:6px;padding:5px 8px;max-width:100%}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:22px 0}
+.logo{height:20px;width:auto;display:block}
+.steps{list-style:none;margin:0;padding:0;display:flex;gap:6px 18px;flex-wrap:wrap;font-size:12px;font-weight:500;color:var(--muted)}
+.steps .done{color:var(--ok);display:flex;align-items:center;gap:6px}
+.steps [aria-current]{color:var(--ink);font-weight:600}
+
+main{flex:1;display:flex;flex-direction:column;gap:28px;padding-block:48px 40px}
+.head{display:flex;flex-wrap:wrap;gap:20px 32px;justify-content:space-between;align-items:flex-end}
+.head .intro{display:flex;flex-direction:column;gap:10px;flex:1 1 480px;min-width:0}
+.status{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.pill{font-size:12px;font-weight:600;color:var(--ok);background:var(--ok-tint);padding:2px 10px;border-radius:999px}
+h1{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.6vw,48px);line-height:1.1;letter-spacing:-.022em;color:var(--ink);text-wrap:balance}
+.lead{margin:0;font-size:18px}
+
+.bill{display:inline-flex;padding:4px;gap:4px;background:var(--paper);border:1px solid var(--rule);border-radius:999px}
+.bill button{border:0;border-radius:999px;min-height:40px;padding:8px 18px;font:inherit;font-size:14px;font-weight:500;cursor:pointer;background:transparent;color:var(--text)}
+.bill button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.bill .save{color:var(--muted)}
+.bill button[aria-pressed="true"] .save{color:var(--mist)}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.plan{all:unset;box-sizing:border-box;cursor:pointer;background:var(--paper);border-radius:12px;box-shadow:inset 0 0 0 1px var(--rule);
+  padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:box-shadow .15s}
+.plan:hover{box-shadow:inset 0 0 0 1px var(--steel)}
+.plan[aria-checked="true"]{box-shadow:inset 0 0 0 2px var(--steel)}
+.plan:focus-visible{outline:2px solid var(--steel-dark);outline-offset:4px}
+.plan .top{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:26px}
+.tag{font-size:12px;font-weight:600;color:var(--muted);padding:3px 0}
+.tag.rec{color:var(--ink);background:var(--mist);padding:3px 10px;border-radius:999px}
+.dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--muted);display:grid;place-items:center;flex:none}
+.dot::after{content:"";width:12px;height:12px;border-radius:50%;background:transparent}
+.plan[aria-checked="true"] .dot{border-color:var(--steel)}
+.plan[aria-checked="true"] .dot::after{background:var(--steel)}
+.name{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.name b{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1;color:var(--ink)}
+.name span{font-size:14px;color:var(--muted)}
+.fit{font-size:15px;line-height:1.5;color:var(--muted)}
+.plan.rec .fit{color:var(--ink)}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-variant-numeric:tabular-nums;margin-top:4px}
+.price .n{font-family:var(--serif);font-size:44px;line-height:1;color:var(--ink)}
+.price .u{font-size:14px;color:var(--muted)}
+.price s{font-size:15px;color:var(--muted)}
+.sub{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.act{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;border-top:1px solid var(--rule);padding-top:24px}
+.act p{margin:0;flex:1 1 380px;min-width:0;font-size:15px}
+.act p b{color:var(--ink);font-weight:600}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 30px;border-radius:999px;
+  background:var(--steel);color:#fff;font:inherit;font-size:15px;font-weight:500;text-decoration:none;border:0;cursor:pointer;font-variant-numeric:tabular-nums}
+.cta:hover{background:var(--steel-dark)}
+.assure{list-style:none;margin:-8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 26px;font-size:13px;color:var(--muted)}
+.assure li{display:flex;align-items:center;gap:8px}
+.team{display:flex;gap:14px;align-items:flex-start;background:var(--mist);border-radius:12px;padding:18px 20px;font-size:15px}
+.team svg{flex:none;margin-top:3px}
+.team b{color:var(--ink);font-weight:600}
+.demo-msg{margin:0;font-size:13px;color:var(--steel-dark);background:var(--mist);border-radius:8px;padding:10px 14px}
+
+.faq{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 32px;margin-top:20px;border-top:1px solid var(--rule)}
+details{border-bottom:1px solid var(--rule);padding:16px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;color:var(--ink);font-weight:500;font-size:15px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:8px 0 0;font-size:14px}
+
+footer{font-size:12px;color:var(--muted);padding-block:16px 28px}
+
+.mbar{display:none;position:sticky;bottom:0;background:var(--paper);border-top:1px solid var(--rule);
+  padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  align-items:center;justify-content:space-between;gap:12px}
+.mbar b{font-weight:600;color:var(--ink);font-size:14px;font-variant-numeric:tabular-nums}
+.mbar .cta{min-height:44px;padding:10px 22px;font-size:14px}
+@media (max-width:760px){
+  .mbar{display:flex}
+  main{padding-block:32px 28px}
+  .act .cta{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="demo" role="group" aria-label="Demo controls">
+  <div class="wrap">
+    <span>Demo · example people · no real payments</span>
+    <label for="persona">View as
+      <select id="persona">
+        <option value="anchor">Maya Chen, CEO (first from her company)</option>
+        <option value="cto">Leo Park, CTO (invited by Maya)</option>
+        <option value="cro">Sam Rivera, fractional CRO (invited by Maya)</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+<header class="wrap">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="18.625 18.625 182.7 74.5" class="logo" role="img" aria-label="VEN, Venture Executive Network"><g fill="#252C2B" transform="translate(17.525 93.125)"><path d="M28.0 0.0 1.1 -74.5H11.6L34.4 -9.0H32.3L55.1 -74.5H65.6L38.8 0.0Z"></path><path d="M70.5 0.0V-74.5H119.0V-65.5H80.3V-41.9H117.0V-32.9H80.3V-9.0H119.0V0.0Z"></path><path d="M126.6 0.0V-74.5H134.8L177.6 -14.3L173.9 -13.9V-74.5H183.8V0.0H175.6L133.0 -60.6L136.4 -61.0V0.0Z"></path></g></svg>
+  <ol class="steps" aria-label="Your progress">
+    <li class="done"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16"><path d="M3 8.5l3 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Approved</li>
+    <li aria-current="step">2 · Choose your stage</li>
+    <li>3 · Meet your Partner</li>
+  </ol>
+</header>
+
+<main class="wrap">
+  <div class="head">
+    <div class="intro">
+      <span class="status"><span class="pill">Approved</span><span id="status"></span></span>
+      <h1 id="h1"></h1>
+      <p class="lead" id="lead"></p>
+    </div>
+    <div class="bill" role="group" aria-label="Billing period">
+      <button type="button" data-bill="month" aria-pressed="true">Monthly</button>
+      <button type="button" data-bill="year" aria-pressed="false">Yearly <span class="save">· 2 months free</span></button>
+    </div>
+  </div>
+
+  <div class="plans" role="radiogroup" aria-label="Choose your stage" id="plans"></div>
+
+  <div class="act">
+    <p><b>Every stage includes</b> your Partner, a monthly check-in, peer sessions, advisors, the library and community.</p>
+    <a class="cta" id="cta" href="#checkout"></a>
+  </div>
+  <ul class="assure">
+    <li><svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span id="privacy"></span></li>
+    <li><svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16"><path d="M6 4v8M10 4v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Pause or cancel any time</li>
+    <li><svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16"><path d="M8 2l5 2v4c0 3-2.2 5-5 6-2.8-1-5-3-5-6V4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Secure checkout with Stripe</li>
+  </ul>
+
+  <div class="team" id="team" hidden>
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20"><circle cx="7" cy="7" r="3" fill="none" stroke="#354B5C" stroke-width="1.6"/><circle cx="14" cy="8" r="2.4" fill="none" stroke="#354B5C" stroke-width="1.6"/><path d="M1.5 16.5c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5M12.5 12.3c2.6-.3 5 1 5.6 4.2" fill="none" stroke="#354B5C" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <p style="margin:0"><b>Your leadership team saves 30%.</b> After you join, invite leaders from the member portal, fractional executives included. Each gets their own membership at 30% off their own stage.</p>
+  </div>
+
+  <p class="demo-msg" id="demo-msg" role="status" hidden>Demo only. On the live page this opens Stripe checkout for <span id="demo-sel"></span>.</p>
+
+  <section class="faq" aria-label="Questions" id="faq"></section>
+</main>
+
+<footer class="wrap">© 2026 Venture Executive Network · Private invitation · Demo with example data, no real payments</footer>
+
+<div class="mbar">
+  <b id="mbar-sel"></b>
+  <a class="cta" href="#checkout" id="mbar-cta">Continue</a>
+</div>
+
+<script>
+(function(){
+  var TEAM_DISCOUNT = 0.30;
+  var STAGES = {
+    1: { band:"Up to $2M ARR · Pre-seed / Seed", m:400,  y:4000 },
+    2: { band:"$2–10M ARR · Series A",          m:800,  y:8000 },
+    3: { band:"$10–50M ARR · Series B / C",     m:1250, y:12500 },
+    4: { band:"$50M+ ARR · Series D+",          m:2000, y:20000 }
+  };
+  var PEOPLE = {
+    anchor: { first:"Maya", role:"anchor", company:2, led:3,
+      status:"Northwind AI · first member from your company",
+      lead:"Choose your stage. Leaders you invite later save 30%.",
+      privacy:"Private from your colleagues and investors" },
+    cto: { first:"Leo", role:"member", company:2, led:3,
+      status:"Northwind AI · invited by Maya Chen, CEO",
+      lead:"Teammate rate: 30% off. Choose your stage.",
+      privacy:"Private from your CEO, colleagues and investors" },
+    cro: { first:"Sam", role:"member", company:2, led:4,
+      status:"Northwind AI · invited by Maya Chen, CEO",
+      lead:"Teammate rate: 30% off. Choose your stage.",
+      privacy:"Private from your CEO, colleagues and investors" }
+  };
+  var q = new URLSearchParams(location.search);
+  var st = { who: PEOPLE[q.get("as")] ? q.get("as") : "anchor", bill: q.get("int") === "year" ? "year" : "month", sel: null };
+  var usd = function(n){ return "$" + Math.round(n).toLocaleString("en-US"); };
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+
+  function fitFor(p, s){
+    if (s === p.led) return "The level you've already led. Peers working on what's next for you.";
+    if (s === p.company) return "Your company's stage today. You'll often be the most experienced person in the room.";
+    return "A step above your company today, below the level you've led.";
+  }
+  function tagFor(p, s){
+    if (s === p.led) return "Recommended for you";
+    if (s === p.company) return "Northwind AI today";
+    return "In between";
+  }
+  function faqFor(p){
+    var mid = p.led - p.company > 1 ? " Stage " + (p.company + 1) + " sits in between." : "";
+    var stage = "Northwind AI is at Stage " + p.company + " today. You've already led at Stage " + p.led +
+      ", so Stage " + p.led + " puts you with peers working on what's next for you." + mid;
+    var items = [["Which stage should I choose?", stage]];
+    if (p.role === "anchor") {
+      items.push(["How do I add my team?", "Invite them from the member portal with any email address. Each leader gets their own membership and pays 30% less on the price of their own stage."]);
+    } else {
+      items.push(["Who pays, me or the company?", "[Confirm: whether teammates can pay with a company card and get an invoice in the company's name.]"]);
+    }
+    items.push(["How much time does it take?", "About 15 minutes a month with your Partner, then as much as you choose."]);
+    return items.map(function(i){ return "<details><summary>" + esc(i[0]) + "</summary><p>" + esc(i[1]) + "</p></details>"; }).join("");
+  }
+
+  function render(){
+    var p = PEOPLE[st.who], yr = st.bill === "year", per = yr ? "year" : "month";
+    var rate = p.role === "member" ? 1 - TEAM_DISCOUNT : 1;
+    if (st.sel === null || st.sel < p.company || st.sel > p.led) st.sel = p.led;
+    var ids = []; for (var s = p.led; s >= p.company; s--) ids.push(s); // recommended first
+
+    $("persona").value = st.who;
+    $("status").textContent = p.status;
+    $("h1").textContent = p.first + ", your place at VEN is ready.";
+    $("lead").textContent = p.lead;
+    $("privacy").textContent = p.privacy;
+    $("team").hidden = p.role !== "anchor";
+
+    $("plans").innerHTML = ids.map(function(id){
+      var sd = STAGES[id], full = yr ? sd.y : sd.m, amt = full * rate, on = id === st.sel, rec = id === p.led;
+      var save = (sd.m * 12 - sd.y) * rate, strike = p.role === "member";
+      var sub = yr ? usd(amt / 12) + " a month, billed yearly. You save " + usd(save) + "."
+                   : (strike ? "Teammate rate, 30% off" : "Billed monthly");
+      return '<button type="button" role="radio" class="plan' + (rec ? ' rec' : '') + '" data-id="' + id + '" aria-checked="' + on + '" tabindex="' + (on ? 0 : -1) + '">'
+        + '<span class="top"><span class="tag' + (rec ? ' rec' : '') + '">' + tagFor(p, id) + '</span><span class="dot" aria-hidden="true"></span></span>'
+        + '<span class="name"><b>Stage ' + id + '</b><span>' + sd.band + '</span></span>'
+        + '<span class="fit">' + fitFor(p, id) + '</span>'
+        + '<span class="price"><span class="n">' + usd(amt) + '</span><span class="u">/ ' + per + '</span>'
+        + (strike ? '<s aria-label="Full price ' + usd(full) + '">' + usd(full) + '</s>' : '') + '</span>'
+        + '<span class="sub">' + sub + '</span>'
+        + '</button>';
+    }).join("");
+
+    var cur = STAGES[st.sel], price = usd((yr ? cur.y : cur.m) * rate) + " / " + per;
+    $("cta").innerHTML = "Continue with Stage " + st.sel + " · " + price + ' <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    $("mbar-sel").textContent = "Stage " + st.sel + " · " + price;
+    $("demo-sel").textContent = "Stage " + st.sel + " at " + price;
+    $("faq").innerHTML = faqFor(p);
+    document.querySelectorAll(".bill button").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.bill === st.bill)); });
+  }
+
+  function focusSel(){ var n = $("plans").querySelector('[data-id="' + st.sel + '"]'); if (n) n.focus(); }
+  document.querySelector(".bill").addEventListener("click", function(e){
+    var b = e.target.closest("button"); if (!b) return; st.bill = b.dataset.bill; render();
+  });
+  $("plans").addEventListener("click", function(e){
+    var b = e.target.closest(".plan"); if (!b) return; st.sel = Number(b.dataset.id); render(); focusSel();
+  });
+  $("plans").addEventListener("keydown", function(e){
+    var p = PEOPLE[st.who], dir = { ArrowRight:-1, ArrowDown:-1, ArrowLeft:1, ArrowUp:1 }[e.key];
+    if (!dir) return; e.preventDefault();
+    var next = st.sel + dir; if (next > p.led) next = p.company; if (next < p.company) next = p.led;
+    st.sel = next; render(); focusSel();
+  });
+  $("persona").addEventListener("change", function(e){
+    st.who = e.target.value; st.sel = null; $("demo-msg").hidden = true; render();
+    try { var u = new URL(location.href); u.searchParams.set("as", st.who); history.replaceState(null, "", u); } catch (err) {}
+  });
+  ["cta","mbar-cta"].forEach(function(id){
+    $(id).addEventListener("click", function(e){ e.preventDefault(); $("demo-msg").hidden = false; $("demo-msg").scrollIntoView({ block:"nearest", behavior:"smooth" }); });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
