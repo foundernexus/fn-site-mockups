@@ -30,6 +30,13 @@ Use the source bundle in this repository for future content edits. The HTML down
 | VEN Global advisor page | `ven-advisor/` | https://foundernexus.github.io/fn-site-mockups/ven-advisor/ |
 | VEN logo and icon review | `ven-brand-review/` | https://foundernexus.github.io/fn-site-mockups/ven-brand-review/ |
 | Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
+| VEN choose your stage | `ven-choose-stage/` | https://foundernexus.github.io/fn-site-mockups/ven-choose-stage/ |
+
+## VEN choose your stage
+
+`ven-choose-stage/` is the October 20, 2026 signup mockup. It does not replace the hospitality demos. The page opens after approval, with example member Leo at Northwind AI. Monthly or yearly billing and Stage 2 or Stage 3 stay on the page. Continue shows an on-page note and does not open checkout. The page asks search engines not to index this demo.
+
+Review URL: https://foundernexus.github.io/fn-site-mockups/ven-choose-stage/
 
 ## VEN homepage design review
 
