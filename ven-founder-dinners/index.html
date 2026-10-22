@@ -184,11 +184,12 @@ const EV = {id:"dinner-nov", title:"Dinner", day:"12", mon:"Nov",
   when:"Thursday, Nov 12 · 7:00 PM", area:"Seattle",
   seats:12, taken:9, closes:"Thu, Nov 5", reveal:"Tue, Nov 10", freeUntil:"Tue, Nov 10, 7:00 PM", price:75};
 const FORMATS = [
-  {k:"dinner",ic:"🍽",n:"Dinner",d:"Thursday, Nov 12",t:"7:00 PM",line:"Five other founders at your stage. Three hours, one table.",main:1},
-  {k:"ceo",ic:"🍽",n:"CEO dinner",d:"Thursday, Dec 10",t:"7:00 PM",line:"Only CEOs. The table where you can say what you can't say to your team."},
-  {k:"coffee",ic:"☕",n:"Coffee",d:"Friday, Nov 20",t:"8:00 AM",line:"One hour before work. The easy first one."},
-  {k:"ops",ic:"🍽",n:"CFO & COO dinner",d:"Wednesday, Dec 16",t:"7:00 PM",line:"Finance and operations leaders from venture-backed companies."}
+  {k:"dinner",ic:"🍽",n:"Dinner",d:"Thursday, Nov 12",t:"7:00 PM",day:"12",mon:"Nov",price:75,closes:"Thu, Nov 5",reveal:"Tue, Nov 10",freeUntil:"Tue, Nov 10, 7:00 PM",menu:"Three courses, one drink, tax and tip included.",line:"Five other founders at your stage. Three hours, one table."},
+  {k:"ceo",ic:"🍽",n:"CEO dinner",d:"Thursday, Dec 10",t:"7:00 PM",day:"10",mon:"Dec",price:75,closes:"Thu, Dec 3",reveal:"Tue, Dec 8",freeUntil:"Tue, Dec 8, 7:00 PM",menu:"Three courses, one drink, tax and tip included.",line:"Only CEOs. The table where you can say what you can't say to your team."},
+  {k:"coffee",ic:"☕",n:"Coffee",d:"Friday, Nov 20",t:"8:00 AM",day:"20",mon:"Nov",price:15,closes:"Fri, Nov 13",reveal:"Wed, Nov 18",freeUntil:"Wed, Nov 18, 8:00 AM",menu:"Coffee and a pastry, tip included.",line:"One hour before work. The easy first one."},
+  {k:"ops",ic:"🍽",n:"CFO & COO dinner",d:"Wednesday, Dec 16",t:"7:00 PM",day:"16",mon:"Dec",price:75,closes:"Wed, Dec 9",reveal:"Mon, Dec 14",freeUntil:"Mon, Dec 14, 7:00 PM",menu:"Three courses, one drink, tax and tip included.",line:"Finance and operations leaders from venture-backed companies."}
 ];
+function pickFormat(k){const f=FORMATS.find(x=>x.k===k);Object.assign(EV,{title:f.n,day:f.day,mon:f.mon,when:`${f.d} · ${f.t}`,price:f.price,closes:f.closes,reveal:f.reveal,freeUntil:f.freeUntil,menu:f.menu});S.fk=k;}
 const SESSIONS = [
   {id:"s1",d:"29",m:"Oct",t:"AI for GTM: Building your prospecting workflow",when:"Thu, Oct 29 · 12:00–1:00 PM PDT",who:"Owen Marsh",tags:["Open","Expert"],cat:"Go-to-market",
    desc:"Most go-to-market teams have tried AI tools. Far fewer have AI woven into how they prospect, research accounts, follow up and keep the CRM clean. A working session with your own pipeline as the example."},
@@ -340,7 +341,7 @@ function account(){
 /* ---------- in person ---------- */
 function journey(cur){
   const it=[["Booked","Your seat and set menu are paid."],[`RSVPs close · ${EV.closes}`,"We put the tables together from who is booked."],
-    [`Your table and venue · ${EV.reveal}`,"Names, why you're matched, the address. Confirm you're coming."],["Dinner · Thu, Nov 12","Show up, say you're with VEN. Your table is booked under VEN."],
+    [`Your table and venue · ${EV.reveal}`,"Names, why you're matched, the address. Confirm you're coming."],[`${EV.title} · ${EV.mon} ${EV.day}`,"Show up, say you're with VEN. Your table is booked under VEN."],
     ["Next morning","Pick who to stay in touch with. We make the intros."]];
   return `<ol class="steps">${it.map((x,i)=>`<li class="${i<cur?"done":i===cur?"now":""}"><span class="dot">${i<cur?"✓":i+1}</span><div><b>${esc(x[0])}</b><small>${esc(x[1])}</small></div></li>`).join("")}</ol>`;
 }
@@ -350,7 +351,7 @@ function inperson(){
     <div><span class="label">Seattle</span><h1>Meet founders who get it</h1><p class="lede">No planning, no small talk with strangers who don't run companies. Pick a night, we put you at a table with five founders at your stage and book the restaurant. You just show up.</p></div>
     <article class="card"><div class="pad" style="padding-bottom:6px"><h2>Book your next one</h2></div><div class="list">${FORMATS.map(f=>`<div class="item"><div class="row wrapm"><div class="date" style="background:var(--tab);font-size:22px;display:grid;place-items:center">${f.ic}</div>
       <div class="grow"><h3 style="font-size:17px">${esc(f.n)}</h3><div class="meta"><b style="color:var(--ink)">${esc(f.d)}</b><span>${esc(f.t)}</span></div><p class="desc" style="margin-top:4px">${esc(f.line)}</p></div>
-      <div>${f.main?(S.booked?`<button type="button" class="btn pri" data-go="2">Booked ✓</button>`:`<button type="button" class="btn" data-go="1">Book</button>`):`<button type="button" class="btn" data-toast="Demo: ${esc(f.n)} books the same way">Book</button>`}</div></div></div>`).join("")}</div></article>
+      <div>${S.booked&&S.fk===f.k?`<button type="button" class="btn pri" data-fmt="${f.k}" data-to="2">Booked ✓</button>`:`<button type="button" class="btn" data-fmt="${f.k}" data-to="1">Book</button>`}</div></div></div>`).join("")}</div></article>
     <article class="card pad"><h2>How it works</h2><ol class="steps" style="margin-top:12px">
       <li><span class="dot">1</span><div><b>Pick a night</b><small>Book by a week before. Tell us the one thing you're working through.</small></div></li>
       <li><span class="dot">2</span><div><b>We set the table</b><small>Five founders at your stage, matched on what you're each working through. We book the restaurant.</small></div></li>
@@ -365,21 +366,21 @@ function inperson(){
       <div class="field"><label for="q">What's the one question you're bringing to the table?</label><textarea id="q">${esc(S.q)}</textarea><small style="color:var(--ink-2)">We use it to pick your table. Your table sees it two days before.</small></div>
       <div class="field"><label for="diet">Food</label><select id="diet">${["No restrictions","Vegetarian","Vegan","Gluten-free","No alcohol","Other (tell your partner)"].map(o=>`<option ${o===S.diet?"selected":""}>${o}</option>`).join("")}</select></div>
       <div class="actions"><button type="button" class="btn pri" data-book>Pay $${EV.price} and book</button><span style="color:var(--ink-2);font-size:13.5px">Card on file · Visa ending 4242</span></div></form>
-    <aside class="card pad stack"><div><span class="label">Set menu</span><div class="price">$${EV.price}</div><small style="color:var(--ink-2)">Three courses, one drink, tax and tip included. Paid now, so the restaurant holds your seat.</small></div>
+    <aside class="card pad stack"><div><span class="label">Set menu</span><div class="price">$${EV.price}</div><small style="color:var(--ink-2)">${EV.menu} Paid now, so the venue holds your seat.</small></div>
       <div class="policy"><b>If your plans change</b><table><tr><td>Until ${EV.freeUntil}</td><td>Full refund</td></tr><tr><td>Less than 48 hours before</td><td>No refund, seat goes to the waitlist</td></tr><tr><td>No-show</td><td>No refund, noted on your reliability</td></tr></table></div>
       <small style="color:var(--ink-2)">Two no-shows in six months and your next bookings start on the waitlist.</small></aside></div></div>`;
   if(s===2) return `<div class="stack"><div><h1>You're in</h1><p class="lede">We put your table together after RSVPs close on ${EV.closes}. Nothing to do until ${EV.reveal}.</p></div>
     <div class="split">${dinnerCard()}<aside class="card pad"><span class="label">What happens next</span><div style="margin-top:12px">${journey(1)}</div>
       ${S.cancel?`<div class="policy"><b>Cancel your seat?</b><p style="margin:6px 0 10px">You're before ${EV.freeUntil}, so you get the full $${EV.price} back.</p><div class="actions"><button type="button" class="btn" data-cancel-yes>Cancel and refund</button><button type="button" class="btn ghost" data-cancel-no>Keep my seat</button></div></div>`
       :`<button type="button" class="btn ghost" data-cancel>Can't make it?</button>`}</aside></div></div>`;
-  if(s===3) return `<div class="stack"><div><span class="label">Tue, Nov 10 · two days before</span><h1>Your table on Thursday</h1><p class="lede">You and five founders. Here is why we put you together.</p></div>
+  if(s===3) return `<div class="stack"><div><span class="label">${EV.reveal} · two days before</span><h1>Your table on ${EV.mon} ${EV.day}</h1><p class="lede">You and five founders. Here is why we put you together.</p></div>
     <article class="card pad"><div class="people">${TABLE.map(p=>`<div class="person"><span class="av ${p.host?"host":""}">${p.i}</span><div style="min-width:0"><b>${esc(p.n)}</b><p>${esc(p.r)}</p><div class="why">${esc(p.why)}</div></div></div>`).join("")}
       <div class="person"><span class="av">MC</span><div style="min-width:0"><b>You</b><p>CEO, Northwind AI · Stage 2</p><div class="why">Your question: “${esc(S.q)}”</div></div></div></div></article>
     <article class="card pad"><div class="venue"><div><span class="label">Venue</span><h2 style="margin-top:4px">The Harbor Room at Lark &amp; Pine</h2><p class="desc" style="margin-top:4px">1416 E Pine St, Seattle · private room upstairs<br>Say you're with VEN. Table 2.</p><div class="chips"><span class="chip">10 min from Westlake</span><span class="chip">Street parking after 6</span></div></div><div class="map" role="img" aria-label="Map"></div></div></article>
-    <article class="card pad"><div class="row wrapm"><div class="grow"><h2>Still coming on Thursday?</h2><p class="desc" style="margin-top:4px">Five people are counting on this table. If something came up, tell us now so a founder from the waitlist gets your seat.</p></div>
+    <article class="card pad"><div class="row wrapm"><div class="grow"><h2>Still coming on ${EV.mon} ${EV.day}?</h2><p class="desc" style="margin-top:4px">Five people are counting on this table. If something came up, tell us now so a founder from the waitlist gets your seat.</p></div>
       <div class="actions">${S.seated?`<span class="chip good">Confirmed. See you Thursday</span>`:`<button type="button" class="btn pri" data-confirm>Yes, I'll be there</button><button type="button" class="btn" data-late>I can't make it</button>`}</div></div>
       ${S.late?`<div class="policy" style="margin-top:12px">You're inside 48 hours, so the $${EV.price} isn't refunded. We'll offer your seat to Ben Hale from the waitlist right away.<div class="actions" style="margin-top:8px"><button type="button" class="btn" data-late-yes>Release my seat</button><button type="button" class="btn ghost" data-late-no>Keep it</button></div></div>`:""}</article></div>`;
-  if(s===4){const p=PROMPTS[S.pi];return `<div class="stack"><div><span class="label">Tonight · 6:30 PM</span><h1>The Harbor Room, table 2</h1><p class="lede">No host, no agenda. One quick round to start, then the evening is yours.</p></div>
+  if(s===4){const p=PROMPTS[S.pi];return `<div class="stack"><div><span class="label">${EV.title} · ${EV.when.split(" · ")[1]||""}</span><h1>The Harbor Room, table 2</h1><p class="lede">No host, no agenda. One quick round to start, then the evening is yours.</p></div>
     <div class="split"><div class="prompt"><span>${esc(p[0])}</span><small>${esc(p[1])} · ${S.pi+1} of ${PROMPTS.length}</small></div>
       <aside class="card pad"><span class="label">At your table</span>${TABLE.map(t=>`<div class="tline"><span>${esc(t.n)}</span><span style="color:var(--ink-2)">${esc(t.r.split(" · ")[0])}</span></div>`).join("")}</aside></div>
     <div class="actions"><button type="button" class="btn" data-prompt>Next prompt</button><button type="button" class="btn" data-toast="Your table got a text: Maya is 10 minutes out">I'm 10 minutes out</button></div></div>`;}
@@ -470,6 +471,7 @@ document.addEventListener("click",e=>{
   if(d.v){S.v=d.v;render();scrollTo(0,0);return}
   if(d.t){go(d.t);return}
   if(d.s){S.v="member";S.t="inperson";S.s=+d.s;S.late=false;S.cancel=false;if(S.s>=2)S.booked=true;render();scrollTo(0,0);return}
+  if(d.fmt){if(S.booked&&S.fk!==d.fmt&&d.to==="1"){toast(`You already have a seat at the ${EV.title.toLowerCase()}. Cancel it first in step 3`);return}pickFormat(d.fmt);S.s=+d.to;render();scrollTo(0,0);return}
   if(d.go){S.s=+d.go;render();scrollTo(0,0);return}
   if(d.sess){S.sess=d.sess;render();scrollTo(0,0);return}
   if("back" in d){S.sess=null;render();return}
@@ -489,6 +491,7 @@ document.addEventListener("click",e=>{
   if("send" in d){toast(S.picked.size?"Sent. We'll intro you when it's mutual":"Pick at least one person");return}
   if("seat" in d){S.prop=true;render();return}
 });
+pickFormat("dinner");
 render();
 </script>
 </body>
