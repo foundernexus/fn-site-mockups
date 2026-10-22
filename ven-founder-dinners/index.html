@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>VEN · Founder Dinners demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* VEN member portal tokens (from platform.venexecs.com). Layout: portal shell (header + tab bar) under a dark demo strip; one centered column of cards. */
+:root{
+  --bg:#F4F1E9; --card:#FCFBF7; --ink:#252C2B; --ink-2:#555D5B; --line:#CBC8BD; --line-soft:#E2DED3;
+  --steel:#486174; --steel-ink:#FFFFFF; --tab:#F1DFCD; --rust:#9A4A09; --chip:#E8ECEC;
+  --good:#2F6B4F; --good-bg:#E3EFE7; --warn:#8A5A12; --warn-bg:#F6EBD6; --bad:#9B3B2E; --bad-bg:#F5E2DE;
+  --demo:#252C2B; --demo-ink:#F4F1E9;
+  --f:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+.g{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1000px;margin:0 auto}
+.demo{background:var(--demo);color:var(--demo-ink);font-size:13px;position:sticky;top:0;z-index:5}
+.demo .wrap{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding-block:9px}
+.demo b{font-weight:700;letter-spacing:.02em}
+.seg{display:inline-flex;flex-wrap:wrap;gap:2px;background:rgba(244,241,233,.12);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;color:inherit;padding:5px 11px;border-radius:999px;cursor:pointer;font-weight:600;font-size:12.5px}
+.seg button[aria-pressed="true"]{background:var(--demo-ink);color:var(--demo)}
+.demo .note{opacity:.7;margin-left:auto}
+.top{background:var(--card);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:18px}
+.logo{font-size:28px;font-weight:500;letter-spacing:-.02em;cursor:pointer;background:none;border:0;padding:0}
+.who{display:flex;align-items:center;gap:12px;text-align:right;font-size:13px;line-height:1.3}.who b{display:block;font-size:15px}
+.tabs{background:var(--card);border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs .wrap{display:flex;gap:2px;padding-top:8px}
+.tab{display:flex;align-items:center;gap:8px;padding:9px 14px;border:0;background:none;border-radius:8px 8px 0 0;font-size:15px;white-space:nowrap;color:var(--ink);border-bottom:3px solid transparent;cursor:pointer}
+.tab:hover{background:color-mix(in srgb,var(--tab) 50%,transparent)}
+.tab.on{background:var(--tab);border-bottom-color:var(--rust);font-weight:600}
+.new{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--steel);color:var(--steel-ink);border-radius:999px;padding:1px 7px}
+main{padding-block:28px 72px}
+h1{font-size:34px;line-height:1.15;margin:0;font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:20px;margin:0;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h3{font-size:16px;margin:0;font-weight:700}
+.lede{color:var(--ink-2);margin:6px 0 0;max-width:62ch}
+.stack{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px}
+.pad{padding:20px 22px}
+.row{display:flex;gap:16px;align-items:flex-start}
+.row>.grow{flex:1;min-width:0}
+@media (max-width:620px){.row.wrapm{flex-wrap:wrap}}
+.date{flex:0 0 auto;width:62px;text-align:center;background:var(--chip);border-radius:10px;padding:8px 0;line-height:1.1}
+.date b{display:block;font-size:22px}.date span{font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--ink-2);font-size:14px;margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{background:var(--chip);border-radius:999px;padding:3px 11px;font-size:13px}
+.chip.good{background:var(--good-bg);color:var(--good)}.chip.warn{background:var(--warn-bg);color:var(--warn)}.chip.bad{background:var(--bad-bg);color:var(--bad)}.chip.ip{background:var(--tab);color:var(--rust);font-weight:600}
+.desc{color:var(--ink-2);font-size:14px;margin:10px 0 0;max-width:68ch}
+.btn{border:1px solid var(--ink);background:transparent;border-radius:999px;padding:9px 18px;font-weight:600;font-size:14.5px;cursor:pointer;white-space:nowrap}
+.btn.pri{background:var(--steel);border-color:var(--steel);color:var(--steel-ink)}
+.btn.ghost{border-color:transparent;text-decoration:underline;text-underline-offset:3px;padding-inline:6px}
+.btn.sm{padding:6px 13px;font-size:13.5px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.label{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+.seats{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}.seats i{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--steel)}.seats i.f{background:var(--steel)}
+.split{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+.split>*{min-width:0}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:600;font-size:14px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:620px){.fgrid{grid-template-columns:1fr}}
+textarea,select,input[type=text],input[type=email]{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+textarea{min-height:76px;resize:vertical}
+.policy{background:var(--bg);border:1px solid var(--line-soft);border-radius:12px;padding:12px 14px;font-size:14px}
+.policy table{border-collapse:collapse;width:100%;margin-top:6px}
+.policy td{padding:5px 0;border-top:1px solid var(--line-soft);vertical-align:top}.policy td:last-child{text-align:right;font-weight:600;padding-left:10px}
+.price{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:grid;grid-template-columns:26px 1fr;gap:12px;padding-bottom:16px;position:relative}
+.steps li::before{content:"";position:absolute;left:12px;top:24px;bottom:0;width:2px;background:var(--line)}
+.steps li:last-child::before{display:none}
+.dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);background:var(--card);display:grid;place-items:center;font-size:12px;font-weight:700;z-index:1}
+.steps li.done .dot{background:var(--good);border-color:var(--good);color:var(--card)}
+.steps li.now .dot{border-color:var(--steel);color:var(--steel)}
+.steps small{display:block;color:var(--ink-2);font-size:13px}
+.people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:620px){.people{grid-template-columns:1fr}}
+.person{display:flex;gap:12px;padding:14px;border:1px solid var(--line-soft);border-radius:12px;background:var(--bg)}
+.av{flex:0 0 40px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--tab);color:var(--rust)}
+.av.host{background:var(--steel);color:var(--steel-ink)}
+.av.sm{flex-basis:32px;width:32px;height:32px;font-size:12px}
+.av.lg{flex-basis:72px;width:72px;height:72px;font-size:24px}
+.person p{margin:2px 0 0;font-size:13.5px;color:var(--ink-2)}
+.why{margin-top:6px;font-size:13.5px;color:var(--ink)}
+.venue{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:620px){.venue{grid-template-columns:1fr}}
+.map{min-height:150px;border-radius:12px;border:1px solid var(--line-soft);position:relative;background:
+  linear-gradient(90deg,transparent 48%,var(--line-soft) 48%,var(--line-soft) 52%,transparent 52%),
+  linear-gradient(0deg,transparent 38%,var(--line-soft) 38%,var(--line-soft) 42%,transparent 42%),
+  linear-gradient(135deg,var(--chip),var(--bg))}
+.map::after{content:"";position:absolute;left:calc(50% - 9px);top:calc(40% - 22px);width:18px;height:18px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--rust)}
+.prompt{background:var(--steel);color:var(--steel-ink);border-radius:16px;padding:28px 24px;font-size:20px;font-weight:700;line-height:1.35;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.prompt small{font-size:12.5px;font-weight:600;opacity:.8}
+.pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:620px){.pick{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pick label{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;border:1px solid var(--line);border-radius:12px;cursor:pointer;text-align:center;font-size:13.5px}
+.pick input{accent-color:var(--steel)}
+.pick label:has(input:checked){border-color:var(--steel);background:color-mix(in srgb,var(--steel) 10%,transparent)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px;z-index:9;max-width:calc(100% - 32px);text-align:center}
+.mutebox{border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px}
+.preview{background:#DCE3E6;border-radius:14px;padding:18px 22px;color:#252C2B}
+.preview .seg{background:#FCFBF7}
+.preview .seg button{color:#252C2B}
+.pills{display:inline-flex;gap:4px;background:var(--chip);border-radius:999px;padding:3px}
+.pills button{border:0;background:none;padding:6px 14px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px}
+.pills button[aria-pressed="true"]{background:var(--steel);color:var(--steel-ink)}
+.list{display:flex;flex-direction:column}
+.list>.item{padding:18px 22px;border-top:1px solid var(--line-soft)}
+.list>.item:first-child{border-top:0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:700px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{padding:14px 16px}.kpi b{display:block;font-size:26px;font-variant-numeric:tabular-nums}.kpi span{font-size:13px;color:var(--ink-2)}
+.tbl{overflow-x:auto}
+table.t{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+.t th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);font-weight:700;padding:10px 12px;border-bottom:1px solid var(--line)}
+.t td{padding:10px 12px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+.t td.num{font-variant-numeric:tabular-nums}
+.t .nm{display:flex;align-items:center;gap:10px}
+.tables2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:700px){.tables2{grid-template-columns:1fr}}
+.tline{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line-soft);font-size:14px}
+.tline:first-of-type{border-top:0}
+.auto{display:grid;grid-template-columns:auto 1fr auto;gap:8px 14px;align-items:baseline;font-size:14px}
+@media (max-width:620px){.auto{grid-template-columns:1fr auto}.auto .w{grid-column:1/-1;margin-top:6px}}
+.auto .w{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.auto .who2{font-size:12.5px;font-weight:700;white-space:nowrap}
+.who2.a{color:var(--good)}.who2.m{color:var(--warn)}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.bcard{padding:18px;display:flex;flex-direction:column;gap:6px}
+.bcard .big{font-size:24px;font-weight:800}
+.progress{height:8px;border-radius:999px;background:var(--chip);overflow:hidden}.progress i{display:block;height:100%;background:var(--steel)}
+.doc{max-width:780px}
+.doc ul,.doc ol{padding-left:20px;margin:8px 0 0}
+.doc li{margin:4px 0;max-width:66ch}
+.callout{background:var(--tab);border-radius:12px;padding:14px 16px}
+.banner{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--tab);border-radius:14px;padding:16px 20px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="demo g"><div class="wrap">
+  <b>DEMO</b>
+  <div class="seg" role="group" aria-label="View">
+    <button type="button" data-v="member" aria-pressed="true">Member portal</button>
+    <button type="button" data-v="ops" aria-pressed="false">Ops panel</button>
+    <button type="button" data-v="concept" aria-pressed="false">Concept</button>
+  </div>
+  <div class="seg" role="group" aria-label="Dinner journey" id="jump">
+    <button type="button" data-s="0">1 Browse</button><button type="button" data-s="1">2 Book</button>
+    <button type="button" data-s="2">3 Booked</button><button type="button" data-s="3">4 48h before</button>
+    <button type="button" data-s="4">5 The night</button><button type="button" data-s="5">6 After</button>
+  </div>
+  <span class="note">Example people and data · nothing is saved or charged</span>
+</div></div>
+
+<header class="top g"><div class="wrap">
+  <button type="button" class="logo" data-t="dashboard" aria-label="VEN dashboard">VEN</button>
+  <div class="who"><span><b>Maya Chen</b>maya@northwind.ai</span><span class="av sm">MC</span></div>
+</div></header>
+<nav class="tabs g" aria-label="Member portal" id="tabs"></nav>
+<main class="g"><div class="wrap" id="app"></div></main>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+/* ---------- example data (all people and companies are invented) ---------- */
+const ME = {n:"Maya Chen",i:"MC",co:"Northwind AI",title:"CEO",stage:2};
+const EV = {id:"dinner-nov", title:"Seattle Founder Dinner: SOC 2 and selling to enterprise", day:"12", mon:"Nov",
+  when:"Thu, Nov 12 · 6:30–9:00 PM PST", area:"Capitol Hill, Seattle", host:"Dana Whitfield", hostCo:"Ridgeway Audit Partners",
+  seats:12, taken:9, closes:"Thu, Nov 5", reveal:"Tue, Nov 10", freeUntil:"Tue, Nov 10, 6:30 PM", price:75};
+const SESSIONS = [
+  {id:"s1",d:"29",m:"Oct",t:"AI for GTM: Building your prospecting workflow",when:"Thu, Oct 29 · 12:00–1:00 PM PDT",who:"Owen Marsh",tags:["Open","Expert"],cat:"Go-to-market",
+   desc:"Most go-to-market teams have tried AI tools. Far fewer have AI woven into how they prospect, research accounts, follow up and keep the CRM clean. A working session with your own pipeline as the example."},
+  {id:"s2",d:"03",m:"Nov",t:"SOC 2 for Startups: What to Do First, What It Costs, and What Auditors Look For",when:"Tue, Nov 3 · 11:00 AM–12:00 PM PST",who:"Dana Whitfield",tags:["Stage 1","Expert"],cat:"Security",
+   desc:"SOC 2 is quickly becoming a requirement in enterprise sales. A larger customer asks for your report, and suddenly you need to understand controls, auditors, tooling and timelines."},
+  {id:"s3",d:"04",m:"Nov",t:"Expanding into the US: Capital, Compliance and Competition",when:"Wed, Nov 4 · 5:30–6:30 AM PST",who:"Henrik Lund",tags:["Stage 2","Expert"],cat:"Legal",
+   desc:"For founders based outside the US: entity setup, raising from US investors, and what changes in hiring and contracts once you sell here."},
+  {id:"s4",d:"10",m:"Nov",t:"Board meetings and investor updates: what VCs actually read",when:"Tue, Nov 10 · 1:00–2:00 PM PST",who:"Rachel Ito",tags:["Stage 2","VC"],cat:"Fundraising",
+   desc:"A partner at an early-stage fund walks through the investor updates she forwards and the ones she skims, and how to run a board meeting that helps you."}
+];
+const ADVISORS = [["Dana Whitfield","Ridgeway Audit Partners","Security & compliance","Seattle, WA"],["Owen Marsh","Pipeline Lab","Go-to-market","Austin, TX"],
+  ["Henrik Lund","Lund & Carver LLP","Cross-border legal","London, UK"],["Rachel Ito","Northbeam Ventures","Fundraising","San Francisco, CA"],
+  ["Tomás Ferreira","Ferreira Talent","Executive hiring","Seattle, WA"],["Grace Liu","Arbor CFO Partners","Finance & FP&A","Bellevue, WA"],
+  ["Noah Bennett","Bennett IP Group","Patents & IP","Seattle, WA"],["Ifeoma Adeyemi","Clearwater Health Advisory","Selling to health systems","Chicago, IL"]];
+const DIRECTORY = [["Jordan Reyes","Ledgerline","Fintech",2],["Priya Natarajan","Cartwell Health","Healthcare",2],["Sam Okafor","Brightpath Freight","Logistics",3],
+  ["Elena Varga","Tessellate","B2B software",2],["Lena Park","Fieldnote","AI and machine learning",1],["Ravi Shah","Quanta Labs","Developer tools",2],
+  ["Chris Doyle","Harborline","Marine tech",1],["Ana Ruiz","Moss & Field","Consumer",1],["Ben Hale","Cobalt Robotics","Robotics",2],["Mia Torres","Lumen Grid","Climate",1]];
+const LIBRARY = [["Recording","How to find product-market fit","VEN team · Jul 30, 2025"],["Recording","Pricing your first enterprise contract","Owen Marsh · Sep 12, 2026"],
+  ["Playbook","SOC 2 in 90 days: the checklist","Dana Whitfield · Oct 2, 2026"],["Recording","Your first VP of Sales: when and who","Tomás Ferreira · Aug 21, 2026"],
+  ["Playbook","Investor update template","Rachel Ito · Sep 30, 2026"],["Recording","US entity setup for foreign founders","Henrik Lund · Jul 14, 2026"]];
+const BENEFITS = [["Deel","HR/People","$5,000","in Deel credits"],["Databricks","Data & AI","$200K","in Databricks credits"],["Notion","Productivity","Free","6 months of Notion Business"],
+  ["HubSpot","CRM","90%","off HubSpot in year 1"],["Pipeline Lab","Sales","3h","of free sales consulting"],["Arbor CFO Partners","Finance","Free","60-minute finance review"]];
+const TABLE = [
+  {n:"Dana Whitfield",i:"DW",r:"Ridgeway Audit Partners · hosts the table",host:1,why:"Runs SOC 2 readiness for Series A–C companies. Bring your audit timeline."},
+  {n:"Alex Morgan",i:"AM",r:"VEN Partner · your partner tonight",host:1,why:"Sits with the group and makes the intros after dinner."},
+  {n:"Jordan Reyes",i:"JR",r:"CEO, Ledgerline · Stage 2",why:"Closed his first Fortune 500 deal in July and went through SOC 2 Type 1 in 9 weeks."},
+  {n:"Priya Natarajan",i:"PN",r:"CTO, Cartwell Health · Stage 2",why:"Same question as you: HIPAA and SOC 2 in one audit window."},
+  {n:"Sam Okafor",i:"SO",r:"CEO, Brightpath Freight · Stage 3",why:"Hiring a first enterprise AE. You asked about the founder-led to AE handoff."},
+  {n:"Elena Varga",i:"EV",r:"COO, Tessellate · Stage 2",why:"Built the security questionnaire process at her last company."}];
+const PROMPTS = [["What did the first enterprise security review ask that you didn't expect?","From Priya's question"],
+  ["Type 1 now or wait for Type 2? What would you do with three months of runway on it?","From your question"],
+  ["When did you hand the first enterprise deal to someone who isn't the founder?","From Sam's question"]];
+const RSVPS = [["Maya Chen","Northwind AI",2,"6 of 6","Confirmed"],["Jordan Reyes","Ledgerline",2,"9 of 10","Confirmed"],["Priya Natarajan","Cartwell Health",2,"4 of 4","Confirmed"],
+  ["Sam Okafor","Brightpath Freight",3,"5 of 7","Confirmed"],["Elena Varga","Tessellate",2,"3 of 3","Confirmed"],["Lena Park","Fieldnote",1,"2 of 2","Confirmed"],
+  ["Ravi Shah","Quanta Labs",2,"7 of 8","Confirmed"],["Chris Doyle","Harborline",3,"3 of 6","Confirmed"],["Ana Ruiz","Moss & Field",1,"1 of 4","Waitlist only"],
+  ["Ben Hale","Cobalt Robotics",2,"5 of 5","Waitlist"],["Mia Torres","Lumen Grid",1,"2 of 2","Waitlist"]];
+const TABS = [["dashboard","Dashboard"],["profile","Profile"],["sessions","Sessions"],["inperson","In person",1],["library","Content library"],["advisors","Advisors"],["directory","Directory"],["benefits","Benefits"],["account","Account"]];
+
+/* ---------- state ---------- */
+const S = {v:"member", t:"inperson", s:0, sess:null, stab:"upcoming", reg:new Set(), booked:false, cancel:false, late:false, seated:false,
+  picked:new Set(["Priya Natarajan","Sam Okafor"]), pi:0, prop:false, q:"Type 1 now or wait for Type 2? A customer wants the report by March.", diet:"No restrictions", libf:"All"};
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ini = n => n.split(/\s+/).map(w=>w[0]).slice(0,2).join("");
+function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>t.hidden=true,2000)}
+const seatDots=(n,f)=>`<div class="seats" aria-label="${f} of ${n} seats taken">${Array.from({length:n},(_,i)=>`<i class="${i<f?"f":""}"></i>`).join("")}</div>`;
+const taken=()=>EV.taken+(S.booked?1:0);
+
+/* ---------- shared pieces ---------- */
+function dinnerCard(btn){
+  return `<article class="card pad"><div class="row wrapm"><div class="date"><b>${EV.day}</b><span>${EV.mon}</span></div>
+    <div class="grow"><h2>${esc(EV.title)}</h2>
+      <div class="meta"><span>${EV.when}</span><span>${EV.area}</span><span>Hosted by ${EV.host}</span></div>
+      <div class="chips"><span class="chip ip">In person</span><span class="chip">Stage 1–3</span><span class="chip">Dinner · 12 founders</span><span class="chip warn">RSVP by ${EV.closes}</span></div>
+      <p class="desc">Two tables of six in a private room, each with a host. ${EV.host} from ${EV.hostCo} opens with ten minutes on what auditors actually look for, then it's dinner. We seat you with founders working on the same problem right now. The venue and your table come two days before.</p>
+      ${seatDots(EV.seats,taken())}<div class="meta"><span>${taken()} of ${EV.seats} seats taken</span></div></div>
+    <div>${btn||""}</div></div></article>`;
+}
+function sessionRow(x){
+  const on=S.reg.has(x.id);
+  return `<div class="item"><div class="row wrapm"><div class="date"><b>${x.d}</b><span>${x.m}</span></div>
+    <div class="grow"><h3 style="font-size:17px"><button type="button" class="btn ghost" style="padding:0;font-size:17px;text-align:left;white-space:normal" data-sess="${x.id}">${esc(x.t)}</button></h3>
+    <div class="meta"><span>${x.when}</span><span>${esc(x.who)}</span><span>Zoom</span></div>
+    <div class="chips">${x.tags.map(t=>`<span class="chip">${t}</span>`).join("")}</div>
+    <p class="desc">${esc(x.desc.slice(0,150))}…</p></div>
+    <div><button type="button" class="btn ${on?"pri":""}" data-reg="${x.id}">${on?"Registered ✓":"Register to session"}</button></div></div></div>`;
+}
+function dinnerItem(){
+  return `<div class="item"><div class="row wrapm"><div class="date" style="background:var(--tab)"><b>${EV.day}</b><span>${EV.mon}</span></div>
+    <div class="grow"><h3 style="font-size:17px">${esc(EV.title)}</h3><div class="meta"><span>${EV.when}</span><span>${EV.area}</span></div>
+    <div class="chips"><span class="chip ip">In person</span><span class="chip">Hosted by ${EV.host}</span></div></div>
+    <div><button type="button" class="btn ${S.booked?"pri":""}" data-t="inperson">${S.booked?"Booked ✓":"See dinner"}</button></div></div></div>`;
+}
+
+/* ---------- portal pages ---------- */
+function dashboard(){
+  const mine=SESSIONS.filter(x=>S.reg.has(x.id));
+  return `<div class="stack">
+    <div><h1>Welcome back, Maya</h1><p class="lede">What's on your calendar, and what we're working on for you.</p></div>
+    <div class="banner"><div><b>New: Founder Dinners in Seattle</b><div style="font-size:14px">Once a month, 12 founders, one table with a host. Next one Thu, Nov 12.</div></div><button type="button" class="btn pri" data-t="inperson">See the dinner</button></div>
+    <section class="stack"><div class="row"><h2 class="grow">Coming up</h2><button type="button" class="btn ghost" data-t="sessions">See all →</button></div>
+      <div class="card list">${S.booked?dinnerItem():""}${mine.map(sessionRow).join("")||(S.booked?"":`<div class="item" style="color:var(--ink-2)">Nothing scheduled yet. <button type="button" class="btn ghost" data-t="sessions">Browse sessions →</button></div>`)}</div></section>
+    <section class="stack"><div class="row"><h2 class="grow">More for you</h2><button type="button" class="btn ghost" data-t="sessions">See all →</button></div>
+      <div class="card list">${S.booked?"":dinnerItem()}${SESSIONS.filter(x=>!S.reg.has(x.id)).slice(0,3).map(sessionRow).join("")}</div></section>
+    <section class="stack"><h2>Recent activity</h2><div class="card list">
+      <div class="item"><span class="label">Oct 14, 2026</span><div><b>Pitch deck review with a Bay Area VC</b> · Rachel Ito</div></div>
+      <div class="item"><span class="label">Sep 30, 2026</span><div><b>1:1 intro</b> · Grace Liu, Arbor CFO Partners</div></div></div></section>
+  </div>`;
+}
+function profile(){
+  return `<div class="stack">
+    <article class="card pad"><div class="row wrapm"><span class="av lg">MC</span><div class="grow"><h1 style="font-size:28px">Maya Chen</h1><div class="meta"><span class="chip good">Active member</span><span>maya@northwind.ai</span></div></div></div>
+      <div style="margin-top:16px"><div class="row"><b class="grow">Finish your profile</b><span>71%</span></div><div class="progress" style="margin-top:6px"><i style="width:71%"></i></div><p class="desc">Next, add what you're working through. Your table at dinners is picked from it.</p></div></article>
+    <form class="card pad stack" onsubmit="return false"><h2>Personal information</h2><div class="fgrid">
+      <div class="field"><label for="fn">First name</label><input type="text" id="fn" value="Maya"></div><div class="field"><label for="ln">Last name</label><input type="text" id="ln" value="Chen"></div>
+      <div class="field"><label for="li">LinkedIn</label><input type="text" id="li" value="linkedin.com/in/mayachen"></div><div class="field"><label for="ce">Conversation email</label><input type="email" id="ce" value="maya@northwind.ai"></div></div>
+      <div class="actions"><button type="button" class="btn pri" data-toast="Details saved">Save details</button></div></form>
+    <form class="card pad stack" onsubmit="return false"><h2>Company</h2><div class="fgrid">
+      <div class="field"><label for="cn">Company name</label><input type="text" id="cn" value="Northwind AI"></div><div class="field"><label for="ti">Your title</label><input type="text" id="ti" value="CEO"></div>
+      <div class="field"><label for="ind">Industry</label><select id="ind"><option>B2B software</option><option>AI and machine learning</option><option>Healthcare</option></select></div>
+      <div class="field"><label for="lr">Last round closed</label><select id="lr"><option>Series A</option><option>Seed</option><option>Series B</option></select></div></div>
+      <div class="field"><label for="wt">What you're working through</label><textarea id="wt">Our first enterprise customer wants a SOC 2 report by March. Deciding Type 1 now vs. waiting for Type 2.</textarea></div>
+      <div class="actions"><button type="button" class="btn pri" data-toast="Profile saved">Save profile</button></div></form>
+  </div>`;
+}
+function sessions(){
+  if(S.sess){ const x=SESSIONS.find(s=>s.id===S.sess); const on=S.reg.has(x.id); return `<div class="stack">
+    <div><button type="button" class="btn ghost" data-back>← Sessions</button></div>
+    <article class="card pad stack"><span class="label">Expert · ${esc(x.cat)}</span><h1 style="font-size:30px">${esc(x.t)}</h1>
+      <div class="row wrapm"><div class="date"><b>${x.d}</b><span>${x.m}</span></div><div class="grow"><div><b>When</b> ${x.when}</div><div><b>Where</b> Zoom · link available after you register</div></div></div>
+      <div><h3>What you'll walk away with</h3><ul style="margin:8px 0 0;padding-left:20px;color:var(--ink-2)"><li>Know what to tackle first, and what can wait</li><li>Realistic numbers on timeline and cost</li><li>Bring your own questions, in a small room built for a real conversation</li></ul></div>
+      <div class="person"><span class="av host">${ini(x.who)}</span><div><b>${esc(x.who)}</b><p>The expert in the room</p></div></div>
+      <p class="desc" style="margin:0">${esc(x.desc)}</p>
+      <div class="actions"><button type="button" class="btn ${on?"":"pri"}" data-reg="${x.id}">${on?"Cancel registration":"Register to session"}</button></div></article></div>`;}
+  const list = S.stab==="mine"?SESSIONS.filter(x=>S.reg.has(x.id)):S.stab==="past"?[]:SESSIONS;
+  return `<div class="stack"><div><h1>Sessions</h1><p class="lede">Sessions matched to your stage, plus open sessions for everyone.</p></div>
+    <div class="pills" role="group" aria-label="Filter">${[["upcoming","Upcoming"],["mine","My registrations"],["past","Past"]].map(([k,l])=>`<button type="button" data-stab="${k}" aria-pressed="${S.stab===k}">${l}</button>`).join("")}</div>
+    <div class="card list">${S.stab!=="past"&&(S.stab==="upcoming"||S.booked)?dinnerItem():""}${list.map(sessionRow).join("")||(S.stab==="past"?`<div class="item" style="color:var(--ink-2)">Your past sessions show here, with recordings.</div>`:S.booked?"":`<div class="item" style="color:var(--ink-2)">You haven't registered for anything yet.</div>`)}</div></div>`;
+}
+function library(){
+  const cats=["All","Recording","Playbook"]; const items=LIBRARY.filter(x=>S.libf==="All"||x[0]===S.libf);
+  return `<div class="stack"><div><h1>Content library</h1><p class="lede">Session recordings and resources for your stage, plus everything open to all members.</p></div>
+    <div class="pills" role="group" aria-label="Type">${cats.map(c=>`<button type="button" data-lib="${c}" aria-pressed="${S.libf===c}">${c}</button>`).join("")}</div>
+    <div class="card list">${items.map(x=>`<div class="item"><div class="row wrapm"><div class="grow"><span class="chip">${x[0]}</span><h3 style="margin-top:8px">${esc(x[1])}</h3><div class="meta">${esc(x[2])}</div></div><button type="button" class="btn sm" data-toast="Demo: opens the ${x[0].toLowerCase()}">${x[0]==="Recording"?"Watch":"Open"}</button></div></div>`).join("")}</div></div>`;
+}
+function advisors(){
+  return `<div class="stack"><div><h1>Advisors</h1><p class="lede">Experts who lead sessions, host dinners and take 1:1s with members.</p></div>
+    <div class="card tbl"><table class="t"><thead><tr><th>Advisor</th><th>Organization</th><th>Expertise</th><th>Location</th><th></th></tr></thead><tbody>
+    ${ADVISORS.map(a=>`<tr><td><span class="nm"><span class="av sm host">${ini(a[0])}</span>${esc(a[0])}</span></td><td>${esc(a[1])}</td><td>${esc(a[2])}</td><td>${esc(a[3])}</td><td><button type="button" class="btn sm" data-toast="Demo: ask your VEN Partner for a 1:1 with ${esc(a[0])}">Profile →</button></td></tr>`).join("")}</tbody></table></div></div>`;
+}
+function directory(){
+  return `<div class="stack"><div><h1>Directory</h1><p class="lede">Founders in the VEN network, at your stage and below.</p></div>
+    <div class="card tbl"><table class="t"><thead><tr><th>Name</th><th>Company</th><th>Industry</th><th>Stage</th><th></th></tr></thead><tbody>
+    ${DIRECTORY.map(a=>`<tr><td><span class="nm"><span class="av sm">${ini(a[0])}</span>${esc(a[0])}</span></td><td>${esc(a[1])}</td><td>${esc(a[2])}</td><td class="num">Stage ${a[3]}</td><td><button type="button" class="btn sm" data-toast="Demo: opens ${esc(a[0])}'s profile">Profile →</button></td></tr>`).join("")}</tbody></table></div></div>`;
+}
+function benefits(){
+  return `<div class="stack"><div><h1>Benefits</h1><p class="lede">Every offer is listed for you; the full terms open up on an active membership at the matching level.</p></div>
+    <div class="bgrid">${BENEFITS.map(b=>`<article class="card bcard"><span class="label">${esc(b[1])}</span><h3>${esc(b[0])}</h3><span class="big">${esc(b[2])}</span><span style="color:var(--ink-2);font-size:14px">${esc(b[3])}</span><div><button type="button" class="btn sm" data-toast="Demo: opens the ${esc(b[0])} offer">View offer</button></div></article>`).join("")}</div></div>`;
+}
+function account(){
+  return `<div class="stack"><div><h1>Membership &amp; billing</h1></div>
+    <article class="card pad stack"><div class="fgrid"><div><span class="label">Status</span><div><b>Active member</b></div></div><div><span class="label">Stage</span><div><b>Stage 2 · $2–10M ARR · Series A</b></div></div></div>
+      <div><span class="label">Billing</span><div>$800 / month · renews Dec 1 · Visa ending 4242</div></div>
+      <div><span class="label">In-person charges</span><div>${S.booked?`Founder Dinner, Nov 12 · $${EV.price} · paid`:"None yet"}</div></div></article>
+    <article class="card pad stack"><h2>Email preferences</h2>
+      <label style="display:flex;gap:10px;align-items:center"><input type="checkbox" checked id="pe1"> Session invitations and reminders</label>
+      <label style="display:flex;gap:10px;align-items:center"><input type="checkbox" checked id="pe2"> Founder Dinners in Seattle</label></article></div>`;
+}
+
+/* ---------- in person ---------- */
+function journey(cur){
+  const it=[["Booked","Your seat and set menu are paid."],[`RSVPs close · ${EV.closes}`,"We put the tables together from who is booked."],
+    [`Your table and venue · ${EV.reveal}`,"Names, why you're matched, the address. Confirm you're coming."],["Dinner · Thu, Nov 12","Show up, say you're with VEN. Your host is already there."],
+    ["Next morning","Pick who to stay in touch with. We make the intros."]];
+  return `<ol class="steps">${it.map((x,i)=>`<li class="${i<cur?"done":i===cur?"now":""}"><span class="dot">${i<cur?"✓":i+1}</span><div><b>${esc(x[0])}</b><small>${esc(x[1])}</small></div></li>`).join("")}</ol>`;
+}
+function inperson(){
+  const s=S.s;
+  if(s===0) return `<div class="stack">
+    <div><h1>In person</h1><p class="lede">Monthly dinners and coffees with founders in your city. Same night every month. We pick the venue and your table.</p></div>
+    ${dinnerCard(S.booked?`<button type="button" class="btn pri" data-go="2">Booked ✓</button>`:`<button type="button" class="btn" data-go="1">Book a seat</button>`)}
+    <article class="card pad"><div class="row wrapm"><div class="date"><b>20</b><span>Nov</span></div><div class="grow"><h2>Seattle Founder Coffee</h2>
+      <div class="meta"><span>Fri, Nov 20 · 8:00–9:00 AM PST</span><span>South Lake Union</span></div>
+      <div class="chips"><span class="chip ip">In person</span><span class="chip">All stages</span><span class="chip">Free · 8 seats</span></div>
+      <p class="desc">One table, one hour, before the workday. A lighter first step if an evening is a lot.</p></div>
+      <div><button type="button" class="btn" data-toast="Demo: the coffee books the same way, without a set menu">Book a seat</button></div></div></article>
+    <article class="card pad"><div class="row wrapm"><div class="date"><b>—</b><span>Soon</span></div><div class="grow"><h2>San Francisco and New York</h2>
+      <p class="desc">Not running yet. Tell us you'd come and we start a city once 10 founders are in.</p></div>
+      <div><button type="button" class="btn" data-toast="Added. We'll email you when San Francisco opens">I'd come</button></div></div></article></div>`;
+  if(s===1) return `<div class="stack">
+    <div><button type="button" class="btn ghost" data-go="0">← In person</button><h1>Book your seat</h1></div>
+    <div class="split"><form class="card pad stack" onsubmit="return false"><h2>${esc(EV.title)}</h2><div class="meta" style="margin-top:-8px"><span>${EV.when}</span><span>${EV.area}</span></div>
+      <div class="field"><label for="q">What's the one question you're bringing to the table?</label><textarea id="q">${esc(S.q)}</textarea><small style="color:var(--ink-2)">We use it to pick your table, and your host sees it before dinner.</small></div>
+      <div class="field"><label for="diet">Food</label><select id="diet">${["No restrictions","Vegetarian","Vegan","Gluten-free","No alcohol","Other (tell your partner)"].map(o=>`<option ${o===S.diet?"selected":""}>${o}</option>`).join("")}</select></div>
+      <div class="actions"><button type="button" class="btn pri" data-book>Pay $${EV.price} and book</button><span style="color:var(--ink-2);font-size:13.5px">Card on file · Visa ending 4242</span></div></form>
+    <aside class="card pad stack"><div><span class="label">Set menu</span><div class="price">$${EV.price}</div><small style="color:var(--ink-2)">Three courses, one drink, tax and tip included. Paid now, so the restaurant holds your seat.</small></div>
+      <div class="policy"><b>If your plans change</b><table><tr><td>Until ${EV.freeUntil}</td><td>Full refund</td></tr><tr><td>Less than 48 hours before</td><td>No refund, seat goes to the waitlist</td></tr><tr><td>No-show</td><td>No refund, noted on your reliability</td></tr></table></div>
+      <small style="color:var(--ink-2)">Two no-shows in six months and your next bookings start on the waitlist.</small></aside></div></div>`;
+  if(s===2) return `<div class="stack"><div><h1>You're in</h1><p class="lede">We put your table together after RSVPs close on ${EV.closes}. Nothing to do until ${EV.reveal}.</p></div>
+    <div class="split">${dinnerCard()}<aside class="card pad"><span class="label">What happens next</span><div style="margin-top:12px">${journey(1)}</div>
+      ${S.cancel?`<div class="policy"><b>Cancel your seat?</b><p style="margin:6px 0 10px">You're before ${EV.freeUntil}, so you get the full $${EV.price} back.</p><div class="actions"><button type="button" class="btn" data-cancel-yes>Cancel and refund</button><button type="button" class="btn ghost" data-cancel-no>Keep my seat</button></div></div>`
+      :`<button type="button" class="btn ghost" data-cancel>Can't make it?</button>`}</aside></div></div>`;
+  if(s===3) return `<div class="stack"><div><span class="label">Tue, Nov 10 · two days before</span><h1>Your table on Thursday</h1><p class="lede">Six people plus you. Here is why we put you together.</p></div>
+    <article class="card pad"><div class="people">${TABLE.map(p=>`<div class="person"><span class="av ${p.host?"host":""}">${p.i}</span><div style="min-width:0"><b>${esc(p.n)}</b><p>${esc(p.r)}</p><div class="why">${esc(p.why)}</div></div></div>`).join("")}
+      <div class="person"><span class="av">MC</span><div style="min-width:0"><b>You</b><p>CEO, Northwind AI · Stage 2</p><div class="why">Your question: “${esc(S.q)}”</div></div></div></div></article>
+    <article class="card pad"><div class="venue"><div><span class="label">Venue</span><h2 style="margin-top:4px">The Harbor Room at Lark &amp; Pine</h2><p class="desc" style="margin-top:4px">1416 E Pine St, Seattle · private room upstairs<br>Say you're with VEN. Table 2.</p><div class="chips"><span class="chip">10 min from Westlake</span><span class="chip">Street parking after 6</span></div></div><div class="map" role="img" aria-label="Map"></div></div></article>
+    <article class="card pad"><div class="row wrapm"><div class="grow"><h2>Still coming on Thursday?</h2><p class="desc" style="margin-top:4px">Five people are counting on this table. If something came up, tell us now so a founder from the waitlist gets your seat.</p></div>
+      <div class="actions">${S.seated?`<span class="chip good">Confirmed. See you Thursday</span>`:`<button type="button" class="btn pri" data-confirm>Yes, I'll be there</button><button type="button" class="btn" data-late>I can't make it</button>`}</div></div>
+      ${S.late?`<div class="policy" style="margin-top:12px">You're inside 48 hours, so the $${EV.price} isn't refunded. We'll offer your seat to Ben Hale from the waitlist right away.<div class="actions" style="margin-top:8px"><button type="button" class="btn" data-late-yes>Release my seat</button><button type="button" class="btn ghost" data-late-no>Keep it</button></div></div>`:""}</article></div>`;
+  if(s===4){const p=PROMPTS[S.pi];return `<div class="stack"><div><span class="label">Tonight · 6:30 PM</span><h1>The Harbor Room, table 2</h1><p class="lede">${EV.host} opens at 6:45. The prompts come from the questions your table brought.</p></div>
+    <div class="split"><div class="prompt"><span>${esc(p[0])}</span><small>${esc(p[1])} · ${S.pi+1} of ${PROMPTS.length}</small></div>
+      <aside class="card pad"><span class="label">At your table</span>${TABLE.map(t=>`<div class="tline"><span>${esc(t.n)}</span><span style="color:var(--ink-2)">${esc(t.r.split(" · ")[0])}</span></div>`).join("")}</aside></div>
+    <div class="actions"><button type="button" class="btn" data-prompt>Next prompt</button><button type="button" class="btn" data-toast="Your host got a text: Maya is 10 minutes out">I'm 10 minutes out</button></div></div>`;}
+  return `<div class="stack"><div><span class="label">Fri, Nov 13 · next morning</span><h1>Who do you want to stay in touch with?</h1><p class="lede">Pick anyone. When it's mutual we send a short intro email to both of you. Nobody sees who didn't pick them.</p></div>
+    <article class="card pad stack"><div class="pick">${TABLE.map(t=>`<label><input type="checkbox" data-pick="${esc(t.n)}" ${S.picked.has(t.n)?"checked":""}><span class="av ${t.host?"host":""}">${t.i}</span><b>${esc(t.n)}</b><span style="color:var(--ink-2);font-size:12.5px">${esc(t.r.split(" · ")[0])}</span></label>`).join("")}</div>
+      <div class="actions"><button type="button" class="btn pri" data-send>Send my picks</button><span style="color:var(--ink-2);font-size:13.5px">${S.picked.size} picked</span></div></article>
+    <article class="card pad"><div class="row wrapm"><div class="grow"><h2>Next dinner: Thu, Dec 10</h2><p class="desc" style="margin-top:4px">Same night every month. Topic: hiring your first VP of Sales, hosted by Tomás Ferreira.</p></div><button type="button" class="btn" data-toast="Demo: booking the December dinner">Book December</button></div></article></div>`;
+}
+
+/* ---------- ops + concept ---------- */
+function ops(){
+  const conf=RSVPS.filter(r=>r[4]==="Confirmed").length;
+  return `<div class="stack"><div><span class="label">Staff panel · Seattle</span><h1>Founder Dinner · Thu, Nov 12</h1><p class="lede">RSVPs close Thu, Nov 5. Today is Wed, Nov 4. Everything runs on its own unless it is marked for you.</p></div>
+    <div class="kpis"><div class="card kpi"><b>${conf} / 12</b><span>Seats confirmed and paid</span></div><div class="card kpi"><b>3</b><span>On the waitlist</span></div>
+      <div class="card kpi"><b>12%</b><span>Expected no-shows (paid dinners)</span></div><div class="card kpi"><b>$600</b><span>Paid in · restaurant minimum $750</span></div></div>
+    <article class="card pad stack"><div class="row wrapm"><div class="grow"><h2>Who is coming</h2><p class="desc" style="margin-top:2px">“Showed up” comes from session history: attended out of registered.</p></div><button type="button" class="btn" data-seat>${S.prop?"Re-run seating":"Propose seating"}</button></div>
+      <div class="tbl"><table class="t"><thead><tr><th>Founder</th><th>Company</th><th>Stage</th><th>Showed up</th><th>Status</th></tr></thead><tbody>
+      ${RSVPS.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td class="num">${r[2]}</td><td class="num">${esc(r[3])}</td><td><span class="chip ${r[4]==="Confirmed"?"good":r[4]==="Waitlist only"?"bad":"warn"}">${esc(r[4])}</span></td></tr>`).join("")}</tbody></table></div></article>
+    ${S.prop?`<article class="card pad stack"><h2>Proposed tables</h2><p class="desc" style="margin-top:-6px">Grouped by the question each founder brought, then by stage. Every table gets a host. Approve to lock it for the reveal on Nov 10.</p>
+      <div class="tables2"><div class="mutebox"><b>Table 1 · SOC 2 and security reviews</b>${["Dana Whitfield (host)","Maya Chen","Priya Natarajan","Elena Varga","Jordan Reyes","Lena Park"].map(n=>`<div class="tline"><span>${n}</span></div>`).join("")}</div>
+      <div class="mutebox"><b>Table 2 · First enterprise sales hires</b>${["Alex Morgan (host)","Sam Okafor","Ravi Shah","Chris Doyle","Ben Hale (from waitlist)"].map(n=>`<div class="tline"><span>${n}</span></div>`).join("")}</div></div>
+      <div class="actions"><button type="button" class="btn pri" data-toast="Tables locked. The reveal email goes out Tue, Nov 10, 9:00 AM">Approve tables</button></div></article>`:""}
+    <article class="card pad stack"><h2>What runs on its own</h2><div class="auto">
+      <span class="w">Monthly</span><span>Next month's dinner is created: same weekday, same venue, same seat count</span><span class="who2 a">Automatic</span>
+      <span class="w">−4 weeks</span><span>Invite to Seattle members matched to stage, and to anyone who said “I'd come”</span><span class="who2 a">Automatic</span>
+      <span class="w">−4 weeks</span><span>Confirm host and topic with the sponsoring advisor</span><span class="who2 m">Ops · 15 min</span>
+      <span class="w">−7 days</span><span>RSVPs close. Seating proposal from the questions and stages</span><span class="who2 a">Automatic</span>
+      <span class="w">−7 days</span><span>Review and approve tables. Send the headcount to the restaurant</span><span class="who2 m">Ops · 15 min</span>
+      <span class="w">−48 h</span><span>Reveal email: table, names, why matched, venue. “Still coming?” check</span><span class="who2 a">Automatic</span>
+      <span class="w">−48 h to 0</span><span>A cancellation offers the seat to the waitlist. First to reply gets it</span><span class="who2 a">Automatic</span>
+      <span class="w">Night of</span><span>Host welcomes the table. Late arrivals text the host</span><span class="who2 m">Host</span>
+      <span class="w">+1 day</span><span>“Who do you want to stay in touch with?” Mutual picks get an intro email</span><span class="who2 a">Automatic</span>
+      <span class="w">+1 day</span><span>No-shows recorded. Recap to the sponsor</span><span class="who2 a">Automatic</span></div>
+      <p class="desc" style="margin-top:4px"><b>Ops time per dinner: about 30 minutes.</b> The rest is the machinery we already run for Zoom sessions, plus a venue.</p></article></div>`;
+}
+function concept(){
+  return `<div class="doc stack"><div><span class="label">Concept</span><h1>Founder Dinners</h1><p class="lede">Members keep asking for in-person time. This brings it back with the process we already run for Zoom sessions, plus a venue, and about 30 minutes of ops per dinner.</p></div>
+    <div class="callout"><b>In one line.</b> One fixed dinner per city per month. Founders book a seat, we seat them by the question they bring, an advisor hosts, and people show up because the seat is paid.</div>
+    <section class="card pad stack"><h2>What we take from Timeleft</h2><ul>
+      <li><b>Fixed dates, no scheduling.</b> Timeleft runs the same night every week per city. Picking the date is how you say you're free. We do it monthly.</li>
+      <li><b>Matching after the cutoff.</b> Tables are built only from people still booked when RSVPs close.</li>
+      <li><b>Reveal late.</b> Names and venue come shortly before. By then people plan around it.</li>
+      <li><b>Pay to hold the seat.</b> Timeleft uses a cancellation ladder and a no-show fee. Ours is a paid set menu, non-refundable inside 48 hours.</li>
+      <li><b>After the night.</b> Mutual picks become intros, which we already do by email.</li></ul></section>
+    <section class="card pad stack"><h2>What we do differently, because we are small</h2>
+      <p style="margin:0">Timeleft survives last-minute cancellations with volume: dozens of tables a night, so two half-empty ones get merged. We won't have that, so the format has to survive cancellations on its own.</p><ul>
+      <li><b>One room, 10–12 founders, two tables.</b> If three drop out, it's still a good evening.</li>
+      <li><b>A host at every table.</b> A sponsoring advisor or a VEN Partner. Nobody sits alone, and the evening has a reason beyond meeting strangers.</li>
+      <li><b>Paid seat.</b> Membership alone doesn't make people show up; our Zoom sessions show that. A paid dinner does.</li>
+      <li><b>Waitlist and reliability.</b> Cancellations go to the waitlist automatically. Repeat no-shows book from the waitlist.</li>
+      <li><b>Never cancel on the night.</b> Under 6 confirmed seven days out, it becomes one table. Under 4, we move it and say so a week ahead.</li></ul></section>
+    <section class="card pad stack"><h2>Money per dinner</h2><div class="tbl"><table class="t"><thead><tr><th>Item</th><th>Amount</th><th>Notes</th></tr></thead><tbody>
+      <tr><td>Set menu paid by founders</td><td class="num">12 × $75 = $900</td><td>Food, one drink, tax and tip</td></tr>
+      <tr><td>Restaurant minimum</td><td class="num">$750–$1,000</td><td>Private room, same night every month</td></tr>
+      <tr><td>Sponsor (advisor firm)</td><td class="num">$0–$1,500</td><td>Option: sponsor pays dinner, founders pay a $50 refundable deposit</td></tr>
+      <tr><td>Ops time</td><td class="num">~30 min</td><td>Host and topic, approve tables</td></tr></tbody></table></div></section>
+    <section class="card pad stack"><h2>Who does what</h2><ul>
+      <li><b>Platform:</b> event page, booking with payment, waitlist, reveal and follow-up emails. Mostly the session system with a venue and a charge.</li>
+      <li><b>Cortex:</b> seating proposal from each founder's question, stage and open challenges. Reliability from session attendance.</li>
+      <li><b>Ops:</b> one standing restaurant per city, host and topic each month, approve tables.</li>
+      <li><b>Advisors:</b> host a table and open with ten minutes on their topic. Firms already ask how to meet founders.</li>
+      <li><b>City host (later):</b> a founder member who owns the restaurant relationship in a new city.</li></ul></section>
+    <section class="card pad stack"><h2>Pilot</h2><ol>
+      <li><b>November, Seattle.</b> One dinner, 12 seats, one sponsor. Seating by hand from Cortex. Booking through a payment link.</li>
+      <li><b>Measure:</b> booked vs. showed up, mutual picks, intros that led to a second conversation, would-you-come-again.</li>
+      <li><b>December–January:</b> if 85%+ show up and members ask for more, build the event page, waitlist and emails into the platform.</li>
+      <li><b>Spring:</b> a second city once 10 founders there say “I'd come”, with a city host.</li></ol></section>
+    <section class="card pad stack"><h2>Decisions we need</h2><ul>
+      <li>Paid set menu ($75), or sponsor-paid with a $50 deposit?</li><li>Members only, or one seat per table for a prospect?</li>
+      <li>Which advisor firm sponsors the pilot?</li><li>Thursday dinner, or a breakfast format for founders with families?</li></ul></section></div>`;
+}
+
+/* ---------- render + events ---------- */
+const PAGES={dashboard,profile,sessions,inperson,library,advisors,directory,benefits,account};
+function render(){
+  document.querySelectorAll("[data-v]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.v===S.v)));
+  document.querySelectorAll("[data-s]").forEach(b=>b.setAttribute("aria-pressed",String(S.v==="member"&&S.t==="inperson"&&+b.dataset.s===S.s)));
+  const portal=S.v==="member";
+  $("#tabs").innerHTML=`<div class="wrap">${TABS.map(([k,l,n])=>`<button type="button" class="tab ${portal&&S.t===k?"on":""}" data-t="${k}">${l}${n?` <span class="new">New</span>`:""}</button>`).join("")}</div>`;
+  $("#app").innerHTML = S.v==="ops"?ops():S.v==="concept"?concept():PAGES[S.t]();
+}
+function go(t){S.v="member";S.t=t;S.sess=null;render();scrollTo(0,0)}
+document.addEventListener("input",e=>{if(e.target.id==="q")S.q=e.target.value;if(e.target.id==="diet")S.diet=e.target.value});
+document.addEventListener("change",e=>{const p=e.target.dataset&&e.target.dataset.pick;if(p){e.target.checked?S.picked.add(p):S.picked.delete(p);render()}});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;const d=b.dataset;
+  if(d.v){S.v=d.v;render();scrollTo(0,0);return}
+  if(d.t){go(d.t);return}
+  if(d.s){S.v="member";S.t="inperson";S.s=+d.s;S.late=false;S.cancel=false;if(S.s>=2)S.booked=true;render();scrollTo(0,0);return}
+  if(d.go){S.s=+d.go;render();scrollTo(0,0);return}
+  if(d.sess){S.sess=d.sess;render();scrollTo(0,0);return}
+  if("back" in d){S.sess=null;render();return}
+  if(d.stab){S.stab=d.stab;render();return}
+  if(d.lib){S.libf=d.lib;render();return}
+  if(d.reg){const on=S.reg.has(d.reg);on?S.reg.delete(d.reg):S.reg.add(d.reg);render();toast(on?"Registration cancelled":"Registered. The Zoom link is in your email");return}
+  if(d.toast){toast(d.toast);return}
+  if("book" in d){S.booked=true;S.s=2;render();scrollTo(0,0);toast(`Paid $${EV.price}. Your seat is booked`);return}
+  if("cancel" in d){S.cancel=true;render();return}
+  if("cancelNo" in d){S.cancel=false;render();return}
+  if("cancelYes" in d){S.cancel=false;S.booked=false;S.s=0;render();toast(`Cancelled. $${EV.price} refunded`);return}
+  if("confirm" in d){S.seated=true;S.late=false;render();toast("Confirmed. Your host knows you're coming");return}
+  if("late" in d){S.late=true;render();return}
+  if("lateNo" in d){S.late=false;render();return}
+  if("lateYes" in d){S.late=false;S.booked=false;S.s=0;render();toast("Seat released to the waitlist");return}
+  if("prompt" in d){S.pi=(S.pi+1)%PROMPTS.length;render();return}
+  if("send" in d){toast(S.picked.size?"Sent. We'll intro you when it's mutual":"Pick at least one person");return}
+  if("seat" in d){S.prop=true;render();return}
+});
+render();
+</script>
+</body>
+</html>
