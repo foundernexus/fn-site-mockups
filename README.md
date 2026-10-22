@@ -32,6 +32,7 @@ Use the source bundle in this repository for future content edits. The HTML down
 | Member portal redesign — clickable demo | `dashboard-demo/` | https://foundernexus.github.io/fn-site-mockups/dashboard-demo/ |
 | VEN choose your stage | `ven-choose-stage/` | https://foundernexus.github.io/fn-site-mockups/ven-choose-stage/ |
 | VEN choose your stage, with personas | `ven-choose-stage-personas/` | https://foundernexus.github.io/fn-site-mockups/ven-choose-stage-personas/ |
+| VEN Founder Dinners (in-person demo + member portal copy) | `ven-founder-dinners/` | https://foundernexus.github.io/fn-site-mockups/ven-founder-dinners/ |
 
 ## VEN choose your stage
 
