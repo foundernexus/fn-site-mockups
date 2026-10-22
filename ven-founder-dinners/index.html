@@ -180,9 +180,15 @@ table.t{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
 <script>
 /* ---------- example data (all people and companies are invented) ---------- */
 const ME = {n:"Maya Chen",i:"MC",co:"Northwind AI",title:"CEO",stage:2};
-const EV = {id:"dinner-nov", title:"Seattle Founder Dinner: SOC 2 and selling to enterprise", day:"12", mon:"Nov",
-  when:"Thu, Nov 12 · 6:30–9:00 PM PST", area:"Capitol Hill, Seattle", host:"Dana Whitfield", hostCo:"Ridgeway Audit Partners",
-  seats:12, taken:9, closes:"Thu, Nov 5", reveal:"Tue, Nov 10", freeUntil:"Tue, Nov 10, 6:30 PM", price:75};
+const EV = {id:"dinner-nov", title:"Dinner", day:"12", mon:"Nov",
+  when:"Thursday, Nov 12 · 7:00 PM", area:"Seattle",
+  seats:12, taken:9, closes:"Thu, Nov 5", reveal:"Tue, Nov 10", freeUntil:"Tue, Nov 10, 7:00 PM", price:75};
+const FORMATS = [
+  {k:"dinner",ic:"🍽",n:"Dinner",d:"Thursday, Nov 12",t:"7:00 PM",line:"Five other founders at your stage. Three hours, one table.",main:1},
+  {k:"ceo",ic:"🍽",n:"CEO dinner",d:"Thursday, Dec 10",t:"7:00 PM",line:"Only CEOs. The table where you can say what you can't say to your team."},
+  {k:"coffee",ic:"☕",n:"Coffee",d:"Friday, Nov 20",t:"8:00 AM",line:"One hour before work. The easy first one."},
+  {k:"ops",ic:"🍽",n:"CFO & COO dinner",d:"Wednesday, Dec 16",t:"7:00 PM",line:"Finance and operations leaders from venture-backed companies."}
+];
 const SESSIONS = [
   {id:"s1",d:"29",m:"Oct",t:"AI for GTM: Building your prospecting workflow",when:"Thu, Oct 29 · 12:00–1:00 PM PDT",who:"Owen Marsh",tags:["Open","Expert"],cat:"Go-to-market",
    desc:"Most go-to-market teams have tried AI tools. Far fewer have AI woven into how they prospect, research accounts, follow up and keep the CRM clean. A working session with your own pipeline as the example."},
@@ -206,15 +212,14 @@ const LIBRARY = [["Recording","How to find product-market fit","VEN team · Jul 
 const BENEFITS = [["Deel","HR/People","$5,000","in Deel credits"],["Databricks","Data & AI","$200K","in Databricks credits"],["Notion","Productivity","Free","6 months of Notion Business"],
   ["HubSpot","CRM","90%","off HubSpot in year 1"],["Pipeline Lab","Sales","3h","of free sales consulting"],["Arbor CFO Partners","Finance","Free","60-minute finance review"]];
 const TABLE = [
-  {n:"Dana Whitfield",i:"DW",r:"Ridgeway Audit Partners · hosts the table",host:1,why:"Runs SOC 2 readiness for Series A–C companies. Bring your audit timeline."},
-  {n:"Alex Morgan",i:"AM",r:"VEN Partner · your partner tonight",host:1,why:"Sits with the group and makes the intros after dinner."},
   {n:"Jordan Reyes",i:"JR",r:"CEO, Ledgerline · Stage 2",why:"Closed his first Fortune 500 deal in July and went through SOC 2 Type 1 in 9 weeks."},
   {n:"Priya Natarajan",i:"PN",r:"CTO, Cartwell Health · Stage 2",why:"Same question as you: HIPAA and SOC 2 in one audit window."},
   {n:"Sam Okafor",i:"SO",r:"CEO, Brightpath Freight · Stage 3",why:"Hiring a first enterprise AE. You asked about the founder-led to AE handoff."},
-  {n:"Elena Varga",i:"EV",r:"COO, Tessellate · Stage 2",why:"Built the security questionnaire process at her last company."}];
-const PROMPTS = [["What did the first enterprise security review ask that you didn't expect?","From Priya's question"],
-  ["Type 1 now or wait for Type 2? What would you do with three months of runway on it?","From your question"],
-  ["When did you hand the first enterprise deal to someone who isn't the founder?","From Sam's question"]];
+  {n:"Elena Varga",i:"EV",r:"COO, Tessellate · Stage 2",why:"Built the security questionnaire process at her last company."},
+  {n:"Ravi Shah",i:"RS",r:"CEO, Quanta Labs · Stage 2",why:"Raising a Series B in Q1. Asked how others pick between two term sheets."}];
+const PROMPTS = [["Start with a round. Two minutes each: the one thing you're working through right now.","Everyone brought one when they booked"],
+  ["Who at this table has already solved something you're stuck on?","Then talk about whatever you like"],
+  ["Before dessert: one thing you'll do differently next week.","Optional"]];
 const RSVPS = [["Maya Chen","Northwind AI",2,"6 of 6","Confirmed"],["Jordan Reyes","Ledgerline",2,"9 of 10","Confirmed"],["Priya Natarajan","Cartwell Health",2,"4 of 4","Confirmed"],
   ["Sam Okafor","Brightpath Freight",3,"5 of 7","Confirmed"],["Elena Varga","Tessellate",2,"3 of 3","Confirmed"],["Lena Park","Fieldnote",1,"2 of 2","Confirmed"],
   ["Ravi Shah","Quanta Labs",2,"7 of 8","Confirmed"],["Chris Doyle","Harborline",3,"3 of 6","Confirmed"],["Ana Ruiz","Moss & Field",1,"1 of 4","Waitlist only"],
@@ -233,12 +238,12 @@ const taken=()=>EV.taken+(S.booked?1:0);
 
 /* ---------- shared pieces ---------- */
 function dinnerCard(btn){
-  return `<article class="card pad"><div class="row wrapm"><div class="date"><b>${EV.day}</b><span>${EV.mon}</span></div>
+  return `<article class="card pad"><div class="row wrapm"><div class="date" style="background:var(--tab)"><b>${EV.day}</b><span>${EV.mon}</span></div>
     <div class="grow"><h2>${esc(EV.title)}</h2>
-      <div class="meta"><span>${EV.when}</span><span>${EV.area}</span><span>Hosted by ${EV.host}</span></div>
-      <div class="chips"><span class="chip ip">In person</span><span class="chip">Stage 1–3</span><span class="chip">Dinner · 12 founders</span><span class="chip warn">RSVP by ${EV.closes}</span></div>
-      <p class="desc">Two tables of six in a private room, each with a host. ${EV.host} from ${EV.hostCo} opens with ten minutes on what auditors actually look for, then it's dinner. We seat you with founders working on the same problem right now. The venue and your table come two days before.</p>
-      ${seatDots(EV.seats,taken())}<div class="meta"><span>${taken()} of ${EV.seats} seats taken</span></div></div>
+      <div class="meta"><span>${EV.when}</span><span>${EV.area}</span></div>
+      <p class="desc">You and five other founders at your stage, at a restaurant we book. We pick the table from what each of you is working through, so the person across from you has probably solved your problem, or is stuck on the same one. You find out where and with whom two days before.</p>
+      <div class="chips"><span class="chip ip">In person</span><span class="chip">Tables of 6</span><span class="chip">About 3 hours</span><span class="chip warn">Book by ${EV.closes}</span></div>
+      ${seatDots(EV.seats,taken())}<div class="meta"><span>${taken()} of ${EV.seats} seats booked in Seattle</span></div></div>
     <div>${btn||""}</div></div></article>`;
 }
 function sessionRow(x){
@@ -253,7 +258,7 @@ function sessionRow(x){
 function dinnerItem(){
   return `<div class="item"><div class="row wrapm"><div class="date" style="background:var(--tab)"><b>${EV.day}</b><span>${EV.mon}</span></div>
     <div class="grow"><h3 style="font-size:17px">${esc(EV.title)}</h3><div class="meta"><span>${EV.when}</span><span>${EV.area}</span></div>
-    <div class="chips"><span class="chip ip">In person</span><span class="chip">Hosted by ${EV.host}</span></div></div>
+    <div class="chips"><span class="chip ip">In person</span><span class="chip">Tables of 6</span></div></div>
     <div><button type="button" class="btn ${S.booked?"pri":""}" data-t="inperson">${S.booked?"Booked ✓":"See dinner"}</button></div></div></div>`;
 }
 
@@ -262,7 +267,7 @@ function dashboard(){
   const mine=SESSIONS.filter(x=>S.reg.has(x.id));
   return `<div class="stack">
     <div><h1>Welcome back, Maya</h1><p class="lede">What's on your calendar, and what we're working on for you.</p></div>
-    <div class="banner"><div><b>New: Founder Dinners in Seattle</b><div style="font-size:14px">Once a month, 12 founders, one table with a host. Next one Thu, Nov 12.</div></div><button type="button" class="btn pri" data-t="inperson">See the dinner</button></div>
+    <div class="banner"><div><b>New: dinners with founders in Seattle</b><div style="font-size:14px">Five founders at your stage, one table, once a month. Next one Thursday, Nov 12.</div></div><button type="button" class="btn pri" data-t="inperson">See the dinner</button></div>
     <section class="stack"><div class="row"><h2 class="grow">Coming up</h2><button type="button" class="btn ghost" data-t="sessions">See all →</button></div>
       <div class="card list">${S.booked?dinnerItem():""}${mine.map(sessionRow).join("")||(S.booked?"":`<div class="item" style="color:var(--ink-2)">Nothing scheduled yet. <button type="button" class="btn ghost" data-t="sessions">Browse sessions →</button></div>`)}</div></section>
     <section class="stack"><div class="row"><h2 class="grow">More for you</h2><button type="button" class="btn ghost" data-t="sessions">See all →</button></div>
@@ -335,27 +340,29 @@ function account(){
 /* ---------- in person ---------- */
 function journey(cur){
   const it=[["Booked","Your seat and set menu are paid."],[`RSVPs close · ${EV.closes}`,"We put the tables together from who is booked."],
-    [`Your table and venue · ${EV.reveal}`,"Names, why you're matched, the address. Confirm you're coming."],["Dinner · Thu, Nov 12","Show up, say you're with VEN. Your host is already there."],
+    [`Your table and venue · ${EV.reveal}`,"Names, why you're matched, the address. Confirm you're coming."],["Dinner · Thu, Nov 12","Show up, say you're with VEN. Your table is booked under VEN."],
     ["Next morning","Pick who to stay in touch with. We make the intros."]];
   return `<ol class="steps">${it.map((x,i)=>`<li class="${i<cur?"done":i===cur?"now":""}"><span class="dot">${i<cur?"✓":i+1}</span><div><b>${esc(x[0])}</b><small>${esc(x[1])}</small></div></li>`).join("")}</ol>`;
 }
 function inperson(){
   const s=S.s;
   if(s===0) return `<div class="stack">
-    <div><h1>In person</h1><p class="lede">Monthly dinners and coffees with founders in your city. Same night every month. We pick the venue and your table.</p></div>
-    ${dinnerCard(S.booked?`<button type="button" class="btn pri" data-go="2">Booked ✓</button>`:`<button type="button" class="btn" data-go="1">Book a seat</button>`)}
-    <article class="card pad"><div class="row wrapm"><div class="date"><b>20</b><span>Nov</span></div><div class="grow"><h2>Seattle Founder Coffee</h2>
-      <div class="meta"><span>Fri, Nov 20 · 8:00–9:00 AM PST</span><span>South Lake Union</span></div>
-      <div class="chips"><span class="chip ip">In person</span><span class="chip">All stages</span><span class="chip">Free · 8 seats</span></div>
-      <p class="desc">One table, one hour, before the workday. A lighter first step if an evening is a lot.</p></div>
-      <div><button type="button" class="btn" data-toast="Demo: the coffee books the same way, without a set menu">Book a seat</button></div></div></article>
+    <div><span class="label">Seattle</span><h1>Meet founders who get it</h1><p class="lede">No planning, no small talk with strangers who don't run companies. Pick a night, we put you at a table with five founders at your stage and book the restaurant. You just show up.</p></div>
+    <article class="card"><div class="pad" style="padding-bottom:6px"><h2>Book your next one</h2></div><div class="list">${FORMATS.map(f=>`<div class="item"><div class="row wrapm"><div class="date" style="background:var(--tab);font-size:22px;display:grid;place-items:center">${f.ic}</div>
+      <div class="grow"><h3 style="font-size:17px">${esc(f.n)}</h3><div class="meta"><b style="color:var(--ink)">${esc(f.d)}</b><span>${esc(f.t)}</span></div><p class="desc" style="margin-top:4px">${esc(f.line)}</p></div>
+      <div>${f.main?(S.booked?`<button type="button" class="btn pri" data-go="2">Booked ✓</button>`:`<button type="button" class="btn" data-go="1">Book</button>`):`<button type="button" class="btn" data-toast="Demo: ${esc(f.n)} books the same way">Book</button>`}</div></div></div>`).join("")}</div></article>
+    <article class="card pad"><h2>How it works</h2><ol class="steps" style="margin-top:12px">
+      <li><span class="dot">1</span><div><b>Pick a night</b><small>Book by a week before. Tell us the one thing you're working through.</small></div></li>
+      <li><span class="dot">2</span><div><b>We set the table</b><small>Five founders at your stage, matched on what you're each working through. We book the restaurant.</small></div></li>
+      <li><span class="dot">3</span><div><b>Find out two days before</b><small>Who's at your table, why we put you together, and where.</small></div></li>
+      <li><span class="dot">4</span><div><b>Show up</b><small>Start with a quick round, then talk about whatever. Next morning, we intro you to anyone you clicked with.</small></div></li></ol></article>
     <article class="card pad"><div class="row wrapm"><div class="date"><b>—</b><span>Soon</span></div><div class="grow"><h2>San Francisco and New York</h2>
       <p class="desc">Not running yet. Tell us you'd come and we start a city once 10 founders are in.</p></div>
       <div><button type="button" class="btn" data-toast="Added. We'll email you when San Francisco opens">I'd come</button></div></div></article></div>`;
   if(s===1) return `<div class="stack">
     <div><button type="button" class="btn ghost" data-go="0">← In person</button><h1>Book your seat</h1></div>
     <div class="split"><form class="card pad stack" onsubmit="return false"><h2>${esc(EV.title)}</h2><div class="meta" style="margin-top:-8px"><span>${EV.when}</span><span>${EV.area}</span></div>
-      <div class="field"><label for="q">What's the one question you're bringing to the table?</label><textarea id="q">${esc(S.q)}</textarea><small style="color:var(--ink-2)">We use it to pick your table, and your host sees it before dinner.</small></div>
+      <div class="field"><label for="q">What's the one question you're bringing to the table?</label><textarea id="q">${esc(S.q)}</textarea><small style="color:var(--ink-2)">We use it to pick your table. Your table sees it two days before.</small></div>
       <div class="field"><label for="diet">Food</label><select id="diet">${["No restrictions","Vegetarian","Vegan","Gluten-free","No alcohol","Other (tell your partner)"].map(o=>`<option ${o===S.diet?"selected":""}>${o}</option>`).join("")}</select></div>
       <div class="actions"><button type="button" class="btn pri" data-book>Pay $${EV.price} and book</button><span style="color:var(--ink-2);font-size:13.5px">Card on file · Visa ending 4242</span></div></form>
     <aside class="card pad stack"><div><span class="label">Set menu</span><div class="price">$${EV.price}</div><small style="color:var(--ink-2)">Three courses, one drink, tax and tip included. Paid now, so the restaurant holds your seat.</small></div>
@@ -365,21 +372,21 @@ function inperson(){
     <div class="split">${dinnerCard()}<aside class="card pad"><span class="label">What happens next</span><div style="margin-top:12px">${journey(1)}</div>
       ${S.cancel?`<div class="policy"><b>Cancel your seat?</b><p style="margin:6px 0 10px">You're before ${EV.freeUntil}, so you get the full $${EV.price} back.</p><div class="actions"><button type="button" class="btn" data-cancel-yes>Cancel and refund</button><button type="button" class="btn ghost" data-cancel-no>Keep my seat</button></div></div>`
       :`<button type="button" class="btn ghost" data-cancel>Can't make it?</button>`}</aside></div></div>`;
-  if(s===3) return `<div class="stack"><div><span class="label">Tue, Nov 10 · two days before</span><h1>Your table on Thursday</h1><p class="lede">Six people plus you. Here is why we put you together.</p></div>
+  if(s===3) return `<div class="stack"><div><span class="label">Tue, Nov 10 · two days before</span><h1>Your table on Thursday</h1><p class="lede">You and five founders. Here is why we put you together.</p></div>
     <article class="card pad"><div class="people">${TABLE.map(p=>`<div class="person"><span class="av ${p.host?"host":""}">${p.i}</span><div style="min-width:0"><b>${esc(p.n)}</b><p>${esc(p.r)}</p><div class="why">${esc(p.why)}</div></div></div>`).join("")}
       <div class="person"><span class="av">MC</span><div style="min-width:0"><b>You</b><p>CEO, Northwind AI · Stage 2</p><div class="why">Your question: “${esc(S.q)}”</div></div></div></div></article>
     <article class="card pad"><div class="venue"><div><span class="label">Venue</span><h2 style="margin-top:4px">The Harbor Room at Lark &amp; Pine</h2><p class="desc" style="margin-top:4px">1416 E Pine St, Seattle · private room upstairs<br>Say you're with VEN. Table 2.</p><div class="chips"><span class="chip">10 min from Westlake</span><span class="chip">Street parking after 6</span></div></div><div class="map" role="img" aria-label="Map"></div></div></article>
     <article class="card pad"><div class="row wrapm"><div class="grow"><h2>Still coming on Thursday?</h2><p class="desc" style="margin-top:4px">Five people are counting on this table. If something came up, tell us now so a founder from the waitlist gets your seat.</p></div>
       <div class="actions">${S.seated?`<span class="chip good">Confirmed. See you Thursday</span>`:`<button type="button" class="btn pri" data-confirm>Yes, I'll be there</button><button type="button" class="btn" data-late>I can't make it</button>`}</div></div>
       ${S.late?`<div class="policy" style="margin-top:12px">You're inside 48 hours, so the $${EV.price} isn't refunded. We'll offer your seat to Ben Hale from the waitlist right away.<div class="actions" style="margin-top:8px"><button type="button" class="btn" data-late-yes>Release my seat</button><button type="button" class="btn ghost" data-late-no>Keep it</button></div></div>`:""}</article></div>`;
-  if(s===4){const p=PROMPTS[S.pi];return `<div class="stack"><div><span class="label">Tonight · 6:30 PM</span><h1>The Harbor Room, table 2</h1><p class="lede">${EV.host} opens at 6:45. The prompts come from the questions your table brought.</p></div>
+  if(s===4){const p=PROMPTS[S.pi];return `<div class="stack"><div><span class="label">Tonight · 6:30 PM</span><h1>The Harbor Room, table 2</h1><p class="lede">No host, no agenda. One quick round to start, then the evening is yours.</p></div>
     <div class="split"><div class="prompt"><span>${esc(p[0])}</span><small>${esc(p[1])} · ${S.pi+1} of ${PROMPTS.length}</small></div>
       <aside class="card pad"><span class="label">At your table</span>${TABLE.map(t=>`<div class="tline"><span>${esc(t.n)}</span><span style="color:var(--ink-2)">${esc(t.r.split(" · ")[0])}</span></div>`).join("")}</aside></div>
-    <div class="actions"><button type="button" class="btn" data-prompt>Next prompt</button><button type="button" class="btn" data-toast="Your host got a text: Maya is 10 minutes out">I'm 10 minutes out</button></div></div>`;}
+    <div class="actions"><button type="button" class="btn" data-prompt>Next prompt</button><button type="button" class="btn" data-toast="Your table got a text: Maya is 10 minutes out">I'm 10 minutes out</button></div></div>`;}
   return `<div class="stack"><div><span class="label">Fri, Nov 13 · next morning</span><h1>Who do you want to stay in touch with?</h1><p class="lede">Pick anyone. When it's mutual we send a short intro email to both of you. Nobody sees who didn't pick them.</p></div>
     <article class="card pad stack"><div class="pick">${TABLE.map(t=>`<label><input type="checkbox" data-pick="${esc(t.n)}" ${S.picked.has(t.n)?"checked":""}><span class="av ${t.host?"host":""}">${t.i}</span><b>${esc(t.n)}</b><span style="color:var(--ink-2);font-size:12.5px">${esc(t.r.split(" · ")[0])}</span></label>`).join("")}</div>
       <div class="actions"><button type="button" class="btn pri" data-send>Send my picks</button><span style="color:var(--ink-2);font-size:13.5px">${S.picked.size} picked</span></div></article>
-    <article class="card pad"><div class="row wrapm"><div class="grow"><h2>Next dinner: Thu, Dec 10</h2><p class="desc" style="margin-top:4px">Same night every month. Topic: hiring your first VP of Sales, hosted by Tomás Ferreira.</p></div><button type="button" class="btn" data-toast="Demo: booking the December dinner">Book December</button></div></article></div>`;
+    <article class="card pad"><div class="row wrapm"><div class="grow"><h2>Next dinner: Thursday, Dec 10</h2><p class="desc" style="margin-top:4px">Same night every month, a new table each time. Book now and we'll keep anyone you liked tonight in mind.</p></div><button type="button" class="btn" data-toast="Demo: booking the December dinner">Book December</button></div></article></div>`;
 }
 
 /* ---------- ops + concept ---------- */
@@ -391,26 +398,26 @@ function ops(){
     <article class="card pad stack"><div class="row wrapm"><div class="grow"><h2>Who is coming</h2><p class="desc" style="margin-top:2px">“Showed up” comes from session history: attended out of registered.</p></div><button type="button" class="btn" data-seat>${S.prop?"Re-run seating":"Propose seating"}</button></div>
       <div class="tbl"><table class="t"><thead><tr><th>Founder</th><th>Company</th><th>Stage</th><th>Showed up</th><th>Status</th></tr></thead><tbody>
       ${RSVPS.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td class="num">${r[2]}</td><td class="num">${esc(r[3])}</td><td><span class="chip ${r[4]==="Confirmed"?"good":r[4]==="Waitlist only"?"bad":"warn"}">${esc(r[4])}</span></td></tr>`).join("")}</tbody></table></div></article>
-    ${S.prop?`<article class="card pad stack"><h2>Proposed tables</h2><p class="desc" style="margin-top:-6px">Grouped by the question each founder brought, then by stage. Every table gets a host. Approve to lock it for the reveal on Nov 10.</p>
-      <div class="tables2"><div class="mutebox"><b>Table 1 · SOC 2 and security reviews</b>${["Dana Whitfield (host)","Maya Chen","Priya Natarajan","Elena Varga","Jordan Reyes","Lena Park"].map(n=>`<div class="tline"><span>${n}</span></div>`).join("")}</div>
-      <div class="mutebox"><b>Table 2 · First enterprise sales hires</b>${["Alex Morgan (host)","Sam Okafor","Ravi Shah","Chris Doyle","Ben Hale (from waitlist)"].map(n=>`<div class="tline"><span>${n}</span></div>`).join("")}</div></div>
+    ${S.prop?`<article class="card pad stack"><h2>Proposed tables</h2><p class="desc" style="margin-top:-6px">Grouped by what each founder is working through, then by stage. Approve to lock it for the reveal on Nov 10.</p>
+      <div class="tables2"><div class="mutebox"><b>Table 1</b> <span style="color:var(--ink-2)">· security reviews, first enterprise deals</span>${["Maya Chen","Priya Natarajan","Elena Varga","Jordan Reyes","Lena Park","Ravi Shah"].map(n=>`<div class="tline"><span>${n}</span></div>`).join("")}</div>
+      <div class="mutebox"><b>Table 2</b> <span style="color:var(--ink-2)">· first sales hires, scaling the team</span>${["Sam Okafor","Chris Doyle","Ben Hale (from waitlist)","Mia Torres (from waitlist)","+ 2 seats open"].map(n=>`<div class="tline"><span>${n}</span></div>`).join("")}</div></div>
       <div class="actions"><button type="button" class="btn pri" data-toast="Tables locked. The reveal email goes out Tue, Nov 10, 9:00 AM">Approve tables</button></div></article>`:""}
     <article class="card pad stack"><h2>What runs on its own</h2><div class="auto">
       <span class="w">Monthly</span><span>Next month's dinner is created: same weekday, same venue, same seat count</span><span class="who2 a">Automatic</span>
       <span class="w">−4 weeks</span><span>Invite to Seattle members matched to stage, and to anyone who said “I'd come”</span><span class="who2 a">Automatic</span>
-      <span class="w">−4 weeks</span><span>Confirm host and topic with the sponsoring advisor</span><span class="who2 m">Ops · 15 min</span>
       <span class="w">−7 days</span><span>RSVPs close. Seating proposal from the questions and stages</span><span class="who2 a">Automatic</span>
       <span class="w">−7 days</span><span>Review and approve tables. Send the headcount to the restaurant</span><span class="who2 m">Ops · 15 min</span>
       <span class="w">−48 h</span><span>Reveal email: table, names, why matched, venue. “Still coming?” check</span><span class="who2 a">Automatic</span>
       <span class="w">−48 h to 0</span><span>A cancellation offers the seat to the waitlist. First to reply gets it</span><span class="who2 a">Automatic</span>
-      <span class="w">Night of</span><span>Host welcomes the table. Late arrivals text the host</span><span class="who2 m">Host</span>
+      <span class="w">Night of</span><span>Nobody from VEN needed. The table is booked under VEN, the round-start card is in the reveal email</span><span class="who2 a">Automatic</span>
       <span class="w">+1 day</span><span>“Who do you want to stay in touch with?” Mutual picks get an intro email</span><span class="who2 a">Automatic</span>
-      <span class="w">+1 day</span><span>No-shows recorded. Recap to the sponsor</span><span class="who2 a">Automatic</span></div>
-      <p class="desc" style="margin-top:4px"><b>Ops time per dinner: about 30 minutes.</b> The rest is the machinery we already run for Zoom sessions, plus a venue.</p></article></div>`;
+      <span class="w">+1 day</span><span>No-shows recorded on reliability</span><span class="who2 a">Automatic</span></div>
+      <p class="desc" style="margin-top:4px"><b>Ops time per dinner: about 15 minutes</b>, to check the tables and send the headcount. The rest is the machinery we already run for Zoom sessions, plus a venue.</p></article></div>`;
 }
 function concept(){
   return `<div class="doc stack"><div><span class="label">Concept</span><h1>Founder Dinners</h1><p class="lede">Members keep asking for in-person time. This brings it back with the process we already run for Zoom sessions, plus a venue, and about 30 minutes of ops per dinner.</p></div>
-    <div class="callout"><b>In one line.</b> One fixed dinner per city per month. Founders book a seat, we seat them by the question they bring, an advisor hosts, and people show up because the seat is paid.</div>
+    <div class="callout"><b>In one line.</b> One fixed dinner night per city per month, like Timeleft: no topic, no host. Founders book a seat, we put six at a table by what they're working through, they start with one quick round, and they show up because the seat is paid.</div>
+    <section class="card pad stack"><h2>The outcome</h2><p style="margin:0">Every attendee leaves with at least one founder they'll follow up with. That is what keeps people in a community. We measure it with mutual picks the next morning, a second conversation within 30 days, and how many book again.</p></section>
     <section class="card pad stack"><h2>What we take from Timeleft</h2><ul>
       <li><b>Fixed dates, no scheduling.</b> Timeleft runs the same night every week per city. Picking the date is how you say you're free. We do it monthly.</li>
       <li><b>Matching after the cutoff.</b> Tables are built only from people still booked when RSVPs close.</li>
@@ -419,30 +426,31 @@ function concept(){
       <li><b>After the night.</b> Mutual picks become intros, which we already do by email.</li></ul></section>
     <section class="card pad stack"><h2>What we do differently, because we are small</h2>
       <p style="margin:0">Timeleft survives last-minute cancellations with volume: dozens of tables a night, so two half-empty ones get merged. We won't have that, so the format has to survive cancellations on its own.</p><ul>
-      <li><b>One room, 10–12 founders, two tables.</b> If three drop out, it's still a good evening.</li>
-      <li><b>A host at every table.</b> A sponsoring advisor or a VEN Partner. Nobody sits alone, and the evening has a reason beyond meeting strangers.</li>
+      <li><b>One restaurant, two tables next to each other.</b> If three drop out, we merge into one table on the spot and it's still a good evening.</li>
+      <li><b>No host, but one ritual.</b> Everyone writes down what they're working through when they book. At the table, one round: two minutes each. That replaces a facilitator, makes sure everyone talks, and shows who to follow up with.</li>
+      <li><b>Tables by stage and what you're working through.</b> Later also by role: CEO, CTO, CFO/COO dinners, which fits VEN serving the whole leadership team.</li>
       <li><b>Paid seat.</b> Membership alone doesn't make people show up; our Zoom sessions show that. A paid dinner does.</li>
       <li><b>Waitlist and reliability.</b> Cancellations go to the waitlist automatically. Repeat no-shows book from the waitlist.</li>
       <li><b>Never cancel on the night.</b> Under 6 confirmed seven days out, it becomes one table. Under 4, we move it and say so a week ahead.</li></ul></section>
     <section class="card pad stack"><h2>Money per dinner</h2><div class="tbl"><table class="t"><thead><tr><th>Item</th><th>Amount</th><th>Notes</th></tr></thead><tbody>
       <tr><td>Set menu paid by founders</td><td class="num">12 × $75 = $900</td><td>Food, one drink, tax and tip</td></tr>
       <tr><td>Restaurant minimum</td><td class="num">$750–$1,000</td><td>Private room, same night every month</td></tr>
-      <tr><td>Sponsor (advisor firm)</td><td class="num">$0–$1,500</td><td>Option: sponsor pays dinner, founders pay a $50 refundable deposit</td></tr>
-      <tr><td>Ops time</td><td class="num">~30 min</td><td>Host and topic, approve tables</td></tr></tbody></table></div></section>
+      <tr><td>Sponsor (later, optional)</td><td class="num">$0–$1,500</td><td>An advisor firm could cover dinner for a seat at the table</td></tr>
+      <tr><td>Ops time</td><td class="num">~15 min</td><td>Check the tables, send the headcount</td></tr></tbody></table></div></section>
     <section class="card pad stack"><h2>Who does what</h2><ul>
       <li><b>Platform:</b> event page, booking with payment, waitlist, reveal and follow-up emails. Mostly the session system with a venue and a charge.</li>
       <li><b>Cortex:</b> seating proposal from each founder's question, stage and open challenges. Reliability from session attendance.</li>
-      <li><b>Ops:</b> one standing restaurant per city, host and topic each month, approve tables.</li>
-      <li><b>Advisors:</b> host a table and open with ten minutes on their topic. Firms already ask how to meet founders.</li>
+      <li><b>Ops:</b> one standing restaurant per city, approve tables once a month.</li>
+      <li><b>Advisors (optional, later):</b> a hosted “dinner with an expert” as a premium format, if members ask for it.</li>
       <li><b>City host (later):</b> a founder member who owns the restaurant relationship in a new city.</li></ul></section>
     <section class="card pad stack"><h2>Pilot</h2><ol>
-      <li><b>November, Seattle.</b> One dinner, 12 seats, one sponsor. Seating by hand from Cortex. Booking through a payment link.</li>
+      <li><b>November, Seattle.</b> One dinner night, 12 seats, two tables. Seating by hand from Cortex. Booking through a payment link. Someone from VEN can sit in to watch, not to run it.</li>
       <li><b>Measure:</b> booked vs. showed up, mutual picks, intros that led to a second conversation, would-you-come-again.</li>
       <li><b>December–January:</b> if 85%+ show up and members ask for more, build the event page, waitlist and emails into the platform.</li>
       <li><b>Spring:</b> a second city once 10 founders there say “I'd come”, with a city host.</li></ol></section>
     <section class="card pad stack"><h2>Decisions we need</h2><ul>
-      <li>Paid set menu ($75), or sponsor-paid with a $50 deposit?</li><li>Members only, or one seat per table for a prospect?</li>
-      <li>Which advisor firm sponsors the pilot?</li><li>Thursday dinner, or a breakfast format for founders with families?</li></ul></section></div>`;
+      <li>Paid set menu ($75), or everyone pays their own bill plus a refundable deposit?</li><li>Members only, or one seat per table for a prospect?</li>
+      <li>Tables by stage first, or by role (CEO, CTO, CFO/COO) from the start?</li><li>Thursday dinner, or a breakfast format for founders with families?</li></ul></section></div>`;
 }
 
 /* ---------- render + events ---------- */
@@ -473,7 +481,7 @@ document.addEventListener("click",e=>{
   if("cancel" in d){S.cancel=true;render();return}
   if("cancelNo" in d){S.cancel=false;render();return}
   if("cancelYes" in d){S.cancel=false;S.booked=false;S.s=0;render();toast(`Cancelled. $${EV.price} refunded`);return}
-  if("confirm" in d){S.seated=true;S.late=false;render();toast("Confirmed. Your host knows you're coming");return}
+  if("confirm" in d){S.seated=true;S.late=false;render();toast("Confirmed. See you Thursday");return}
   if("late" in d){S.late=true;render();return}
   if("lateNo" in d){S.late=false;render();return}
   if("lateYes" in d){S.late=false;S.booked=false;S.s=0;render();toast("Seat released to the waitlist");return}
